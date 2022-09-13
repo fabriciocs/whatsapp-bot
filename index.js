@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { Client, MessageMedia, LocalAuth } = require('whatsapp-web.js');
+const { admin } = require('./firebaseConfig.js');
 var QRCode = require('qrcode');
 
 const { resolve, basename } = require('path');
@@ -21,7 +22,13 @@ const client = new Client({
 
 
 client.initialize();
+const db = admin.database();
 
+
+const saveMsg = msg => {
+    const prepared = JSON.parse(JSON.stringify(msg));
+    db.ref('bee-bot').child('messages').push().set(prepared);
+}
 
 const toMB = bytes => bytes / (1024 ** 2);
 
@@ -178,14 +185,12 @@ const listMsgs = async (msg, size) => {
 }
 const clearMsgs = async (msg) => {
     const chat = await msg.getChat();
-    const msgs = await chat.clearMessages();
+    const msgs = await chat.clearMessages(true);
 }
 const clean = async (msg, folders) => {
     console.log({ folders });
     folders?.forEach(async (size) => {
         const folder = resolve(filesPath, `${+size}`);
-
-        console.log({ folder });
         const files = await getFiles(folder);
 
         files.forEach(async (f, i) => {
@@ -211,7 +216,6 @@ const clean = async (msg, folders) => {
 
 const printStatus = async (msg) => {
     const toReply = JSON.parse(JSON.stringify({ msg, filesPath, info: client.info }));
-    console.log({ toReply });
     msg.reply(toReply);
 }
 
@@ -285,13 +289,39 @@ const funcSelector = {
     '!!last': async (msg, size) => await listMsgs(msg, size),
     '!!teamo': async (msg, size) => await loveMsg(msg, size)
 }
+const simpleMsgInfo = ({ rawData, body, ...clean }) => {
+
+    if (clean.hasMedia) {
+        return clean;
+    }
+    return { body, ...clean };
+};
+
+const onlyRaw = ({ rawData }) => rawData;
+
+const getLogChatInfo = async chat => {
+    const contact = await chat.getContact();
+    const labels = await chat.getLabels();
+}
+
+const getLogContactInfo = async contact => {
+
+};
+const logTotalInfo = async (msg) => {
+    const chats = await client.getChats();
+    const currentChat = await msg.getChat();
+    const last100 = await currentChat.fetchMessages({ limit: 100 });
+    const simpleList = last100.map((l) => simpleMsgInfo(l));
+}
 
 
 client.on('message_create', async msg => {
-    console.log({debug: JSON.stringify(msg)});
+
+    saveMsg(msg);
+    
     if (msg.fromMe && msg.body.startsWith('!!')) {
         try {
-            console.log('MESSAGE RECEIVED', msg);
+            
             let size = +(msg.body.replace('!!', ''));
             let text = '!!manda';
             const bodyCtt = msg.body.split(' ').filter(Boolean);
@@ -299,8 +329,6 @@ client.on('message_create', async msg => {
                 text = bodyCtt[0];
                 size = +(bodyCtt[1]);
             }
-
-            console.log({ text, size, bodyCtt, msg });
             await funcSelector?.[text]?.(msg, size);
         } catch (error) {
             console.error('falha', { error, msg });
