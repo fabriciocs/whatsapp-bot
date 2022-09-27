@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
+import beebot from './beebot';
+
 const { Client, MessageMedia, LocalAuth, Buttons, Message } = require('whatsapp-web.js');
 const { admin } = require('./db-config.js');
 const { getVid } = require('./xv.js');
@@ -32,11 +34,15 @@ const db = admin.database();
 const toMB = bytes => bytes / (1024 ** 2);
 
 
-const saveMsg = msg => {
+const backup = msg => {
     const prepared = JSON.parse(JSON.stringify(msg));
     db.ref('bee-bot').child('messages').push().set(prepared);
 }
 
+
+const createContactSpace = msg => {
+    db.ref('bee-bot').child(msg.from).push().set(prepared);
+}
 
 client.on('loading_screen', (percent, message) => {
     console.log('LOADING SCREEN', percent, message);
@@ -301,12 +307,11 @@ const groupInfo = async msg => {
     const chat = await msg.getChat();
     if (chat.isGroup) {
         msg.reply(`
-                *Detalhes*
                 Nome: ${chat.name}
                 Descrição: ${chat.description}
-                 Criado em: ${chat.createdAt.toString()}
-                 Criado por: ${chat.owner.user}
-                Participantes: ${chat.participants.length}
+                Criado em: ${chat.createdAt.toISOString()}
+                Criado por: ${chat.owner?.user}
+                Participantes: ${chat.participants?.length}
             `);
     } else {
         msg.reply('Só roda em grupo');
@@ -334,10 +339,9 @@ const deleteMsgs = async (msg, size = 60) => {
         limit: +size
     });
 
-    const tryDelete = msgs.map(async m => {
+    await Promise.all(await msgs.map(async m => {
         return await m.delete(true);
-    });
-    await Promise.all(tryDelete);
+    }));
     console.log({ msgs: msgs.map(({ id: { id }, body }) => ({ id, body })) });
 }
 
@@ -375,17 +379,17 @@ const showSimpleInfo = async (msg) => {
         if (msg.hasMedia) {
             const media = await msg.downloadMedia();
             const vision = Buffer.from(media.data, 'base64');
-            const whatIsIt = await whatIsThisImage(vision);
-            const [{ labelAnnotations }] = whatIsIt;
+            const res = await whatIsIt(vision);
+            const [{ labelAnnotations }] = res;
             const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
             const textRead = await inPortuguesePlease(details);
             let msgText = `os detalhes que eu percebi: ${textRead.join(',')}`;
-            await client.sendMessage(msg.from, msgText);
-            const whatIsWritten = await readThisImage(vision);
+            await client.sendMessage(msg.to, msgText);
+            const whatIsWritten = await readIt(vision);
             const [{ fullTextAnnotation }] = whatIsWritten;
             msgText = `consegui ler: ${fullTextAnnotation?.text}`;
-             
-            
+
+
             console.log({ msgText });
             await client.sendMessage(msg.to, msgText);
             const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages)).toString('base64');
@@ -400,6 +404,7 @@ const showSimpleInfo = async (msg) => {
         }
     } catch (err) {
         console.log({ quotedErr: err });
+        await msg.delete(true);
     }
 };
 
@@ -411,16 +416,16 @@ const showSimpleMeaningInfoFromMedia = async (msg) => {
         if (msg.hasMedia) {
             const media = await msg.downloadMedia();
             const vision = Buffer.from(media.data, 'base64');
-            const whatIsIt = await whatIsIt(vision);
-            const [{ labelAnnotations }] = whatIsIt;
+            const res = await whatIsIt(vision);
+            const [{ labelAnnotations }] = res;
             const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
             let msgText = `os detalhes que eu percebi: ${details.join(',')}`;
             await client.sendMessage(msg.from, msgText);
             const whatIsWritten = await readThisImage(vision);
             const [{ fullTextAnnotation }] = whatIsWritten;
             msgText = `consegui ler: ${fullTextAnnotation?.text}`;
-             
-            
+
+
             console.log({ msgText });
             await client.sendMessage(msg.to, msgText);
             const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages)).toString('base64');
@@ -435,21 +440,22 @@ const showSimpleMeaningInfoFromMedia = async (msg) => {
         }
     } catch (err) {
         console.log({ quotedErr: err });
+        await msg.delete(true);
     }
 };
 
 
 const funcSelector = {
-    '!!status': async (msg) => await printStatus(msg),
-    '!!clean': async (msg) => await clean(msg, [...Array(7).keys()]),
-    '!!groupinfo': async (msg) => await groupInfo(msg),
-    '!!chatInfo': async (msg) => await chatInfo(msg),
-    '!!del': async (msg, [size]) => await deleteMsgs(msg, size),
-    '!!panic': async (msg) => await clearMsgs(msg),
-    '!!last': async (msg, [size]) => await listMsgs(msg, size),
-    '!!teamo': async (msg, [size]) => await loveMsg(msg, size),
-    '!!xv': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
-    '!!info': async (msg) => await showSimpleInfo(msg)
+    ['status']: async (msg) => await printStatus(msg),
+    ['detalhes']: async (msg) => await groupInfo(msg),
+    ['chatinfo']: async (msg) => await chatInfo(msg),
+    ['agague']: async (msg, [size]) => await deleteMsgs(msg, size),
+    ['mandei errado']: async (msg) => await clearMsgs(msg),
+    ['ultimas']: async (msg, [size]) => await listMsgs(msg, size),
+    ['declaracao de amor']: async (msg, [size]) => await loveMsg(msg, size),
+    ['putaria']: async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
+    ['o que é isso']: async (msg) => await showSimpleInfo(msg),
+    ['amigo']: async (msg) => await showSimpleInfo(msg)
 }
 const simpleMsgInfo = async ({ rawData, body, ...clean }) => {
 
@@ -478,27 +484,49 @@ const logTotalInfo = async (msg) => {
 
 
 const external = ['556492026971@c.us', '556499163599@c.us'];
+const commandMarker = '@bee-bot ';
 
-client.on('message_create', async msg => {
 
-    saveMsg(msg);
-
-    if ((msg.fromMe || external.includes(msg.from)) && msg.body.startsWith('!!')) {
-        try {
-
-            const [text, ...params] = msg.body.split(' ').filter(Boolean);
-            console.log({ text, params });
-            await funcSelector?.[text]?.(msg, params);
-        } catch (error) {
-            console.error({ error });
-            msg.reply('esse comando falhou idiota, kkkk');
-        }
-    } else {
-
-        if (msg.body.startsWith('!!')) {
-            msg.reply(`Tem que pedir o chefe uai!!!
-            Pode mandar nada desse jeito não`);
-        }
+const noAnswerMessage = async() => {
+    const content = await MessageMedia.fromFilePath(resolve(__dirname, 'assets', 'noanswer.jpeg'));
+    const options = {
+        sendMediaAsSticker: true,
+        sendSeen: true,
+        stickerAuthor: 'github.com/fabriciocs@bee-bot'
     }
+
+}
+
+const fastAnswer = {
+}
+const sendFastanswerMessage = async(msg) => {
+    const {content, options} = await fastAnswer[answerKey]?.(msg) ?? noAnswerMessage(msg);
+    await msg.reply(content, options)
+};
+const isAuthorized = (msg) => msg.fromMe || external.includes(msg.from);
+client.on('message_create', async msg => {
+    const beebotContext = await beebot.processMsg(msg);
+    await beebotContext.execute();
+    // if(msg.body.startsWith(commandMarker)){
+    //     await commmandContext(msg)
+    // }
+
+    // if (() && ) {
+    //     try {
+
+    //         const [text, ...params] = msg.body.split(' ').filter(Boolean);
+    //         console.log({ text, params });
+    //         await funcSelector?.[text.toLowerCase()]?.(msg, params);
+    //     } catch (error) {
+    //         console.error({ error });
+    //         msg.reply('esse comando falhou idiota, kkkk');
+    //     }
+    // } else {
+
+    //     if (msg.body.startsWith('!!')) {
+    //         msg.reply(`Tem que pedir o chefe uai!!!
+    //         Pode mandar nada desse jeito não`);
+    //     }
+    // }
 });
 
