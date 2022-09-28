@@ -505,7 +505,7 @@ const sendFastanswerMessage = async(msg) => {
 };
 const isAuthorized = (msg) => msg.fromMe || external.includes(msg.from);
 client.on('message_create', async msg => {
-    const beebotContext = await beebot.processMsg(msg);
+    const beebotContext = await beebot.createContext(msg);
     await beebotContext.execute();
     // if(msg.body.startsWith(commandMarker)){
     //     await commmandContext(msg)
