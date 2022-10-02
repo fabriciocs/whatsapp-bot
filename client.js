@@ -1,8 +1,6 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
-import beebot from './beebot';
-
 const { Client, MessageMedia, LocalAuth, Buttons, Message } = require('whatsapp-web.js');
 const { admin } = require('./db-config.js');
 const { getVid } = require('./xv.js');
@@ -13,7 +11,7 @@ const QRCode = require('qrcode');
 
 
 const { resolve, basename } = require('path');
-const { promises: { readdir, unlink, copyFile, }, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
+const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
 const {
     origin = 'C:\\Users\\Fabricio Santos\\Downloads\\unigram',
     type = 'videos',
@@ -22,7 +20,7 @@ const {
 const filesPath = resolve(origin, type, lastFolder);
 const MB_16 = 16777216;
 const FILE_COUNT = 30;
-const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH };
+const puppeteerConfig = { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
@@ -300,13 +298,13 @@ const clean = async (msg, folders) => {
 
 const printStatus = async (msg) => {
     const toReply = JSON.parse(JSON.stringify({ msg, filesPath, info: client.info }));
-    msg.reply(toReply);
+    await msg.reply(toReply);
 }
 
 const groupInfo = async msg => {
     const chat = await msg.getChat();
     if (chat.isGroup) {
-        msg.reply(`
+        await msg.reply(`
                 Nome: ${chat.name}
                 Descrição: ${chat.description}
                 Criado em: ${chat.createdAt.toISOString()}
@@ -314,7 +312,7 @@ const groupInfo = async msg => {
                 Participantes: ${chat.participants?.length}
             `);
     } else {
-        msg.reply('Só roda em grupo');
+        await msg.reply('Só roda em grupo');
     }
 }
 
@@ -322,13 +320,13 @@ const groupInfo = async msg => {
 const chatInfo = async msg => {
     const chat = await msg.getChat();
     if (!chat.isGroup) {
-        msg.reply(`
+        await msg.reply(`
                 *Detalhes*
                 Nome: ${chat.name}
                 Descrição: ${chat.description}
             `);
     } else {
-        msg.reply('Só roda em chat normal');
+        await msg.reply('Só roda em chat normal');
     }
 }
 
@@ -444,18 +442,42 @@ const showSimpleMeaningInfoFromMedia = async (msg) => {
     }
 };
 
+const helpMsg = async (msg) => {
+
+    try {
+        const text = `
+        status
+        detalhes
+        chatinfo
+        agague
+        mandei_errado
+        ultimas
+        declaracao_de_amor
+        putaria
+        o_que_e_isso
+        amigo
+        o_que_da_pra_fazer
+        `;
+        await msg.reply(text);
+    } catch (err) {
+        console.log({ helpError: err });
+        await msg.delete(true);
+    }
+};
+
 
 const funcSelector = {
-    ['status']: async (msg) => await printStatus(msg),
-    ['detalhes']: async (msg) => await groupInfo(msg),
-    ['chatinfo']: async (msg) => await chatInfo(msg),
-    ['agague']: async (msg, [size]) => await deleteMsgs(msg, size),
-    ['mandei errado']: async (msg) => await clearMsgs(msg),
-    ['ultimas']: async (msg, [size]) => await listMsgs(msg, size),
-    ['declaracao de amor']: async (msg, [size]) => await loveMsg(msg, size),
-    ['putaria']: async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
-    ['o que é isso']: async (msg) => await showSimpleInfo(msg),
-    ['amigo']: async (msg) => await showSimpleInfo(msg)
+    'status': async (msg) => await printStatus(msg),
+    'detalhes': async (msg) => await groupInfo(msg),
+    'chatinfo': async (msg) => await chatInfo(msg),
+    'agague': async (msg, [size]) => await deleteMsgs(msg, size),
+    'mandei_errado': async (msg) => await clearMsgs(msg),
+    'ultimas': async (msg, [size]) => await listMsgs(msg, size),
+    'declaracao_de_amor': async (msg, [size]) => await loveMsg(msg, size),
+    'putaria': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
+    'o_que_e_isso': async (msg) => await showSimpleInfo(msg),
+    'amigo': async (msg) => await showSimpleInfo(msg),
+    'o_que_da_pra_fazer': async (msg) => await helpMsg(msg)
 }
 const simpleMsgInfo = async ({ rawData, body, ...clean }) => {
 
@@ -479,15 +501,15 @@ const logTotalInfo = async (msg) => {
     const chats = await client.getChats();
     const currentChat = await msg.getChat();
     const last100 = await currentChat.fetchMessages({ limit: 100 });
-    const simpleList = last100.map((l) => simpleMsgInfo(l));
+    const simpleList = last100.map(async (l) => await simpleMsgInfo(l));
 }
 
 
 const external = ['556492026971@c.us', '556499163599@c.us'];
-const commandMarker = '@bee-bot ';
+const commandMarker = '@beebot';
 
 
-const noAnswerMessage = async() => {
+const noAnswerMessage = async () => {
     const content = await MessageMedia.fromFilePath(resolve(__dirname, 'assets', 'noanswer.jpeg'));
     const options = {
         sendMediaAsSticker: true,
@@ -495,38 +517,53 @@ const noAnswerMessage = async() => {
         stickerAuthor: 'github.com/fabriciocs@bee-bot'
     }
 
+    return { content, options };
+
 }
 
 const fastAnswer = {
 }
-const sendFastanswerMessage = async(msg) => {
-    const {content, options} = await fastAnswer[answerKey]?.(msg) ?? noAnswerMessage(msg);
+const sendFastanswerMessage = async (msg) => {
+    const { content, options } = await fastAnswer[answerKey]?.(msg) ?? noAnswerMessage(msg);
     await msg.reply(content, options)
 };
-const isAuthorized = (msg) => msg.fromMe || external.includes(msg.from);
+const isAuthorized = (msg) => !!msg.fromMe || !!external.includes(msg.from);
+const speech = require('@google-cloud/speech');
 client.on('message_create', async msg => {
-    const beebotContext = await beebot.createContext(msg);
-    await beebotContext.execute();
-    // if(msg.body.startsWith(commandMarker)){
-    //     await commmandContext(msg)
-    // }
+    console.log({ msg });
+    if (msg.type === 'ptt') {
+        const audio = await msg.downloadMedia();
+        const speechClient = new speech.SpeechClient();
+        const content = Buffer.from(audio.data, 'base64');
+        const config = {
+            encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
+            sampleRateHertz: 16000,
+            languageCode: "pt-BR"
+        };
+        const [response] = await speechClient.recognize({
+            audio: { content }, config
+        });
+        const transcription = response.results
+            .map(result => result.alternatives[0].transcript)
+            .join('\n');
+        await msg.reply(`Transcription: ${transcription}`);
 
-    // if (() && ) {
-    //     try {
+    }
+    if (msg.body.startsWith(commandMarker)) {
+        try {
+            if (isAuthorized(msg)) {
+                console.log({ msg })
 
-    //         const [text, ...params] = msg.body.split(' ').filter(Boolean);
-    //         console.log({ text, params });
-    //         await funcSelector?.[text.toLowerCase()]?.(msg, params);
-    //     } catch (error) {
-    //         console.error({ error });
-    //         msg.reply('esse comando falhou idiota, kkkk');
-    //     }
-    // } else {
-
-    //     if (msg.body.startsWith('!!')) {
-    //         msg.reply(`Tem que pedir o chefe uai!!!
-    //         Pode mandar nada desse jeito não`);
-    //     }
-    // }
+                const [, text, ...params] = msg.body.split(' ').filter(Boolean);
+                console.log({ text, params });
+                await funcSelector[text.toLowerCase()](msg, params);
+            } else {
+                await msg.reply(`Contato não autorizado para enviar comandos`);
+            }
+        } catch (error) {
+            console.error({ error });
+            await msg.reply('esse comando falhou idiota, kkkk');
+        }
+    }
 });
 
