@@ -1,0 +1,40 @@
+
+ renavam String,
+ placa String,
+ exercicio String,
+ ano fab String,
+ ano mod String,
+ número do crv String,
+ cod seg do cla String,
+ cat String,
+ marca/modelo/versão String,
+ espécie/tipo String,
+ placa anterior/uf String,
+ chassi String,
+ cor predominante String,
+ chassi String,
+ observações do veículo String,
+ categoria String,
+ capacidade String,
+ potência/cilidrada String,
+ peso bruto total String,
+ motor String,
+ cmt String,
+ eixos String,
+ lotação String,
+ carroceria String,
+ nome String,
+ cpf/cnpj String,
+ local String,
+ data
+ 
+*** DADOS DO SEGURPO DPVAT
+ CAT. TARIF
+ DATA DE QUITAÇÃO
+ PAGAMENTO: COTA ÚNICA | PARCELADO
+ REPASSE OBRIGATÓRIO AO FNS
+ CUSTO DO BILHETE
+ CUSTO EFETIVO DO SEGURO
+ REPASSE OBRIGATÓRIO DO DNT
+ VALOR DO IOF
+ VALOR TOTAL A SER PAGO PELO SEGURADO
