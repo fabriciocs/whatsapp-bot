@@ -395,15 +395,10 @@ const showSimpleInfo = async (msg) => {
             const [{ labelAnnotations }] = res;
             const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
             const textRead = await inPortuguesePlease(details);
-            let msgText = `os detalhes que eu percebi: ${textRead.join(',')}`;
-            await client.sendMessage(msg.to, msgText);
+            await client.sendMessage(msg.to, textRead?.join(','));
             const whatIsWritten = await readIt(vision);
             const [{ fullTextAnnotation }] = whatIsWritten;
-            msgText = `consegui ler: ${fullTextAnnotation?.text}`;
-
-
-            console.log({ msgText });
-            await client.sendMessage(msg.to, msgText);
+            await client.sendMessage(msg.to, fullTextAnnotation?.text);
             const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages)).toString('base64');
             console.log({ fileEncoded });
             const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
@@ -457,27 +452,15 @@ const showSimpleMeaningInfoFromMedia = async (msg) => {
 };
 
 const helpMsg = async (msg) => {
-
-    try {
-        const text = `
-        status
-        detalhes
-        chatinfo
-        agague
-        mandei_errado
-        ultimas
-        declaracao_de_amor
-        putaria
-        o_que_e_isso
-        amigo
-        o_que_da_pra_fazer
-        placa
-        `;
-        await msg.reply(text);
-    } catch (err) {
-        console.log({ helpError: err });
-        await msg.delete(true);
-    }
+    await protectFromError(async () => {
+        try {
+            const text = Object.keys(funcSelector).join('\n');
+            await msg.reply(text);
+        } catch (err) {
+            console.log({ helpError: err });
+            await msg.delete(true);
+        }
+    });
 };
 const searchByChassiGo = async (msg, chassi) => {
     const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
@@ -679,10 +662,10 @@ const createAText = async (msg, prompt) => {
 };
 
 const createAnImage = async (msg, prompt) => {
-    await protectFromError(async ()=>{
+    await protectFromError(async () => {
         const generations = await giveMeImage(prompt);
-        await Promise.all(generations.map(async(g) => {
-            if(g?.generation?.image_path){
+        await Promise.all(generations.map(async (g) => {
+            if (g?.generation?.image_path) {
                 await msg.reply(await MessageMedia.fromUrl(g?.generation?.image_path));
             }
         }));
@@ -721,12 +704,12 @@ const funcSelector = {
     'agague': async (msg, [size]) => await deleteMsgs(msg, size),
     'mandei_errado': async (msg) => await clearMsgs(msg),
     'ultimas': async (msg, [size]) => await listMsgs(msg, size),
-    'declaracao_de_amor': async (msg, [size]) => await loveMsg(msg, size),
-    'putaria': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
-    'o_que_e_isso': async (msg) => await showSimpleInfo(msg),
+    'amo': async (msg, [size]) => await loveMsg(msg, size),
+    'xv': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
+    'que?': async (msg) => await showSimpleInfo(msg),
     'amigo': async (msg) => await showSimpleInfo(msg),
     'o_que_da_pra_fazer': async (msg) => await helpMsg(msg),
-    'escreve_pra_mim': async (msg) => await writeToMe(msg),
+    'escreve': async (msg) => await writeToMe(msg),
     'placa': async (msg, [placa, full]) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg, prompt) => await createAText(msg, prompt?.join(' ')),
     'elon': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
