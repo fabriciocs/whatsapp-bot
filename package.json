@@ -9,8 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "yarn node client.js",
-    "mon": "yarn nodemon client.js"
+    "mon": "yarn nodemon client.js --watch false"
   },
+  
   "author": "",
   "license": "ISC",
   "dependencies": {
