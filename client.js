@@ -37,7 +37,7 @@ const FILE_COUNT = 30;
 const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: puppeteerConfig
+    puppeteer: { headless: false, ...puppeteerConfig }
 });
 
 
@@ -46,9 +46,10 @@ const db = admin.database();
 const toMB = bytes => bytes / (1024 ** 2);
 
 
-const backup = msg => {
-    const prepared = JSON.parse(JSON.stringify(msg));
-    db.ref('bee-bot').child('messages').push().set(prepared);
+const backup = async msg => {
+    const msgBody = JSON.parse(JSON.stringify(msg));
+    const result =  await admin.functions().httpsCallable('whats')(msgBody);
+    console.log({ result });
 }
 
 
@@ -78,13 +79,11 @@ client.on('ready', () => {
 client.on('group_join', (notification) => {
     // User has joined or been added to the group.
     console.log('join', notification);
-    notification.reply('User joined.');
 });
 
 client.on('group_leave', (notification) => {
     // User has left or been kicked from the group.
     console.log('leave', notification);
-    notification.reply('User left.');
 });
 
 client.on('group_update', (notification) => {
@@ -851,7 +850,7 @@ const runCode = async (msg) => {
     try {
         const params = extractCodeInfo(msg);
         console.log({ code: params });
-        await msg.reply(eval());
+        await msg.reply(eval(params));
     } catch (error) {
         console.error({ error });
         await msg.reply('Deu erro no codigo.');
