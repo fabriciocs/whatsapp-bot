@@ -10,7 +10,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 // const dalle = new Dalle(process.env.OPENAI_API_KEY);
 const params = {
-    prompt: "", temperature: 0.4, top_p: 1, best_of: 1, max_tokens: 2048
+    prompt: "",
+    temperature: 0.2,
+    best_of: 1,
+    max_tokens: 900, 
+    frequency_penalty: 1,
+     presence_penalty: 0,
+     stop: 'stop'
 }
 
 const doIt = async (config) => {
@@ -22,9 +28,6 @@ const doIt = async (config) => {
 const writeAText = async (config) => {
     return await doIt({ ...config, "model": "text-davinci-002" })
 };
-// const giveMeImage = async (prompt)=>{
-//     return await dalle.generate(prompt);
-// };
 
 module.exports = {
     writeAText,
