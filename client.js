@@ -26,36 +26,36 @@ const speech = require('@google-cloud/speech');
 
 const { resolve, basename } = require('path');
 const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
-const {
-    origin = 'C:\\Users\\Fabricio Santos\\Downloads\\unigram',
-    type = 'videos',
-    lastFolder = '1661460463306'
-} = {}
-const filesPath = resolve(origin, type, lastFolder);
-const MB_16 = 16777216;
-const FILE_COUNT = 30;
+const { async } = require('@firebase/util');
+
 const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: { headless: false, ...puppeteerConfig }
+    puppeteer: puppeteerConfig
 });
 
 
 client.initialize();
 const db = admin.database();
+const ref = db.ref('bee-bot');
+
 const toMB = bytes => bytes / (1024 ** 2);
+// const serializer = {
 
+// }
 
-const backup = async msg => {
-    const msgBody = JSON.parse(JSON.stringify(msg));
-    const result =  await admin.functions().httpsCallable('whats')(msgBody);
-    console.log({ result });
+// const baseDataSaving = async (extractor, type, msg) => {
+// };
+// const dataManagement = {
+//     messages: async () =>
+// }
+
+const backup = msg => {
+    const prepared = JSON.parse(JSON.stringify(msg));
+    ref.child('messages').push().set(prepared);
 }
 
 
-const createContactSpace = msg => {
-    db.ref('bee-bot').child(msg.from).push().set(prepared);
-}
 
 client.on('loading_screen', (percent, message) => {
     console.log('LOADING SCREEN', percent, message);
@@ -70,91 +70,16 @@ client.on('auth_failure', msg => {
     console.error('AUTHENTICATION FAILURE', msg);
 });
 
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log('READY');
+    await client.sendMessage(myId, jsonToText(client.info));
+
 });
 
-
-
-client.on('group_join', (notification) => {
-    // User has joined or been added to the group.
-    console.log('join', notification);
-});
-
-client.on('group_leave', (notification) => {
-    // User has left or been kicked from the group.
-    console.log('leave', notification);
-});
-
-client.on('group_update', (notification) => {
-    // Group picture, subject or description has been updated.
-    console.log('update', notification);
-});
-
-client.on('change_state', state => {
-    console.log('CHANGE STATE', state);
-});
 
 client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
-
-function createFolderIfNotExist(outDir) {
-    if (!existsSync(outDir)) {
-        mkdirSync(outDir, { recursive: true });
-    }
-    return outDir;
-}
-
-function sliceIntoChunks(arr, chunkSize = FILE_COUNT) {
-    const res = [];
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        const chunk = arr.slice(i, i + chunkSize);
-        res.push(chunk);
-    }
-    return res;
-}
-
-function getDestFileName(dir, file) {
-    const filename = basename(file);
-    return resolve(dir, filename);
-}
-
-async function copyAllFiles(dir, fileList) {
-    const destpath = resolve(dir);
-    createFolderIfNotExist(destpath);
-    await fileList.map(f => ({ src: f, dest: getDestFileName(destpath, f) })).forEach(async ({ src, dest }) => {
-
-        await copyFile(src, dest).catch(error => {
-            console.error({ definition: { src, dest }, error })
-        });
-    });
-}
-
-const getFiles = async (dir) => {
-    const dirents = await readdir(dir, { withFileTypes: true });
-
-    const { files } = dirents.reduce((result, current) => {
-        const res = resolve(dir, current.name);
-        if (current.isDirectory()) {
-            result.directories.push(res);
-            return result;
-        }
-        if (current.isFile()) {
-            const details = statSync(res);
-            if (details.size < MB_16) {
-                result.files.push(res);
-                return result;
-            }
-        }
-        return result;
-    }, {
-        files: [],
-        directories: []
-    });
-    console.log({ obj: files.length });
-    return files;
-}
 
 client.on('qr', (qr) => {
 
@@ -162,10 +87,6 @@ client.on('qr', (qr) => {
         console.log(url)
     })
 
-});
-
-client.on('ready', () => {
-    console.log('Client is ready!');
 });
 
 
@@ -176,12 +97,7 @@ const sendVid = async (msg, page = 1, size = 1, search = '') => {
         return await Promise.all(vids.map(async ({ high, image, url, title, low }) => {
             const result = async (vidUrl) => {
                 const vidMedia = await MessageMedia.fromUrl(vidUrl);
-                const text = `
-            ${title}
-            ${url}
-            ${toMB(vidMedia.data.length).toFixed(2)}MB
-            `;
-                F
+                const text = `\n${title}\n${url}\n${toMB(vidMedia.data.length).toFixed(2)}MB\n`;
                 return await client.sendMessage(msg.to, vidMedia, { caption: text });
             };
             try {
@@ -238,28 +154,6 @@ const sendVidWithButton = async (msg, size, search) => {
 };
 
 
-const fileSend = async (msg, size) => {
-    const chat = msg.getChat();
-
-    const folder = resolve(filesPath, `${+size}`);
-    console.log({ folder });
-    const files = await getFiles(folder);
-    await Promise.all(files.map(async (f, i) => {
-        const fullFile = resolve(f);
-        const caption = basename(f);
-        console.log({ fullFile, caption });
-        const attachmentData = await MessageMedia.fromFilePath(fullFile);
-        const text = `
-        ${i + 1} - ${new Date().toDateString()}
-        *Pega aí seus comédia*
-        ${toMB(attachmentData.data.length).toFixed(2)}MB
-        `;
-        await client.sendMessage(msg.to, attachmentData, { caption: text });
-
-    }));
-
-};
-
 const listMsgs = async (msg, size) => {
     const chat = await msg.getChat();
     const to = msg.to;
@@ -267,80 +161,21 @@ const listMsgs = async (msg, size) => {
     const msgs = await chat.fetchMessages({
         limit
     });
-    let rep = `${JSON.stringify({ limit, count: msgs?.length })}`;
+    let rep = `${jsonToText({ limit, count: msgs?.length })}`;
     console.log({ rep });
-    const data = [];
-    await Promise.all(msgs.map(async (m) => {
-        await m?.delete?.(true);
-        data.push({ from: m.from, to: m.to, body: m.body });
-        return m;
-    }));
-    await client.sendMessage(to, data.map(({ body }) => body).join('\n'));
+    const data = await Promise.all(await msgs.map(async (m) => jsonToText(m)));
+    await client.sendMessage(myId, data.join('\n'));
 }
-const clearMsgs = async (msg) => {
+const clearChat = async (msg) => {
     const chat = await msg.getChat();
-    const msgs = await chat.clearMessages(true);
+    await chat.clearMessages(true);
+    await msg.delete(true);
 }
-const clean = async (msg, folders) => {
-    console.log({ folders });
-    folders?.forEach(async (size) => {
-        const folder = resolve(filesPath, `${+size}`);
-        const files = await getFiles(folder);
-
-        files.forEach(async (f, i) => {
-            const caption = basename(f);
-            const toRemove = resolve(origin, type, caption);
-            const exists = existsSync(toRemove);
-            console.log({ caption, toRemove, exists });
-            if (exists) {
-                const attachmentData = MessageMedia.fromFilePath(toRemove);
-                await msg.reply(`
-            ${i + 1} - ${new Date().toISOString()}
-            *Media info*
-            MimeType: ${attachmentData.mimetype}
-            Filename: ${attachmentData.filename}
-            Data (length): ${attachmentData.data.length}`, { caption, media: attachmentData });
-                console.log({ remove: toRemove });
-                await unlink(toRemove);
-            }
-        });
-    })
-
-}
-
 const printStatus = async (msg) => {
-    const toReply = JSON.parse(JSON.stringify({ msg, filesPath, info: client.info }));
+    const toReply = JSON.parse(JSON.stringify({ msg, info: client.info }), null, 4);
     await msg.reply(toReply);
 }
 
-const groupInfo = async msg => {
-    const chat = await msg.getChat();
-    if (chat.isGroup) {
-        await msg.reply(`
-                Nome: ${chat.name}
-                Descrição: ${chat.description}
-                Criado em: ${chat.createdAt.toISOString()}
-                Criado por: ${chat.owner?.user}
-                Participantes: ${chat.participants?.length}
-            `);
-    } else {
-        await msg.reply('Só roda em grupo');
-    }
-}
-
-
-const chatInfo = async msg => {
-    const chat = await msg.getChat();
-    if (!chat.isGroup) {
-        await msg.reply(`
-                *Detalhes*
-                Nome: ${chat.name}
-                Descrição: ${chat.description}
-            `);
-    } else {
-        await msg.reply('Só roda em chat normal');
-    }
-}
 
 
 const deleteMsgs = async (msg, size = 60) => {
@@ -348,107 +183,40 @@ const deleteMsgs = async (msg, size = 60) => {
     const msgs = await chat.fetchMessages({
         limit: +size
     });
-
-    await Promise.all(await msgs.map(async m => {
-        return await m.delete(true);
-    }));
-    console.log({ msgs: msgs.map(({ id: { id }, body }) => ({ id, body })) });
-}
-
-const loveObj = {
-    '!!teamo': size => `😘😘😘🥰🥰Eu te amo muito, mais do que consigo dizer. Tive a ideia de usar minhas habilidades pra dizer tantas vezes que eu te amo que vc vai ficar enjoada de ler isso, então lá vai, vou escrever ${size} vezes que te amo.😘😘😘🥰🥰`
+    await Promise.all(await msgs.map(async m => await m?.delete(true)));
 }
 
 
-const loveMsg = async (msg, size) => {
-    const chat = await msg.getChat();
-    await chat.sendMessage(loveObj['!!teamo'](size));
-    const sendLove = async (n) => {
-        if (n <= size) {
-            await chat.sendMessage(`*${n}* - EU TE AMO DEMAIS 🥰😘❤️‍🔥💓💘💝`);
-            return await sendLove(n + 1);
-        }
-    }
-    await sendLove(1);
-}
-const quotedToNew = async (msg) => {
-    try {
-        return new Message(client, {
-            id: { _serialized: msg?.id?._serialized },
-            hasMedia: true, // --> IMPORTANT
-            clientUrl: true, // --> IMPORTANT
-        });
-    } catch (err) {
-        console.log({ quotedErr: err });
-        return await msg.reload();
-    }
-}
+
 const showSimpleInfo = async (msg) => {
 
     try {
-
+        await client.sendMessage(myId, JSON.parse({ msg: jsonToText(msg), chat: jsonToText(await msg.getChat()), contact: jsonToText(await msg.getContact()) }));
         if (msg.hasMedia) {
-            const media = await msg.downloadMedia();
-            const vision = Buffer.from(media.data, 'base64');
-            const res = await whatIsIt(vision);
-            const [{ labelAnnotations }] = res;
-            const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
-            const textRead = await inPortuguesePlease(details);
-            await client.sendMessage(msg.to, textRead?.join(','));
+            await protectFromError(async () => {
+                const media = await msg.downloadMedia();
+                const vision = Buffer.from(media.data, 'base64');
+                const res = await whatIsIt(vision);
+                const [{ labelAnnotations }] = res;
+                const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
+                await client.sendMessage(myId, details?.join(','));
+            });
             const whatIsWritten = await readIt(vision);
             const [{ fullTextAnnotation }] = whatIsWritten;
-            await client.sendMessage(msg.to, fullTextAnnotation?.text);
-            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages)).toString('base64');
-            console.log({ fileEncoded });
+            await client.sendMessage(myId, fullTextAnnotation?.text);
+            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages, null, 4)).toString('base64');
             const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
-            await client.sendMessage(msg.from, fileAsMedia, {
-                sendMediaAsDocument: true,
-                caption: 'Abra o arquivo para mais detalhes'
+            await client.sendMessage(myId, fileAsMedia, {
+                sendMediaAsDocument: true
             });
-
-
         }
+        await msg.delete(true);
     } catch (err) {
         console.log({ quotedErr: err });
         await msg.delete(true);
     }
 };
 
-
-const showSimpleMeaningInfoFromMedia = async (msg) => {
-
-    try {
-
-        if (msg.hasMedia) {
-            const media = await msg.downloadMedia();
-            const vision = Buffer.from(media.data, 'base64');
-            const res = await whatIsIt(vision);
-            const [{ labelAnnotations }] = res;
-            const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
-            let msgText = `os detalhes que eu percebi: ${details.join(',')}`;
-            await client.sendMessage(msg.from, msgText);
-            const whatIsWritten = await readThisImage(vision);
-            const [{ fullTextAnnotation }] = whatIsWritten;
-            msgText = `consegui ler: ${fullTextAnnotation?.text}`;
-
-
-            console.log({ msgText });
-            await client.sendMessage(msg.to, msgText);
-            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages)).toString('base64');
-            console.log({ fileEncoded });
-            const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
-            await client.sendMessage(msg.from, fileAsMedia, {
-                sendMediaAsDocument: true,
-                caption: 'Abra o arquivo para mais detalhes'
-            });
-
-
-        }
-    } catch (err) {
-        console.log({ quotedErr: err });
-        await msg.delete(true);
-    }
-};
 
 const helpMsg = async (msg) => {
     await protectFromError(async () => {
@@ -604,71 +372,74 @@ const searchByLicensePlate = async (msg, placa, full = false) => {
         await msg.reply(`falha na consulta da placa ${placa}`);
     }
 };
-const writeToMe = async (msg) => {
+const sweetError = async (msg, err) => {
+    if (msg) {
+        await msg.reply('Não consegui. 😂😂😂');
+    }
+    await client.sendMessage(myId, jsonToText(err));
+}
 
+
+const sweetTry = async (msg, func) => {
+    try {
+        await func();
+    } catch (err) {
+        await sweetError(msg, err);
+    }
+
+}
+
+
+const writeToMe = async (msg) => {
+    if (!msg) {
+        await sweetError(msg, 'sem mensagem');
+    }
     const songTypes = ['VOICE', 'AUDIO', 'PTT']
     if (songTypes.includes(msg.type?.toUpperCase())) {
-        const audio = await msg.downloadMedia();
-        const speechClient = new speech.SpeechClient();
-        const content = Buffer.from(audio.data, 'base64');
-        const config = {
-            encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
-            sampleRateHertz: 16000,
-            languageCode: "pt-BR"
-        };
-        const [response] = await speechClient.recognize({
-            audio: { content }, config
+        await sweetTry(msg, async () => {
+            const audio = await msg.downloadMedia();
+            const speechClient = new speech.SpeechClient();
+            const content = Buffer.from(audio.data, 'base64');
+            const config = {
+                encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
+                sampleRateHertz: 16000,
+                languageCode: "pt-BR"
+            };
+            const [response] = await speechClient.recognize({
+                audio: { content }, config
+            });
+            const transcription = response.results
+                .map(result => result.alternatives[0].transcript)
+                .join('\n');
+            await msg.reply(transcription);
         });
-        const transcription = response.results
-            .map(result => result.alternatives[0].transcript)
-            .join('\n');
-        await msg.reply(transcription);
     }
 };
 
 const readToMe = async (msg) => {
-
+    if (!msg) {
+        await sweetError(msg, 'sem mensagem');
+    }
     const songTypes = ['VOICE', 'PTT']
     if (songTypes.includes(msg.type?.toUpperCase())) {
-        const audio = await msg.downloadMedia();
-        const speechClient = new speech.SpeechClient();
-        const content = Buffer.from(audio.data, 'base64');
-        const config = {
-            encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
-            sampleRateHertz: 16000,
-            languageCode: "pt-BR"
-        };
-        const [response] = await speechClient.recognize({
-            audio: { content }, config
+        return await sweetTry(msg, async () => {
+            const audio = await msg.downloadMedia();
+            const speechClient = new speech.SpeechClient();
+            const content = Buffer.from(audio.data, 'base64');
+            const config = {
+                encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
+                sampleRateHertz: 16000,
+                languageCode: "pt-BR"
+            };
+            const [response] = await speechClient.recognize({
+                audio: { content }, config
+            });
+            const transcription = response.results
+                .map(result => result.alternatives[0].transcript)
+                .join('\n');
+            return transcription;
         });
-        const transcription = response.results
-            .map(result => result.alternatives[0].transcript)
-            .join('\n');
-        return transcription;
     }
-};
-
-const createAText = async (msg, prompt) => {
-    const response = await inEnglishPlease(prompt);
-    const result = await writeAText({ prompt: response[0] });
-    const answer = result?.choices?.[0]?.text;
-    if (answer) {
-        await msg.reply((await inPortuguesePlease(answer))[0]);
-    } else {
-        const { content, options } = await noAnswerMessage(msg);
-        await msg.reply(content, options);
-    }
-};
-
-const createAnImage = async (msg, prompt) => {
-    await protectFromError(async () => {
-        const generations = await giveMeImage(prompt);
-        await Promise.all(generations.map(async (g) => {
-            if (g?.generation?.image_path) {
-                await msg.reply(await MessageMedia.fromUrl(g?.generation?.image_path));
-            }
-        }));
-    });
 };
 
 
@@ -698,20 +469,17 @@ const createAudioDirectly = async (msg, prompt) => {
 };
 const funcSelector = {
     'status': async (msg) => await printStatus(msg),
-    'detalhes': async (msg) => await groupInfo(msg),
-    'chatinfo': async (msg) => await chatInfo(msg),
-    'agague': async (msg, [size]) => await deleteMsgs(msg, size),
-    'mandei_errado': async (msg) => await clearMsgs(msg),
+    'panic': async (msg, [size]) => await deleteMsgs(msg, size),
     'ultimas': async (msg, [size]) => await listMsgs(msg, size),
-    'amo': async (msg, [size]) => await loveMsg(msg, size),
     'xv': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
     'que?': async (msg) => await showSimpleInfo(msg),
-    'amigo': async (msg) => await showSimpleInfo(msg),
-    'o_que_da_pra_fazer': async (msg) => await helpMsg(msg),
-    'escreve': async (msg) => await writeToMe(msg),
+    '--h': async (msg) => await helpMsg(msg),
+    'escreve': async (msg) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
     'placa': async (msg, [placa, full]) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg, prompt) => await createAText(msg, prompt?.join(' ')),
     'elon': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
+    'sandro': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
+    'poliana': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg, prompt) => await createAudioDirectly(msg, prompt?.join(' ')),
 }
 const simpleMsgInfo = async ({ rawData, body, ...clean }) => {
@@ -741,7 +509,7 @@ const logTotalInfo = async (msg) => {
 
 const myId = '556492026971@c.us';
 const external = [myId, '556499163599@c.us', '556481509722@c.us'];
-const commandMarker = '@';
+const commandMarker = '@ ';
 const codeMarker = '@run';
 
 const licensePlateSearch = ['556481509722@c.us'];
@@ -889,4 +657,41 @@ client.on('message_create', async msg => {
 function jsonToText(err) {
     return JSON.stringify(err, null, 4);
 }
-
+const extractors = {
+    'AUDIO': async (msg) => await getExtactorBy(),
+    'BROADCAST_NOTIFICATION': async (msg) => await getExtactorBy(),
+    'BUTTONS_RESPONSE': async (msg) => await getExtactorBy(),
+    'CALL_LOG': async (msg) => await getExtactorBy(),
+    'CIPHERTEXT': async (msg) => await getExtactorBy(),
+    'const msgTypes = [': async (msg) => await getExtactorBy(),
+    'CONTACT_CARD': async (msg) => await getExtactorBy(),
+    'CONTACT_CARD_MULTI': async (msg) => await getExtactorBy(),
+    'DEBUG': async (msg) => await getExtactorBy(),
+    'DOCUMENT': async (msg) => await getExtactorBy(),
+    'E2E_NOTIFICATION': async (msg) => await getExtactorBy(),
+    'GP2': async (msg) => await getExtactorBy(),
+    'GROUP_INVITE': async (msg) => await getExtactorBy(),
+    'GROUP_NOTIFICATION': async (msg) => await getExtactorBy(),
+    'HSM': async (msg) => await getExtactorBy(),
+    'IMAGE': async (msg) => await getExtactorBy(),
+    'INTERACTIVE': async (msg) => await getExtactorBy(),
+    'LIST': async (msg) => await getExtactorBy(),
+    'LIST_RESPONSE': async (msg) => await getExtactorBy(),
+    'LOCATION': async (msg) => await getExtactorBy(),
+    'NATIVE_FLOW': async (msg) => await getExtactorBy(),
+    'NOTIFICATION': async (msg) => await getExtactorBy(),
+    'NOTIFICATION_TEMPLATE': async (msg) => await getExtactorBy(),
+    'ORDER': async (msg) => await getExtactorBy(),
+    'OVERSIZED': async (msg) => await getExtactorBy(),
+    'PAYMENT': async (msg) => await getExtactorBy(),
+    'PRODUCT': async (msg) => await getExtactorBy(),
+    'PROTOCOL': async (msg) => await getExtactorBy(),
+    'REACTION': async (msg) => await getExtactorBy(),
+    'REVOKED': async (msg) => await getExtactorBy(),
+    'STICKER': async (msg) => await getExtactorBy(),
+    'TEMPLATE_BUTTON_REPLY': async (msg) => await getExtactorBy(),
+    'TEXT': async (msg) => await getExtactorBy(),
+    'UNKNOWN': async (msg) => await getExtactorBy(),
+    'VIDEO': async (msg) => await getExtactorBy(),
+    'VOICE': async (msg) => await getExtactorBy()
+}

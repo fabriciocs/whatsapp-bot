@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "yarn node client.js",
-    "mon": "yarn nodemon client.js"
+    "mon": "yarn nodemon client.js --watch false"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "dalle-node": "^1.0.7",
     "dotenv": "^16.0.1",
     "firebase-admin": "^11.0.1",
+    "firebase-functions": "^4.0.0",
     "openai": "^3.0.0",
     "pexels": "^1.3.0",
     "qrcode": "^1.5.1",
