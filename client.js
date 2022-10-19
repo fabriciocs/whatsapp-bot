@@ -25,8 +25,12 @@ const speech = require('@google-cloud/speech');
 
 
 const { resolve, basename } = require('path');
+
+var exec = require('child_process').exec;
 const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
 const { async } = require('@firebase/util');
+
+const myId = '556492026971@c.us';
 
 const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
@@ -217,10 +221,10 @@ const showSimpleInfo = async (msg) => {
                 sendMediaAsDocument: true
             });
         }
-       
+
     } catch (err) {
         console.log({ quotedErr: err });
-    }finally{
+    } finally {
         await msg.delete(true);
     }
 };
@@ -517,7 +521,6 @@ const logTotalInfo = async (msg) => {
     const simpleList = last100.map(async (l) => await simpleMsgInfo(l));
 }
 
-const myId = '556492026971@c.us';
 const safeMsgIds = ['556499736478@c.us'];
 const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us'].concat(safeMsgIds);
 const commandMarker = '@ ';
@@ -630,9 +633,16 @@ const codeToRun = (code) => {
 }
 const runCode = async (msg) => {
     try {
-        const params = extractCodeInfo(msg);
-        console.log({ code: params });
-        await msg.reply(eval(params));
+        
+        exec(`${msg.body}`, async (err, stdout, stderr) => {
+            if (err) {
+                console.error(err);
+                await msg.reply(jsonToText(err));
+                return;
+            }
+            console.log(stdout);
+            await msg.reply(stdout);
+        });
     } catch (error) {
         console.error({ error });
         await msg.reply('Deu erro no codigo.');
