@@ -596,7 +596,7 @@ const canExecuteCommand = msg => {
 const canExecuteCode = msg => {
 
     if (isCode(msg)) {
-        return !!msg?.fromMe && isToMe(msg);
+        return !!msg?.fromMe && isToMe(msg)
     }
 }
 
@@ -621,8 +621,11 @@ const runCommand = async (msg) => {
     try {
         const [text, params] = extractExecutionInfo(msg);
         console.log({ text, params });
-        await sendWaiting(msg);
-        await funcSelector[text.toLowerCase()](msg, params);
+        const command = funcSelector[text.toLowerCase()];
+        if (command) {
+            await sendWaiting(msg);
+            await command(msg, params);
+        }
     } catch (error) {
         console.error({ error });
         await msg.reply('Deu erro no comando. 😂😂😂');
@@ -633,12 +636,11 @@ const codeToRun = (code) => {
 }
 const runCode = async (msg) => {
     try {
-        
-        exec(`${msg.body}`, async (err, stdout, stderr) => {
+
+        exec(`${msg.body.replace(commandMarker, '')}`, async (err, stdout, stderr) => {
             if (err) {
                 console.error(err);
                 await msg.reply(jsonToText(err));
-                return;
             }
             console.log(stdout);
             await msg.reply(stdout);
