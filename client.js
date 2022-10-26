@@ -21,14 +21,10 @@ const { inPortuguesePlease, inEnglishPlease } = require('./translate.js');
 const { tellMe } = require('./textToSpeach.js');
 const QRCode = require('qrcode');
 const speech = require('@google-cloud/speech');
-
-
-
 const { resolve, basename } = require('path');
 
 var exec = require('child_process').exec;
 const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
-const { async } = require('@firebase/util');
 
 const myId = '556492026971@c.us';
 
@@ -38,8 +34,6 @@ const client = new Client({
     puppeteer: puppeteerConfig
 });
 
-
-client.initialize();
 const db = admin.database();
 const ref = db.ref('bee-bot');
 
@@ -80,8 +74,9 @@ client.on('qr', (qr) => {
     })
 
 });
-
-
+(async () => {
+    await client.initialize();
+})();
 const sendVid = async (msg, page = 1, size = 1, search = '') => {
     try {
 
@@ -96,7 +91,7 @@ const sendVid = async (msg, page = 1, size = 1, search = '') => {
             try {
                 const textImg = `${url}\n${title}`;
                 const imgMedia = await MessageMedia.fromUrl(image);
-                await client.sendMessage(getMsgTo(msg), imgMedia, { caption: textImg });
+                await client.sendMessage(msg.to, imgMedia, { caption: textImg });
                 await result(high);
             } catch (error) {
                 console.error({ high: error });
@@ -104,7 +99,7 @@ const sendVid = async (msg, page = 1, size = 1, search = '') => {
                     return await result(low);
                 } catch (error) {
                     console.error({ low: error });
-                    await client.sendMessage(getMsgTo(msg), 'erro na mídia');
+                    await client.sendMessage(msg.to, 'erro na mídia');
                 }
             }
 
@@ -169,7 +164,7 @@ const clearChat = async (msg) => {
     await msg.delete(true);
 }
 const printStatus = async (msg) => {
-    const toReply = JSON.parse(JSON.stringify({ msg, info: client.info }), null, 4);
+    const toReply = JSON.stringify({ msg, info: client.info }, null, 4);
     await msg.reply(toReply);
 }
 
@@ -516,6 +511,8 @@ const isSafe = msg => safeMsgIds.includes(msg.from);
 
 const licensePlateSearch = ['556481509722@c.us'];
 const isLicensePlate = msg => {
+    if (isNotString(msg)) return false;
+
     const msgContent = msg?.body?.toUpperCase();
     if (isCommand(msg) || msgContent.split(' ').length > 1 || msgContent.length > 7) return false;
 
@@ -535,8 +532,6 @@ const noAnswerMessage = async () => {
 }
 
 
-
-
 const fastAnswer = {
 }
 const sendFastanswerMessage = async (msg) => {
@@ -545,17 +540,25 @@ const sendFastanswerMessage = async (msg) => {
 };
 
 const sendWaiting = async (msg) => {
-    await msg.reply('Executando, um momento por favor');
+    await client.sendMessage(msg.from, 'Executando, um momento por favor');
 };
-
+const isNotString = (msg) => typeof msg?.body !== "string";
 const isToMe = msg => msg.to === myId;
-const isCommand = msg => msg.body.startsWith(commandMarker);
-const isDiga = msg => {
-    const msgBody = msg.body?.toLowerCase();
-    return msgBody.startsWith('diga') || msgBody.startsWith('fale') || msgBody.startsWith('comente') || msgBody.startsWith('descreva') || msgBody.startsWith('explique') || msgBody.startsWith('bibot');
+const isCommand = msg => {
+    if (isNotString(msg)) return false;
+    return msg?.body?.startsWith(commandMarker);
 }
-const isCode = msg => msg.body.startsWith(codeMarker);
+const isDiga = msg => {
+    if (isNotString(msg)) return false;
+    const msgBody = msg.body?.toLowerCase();
+    return (msgBody.startsWith('diga') || msgBody.startsWith('fale') || msgBody.startsWith('comente') || msgBody.startsWith('descreva') || msgBody.startsWith('explique') || msgBody.startsWith('bibot'));
+}
+const isCode = msg => {
+    if (isNotString(msg)) return false;
+    return msg.body.startsWith(codeMarker);
+}
 const canExecuteCommand = msg => {
+    if (isNotString(msg)) return false;
     if (isCommand(msg)) {
         return isAuthorized(msg);
     }
@@ -574,7 +577,7 @@ const canExecuteCode = msg => {
 
 const extractExecutionInfo = msg => {
     if (isCommand(msg)) {
-        const [, text, ...params] = msg.body.split(' ').filter(Boolean);
+        const [, text, ...params] = msg.body?.split(' ').filter(Boolean);
         return [text, params];
     }
     if (isLicensePlate(msg)) {
@@ -611,7 +614,7 @@ const codeToRun = (code) => {
 const runCode = async (msg) => {
     try {
 
-        exec(`${msg.body.replace(commandMarker, '')}`, async (err, stdout, stderr) => {
+        exec(`${msg.body?.replace(codeMarker, '')}`, async (err, stdout, stderr) => {
             if (err) {
                 console.error(err);
                 await msg.reply(jsonToText(err));
@@ -657,42 +660,4 @@ client.on('message_create', async msg => {
 
 function jsonToText(err) {
     return JSON.stringify(err, null, 4);
-}
-const extractors = {
-    'AUDIO': async (msg) => await getExtactorBy(),
-    'BROADCAST_NOTIFICATION': async (msg) => await getExtactorBy(),
-    'BUTTONS_RESPONSE': async (msg) => await getExtactorBy(),
-    'CALL_LOG': async (msg) => await getExtactorBy(),
-    'CIPHERTEXT': async (msg) => await getExtactorBy(),
-    'const msgTypes = [': async (msg) => await getExtactorBy(),
-    'CONTACT_CARD': async (msg) => await getExtactorBy(),
-    'CONTACT_CARD_MULTI': async (msg) => await getExtactorBy(),
-    'DEBUG': async (msg) => await getExtactorBy(),
-    'DOCUMENT': async (msg) => await getExtactorBy(),
-    'E2E_NOTIFICATION': async (msg) => await getExtactorBy(),
-    'GP2': async (msg) => await getExtactorBy(),
-    'GROUP_INVITE': async (msg) => await getExtactorBy(),
-    'GROUP_NOTIFICATION': async (msg) => await getExtactorBy(),
-    'HSM': async (msg) => await getExtactorBy(),
-    'IMAGE': async (msg) => await getExtactorBy(),
-    'INTERACTIVE': async (msg) => await getExtactorBy(),
-    'LIST': async (msg) => await getExtactorBy(),
-    'LIST_RESPONSE': async (msg) => await getExtactorBy(),
-    'LOCATION': async (msg) => await getExtactorBy(),
-    'NATIVE_FLOW': async (msg) => await getExtactorBy(),
-    'NOTIFICATION': async (msg) => await getExtactorBy(),
-    'NOTIFICATION_TEMPLATE': async (msg) => await getExtactorBy(),
-    'ORDER': async (msg) => await getExtactorBy(),
-    'OVERSIZED': async (msg) => await getExtactorBy(),
-    'PAYMENT': async (msg) => await getExtactorBy(),
-    'PRODUCT': async (msg) => await getExtactorBy(),
-    'PROTOCOL': async (msg) => await getExtactorBy(),
-    'REACTION': async (msg) => await getExtactorBy(),
-    'REVOKED': async (msg) => await getExtactorBy(),
-    'STICKER': async (msg) => await getExtactorBy(),
-    'TEMPLATE_BUTTON_REPLY': async (msg) => await getExtactorBy(),
-    'TEXT': async (msg) => await getExtactorBy(),
-    'UNKNOWN': async (msg) => await getExtactorBy(),
-    'VIDEO': async (msg) => await getExtactorBy(),
-    'VOICE': async (msg) => await getExtactorBy()
 }
