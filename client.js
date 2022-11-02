@@ -42,6 +42,9 @@ const backup = msg => {
     ref.child('messages').push().set(prepared);
 }
 
+const sendAnswer = async (msg, content) => {
+    await (await msg.getChat()).sendMessage(content, { sendSeen: true });
+}
 
 
 client.on('loading_screen', (percent, message) => {
@@ -142,16 +145,13 @@ const sendVidWithButton = async (msg, size, search) => {
 
 const listMsgs = async (msg, size) => {
     const chat = await msg.getChat();
-    const to = msg.to;
     const limit = +size;
     const msgs = await chat.fetchMessages({
         limit
     });
-    let rep = `${jsonToText({ limit, count: msgs?.length })}`;
-    console.log({ rep });
-    const data = await Promise.all(await msgs.map(async (m) => jsonToText(m)));
-    await client.sendMessage(myId, data.join('\n'));
+    await sendAsJsonDocument({ msg, msgs });
 }
+
 const clearChat = async (msg) => {
     const chat = await msg.getChat();
     await chat.clearMessages(true);
@@ -170,7 +170,7 @@ const deleteMsgs = async (msg, size = 60) => {
     const msgs = await chat.fetchMessages({
         limit: +size
     });
-    await Promise.all(await msgs.map(async m => await m?.delete(true)));
+    await Promise.all(msgs.map(async m => await m.delete(true)));
 }
 
 
@@ -188,12 +188,12 @@ const showSimpleInfo = async (msg) => {
                 const res = await whatIsIt(vision);
                 const [{ labelAnnotations }] = res;
                 const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
-                await client.sendMessage(myId, details?.join(','));
+                await client.sendMessage(myId, details?.join?.(',') ?? 'não consegui identificar');
             });
             const whatIsWritten = await readIt(vision);
             const [{ fullTextAnnotation }] = whatIsWritten;
             await client.sendMessage(myId, fullTextAnnotation?.text);
-            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation.pages, null, 4)).toString('base64');
+            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation?.pages ?? [], null, 4)).toString('base64');
             const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
             await client.sendMessage(myId, fileAsMedia, {
                 sendMediaAsDocument: true
@@ -212,7 +212,7 @@ const helpMsg = async (msg) => {
     await protectFromError(async () => {
         try {
             const text = Object.keys(funcSelector).join('\n');
-            await msg.reply(text);
+            await sendAnswer(msg, text);
         } catch (err) {
             console.log({ helpError: err });
             await msg.delete(true);
@@ -235,7 +235,7 @@ const searchByChassiGo = async (msg, chassi) => {
                 response.url().includes('www.detran.go.gov.br/psw/rest/gravame') && response.status() === 200);
             const txt = JSON.stringify(await r?.json(), null, 4);
             console.log({ txt });
-            await msg.reply(txt ?? 'resposta vazia');
+            await sendAnswer(msg, txt ?? 'resposta vazia');
         } catch (err) {
             console.log({ semGravame: err });
             await page.click(`button.button-primary.notranslate.mat-raised-button`);
@@ -249,7 +249,7 @@ const searchByChassiGo = async (msg, chassi) => {
     } catch (err) {
         console.log({ page: err });
         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await msg.reply(`falha na consulta dados extras ${chassi}`);
+        await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
     }
     await browser.close();
     // page.on('response', async (response) => {
@@ -301,7 +301,7 @@ const searchByChassiDf = async (msg, chassi) => {
             await protectFromError(async () => {
                 const screenshotData = await page.screenshot({ encoding: 'base64' });
                 const dataAsMedia = new MessageMedia("image/png", screenshotData, `${new Date().getTime()}.png`);
-                await msg.reply(dataAsMedia);
+                await sendAnswer(msg, dataAsMedia);
             });
             // await protectFromError(async () => {
             //     const pdf = (await page.pdf({ format: 'A4', fullPage: true })).toString('base64');
@@ -317,7 +317,7 @@ const searchByChassiDf = async (msg, chassi) => {
     } catch (err) {
         console.log({ page: err });
         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await msg.reply(`falha na consulta dados extras ${chassi}`);
+        await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
     }
     await browser.close();
     // page.on('response', async (response) => {
@@ -334,7 +334,7 @@ const searchByLicensePlate = async (msg, placa, full = false) => {
     try {
         let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
         if (full) {
-            await msg.reply(JSON.stringify(vehicle.data, null, 4));
+            await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
         }
         const chassi = vehicle?.data?.extra?.chassi;
         const uf = vehicle?.data?.uf;
@@ -352,19 +352,19 @@ const searchByLicensePlate = async (msg, placa, full = false) => {
             } catch (err) {
                 console.log({ extra: err });
                 await client.sendMessage(msg.to, jsonToText(err));
-                await msg.reply(JSON.stringify(vehicle.data, null, 4));
-                await msg.reply(`falha na consulta dados extras ${uf}-${chassi}`);
+                await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
+                await sendAnswer(msg, `falha na consulta dados extras ${uf}-${chassi}`);
             }
         }
     } catch (err) {
         console.log({ licensePlate: err });
         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await msg.reply(`falha na consulta da placa ${placa}`);
+        await sendAnswer(msg, `falha na consulta da placa ${placa}`);
     }
 };
 const sweetError = async (msg, err) => {
     if (msg) {
-        await msg.reply('Não consegui. 😂😂😂');
+        await sendAnswer(msg, 'Não consegui. 😂😂😂');
     }
     await client.sendMessage(myId, jsonToText(err));
 }
@@ -401,7 +401,7 @@ const writeToMe = async (msg) => {
             const transcription = response.results
                 .map(result => result.alternatives[0].transcript)
                 .join('\n');
-            await msg.reply(transcription);
+            await sendAnswer(msg, transcription);
         });
     }
 };
@@ -438,10 +438,10 @@ const createATextDirectly = async (msg, prompt) => {
     const result = await writeAText({ prompt });
     const answer = result?.choices?.[0]?.text;
     if (answer) {
-        await msg.reply(answer);
+        await sendAnswer(msg, answer);
     } else {
         const { content, options } = await noAnswerMessage(msg);
-        await msg.reply(content, options);
+        await sendAnswer(msg, content, options);
     }
 };
 
@@ -471,7 +471,7 @@ const funcSelector = {
     'sandro': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
     'poliana': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg, prompt) => await createAudioDirectly(msg, prompt?.join(' ')),
-    'ping': async (msg) => await msg.reply('pong'),
+    'ping': async (msg) => await sendAnswer(msg, 'pong'),
     'emvideo': async (msg, [url]) => await urlAsVideo(msg, url),
     'leia': async () => await leia.startChat({ client })
 }
@@ -534,7 +534,7 @@ const fastAnswer = {
 }
 const sendFastanswerMessage = async (msg) => {
     const { content, options } = await fastAnswer[answerKey]?.(msg) ?? noAnswerMessage(msg);
-    await msg.reply(content, options)
+    await sendAnswer(msg, content, options)
 };
 
 const sendWaiting = async (msg) => {
@@ -589,6 +589,7 @@ const extractCodeInfo = msg => {
     const [, ...params] = msg.body.split(' ').filter(Boolean);
     return params?.join(' ');
 }
+
 const isAuthorized = (msg) => !!msg.fromMe || !!external.includes(msg.from);
 const runCommand = async (msg) => {
     try {
@@ -599,11 +600,11 @@ const runCommand = async (msg) => {
             // await sendWaiting(msg);
             await command(msg, params);
         } else {
-            await msg.reply(`Comando ${text} não encontrado`);
+            await sendAnswer(msg, `Comando ${text} não encontrado`);
         }
     } catch (error) {
         console.error({ error });
-        await msg.reply('Deu erro no comando. 😂😂😂');
+        await sendAnswer(msg, 'Deu erro no comando. 😂😂😂');
     }
 }
 const codeToRun = (code) => {
@@ -615,14 +616,14 @@ const runCode = async (msg) => {
         exec(`${msg.body?.replace(codeMarker, '')}`, async (err, stdout, stderr) => {
             if (err) {
                 console.error(err);
-                await msg.reply(jsonToText(err));
+                await sendAnswer(msg, jsonToText(err));
             }
             console.log(stdout);
-            await msg.reply(stdout);
+            await sendAnswer(msg, stdout);
         });
     } catch (error) {
         console.error({ error });
-        await msg.reply('Deu erro no codigo.');
+        await sendAnswer(msg, 'Deu erro no codigo.');
     }
 }
 const observable = [leiaId];
@@ -633,7 +634,7 @@ const isIdSafe = msg => keepSafe.includes(msg.from);
 client.on('message_create', async msg => {
     if (isObservable(msg)) {
         await protectFromError(async () => {
-            await sendAsJsonDocument(msg.rawData);
+            console.log({ leia: msg.body });
         });
     }
     if (isIdSafe(msg)) {
@@ -673,13 +674,11 @@ client.on('message_create', async msg => {
 
 
 
-function jsonToText(err) {
-    return JSON.stringify(err, null, 4);
-}
+const jsonToText = (err) => JSON.stringify(err, null, 4);
 
 const sendAsJsonDocument = async (obj) => {
     const fileEncoded = Buffer.from(jsonToText(obj)).toString('base64');
-    const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
+    const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${obj?.timestamp ?? new Date().getTime()}.json`);
     await client.sendMessage(myId, fileAsMedia, {
         sendMediaAsDocument: true
     });
