@@ -2,7 +2,7 @@
   "name": "bee-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/client.js",
+  "main": "client.js",
   "bin": {
     "bee-bot": "./bin/index.js"
   },

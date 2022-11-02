@@ -80,25 +80,21 @@ const sendVid = async (msg, page = 1, size = 1, search = '') => {
 
         const vids = await getVid(+page, +size, search, puppeteerConfig);
 
-        await Promise.all(vids.map(async ({ high, image, url, title, low }) => {
+        await Promise.all(await vids.map(async ({ high, image, url, title, low }) => {
             const result = async (vidUrl) => {
                 const vidMedia = await MessageMedia.fromUrl(vidUrl);
                 const text = `${title}\n${url}\n${toMB(vidMedia.data.length).toFixed(2)}MB\n`;
-                return await client.sendMessage(msg.to, vidMedia, { caption: text });
+                return await client.sendMessage(msg.to, vidMedia, { caption: text, sendMediaAsDocument: true });
             };
             try {
-                const textImg = `${url}\n${title}`;
+                const textImg = `Baixando o vídeo: ${title}`;
                 const imgMedia = await MessageMedia.fromUrl(image);
                 await client.sendMessage(msg.to, imgMedia, { caption: textImg });
+
                 await result(high);
             } catch (error) {
-                console.error({ high: error });
-                try {
-                    return await result(low);
-                } catch (error) {
-                    console.error({ low: error });
-                    await client.sendMessage(msg.to, 'erro na mídia');
-                }
+                console.error({ error });
+                await client.sendMessage(msg.to, 'erro na mídia');
             }
 
         }));
