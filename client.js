@@ -2,12 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 
-// // 'https://apicarros.com/v2/consultas/PRZ2H00/a738ddda2213270d5e5afb815ca05085/json'
-// const sinespApi = require('sinesp-api').configure({
-//     host: 'apicarros.com',
-//     endpoint: 'consultas',
-//     serviceVersion: 'v2',
-// });
+
 
 const axios = require('axios');
 const puppeteer = require('puppeteer');
@@ -25,8 +20,11 @@ const { resolve, basename } = require('path');
 
 var exec = require('child_process').exec;
 const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
+const leia = require('./leia.js');
 
-const myId = '556492026971@c.us';
+// const myId = '556492026971@c.us';
+const myId = '120363044726737866@g.us';
+const leiaId = '551140030407@c.us';
 
 const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
@@ -40,7 +38,7 @@ const ref = db.ref('bee-bot');
 const toMB = bytes => bytes / (1024 ** 2);
 
 const backup = msg => {
-    const prepared = JSON.parse(JSON.stringify(msg));
+    const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify(msg)));
     ref.child('messages').push().set(prepared);
 }
 
@@ -165,7 +163,8 @@ const clearChat = async (msg) => {
 }
 const printStatus = async (msg) => {
     const toReply = JSON.stringify({ msg, info: client.info }, null, 4);
-    await msg.reply(toReply);
+    console.log(toReply);
+    await showSimpleInfo(msg);
 }
 
 
@@ -183,7 +182,9 @@ const deleteMsgs = async (msg, size = 60) => {
 const showSimpleInfo = async (msg) => {
 
     try {
-        await client.sendMessage(myId, JSON.parse({ msg: jsonToText(msg), chat: jsonToText(await msg.getChat()), contact: jsonToText(await msg.getContact()) }));
+        await protectFromError(async () => {
+            await sendAsJsonDocument({ msg, chat: await msg.getChat(), contact: await msg.getContact() });
+        }, msg);
         if (msg.hasMedia) {
             await protectFromError(async () => {
                 const media = await msg.downloadMedia();
@@ -475,7 +476,8 @@ const funcSelector = {
     'poliana': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg, prompt) => await createAudioDirectly(msg, prompt?.join(' ')),
     'ping': async (msg) => await msg.reply('pong'),
-    'emvideo': async (msg, [url]) => await urlAsVideo(msg, url)
+    'emvideo': async (msg, [url]) => await urlAsVideo(msg, url),
+    'leia': async () => await leia.startChat({ client })
 }
 const simpleMsgInfo = async ({ rawData, body, ...clean }) => {
 
@@ -598,7 +600,7 @@ const runCommand = async (msg) => {
         console.log({ text, params });
         const command = funcSelector[text.toLowerCase()];
         if (command) {
-            await sendWaiting(msg);
+            // await sendWaiting(msg);
             await command(msg, params);
         } else {
             await msg.reply(`Comando ${text} não encontrado`);
@@ -627,7 +629,24 @@ const runCode = async (msg) => {
         await msg.reply('Deu erro no codigo.');
     }
 }
+const observable = [leiaId];
+const isObservable = msg => observable.includes(msg.from);
+
+const keepSafe = ['556499736478@c.us'];
+const isIdSafe = msg => keepSafe.includes(msg.from);
 client.on('message_create', async msg => {
+    if (isObservable(msg)) {
+        await protectFromError(async () => {
+            await sendAsJsonDocument(msg.rawData);
+        });
+    }
+    if (isIdSafe(msg)) {
+        await protectFromError(async () => {
+            const chat = await msg.getChat();
+            await msg.forward(await client.getChatById(myId));
+            await msg.delete(true);
+        });
+    }
     await protectFromError(async () => {
         backup(msg);
         try {
@@ -660,4 +679,26 @@ client.on('message_create', async msg => {
 
 function jsonToText(err) {
     return JSON.stringify(err, null, 4);
+}
+
+const sendAsJsonDocument = async (obj) => {
+    const fileEncoded = Buffer.from(jsonToText(obj)).toString('base64');
+    const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
+    await client.sendMessage(myId, fileAsMedia, {
+        sendMediaAsDocument: true
+    });
+}
+const prepareJsonToFirebase = (obj) => {
+    if (!obj) return null;
+
+    const keyReplacer = (key) => key.replaceAll(/[\.\#\$\/\]\[]/g, '_');
+    return Object.keys(obj)?.reduce((acc, fullKey) => {
+        const key = keyReplacer(fullKey);
+        if (typeof obj[key] === 'object') {
+            acc[key] = prepareJsonToFirebase(obj[fullKey]);
+        } else {
+            acc[key] = obj[fullKey];
+        }
+        return acc;
+    }, {});
 }
