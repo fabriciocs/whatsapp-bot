@@ -1,11 +1,12 @@
 
-const textToSpeech = require('@google-cloud/text-to-speech');
+import textToSpeech from '@google-cloud/text-to-speech';
+import { google } from '@google-cloud/text-to-speech/build/protos/protos';
 
 const client = new textToSpeech.TextToSpeechClient();
 
-const tellMe = async (text) => {
+const tellMe = async (text: string) => {
 
-  const request = {
+  const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     // The text to synthesize
     input: { text: text?.substring(0, 5000) },
 
@@ -28,6 +29,6 @@ const tellMe = async (text) => {
   return Buffer.from(response.audioContent).toString('base64');
 }
 
-module.exports = {
+export {
   tellMe
 }

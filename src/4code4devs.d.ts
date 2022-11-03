@@ -1,0 +1,1 @@
+declare module '4code4devs';

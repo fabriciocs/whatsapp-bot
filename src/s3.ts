@@ -1,11 +1,12 @@
-const { S3Client, ListObjectsCommand } = require('@aws-sdk/client-s3');
+import { S3Client, ListObjectsCommand } from '@aws-sdk/client-s3';
 
-const folders = require('./possible-folders-name.json');
+import list from './amazon-folder-list';
+
 const client = new S3Client({
     region: process.env.AWS_REGION
 });
 
-
+const { folders } = list;
 const randomImagePath = folders[Math.floor(Math.random() * folders.length)];
 
 const readCnhFile = async () => {
@@ -23,6 +24,6 @@ const readCnhFile = async () => {
     return await client.send(command);
 };
 
-module.exports = {
+export {
     readCnhFile
 };

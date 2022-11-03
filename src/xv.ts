@@ -1,5 +1,6 @@
-const xvideos = require('@rodrigogs/xvideos');
-const getVid = async (page = 1, size = 1, search = '', puppeteerConfig) => {
+import xvideos from '@rodrigogs/xvideos';
+import * as puppeteer from 'puppeteer';
+const getVid = async (page = 1, size = 1, search = '', puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions) => {
 
     console.log({ search, page });
     const { videos } = await xvideos.videos.search({ page, k: search });
@@ -14,4 +15,4 @@ const getVid = async (page = 1, size = 1, search = '', puppeteerConfig) => {
     }));
 };
 
-module.exports = { getVid };;
+export { getVid };;

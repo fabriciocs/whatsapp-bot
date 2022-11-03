@@ -1,49 +1,44 @@
-const dotenv = require('dotenv');
-dotenv.config();
+import * as path from 'path';
+import { config as dotEnvConfig } from 'dotenv';
+dotEnvConfig({ path: path.resolve('./.env') });
 
+import axios from 'axios';
+import * as puppeteer from 'puppeteer';
 
+import { SpeechClient, protos } from '@google-cloud/speech';
 
+import * as QRCode from 'qrcode';
+import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions } from 'whatsapp-web.js';
+import dbConfig from './db-config';
+import leia from './leia';
+import { writeAText } from './openai';
+import { tellMe } from './textToSpeach';
+import { readDocument, whatIsIt } from './vision';
+import { getVid } from './xv';
 
-const axios = require('axios');
-const puppeteer = require('puppeteer');
+import * as child_process from 'child_process';
 
-const { Client, MessageMedia, LocalAuth, Buttons, Message } = require('whatsapp-web.js');
-const { admin } = require('./db-config.js');
-const { getVid } = require('./xv.js');
-const { whatIsIt, readIt } = require('./vision.js');
-const { writeAText, giveMeImage } = require('./openai.js');
-const { inPortuguesePlease, inEnglishPlease } = require('./translate.js');
-const { tellMe } = require('./textToSpeach.js');
-const QRCode = require('qrcode');
-const speech = require('@google-cloud/speech');
-const { resolve, basename } = require('path');
-
-var exec = require('child_process').exec;
-const { promises: { readdir, unlink, copyFile, }, writeFileSync, readFileSync, statSync, existsSync, mkdirSync, createReadStream } = require('fs');
-const leia = require('./leia.js');
-
-// const myId = '556492026971@c.us';
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
 
-const puppeteerConfig = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
 });
 
-const db = admin.database();
+const db = dbConfig.admin.database();
 const ref = db.ref('bee-bot');
 
-const toMB = bytes => bytes / (1024 ** 2);
+const toMB = (bytes: number) => bytes / (1024 ** 2);
 
-const backup = msg => {
+const backup = (msg: Message) => {
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify(msg)));
     ref.child('messages').push().set(prepared);
 }
 
-const sendAnswer = async (msg, content) => {
-    await (await msg.getChat()).sendMessage(content, { sendSeen: true });
+const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
+    await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
 }
 
 
@@ -69,22 +64,18 @@ client.on('disconnected', (reason) => {
 });
 
 client.on('qr', (qr) => {
-
-    QRCode.toString(qr, { type: 'terminal', small: true }, function (err, url) {
+    QRCode.toString(qr, { type: 'terminal', small: true }, function (err: any, url: any) {
         console.log(url)
-    })
-
+    });
 });
-(async () => {
-    await client.initialize();
-})();
-const sendVid = async (msg, page = 1, size = 1, search = '') => {
+
+const sendVid = async (msg: { to: string; }, page = 1, size = 1, search = '') => {
     try {
 
         const vids = await getVid(+page, +size, search, puppeteerConfig);
 
         await Promise.all(await vids.map(async ({ high, image, url, title, low }) => {
-            const result = async (vidUrl) => {
+            const result = async (vidUrl: string) => {
                 const vidMedia = await MessageMedia.fromUrl(vidUrl);
                 const text = `${title}\n${url}\n${toMB(vidMedia.data.length).toFixed(2)}MB\n`;
                 return await client.sendMessage(msg.to, vidMedia, { caption: text, sendMediaAsDocument: true });
@@ -129,21 +120,9 @@ const buttons = [
     }
 ];
 
-const sendVidWithButton = async (msg, size, search) => {
-    if (!search && size) {
-        search = size.length ? size.join(' ') : size;
-    }
-    const { high, image, url, title, low } = await getVid(search, puppeteerConfig);
-    const imgMedia = await MessageMedia.fromUrl(image);
-    await client.sendMessage(msg.to, high);
-    const b = new Buttons(imgMedia, buttons, title);
-
-    await client.sendMessage(msg.to, b, { caption: title });
-
-};
 
 
-const listMsgs = async (msg, size) => {
+const listMsgs = async (msg: Message, size: string | number) => {
     const chat = await msg.getChat();
     const limit = +size;
     const msgs = await chat.fetchMessages({
@@ -152,12 +131,12 @@ const listMsgs = async (msg, size) => {
     await sendAsJsonDocument({ msg, msgs });
 }
 
-const clearChat = async (msg) => {
+const clearChat = async (msg: { getChat: () => any; delete: (arg0: boolean) => any; }) => {
     const chat = await msg.getChat();
     await chat.clearMessages(true);
     await msg.delete(true);
 }
-const printStatus = async (msg) => {
+const printStatus = async (msg: Message) => {
     const toReply = JSON.stringify({ msg, info: client.info }, null, 4);
     console.log(toReply);
     await showSimpleInfo(msg);
@@ -165,38 +144,38 @@ const printStatus = async (msg) => {
 
 
 
-const deleteMsgs = async (msg, size = 60) => {
+const deleteMsgs = async (msg: Message, size = 60) => {
     const chat = await msg.getChat();
     const msgs = await chat.fetchMessages({
         limit: +size
     });
-    await Promise.all(msgs.map(async m => await m.delete(true)));
+    await Promise.all(await msgs.map(async (m: Message) => await m.delete(true)));
 }
 
 
 
-const showSimpleInfo = async (msg) => {
+const showSimpleInfo = async (msg: Message) => {
 
     try {
         await protectFromError(async () => {
             await sendAsJsonDocument({ msg, chat: await msg.getChat(), contact: await msg.getContact() });
-        }, msg);
+        });
         if (msg.hasMedia) {
             await protectFromError(async () => {
                 const media = await msg.downloadMedia();
                 const vision = Buffer.from(media.data, 'base64');
                 const res = await whatIsIt(vision);
                 const [{ labelAnnotations }] = res;
-                const details = labelAnnotations.reduce((p, { description }) => p.concat(description), []);
-                await client.sendMessage(myId, details?.join?.(',') ?? 'não consegui identificar');
-            });
-            const whatIsWritten = await readIt(vision);
-            const [{ fullTextAnnotation }] = whatIsWritten;
-            await client.sendMessage(myId, fullTextAnnotation?.text);
-            const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation?.pages ?? [], null, 4)).toString('base64');
-            const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
-            await client.sendMessage(myId, fileAsMedia, {
-                sendMediaAsDocument: true
+                const details = labelAnnotations?.reduce((p, { description }) => description ? p.concat([description]) : p, [] as string[]);
+                await client.sendMessage(myId, details?.join(',') ?? 'não consegui identificar');
+                const whatIsWritten = await readDocument(vision);
+                const [{ fullTextAnnotation }] = whatIsWritten;
+                await client.sendMessage(myId, fullTextAnnotation?.text ?? 'não consegui ler');
+                const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation?.pages ?? [], null, 4)).toString('base64');
+                const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
+                await client.sendMessage(myId, fileAsMedia, {
+                    sendMediaAsDocument: true
+                });
             });
         }
 
@@ -208,7 +187,7 @@ const showSimpleInfo = async (msg) => {
 };
 
 
-const helpMsg = async (msg) => {
+const helpMsg = async (msg: Message) => {
     await protectFromError(async () => {
         try {
             const text = Object.keys(funcSelector).join('\n');
@@ -219,7 +198,7 @@ const helpMsg = async (msg) => {
         }
     });
 };
-const searchByChassiGo = async (msg, chassi) => {
+const searchByChassiGo = async (msg: Message, chassi: any) => {
     const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
     try {
         const page = await browser.newPage();
@@ -231,7 +210,7 @@ const searchByChassiGo = async (msg, chassi) => {
         await page.keyboard.type(chassi);
         await page.click(`button.button-primary.notranslate.mat-raised-button`);
         try {
-            const r = await page.waitForResponse(response =>
+            const r = await page.waitForResponse((response: { url: () => string | string[]; status: () => number; }) =>
                 response.url().includes('www.detran.go.gov.br/psw/rest/gravame') && response.status() === 200);
             const txt = JSON.stringify(await r?.json(), null, 4);
             console.log({ txt });
@@ -241,7 +220,7 @@ const searchByChassiGo = async (msg, chassi) => {
             await page.click(`button.button-primary.notranslate.mat-raised-button`);
             await new Promise(r => setTimeout(r, 4000));
             const screenshotData = await page.screenshot({ encoding: 'base64', fullPage: true });
-            const dataAsMedia = new MessageMedia("image/png", screenshotData, `${new Date().getTime()}.png`);
+            const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
             await client.sendMessage(msg.from, dataAsMedia);
         }
 
@@ -262,15 +241,15 @@ const searchByChassiGo = async (msg, chassi) => {
 
 
 }
-const protectFromError = async (anyFunc) => {
+const protectFromError = async (anyFunc: () => Promise<any>) => {
     try {
-        return await anyFunc();
+        return await anyFunc?.();
     } catch (err) {
         console.log({ runtimeError: err });
     }
 }
 
-const searchByChassiDf = async (msg, chassi) => {
+const searchByChassiDf = async (msg: Message, chassi: any) => {
     const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
     try {
         const page = await browser.newPage();
@@ -278,7 +257,7 @@ const searchByChassiDf = async (msg, chassi) => {
 
         await page.focus('input[name="CHASSI"]');
         await page.keyboard.type(chassi);
-        await page.click(`input[type="submit"]`, { waitUntil: 'networkidle2' });
+        await page.click(`input[type="submit"]`);
         try {
             // await protectFromError(async () => {
 
@@ -300,7 +279,7 @@ const searchByChassiDf = async (msg, chassi) => {
             // });
             await protectFromError(async () => {
                 const screenshotData = await page.screenshot({ encoding: 'base64' });
-                const dataAsMedia = new MessageMedia("image/png", screenshotData, `${new Date().getTime()}.png`);
+                const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
                 await sendAnswer(msg, dataAsMedia);
             });
             // await protectFromError(async () => {
@@ -330,7 +309,7 @@ const searchByChassiDf = async (msg, chassi) => {
 
 
 }
-const searchByLicensePlate = async (msg, placa, full = false) => {
+const searchByLicensePlate = async (msg: Message, placa: any, full = false) => {
     try {
         let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
         if (full) {
@@ -362,142 +341,137 @@ const searchByLicensePlate = async (msg, placa, full = false) => {
         await sendAnswer(msg, `falha na consulta da placa ${placa}`);
     }
 };
-const sweetError = async (msg, err) => {
+const sweetError = async (msg: Message, err: Record<string, any>) => {
     if (msg) {
         await sendAnswer(msg, 'Não consegui. 😂😂😂');
     }
-    await client.sendMessage(myId, jsonToText(err));
+    if (err) {
+        await client.sendMessage(myId, jsonToText(err));
+    }
 }
 
 
-const sweetTry = async (msg, func) => {
+const sweetTry = async <T>(msg: Message, func: () => Promise<T>): Promise<T | string> => {
     try {
-        await func();
+        return await func?.();
     } catch (err) {
         await sweetError(msg, err);
+        return 'Erro ao executar instrução';
     }
 
 }
 
 
-const writeToMe = async (msg) => {
+const writeToMe = async (msg: Message) => {
     if (!msg) {
-        await sweetError(msg, 'sem mensagem');
+        await sweetError(msg, { err: 'sem mensagem' });
     }
     const songTypes = ['VOICE', 'AUDIO', 'PTT']
     if (songTypes.includes(msg.type?.toUpperCase())) {
         await sweetTry(msg, async () => {
             const audio = await msg.downloadMedia();
-            const speechClient = new speech.SpeechClient();
+            const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
             const config = {
-                encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
+                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
                 languageCode: "pt-BR"
             };
             const [response] = await speechClient.recognize({
                 audio: { content }, config
             });
-            const transcription = response.results
-                .map(result => result.alternatives[0].transcript)
-                .join('\n');
+            const transcription = response?.results?.map((result: { alternatives: { transcript: any; }[]; }) => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
             await sendAnswer(msg, transcription);
         });
     }
 };
 
-const readToMe = async (msg) => {
+const readToMe = async (msg: Message) => {
     if (!msg) {
-        await sweetError(msg, 'sem mensagem');
+        await sweetError(msg, { err: 'sem mensagem' });
+        return '';
     }
     const songTypes = ['VOICE', 'PTT']
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
             const audio = await msg.downloadMedia();
-            const speechClient = new speech.SpeechClient();
+            const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
             const config = {
-                encoding: "OGG_OPUS",// #replace with "LINEAR16" for wav, "OGG_OPUS" for ogg, "AMR" for amr
+                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
                 languageCode: "pt-BR"
             };
             const [response] = await speechClient.recognize({
                 audio: { content }, config
             });
-            const transcription = response.results
-                .map(result => result.alternatives[0].transcript)
-                .join('\n');
+            const transcription = response?.results?.map(result => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
             return transcription;
         });
     }
+    return 'Não consegui. 😂😂😂';
 };
 
 
 
-const createATextDirectly = async (msg, prompt) => {
+const createATextDirectly = async (msg: Message, prompt: any) => {
     const result = await writeAText({ prompt });
     const answer = result?.choices?.[0]?.text;
     if (answer) {
         await sendAnswer(msg, answer);
     } else {
-        const { content, options } = await noAnswerMessage(msg);
-        await sendAnswer(msg, content, options);
+        await sendAnswer(msg, "Sem resposta!!");
     }
 };
 
 
-const responseWithTextDirectly = async (prompt) => {
+const responseWithTextDirectly = async (prompt: any) => {
     const result = await writeAText({ prompt });
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
-const createAudioDirectly = async (msg, prompt) => {
+const createAudioDirectly = async (msg: Message, prompt: string) => {
     const answer = await responseWithTextDirectly(prompt);
     const content = await tellMe(answer);
     const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
     await client.sendMessage(msg.to, song);
 };
-const funcSelector = {
-    'status': async (msg) => await printStatus(msg),
-    'panic': async (msg, [size]) => await deleteMsgs(msg, size),
-    'ultimas': async (msg, [size]) => await listMsgs(msg, size),
-    'xv': async (msg, [page, size, ...search]) => await sendVid(msg, page, size, search.join(' ')),
-    'que?': async (msg) => await showSimpleInfo(msg),
-    '--h': async (msg) => await helpMsg(msg),
-    'escreve': async (msg) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
-    'placa': async (msg, [placa, full]) => await searchByLicensePlate(msg, placa, full),
-    'elon_musk': async (msg, prompt) => await createAText(msg, prompt?.join(' ')),
-    'elon': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
-    'sandro': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
-    'poliana': async (msg, prompt) => await createATextDirectly(msg, prompt?.join(' ')),
-    'diga': async (msg, prompt) => await createAudioDirectly(msg, prompt?.join(' ')),
-    'ping': async (msg) => await sendAnswer(msg, 'pong'),
-    'emvideo': async (msg, [url]) => await urlAsVideo(msg, url),
-    'leia': async () => await leia.startChat({ client })
+const funcSelector: Record<string, any> = {
+    'status': async (msg: any) => await printStatus(msg),
+    'panic': async (msg: any, [size]: any) => await deleteMsgs(msg, size),
+    'ultimas': async (msg: any, [size]: any) => await listMsgs(msg, size),
+    'xv': async (msg: any, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
+    'que?': async (msg: any) => await showSimpleInfo(msg),
+    '--h': async (msg: any) => await helpMsg(msg),
+    'escreve': async (msg: { getQuotedMessage: () => any; }) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
+    'placa': async (msg: any, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
+    'elon_musk': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'elon': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'sandro': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'poliana': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'diga': async (msg: any, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
+    'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
+    'leia': async () => await leia.startChat({ client }),
+    'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`)
 }
-const simpleMsgInfo = async ({ rawData, body, ...clean }) => {
-
+const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
     if (clean.hasMedia) {
         return clean;
     }
     return { body, ...clean };
 };
 
-const onlyRaw = ({ rawData }) => rawData;
 
-const getLogChatInfo = async chat => {
-    const contact = await chat.getContact();
-    const labels = await chat.getLabels();
-}
-
-const getLogContactInfo = async contact => {
-
-};
-const logTotalInfo = async (msg) => {
+const logTotalInfo = async (msg: Message) => {
     const chats = await client.getChats();
     const currentChat = await msg.getChat();
-    const last100 = await currentChat.fetchMessages({ limit: 100 });
-    const simpleList = last100.map(async (l) => await simpleMsgInfo(l));
+    const list: Partial<Message>[] = [];
+    [currentChat, ...chats].map(async (chat: Chat) => {
+        const last1000 = await chat.fetchMessages({ limit: 1000 });
+        const msgList = last1000.map((msg: Message) => simpleMsgInfo(msg));
+        list.push(...msgList)
+    });
+    await sendAsJsonDocument(list);
 }
 
 const safeMsgIds = ['556499736478@c.us'];
@@ -505,10 +479,10 @@ const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@
 const commandMarker = '@ ';
 const codeMarker = '@run';
 
-const isSafe = msg => safeMsgIds.includes(msg.from);
+const isSafe = (msg: { from: string; }) => safeMsgIds.includes(msg.from);
 
 const licensePlateSearch = ['556481509722@c.us'];
-const isLicensePlate = msg => {
+const isLicensePlate = (msg: { body: string; }) => {
     if (isNotString(msg)) return false;
 
     const msgContent = msg?.body?.toUpperCase();
@@ -517,45 +491,29 @@ const isLicensePlate = msg => {
     return /([A-Z]{3}\d[A-Z]\d{2})|([A-Z]{3}\d{4})/g.test(msgContent.replace(/[^A-Z0-9]+/g, ''));
 }
 
-const noAnswerMessage = async () => {
-    const content = await MessageMedia.fromFilePath(resolve(__dirname, 'assets', 'noanswer.jpeg'));
-    const options = {
-        sendMediaAsSticker: true,
-        sendSeen: true,
-        stickerAuthor: 'github.com/fabriciocs@bee-bot'
-    }
-
-    return { content, options };
-
-}
-
 
 const fastAnswer = {
 }
-const sendFastanswerMessage = async (msg) => {
-    const { content, options } = await fastAnswer[answerKey]?.(msg) ?? noAnswerMessage(msg);
-    await sendAnswer(msg, content, options)
-};
 
-const sendWaiting = async (msg) => {
+const sendWaiting = async (msg: { from: string; }) => {
     await client.sendMessage(msg.from, 'Executando, um momento por favor');
 };
-const isNotString = (msg) => typeof msg?.body !== "string";
-const isToMe = msg => msg.to === myId;
-const isCommand = msg => {
+const isNotString = (msg: { body: any; }) => typeof msg?.body !== "string";
+const isToMe = (msg: { to: string; }) => msg.to === myId;
+const isCommand = (msg: { body: string; }) => {
     if (isNotString(msg)) return false;
     return msg?.body?.startsWith(commandMarker);
 }
-const isDiga = msg => {
+const isDiga = (msg: { body: any; }) => {
     if (isNotString(msg)) return false;
     const msgBody = msg.body?.toLowerCase();
     return (msgBody.startsWith('diga') || msgBody.startsWith('fale') || msgBody.startsWith('comente') || msgBody.startsWith('descreva') || msgBody.startsWith('explique') || msgBody.startsWith('bibot'));
 }
-const isCode = msg => {
+const isCode = (msg: { body: string; }) => {
     if (isNotString(msg)) return false;
     return msg.body.startsWith(codeMarker);
 }
-const canExecuteCommand = msg => {
+const canExecuteCommand = (msg: Message) => {
     if (isNotString(msg)) return false;
     if (isCommand(msg)) {
         return isAuthorized(msg);
@@ -566,57 +524,57 @@ const canExecuteCommand = msg => {
 
 
 }
-const canExecuteCode = msg => {
+const canExecuteCode = (msg: Message) => {
 
     if (isCode(msg)) {
         return !!msg?.fromMe && isToMe(msg)
     }
 }
 
-const extractExecutionInfo = msg => {
+
+type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
+const extractExecutionInfo = (msg: Message): executionType => {
     if (isCommand(msg)) {
-        const [, text, ...params] = msg.body?.split(' ').filter(Boolean);
+        const [, text, ...params] = msg?.body?.split(' ').filter(Boolean);
         return [text, params];
     }
     if (isLicensePlate(msg)) {
-        return ['placa', [msg.body?.toUpperCase(), true]];
+        return ['placa', [msg?.body?.toUpperCase(), true]];
     }
-
-
+    return ['err', msg?.body?.split(' ').filter(Boolean)];
 }
-const extractCodeInfo = msg => {
+const extractCodeInfo = (msg: Message) => {
 
     const [, ...params] = msg.body.split(' ').filter(Boolean);
     return params?.join(' ');
 }
 
-const isAuthorized = (msg) => !!msg.fromMe || !!external.includes(msg.from);
-const runCommand = async (msg) => {
+const isAuthorized = (msg: { fromMe: any; from: string; }) => !!msg.fromMe || !!external.includes(msg.from);
+const runCommand = async (msg: Message) => {
     try {
-        const [text, params] = extractExecutionInfo(msg);
+        const [text = 'err', params] = extractExecutionInfo(msg);
         console.log({ text, params });
-        const command = funcSelector[text.toLowerCase()];
-        if (command) {
-            // await sendWaiting(msg);
-            await command(msg, params);
-        } else {
-            await sendAnswer(msg, `Comando ${text} não encontrado`);
-        }
+
+        const command = funcSelector[text?.toLowerCase?.()];
+
+        await command(msg, params);
+
+
     } catch (error) {
         console.error({ error });
         await sendAnswer(msg, 'Deu erro no comando. 😂😂😂');
     }
 }
-const codeToRun = (code) => {
+const codeToRun = (code: any) => {
 
 }
-const runCode = async (msg) => {
+const runCode = async (msg: Message) => {
     try {
 
-        exec(`${msg.body?.replace(codeMarker, '')}`, async (err, stdout, stderr) => {
-            if (err) {
-                console.error(err);
-                await sendAnswer(msg, jsonToText(err));
+        child_process.exec(`${msg.body?.replace(codeMarker, '')}`, async (error, stdout, stderr) => {
+            if (error) {
+                console.error(error);
+                await sendAnswer(msg, jsonToText({ error, stderr }));
             }
             console.log(stdout);
             await sendAnswer(msg, stdout);
@@ -627,10 +585,10 @@ const runCode = async (msg) => {
     }
 }
 const observable = [leiaId];
-const isObservable = msg => observable.includes(msg.from);
+const isObservable = (msg: Message) => observable.includes(msg.from);
 
 const keepSafe = ['556499736478@c.us'];
-const isIdSafe = msg => keepSafe.includes(msg.from);
+const isIdSafe = (msg: Message) => keepSafe.includes(msg.from);
 client.on('message_create', async msg => {
     if (isObservable(msg)) {
         await protectFromError(async () => {
@@ -674,26 +632,39 @@ client.on('message_create', async msg => {
 
 
 
-const jsonToText = (err) => JSON.stringify(err, null, 4);
+const jsonToText = (err: Record<string, any>) => JSON.stringify(err, null, 4);
 
-const sendAsJsonDocument = async (obj) => {
+const sendAsJsonDocument = async (obj: Record<string, any>) => {
     const fileEncoded = Buffer.from(jsonToText(obj)).toString('base64');
     const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${obj?.timestamp ?? new Date().getTime()}.json`);
     await client.sendMessage(myId, fileAsMedia, {
         sendMediaAsDocument: true
     });
 }
-const prepareJsonToFirebase = (obj) => {
+const prepareJsonToFirebase = (obj: Record<string, any>) => {
     if (!obj) return null;
 
-    const keyReplacer = (key) => key.replaceAll(/[\.\#\$\/\]\[]/g, '_');
-    return Object.keys(obj)?.reduce((acc, fullKey) => {
+    const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
+
+    return Object.keys(obj).reduce((acc, fullKey) => {
         const key = keyReplacer(fullKey);
-        if (typeof obj[key] === 'object') {
+
+        if (typeof obj[fullKey] === 'object') {
             acc[key] = prepareJsonToFirebase(obj[fullKey]);
         } else {
             acc[key] = obj[fullKey];
         }
         return acc;
-    }, {});
+    }, {} as Record<string, any>);
+};
+
+
+
+const run = async () => {
+    await client.initialize();
+};
+(async () => await run())();
+
+export default {
+    run
 }

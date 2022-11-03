@@ -2,19 +2,20 @@
   "name": "bee-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "client.js",
-  "bin": {
-    "bee-bot": "./bin/index.js"
-  },
+  "private": true,
+  "main": "dist/client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "yarn node client.js",
-    "mon": "yarn nodemon client.js --watch false"
+    "start": " yarn mon",
+    "build": "yarn clean &&  yarn tsc --build && yarn copy:assets",
+    "copy:assets": "yarn shx cp ./src/.env ./dist/.env",
+    "clean": "yarn shx rm -rf ./dist",
+    "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "4code4devs": "https://github.com/fcs-lab/4code4devs.git",
+    "4code4devs": "https://github.com/fcs-lab/4code4devs.git#main",
     "@aws-sdk/client-s3": "^3.201.0",
     "@google-cloud/language": "^5.1.0",
     "@google-cloud/speech": "^5.1.0",
@@ -38,6 +39,12 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^9.1.3",
-    "nodemon": "^2.0.20"
+    "@types/node-fetch": "^2.6.2",
+    "@types/qrcode": "^1.5.0",
+    "nodemon": "^2.0.20",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.4"
   }
 }
