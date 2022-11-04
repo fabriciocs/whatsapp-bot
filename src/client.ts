@@ -1,6 +1,6 @@
-import * as path from 'path';
+import { resolve } from 'path';
 import { config as dotEnvConfig } from 'dotenv';
-dotEnvConfig({ path: path.resolve('./.env') });
+dotEnvConfig({ path: resolve('.env') });
 
 import axios from 'axios';
 import * as puppeteer from 'puppeteer';
@@ -9,9 +9,11 @@ import { SpeechClient, protos } from '@google-cloud/speech';
 
 import * as QRCode from 'qrcode';
 import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions } from 'whatsapp-web.js';
+
 import dbConfig from './db-config';
-import leia from './leia';
-import { writeAText } from './openai';
+import { sendResponse, startChat } from './leia';
+
+import { writeAText } from './ai';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
 import { getVid } from './xv';
@@ -27,12 +29,14 @@ const client = new Client({
     puppeteer: puppeteerConfig
 });
 
-const db = dbConfig.admin.database();
-const ref = db.ref('bee-bot');
+let db = null;
 
 const toMB = (bytes: number) => bytes / (1024 ** 2);
 
 const backup = (msg: Message) => {
+
+    if (!db) return;
+    const ref = db.ref('bee-bot');
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify(msg)));
     ref.child('messages').push().set(prepared);
 }
@@ -55,7 +59,7 @@ client.on('auth_failure', msg => {
 });
 
 
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log('READY');
 });
 
@@ -155,7 +159,12 @@ const deleteMsgs = async (msg: Message, size = 60) => {
 
 
 const showSimpleInfo = async (msg: Message) => {
-
+    if (msg.hasQuotedMsg) {
+        let quotedMsg = await msg.getQuotedMessage();
+        if (!quotedMsg) {
+            return await showSimpleInfo(quotedMsg);
+        }
+    }
     try {
         await protectFromError(async () => {
             await sendAsJsonDocument({ msg, chat: await msg.getChat(), contact: await msg.getContact() });
@@ -397,10 +406,24 @@ const readToMe = async (msg: Message) => {
             const audio = await msg.downloadMedia();
             const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
-            const config = {
+            const config: protos.google.cloud.speech.v1.RecognitionConfig = {
                 encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
-                languageCode: "pt-BR"
+                languageCode: "pt-BR",
+                enableAutomaticPunctuation: true,
+                enableWordTimeOffsets: true,
+                enableWordConfidence: true,
+                audioChannelCount: 0,
+                enableSeparateRecognitionPerChannel: false,
+                alternativeLanguageCodes: [],
+                maxAlternatives: 0,
+                profanityFilter: false,
+                speechContexts: [],
+                model: '',
+                useEnhanced: false,
+                toJSON: function (): { [k: string]: any; } {
+                    throw new Error('Function not implemented.');
+                }
             };
             const [response] = await speechClient.recognize({
                 audio: { content }, config
@@ -436,24 +459,32 @@ const createAudioDirectly = async (msg: Message, prompt: string) => {
     const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
     await client.sendMessage(msg.to, song);
 };
-const funcSelector: Record<string, any> = {
-    'status': async (msg: any) => await printStatus(msg),
-    'panic': async (msg: any, [size]: any) => await deleteMsgs(msg, size),
-    'ultimas': async (msg: any, [size]: any) => await listMsgs(msg, size),
-    'xv': async (msg: any, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
-    'que?': async (msg: any) => await showSimpleInfo(msg),
-    '--h': async (msg: any) => await helpMsg(msg),
-    'escreve': async (msg: { getQuotedMessage: () => any; }) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
-    'placa': async (msg: any, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
-    'elon_musk': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'elon': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'sandro': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'poliana': async (msg: any, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'diga': async (msg: any, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
-    'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
-    'leia': async () => await leia.startChat({ client }),
-    'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`)
+const sendSafeMsg = async (msg: Message) => {
+    const contact = await client.getContactById(safeMsgIds.pop());
+    const chat = await contact.getChat();
+    await msg.forward(chat);
 }
+
+const funcSelector: Record<string, any> = {
+    'status': async (msg: Message) => await printStatus(msg),
+    'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
+    'ultimas': async (msg: Message, [size]: any) => await listMsgs(msg, size),
+    'xv': async (msg: Message, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
+    'que?': async (msg: Message) => await showSimpleInfo(msg),
+    '--h': async (msg: Message) => await helpMsg(msg),
+    'escreve': async (msg: Message) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
+    'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
+    'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'elon': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'sandro': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
+    'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
+    'leia': async (msg: Message) => await startChat({ client, msg }),
+    'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`),
+    't': async (msg: Message) => await sendSafeMsg(msg),
+}
+
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
     if (clean.hasMedia) {
         return clean;
@@ -475,18 +506,18 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us'].concat(safeMsgIds);
+const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us'].concat(safeMsgIds);
 const commandMarker = '@ ';
 const codeMarker = '@run';
 
-const isSafe = (msg: { from: string; }) => safeMsgIds.includes(msg.from);
+const isSafe = (msg: Message) => safeMsgIds.includes(msg.from);
 
 const licensePlateSearch = ['556481509722@c.us'];
-const isLicensePlate = (msg: { body: string; }) => {
+const isLicensePlate = (msg: Message) => {
     if (isNotString(msg)) return false;
 
-    const msgContent = msg?.body?.toUpperCase();
-    if (isCommand(msg) || msgContent.split(' ').length > 1 || msgContent.length > 7) return false;
+    const msgContent = msg?.body?.toUpperCase().split(' ').slice(1).join(' ');
+    if (isCommand(msg) || msgContent?.split(' ').length > 1 || msgContent?.length > 7) return false;
 
     return /([A-Z]{3}\d[A-Z]\d{2})|([A-Z]{3}\d{4})/g.test(msgContent.replace(/[^A-Z0-9]+/g, ''));
 }
@@ -522,7 +553,6 @@ const canExecuteCommand = (msg: Message) => {
         return licensePlateSearch.includes(msg.from) || !!msg.fromMe;
     }
 
-
 }
 const canExecuteCode = (msg: Message) => {
 
@@ -552,10 +582,10 @@ const extractCodeInfo = (msg: Message) => {
 const isAuthorized = (msg: { fromMe: any; from: string; }) => !!msg.fromMe || !!external.includes(msg.from);
 const runCommand = async (msg: Message) => {
     try {
-        const [text = 'err', params] = extractExecutionInfo(msg);
+        const [text, params] = extractExecutionInfo(msg);
         console.log({ text, params });
 
-        const command = funcSelector[text?.toLowerCase?.()];
+        const command = funcSelector[text?.toLowerCase?.()] ?? funcSelector.err;
 
         await command(msg, params);
 
@@ -587,45 +617,51 @@ const runCode = async (msg: Message) => {
 const observable = [leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
-const keepSafe = ['556499736478@c.us'];
-const isIdSafe = (msg: Message) => keepSafe.includes(msg.from);
+
+
 client.on('message_create', async msg => {
-    if (isObservable(msg)) {
+    if (msg.isForwarded && msg.fromMe) return;
+    if (isSafe(msg)) {
         await protectFromError(async () => {
-            console.log({ leia: msg.body });
-        });
-    }
-    if (isIdSafe(msg)) {
-        await protectFromError(async () => {
+
             const chat = await msg.getChat();
             await msg.forward(await client.getChatById(myId));
-            await msg.delete(true);
+            await msg.delete();
+            await Promise.all((await chat.fetchMessages({})).map(async (msg: Message) => await msg.delete()));
+            await chat.delete();
         });
     }
     await protectFromError(async () => {
         backup(msg);
-        try {
+        // try {
 
-            if (!!msg.fromMe) {
-                console.log({ type: msg.type });
-                const message = await readToMe(msg);
-                if (message) {
-                    console.log({ message });
+        //     if (!!msg.fromMe) {
+        //         console.log({ type: msg.type });
+        //         const message = await readToMe(msg);
+        //         if (message) {
+        //             console.log({ message });
 
-                    if (isDiga({ body: message })) {
-                        return await createAudioDirectly(msg, message);
-                    }
-                }
-            }
+        //             if (isDiga({ body: message })) {
+        //                 return await createAudioDirectly(msg, message);
+        //             }
+        //         }
+        //     }
 
-        } catch (err) {
-            console.log({ 'writing error': err });
-        }
+        // } catch (err) {
+        //     console.log({ 'writing error': err });
+        // }
+
         if (canExecuteCommand(msg)) {
             await runCommand(msg);
         }
         if (canExecuteCode(msg)) {
             await runCode(msg);
+        }
+        if (isObservable(msg)) {
+            await protectFromError(async () => {
+                console.log({ msg: msg.body });
+                await sendResponse(client, msg);
+            });
         }
     });
 });
@@ -661,10 +697,10 @@ const prepareJsonToFirebase = (obj: Record<string, any>) => {
 
 
 const run = async () => {
+    const { admin } = await dbConfig()
+    db = admin.database();
     await client.initialize();
 };
 (async () => await run())();
 
-export default {
-    run
-}
+

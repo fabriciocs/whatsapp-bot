@@ -3,8 +3,8 @@
 
 
 "4code4devs@https://github.com/fcs-lab/4code4devs.git#main":
-  version "1.0.1"
-  resolved "https://github.com/fcs-lab/4code4devs.git#1202e6323a8b6985edd0d02576e50e6b80ecd9ef"
+  version "1.0.4"
+  resolved "https://github.com/fcs-lab/4code4devs.git#4e3af2ad0e424814bb54bd36379af56f24bada87"
   dependencies:
     axios "^0.21.1"
     cheerio "^1.0.0-rc.3"
@@ -2491,10 +2491,10 @@ css-what@^6.1.0:
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
 
-dalle-node@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/dalle-node/-/dalle-node-1.0.7.tgz#9361a3afff672eddb2c780809a60f4781c8c6410"
-  integrity sha512-RFLPZZOT1WNB0ps3x8bCWn3QzjV7PfmKHZdXFQLYDaz8c91+3RMPLL+OZ1BjC+RStoHCrsXIwztfUHuZYU9kSw==
+dalle-node@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/dalle-node/-/dalle-node-1.0.8.tgz#268a089120a8617f84cceab507d333156457ee0a"
+  integrity sha512-a13M985yaMZrE0gUD9At8tdjrhCcFlOTEyvO5zT88ip6k5I4Qe5RIUlXBIgks0M2StWquhfy/Ztrf4nVabyyTw==
   dependencies:
     got "^12.2.0"
     request "^2.88.2"

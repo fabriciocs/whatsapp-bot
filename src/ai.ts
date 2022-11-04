@@ -1,16 +1,14 @@
 import * as path from 'path';
-import { config as dotEnvConfig } from 'dotenv';
-dotEnvConfig({ path: path.resolve('./.env') });
 
 import { Configuration, CreateCompletionRequest, OpenAIApi } from 'openai';
 
-import * as dalleConfig from 'dalle-node';
+// import { Dalle } from 'dalle-node';
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
-const dalle = new dalleConfig.Dalle(configuration.apiKey);
+const clientAi = new OpenAIApi(configuration);
+// const dalle = new Dalle(configuration.apiKey);
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
     temperature: 0.2,
@@ -22,7 +20,7 @@ const params: Partial<CreateCompletionRequest> = {
 }
 
 const doIt = async (config: Partial<CreateCompletionRequest>) => {
-    const response = await openai.createCompletion({ ...params, ...config } as CreateCompletionRequest);
+    const response = await clientAi.createCompletion({ ...params, ...config } as CreateCompletionRequest);
     console.log({ response: JSON.stringify(response.data, null, 4) });
     return response.data;
 }
@@ -32,7 +30,7 @@ const writeAText = async (config: Partial<CreateCompletionRequest>) => {
 };
 
 export {
-    writeAText,
+    writeAText
     // giveMeImage: async (prompt) => {
     //     return await dalle.generate(prompt);
     // }
