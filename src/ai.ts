@@ -1,14 +1,16 @@
-import * as path from 'path';
-
 import { Configuration, CreateCompletionRequest, OpenAIApi } from 'openai';
+import { writeFile, mkdir } from 'fs/promises';
+import { join, resolve } from 'path';
+import { homedir } from 'os';
+import { randomBytes } from 'crypto';
+import { promisify } from 'util';
+import { Message } from 'whatsapp-web.js';
 
-// import { Dalle } from 'dalle-node';
-
+const imageSize = '512x512';
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const clientAi = new OpenAIApi(configuration);
-// const dalle = new Dalle(configuration.apiKey);
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
     temperature: 0.2,
@@ -28,10 +30,30 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
     return await doIt({ ...config, "model": "text-davinci-002" })
 };
+const giveMeImage = async (msg: Message, prompt: string) => {
+    const response = await clientAi.createImage({
+        prompt,
+        n: 1,
+        size: imageSize,
+    });
+    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    return response.data.data[0].url;
+};
 
+const createVariation = async (f: File) => {
+    const response = await clientAi.createImageVariation(f, 1, imageSize);
+    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    return response.data.data[0].url;
+};
+
+const editImage = async (image: File, mask: File, msg: Message, prompt: string) => {
+    const response = await clientAi.createImageEdit(image, mask, prompt, 1, imageSize);
+    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    return response.data.data[0].url;
+}
 export {
-    writeAText
-    // giveMeImage: async (prompt) => {
-    //     return await dalle.generate(prompt);
-    // }
+    writeAText,
+    giveMeImage,
+    createVariation,
+    editImage
 };

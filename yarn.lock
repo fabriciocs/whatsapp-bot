@@ -1556,7 +1556,12 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
+"@types/node@*":
+  version "18.11.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.9.tgz#02d013de7058cea16d36168ef2fc653464cfbad4"
+  integrity sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==
+
+"@types/node@>=12.12.47", "@types/node@>=13.7.0":
   version "18.11.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.11.3.tgz#78a6d7ec962b596fc2d2ec102c4dd3ef073fea6a"
   integrity sha512-fNjDQzzOsZeKZu5NATgXUPsaFaTxeRgFXoosrHivTl8RGeV733OLawXsGfEk9a8/tySyZUyiZ6E8LcjPFZ2y1A==
@@ -4290,9 +4295,9 @@ onetime@^5.1.0:
     mimic-fn "^2.1.0"
 
 openai@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/openai/-/openai-3.0.1.tgz#4a6021e5bf32dfaa56e346b7a4830a80a479dd9c"
-  integrity sha512-5O9t7dBcUOIhzK5764nS/8WtkX812l8Uz0uoIHT8mczN2IUUUe7FsGbIxYGEkGBKA4GY1blT8QaWJVNZLG2cwA==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/openai/-/openai-3.1.0.tgz#13bfb228cf777155b882c2deb3a03bc5094cb7b3"
+  integrity sha512-v5kKFH5o+8ld+t0arudj833Mgm3GcgBnbyN9946bj6u7bvel4Yg6YFz2A4HLIYDzmMjIo0s6vSG9x73kOwvdCg==
   dependencies:
     axios "^0.26.0"
     form-data "^4.0.0"

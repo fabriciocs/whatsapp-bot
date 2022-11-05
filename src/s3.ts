@@ -1,11 +1,8 @@
-import { S3Client, ListObjectsCommand, ListObjectsCommandInput, ListObjectsCommandOutput, GetObjectCommandInput, GetObjectCommand, GetObjectCommandOutput } from '@aws-sdk/client-s3';
-import { writeFile, mkdir } from 'fs/promises';
-import { join, resolve } from 'path';
-import { homedir } from 'os';
+import { GetObjectCommand, GetObjectCommandInput, GetObjectCommandOutput, ListObjectsCommand, ListObjectsCommandInput, ListObjectsCommandOutput, S3Client } from '@aws-sdk/client-s3';
 import { randomBytes } from 'crypto';
-import { promisify } from 'util';
+import { mkdir, writeFile } from 'fs/promises';
+import { join, resolve } from 'path';
 import list from './amazon-folder-list';
-import { pipeline, PassThrough } from 'stream';
 const client = new S3Client({
     region: process.env.AWS_REGION
 });
@@ -57,3 +54,4 @@ const backupImageLocally = async (commandOutput: GetObjectCommandOutput) => {
 export {
     readCnhFile
 };
+

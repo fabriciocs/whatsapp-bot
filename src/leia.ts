@@ -1,9 +1,10 @@
 import code4devs from '4code4devs';
 import { readCnhFile } from './s3';
 import { resolve } from 'path';
-import { Client, Message, MessageMedia } from 'whatsapp-web.js';
+import { Client, Message, MessageContent, MessageMedia } from 'whatsapp-web.js';
 
 const fixedQuestions = [
+    '🐙 rodoclube diz: \r\n⚠ Todas as execuções foram encerradas!!!',
     'Qual o seu *nome completo*? 🎯',
     'Me informe abaixo, os *11 números* do seu *CPF* ✍️',
     'Qual é o seu *e-mail* ? 📧',
@@ -50,10 +51,10 @@ const getFirstAnswerFromQuestion = (leiaQuestion) => {
     return null;
 }
 
-const doTheBridge = async (client: Client, msg: Message, content) => {
+const doTheBridge = async (client: Client, msg: Message, content: MessageContent, isMedia = false) => {
     const constact = await client.getContactById(leiaCttId);
     const chat = await constact.getChat();
-    return await chat.sendMessage(content);
+    return await chat.sendMessage(content, { sendMediaAsDocument: isMedia });
 
     // return await Promise.all(await leiaBridgeIds.map(async id => {
     //     if (msg.from === id) {
@@ -64,24 +65,41 @@ const doTheBridge = async (client: Client, msg: Message, content) => {
     //     }
     // }));
 }
+const leiaFeedback = ['5519992057430-1631105563@g.us'];
+const isLeiafeedback = (msg: Message) => leiaFeedback.includes(msg.from);
+
+const sendFeedback = async (client: Client, msg: Message, cpf: string) => {
+    const chat = await client.getChatById(leiaFeedback[0]);
+    return await chat.sendMessage(`Vou mandar esse cpf: *${cpf}*`);
+}
 
 const fillRandomData = async () => {
     const [pessoa] = await code4devs.lib.gerar.pessoa({ query: { txt_qtde: 1 } }) as any[];
     const carro = await code4devs.lib.gerar.veiculo({ query: { pontuacao: "N" } }) as any;
 
     const imagem = await readCnhFile();
-    const data = { pessoa, carro, imagem };
+    const data = { pessoa, carro, imagem: await MessageMedia.fromFilePath(resolve(imagem)) };
     addQuestionAnswer(data);
     return data;
 }
 
-const startChat = async ({ client, msg, msgBody = '@RODOCLUBE API-CADASTRO', leiaId = leiaCttId }: LeiaStartType) => {
+
+
+const startChat = async ({ client, msg, msgBody = '@endall', leiaId = leiaCttId }: LeiaStartType) => {
     const data = await fillRandomData();
+    try {
+
+        await sendFeedback(client, msg, data.pessoa.cpf);
+
+    } catch (err) {
+        console.log(err);
+    }
     await doTheBridge(client, msg, msgBody);
     return data;
 };
 
 const questionAnswer = ({ pessoa, carro, imagem }) => ({
+    '🐙 rodoclube diz: \r\n⚠ Todas as execuções foram encerradas!!!': () => '@RODOCLUBE API-CADASTRO',
     'Qual o seu *nome completo*? 🎯': () => pessoa.nome,
     'Me informe abaixo, os *11 números* do seu *CPF* ✍️': () => pessoa.cpf,
     'Qual é o seu *e-mail* ? 📧': () => pessoa.email,
@@ -98,7 +116,7 @@ const questionAnswer = ({ pessoa, carro, imagem }) => ({
     'O seu veículo possui rastreador?': () => '2',
     'Você possui *carrocerias* a serem cadastradas?': () => '2',
     'A partir de agora, estarei salvando suas informações para concluirmos o seu cadastro. Você está de acordo?': () => '1',
-    'Como deseja prosseguir agora?': () => 'Finalizar',
+    'Como deseja prosseguir agora?': () => '3',
 });
 
 
@@ -112,10 +130,10 @@ const sendResponse = async (client: Client, msg: Message, leiaId = leiaCttId) =>
 
         if (firstAnswer.isImage) {
             const { imagem } = firstAnswer;
-            const content = await MessageMedia.fromFilePath(resolve(imagem));
-            return await doTheBridge(client, msg, content);
+            return await doTheBridge(client, msg, imagem,);
 
         }
+        console.log({ question: body, answer: firstAnswer });
         return await doTheBridge(client, msg, `${firstAnswer}`);
     }
 }

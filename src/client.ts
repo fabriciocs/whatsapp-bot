@@ -13,7 +13,7 @@ import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, Message
 import dbConfig from './db-config';
 import { sendResponse, startChat } from './leia';
 
-import { writeAText } from './ai';
+import { createVariation, editImage, giveMeImage, writeAText } from './ai';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
 import { getVid } from './xv';
@@ -23,7 +23,7 @@ import * as child_process from 'child_process';
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
@@ -161,8 +161,8 @@ const deleteMsgs = async (msg: Message, size = 60) => {
 const showSimpleInfo = async (msg: Message) => {
     if (msg.hasQuotedMsg) {
         let quotedMsg = await msg.getQuotedMessage();
-        if (!quotedMsg) {
-            return await showSimpleInfo(quotedMsg);
+        if (quotedMsg) {
+            return await showSimpleInfo(await quotedMsg.reload());
         }
     }
     try {
@@ -176,10 +176,10 @@ const showSimpleInfo = async (msg: Message) => {
                 const res = await whatIsIt(vision);
                 const [{ labelAnnotations }] = res;
                 const details = labelAnnotations?.reduce((p, { description }) => description ? p.concat([description]) : p, [] as string[]);
-                await client.sendMessage(myId, details?.join(',') ?? 'não consegui identificar');
+                await client.sendMessage(msg.to, details?.join(',') ?? 'não consegui identificar');
                 const whatIsWritten = await readDocument(vision);
                 const [{ fullTextAnnotation }] = whatIsWritten;
-                await client.sendMessage(myId, fullTextAnnotation?.text ?? 'não consegui ler');
+                await client.sendMessage(msg.to, fullTextAnnotation?.text ?? 'não consegui ler');
                 const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation?.pages ?? [], null, 4)).toString('base64');
                 const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
                 await client.sendMessage(myId, fileAsMedia, {
@@ -381,15 +381,20 @@ const writeToMe = async (msg: Message) => {
             const audio = await msg.downloadMedia();
             const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
-            const config = {
+            const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
                 encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
-                languageCode: "pt-BR"
+                languageCode: "pt-BR",
+                enableAutomaticPunctuation: true,
+
             };
             const [response] = await speechClient.recognize({
                 audio: { content }, config
             });
-            const transcription = response?.results?.map((result: { alternatives: { transcript: any; }[]; }) => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
+            const transcription = response.results
+                .map(result => result.alternatives[0].transcript)
+                .join('\n');
+            console.log(JSON.stringify({ transcription }, null, 4));
             await sendAnswer(msg, transcription);
         });
     }
@@ -465,6 +470,112 @@ const sendSafeMsg = async (msg: Message) => {
     await msg.forward(chat);
 }
 
+const desenha = async (msg: Message, prompt: string) => {
+    const chat = await msg.getChat();
+    if (!prompt) {
+        return await sendAnswer(msg, 'informe o que deseja desenhar');
+    }
+    if (prompt) {
+        const url = await giveMeImage(msg, prompt);
+        const image = await MessageMedia.fromUrl(url)
+        return await chat.sendMessage(image, { sendMediaAsDocument: true, caption: prompt });
+    }
+}
+
+const fileFromMedia = (media: MessageMedia) => {
+    const file = new File([media.data], media.filename, { type: media.mimetype });
+    return file;
+}
+
+const sendUrlImageAsAnswer = async (msg: Message, url: string, prompt: string = "") => {
+    const image = await MessageMedia.fromUrl(url);
+    return await sendAnswer(msg, image, { sendMediaAsDocument: true, caption: prompt });
+}
+const redesenha = async (msg: Message) => {
+    if (!msg || (!msg.hasMedia && !msg.hasQuotedMsg)) {
+        return await sendAnswer(msg, 'Qual imagem deseja redesenhar?');
+    }
+    if (msg.hasQuotedMsg) {
+        try {
+            await sendAnswer(msg, 'Tentando editar mensagem referenciada');
+            const quotedMsg = await (await msg.getQuotedMessage()).reload();
+            if (quotedMsg && quotedMsg.id && quotedMsg.hasMedia) {
+                try {
+                    const media = await quotedMsg.downloadMedia();
+                    const url = await createVariation(fileFromMedia(media));
+                    return await sendUrlImageAsAnswer(msg, url);
+                } catch (err) {
+                    await sweetError(msg, err);
+                    return await sendAnswer(msg, 'Não consegui editar a imagem');
+                }
+            }
+        } catch (err) {
+            console.log(err);
+            return await sendAnswer(msg, 'Não consegui pegar a mídia da mensagem referenciada');
+        }
+    }
+    if (msg.hasMedia) {
+        try {
+            await sendAnswer(msg, 'Tentando editar mídia');
+            const media = await msg.downloadMedia();
+            const url = await createVariation(fileFromMedia(media));
+            return await sendUrlImageAsAnswer(msg, url);
+        } catch (err) {
+            console.log(err);
+            return await sendAnswer(msg, 'Não consegui pegar a mídia da mensagem');
+        }
+    }
+    return await sendAnswer(msg, 'não consegui encontrar nada para editar');
+}
+
+
+
+const edita = async (msg: Message, prompt) => {
+    if (!msg || !msg.hasMedia || !msg.hasQuotedMsg || !prompt?.length) {
+        return await sendAnswer(msg, 'Precido da msg com a imagem que será editada e nessa preciso da imagem com a área apagada e a descriçaõ da alteração!');
+    }
+
+    const edition = {
+        image: null,
+        mask: null,
+        prompt
+    };
+
+    try {
+        await sendAnswer(msg, 'Tentando pegar mensagem referenciada');
+        const quotedMsg = await (await msg.getQuotedMessage()).reload();
+        if (quotedMsg?.hasMedia) {
+            const media = await quotedMsg.downloadMedia();
+            edition.image = fileFromMedia(media);
+        } else {
+            return await sendAnswer(msg, 'Não consegui pegar a mídia da mensagem referenciada');
+        }
+    } catch (err) {
+        console.log(err);
+        return await sendAnswer(msg, 'Não consegui pegar a mídia da mensagem referenciada');
+    }
+
+
+    try {
+        await sendAnswer(msg, 'Tentando editar mídia');
+        const media = await msg.downloadMedia();
+        edition.mask = fileFromMedia(media);
+    } catch (err) {
+        console.log(err);
+        return await sendAnswer(msg, 'Não consegui pegar a mídia da mensagem');
+    }
+
+
+    try {
+        const url = await editImage(edition.image, edition.mask, msg, edition.prompt);
+        return await sendUrlImageAsAnswer(msg, url, edition.prompt);
+    } catch (err) {
+        console.log(err);
+        return await sendAnswer(msg, 'Não consegui editar a imagem');
+    }
+}
+
+
 const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
@@ -479,6 +590,9 @@ const funcSelector: Record<string, any> = {
     'sandro': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
+    'desenha': async (msg: Message, prompt: any[]) => await desenha(msg, prompt?.join(' ')),
+    'redesenha': async (msg: Message, prompt: any[]) => await redesenha(msg),
+    'edita': async (msg: Message, prompt: any[]) => await edita(msg, prompt?.join(' ')),
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
     'leia': async (msg: Message) => await startChat({ client, msg }),
     'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`),
@@ -617,10 +731,8 @@ const runCode = async (msg: Message) => {
 const observable = [leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
-
-
 client.on('message_create', async msg => {
-    if (msg.isForwarded && msg.fromMe) return;
+    if (msg.isForwarded && msg.fromMe) return await msg.reload();
     if (isSafe(msg)) {
         await protectFromError(async () => {
 
@@ -657,9 +769,9 @@ client.on('message_create', async msg => {
         if (canExecuteCode(msg)) {
             await runCode(msg);
         }
+
         if (isObservable(msg)) {
             await protectFromError(async () => {
-                console.log({ msg: msg.body });
                 await sendResponse(client, msg);
             });
         }
