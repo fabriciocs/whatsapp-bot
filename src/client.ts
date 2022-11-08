@@ -19,11 +19,21 @@ import { readDocument, whatIsIt } from './vision';
 import { getVid } from './xv';
 
 import * as child_process from 'child_process';
+import Commands from './commands';
+import Contexts, { Context } from './context';
+import { CompressionType } from '@aws-sdk/client-s3';
+import CommandManager from './commands-manager';
 
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
+const appData: {
+    commands?: Commands,
+    contexts?: Contexts,
+    defaultSteps?: Record<string, any>
+} = {
+};
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
@@ -61,6 +71,8 @@ client.on('auth_failure', msg => {
 
 client.on('ready', async () => {
     console.log('READY');
+    appData.commands = new Commands(db.ref('bee-bot/commands'));
+    appData.contexts = new Contexts(db.ref('bee-bot/contexts'));
 });
 
 client.on('disconnected', (reason) => {
@@ -405,7 +417,7 @@ const readToMe = async (msg: Message) => {
         await sweetError(msg, { err: 'sem mensagem' });
         return '';
     }
-    const songTypes = ['VOICE', 'PTT']
+    const songTypes = ['VOICE', 'PTT', 'AUDIO']
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
             const audio = await msg.downloadMedia();
@@ -532,7 +544,7 @@ const redesenha = async (msg: Message) => {
 
 const edita = async (msg: Message, prompt) => {
     if (!msg || !msg.hasMedia || !msg.hasQuotedMsg || !prompt?.length) {
-        return await sendAnswer(msg, 'Precido da msg com a imagem que será editada e nessa preciso da imagem com a área apagada e a descriçaõ da alteração!');
+        return await sendAnswer(msg, 'Precido da msg com a imagem que será editada e nessa preciso da imagem com a área apagada e a descrição da alteração!');
     }
 
     const edition = {
@@ -574,8 +586,44 @@ const edita = async (msg: Message, prompt) => {
         return await sendAnswer(msg, 'Não consegui editar a imagem');
     }
 }
+const openContext = async (msg: Message, prompt: string) => {
+    const msgId = msg.id._serialized;
+    const chatId = (await msg.getChat()).id._serialized;
+    const id = `${msg.from}${chatId}`;
+    const command = prompt.split(' ')[0];
+    const contextData = await appData.contexts.createContext(await appData.commands.getCommand(command), { id, chatId, msgId });
+    await appData.contexts.addContext(contextData);
+    return { input: { msg, prompt, id }, output: { contextData, chatId } };
+}
+const closeContext = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    const id = `${msg.from}${chatId}`;
+    const contextData = await appData.contexts.getContext(id);
+    await appData.contexts.removeContext(id);
+    return { input: { msg, id }, output: { contextData, chatId } };
+}
 
+const getContext = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    const id = `${msg.from}${chatId}`;
+    const contextData = await appData.contexts.getContext(id);
+    return { input: { msg, id }, output: { contextData, chatId } };
+}
 
+const sendMessage = async (msg: Message, prompt: string) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    const sentMsg = await client.sendMessage(chatId, prompt);
+    return { input: { msg, prompt }, output: { sentMsg, chatId } };
+}
+
+const sendLog = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    const id = `${msg.from}${chatId}`;
+    const context = await appData.contexts.getContext(id);
+    const log = context.log;
+    const sentMsg = await sendAnswer(msg, JSON.stringify(log));
+    return { input: { msg }, output: { sentMsg, chatId } };
+}
 const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
@@ -591,6 +639,10 @@ const funcSelector: Record<string, any> = {
     'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
     'desenha': async (msg: Message, prompt: any[]) => await desenha(msg, prompt?.join(' ')),
+    'add': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
+    'remove': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
+    'cmd': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).executeCommand(msg, prompt?.join(' ')),
+    'cmd-h': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).listCommands(msg),
     'redesenha': async (msg: Message, prompt: any[]) => await redesenha(msg),
     'edita': async (msg: Message, prompt: any[]) => await edita(msg, prompt?.join(' ')),
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
@@ -812,6 +864,35 @@ const run = async () => {
     const { admin } = await dbConfig()
     db = admin.database();
     await client.initialize();
+    appData.defaultSteps = {
+        'open_context': openContext,
+        'close_context': closeContext,
+        'get_context': getContext,
+        'send_log': sendLog,
+        // 'request_audio': requestAudio,
+        // 'request_image': requestImage,
+        // 'request_video': requestVideo,
+        // 'request_document': requestDocument,
+        // 'request_contact': requestContact,
+        // 'request_location': requestLocation,
+        // 'request_sticker': requestSticker,
+        // 'request_voice': requestVoice,
+        // 'request_text': requestText,
+        // 'request_quoted': requestQuoted,
+        //  'compose_form': composeForm,
+        // 'validate_form': validateForm,
+        'send_message': sendMessage,
+        // 'send_image': sendImage,
+        // 'send_audio': sendAudio,
+        // 'send_video': sendVideo,
+        // 'send_document': sendDocument,
+        // 'send_contact': sendContact,
+        // 'send_location': sendLocation,
+        // 'send_sticker': sendSticker,
+        // 'send_voice': sendVoice,
+        // 'send_url_image': sendUrlImage,
+
+    };
 };
 (async () => await run())();
 
