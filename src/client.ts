@@ -23,13 +23,15 @@ import Commands from './commands';
 import Contexts, { Context } from './context';
 import { CompressionType } from '@aws-sdk/client-s3';
 import CommandManager from './commands-manager';
+import MessagesManager from './messages-manager';
 
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
 const appData: {
     commands?: Commands,
     contexts?: Contexts,
-    defaultSteps?: Record<string, any>
+    msgs?: MessagesManager,
+    defaultSteps?: Record<string, any>;
 } = {
 };
 
@@ -73,6 +75,7 @@ client.on('ready', async () => {
     console.log('READY');
     appData.commands = new Commands(db.ref('bee-bot/commands'));
     appData.contexts = new Contexts(db.ref('bee-bot/contexts'));
+    appData.msgs = new MessagesManager(db.ref('bee-bot/messages'));
 });
 
 client.on('disconnected', (reason) => {
@@ -139,12 +142,8 @@ const buttons = [
 
 
 const listMsgs = async (msg: Message, size: string | number) => {
-    const chat = await msg.getChat();
-    const limit = +size;
-    const msgs = await chat.fetchMessages({
-        limit
-    });
-    await sendAsJsonDocument({ msg, msgs });
+    const msgs = await appData?.msgs?.filterByFrom(msg.to, +size);
+    await sendAsJsonDocument({ msgs });
 }
 
 const clearChat = async (msg: { getChat: () => any; delete: (arg0: boolean) => any; }) => {
@@ -381,6 +380,24 @@ const sweetTry = async <T>(msg: Message, func: () => Promise<T>): Promise<T | st
     }
 
 }
+
+const queroMais = async (msg: Message) => {
+    if (!msg) {
+        await sweetError(msg, { err: 'sem mensagem' });
+    }
+    return await sweetTry(msg, async () => {
+        const chat = await msg.getChat();
+        if (msg.hasMedia) {
+            const media = await msg.downloadMedia();
+            if (!chat || chat.isGroup) {
+                return await client.sendMessage(myId, media);
+            }
+            return chat.sendMessage(media);
+        }
+    });
+
+};
+
 
 
 const writeToMe = async (msg: Message) => {
@@ -624,6 +641,7 @@ const sendLog = async (msg: Message) => {
     const sentMsg = await sendAnswer(msg, JSON.stringify(log));
     return { input: { msg }, output: { sentMsg, chatId } };
 }
+
 const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
@@ -648,7 +666,7 @@ const funcSelector: Record<string, any> = {
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
     'leia': async (msg: Message) => await startChat({ client, msg }),
     'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`),
-    't': async (msg: Message) => await sendSafeMsg(msg),
+    'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
 }
 
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
@@ -785,16 +803,16 @@ const isObservable = (msg: Message) => observable.includes(msg.from);
 
 client.on('message_create', async msg => {
     if (msg.isForwarded && msg.fromMe) return await msg.reload();
-    if (isSafe(msg)) {
-        await protectFromError(async () => {
+    // if (isSafe(msg)) {
+    //     await protectFromError(async () => {
 
-            const chat = await msg.getChat();
-            await msg.forward(await client.getChatById(myId));
-            await msg.delete();
-            await Promise.all((await chat.fetchMessages({})).map(async (msg: Message) => await msg.delete()));
-            await chat.delete();
-        });
-    }
+    //         const chat = await msg.getChat();
+    //         await msg.forward(await client.getChatById(myId));
+    //         await msg.delete();
+    //         await Promise.all((await chat.fetchMessages({})).map(async (msg: Message) => await msg.delete()));
+
+    //     });
+    // }
     await protectFromError(async () => {
         backup(msg);
         // try {

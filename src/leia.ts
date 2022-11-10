@@ -70,7 +70,7 @@ const isLeiafeedback = (msg: Message) => leiaFeedback.includes(msg.from);
 
 const sendFeedback = async (client: Client, msg: Message, cpf: string) => {
     const chat = await client.getChatById(leiaFeedback[0]);
-    return await chat.sendMessage(`Vou mandar esse cpf: *${cpf}*`);
+    // return await chat.sendMessage(`Vou mandar esse cpf: *${cpf}*`);
 }
 
 const fillRandomData = async () => {
