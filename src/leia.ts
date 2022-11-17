@@ -66,17 +66,22 @@ const doTheBridge = async (client: Client, msg: Message, content: MessageContent
     // }));
 }
 const leiaFeedback = ['5519992057430-1631105563@g.us'];
-const isLeiafeedback = (msg: Message) => leiaFeedback.includes(msg.from);
+const isLeiafeedback = (msg: Message) => false;//leiaFeedback.includes(msg.from);
 
 const sendFeedback = async (client: Client, msg: Message, cpf: string) => {
     const chat = await client.getChatById(leiaFeedback[0]);
     // return await chat.sendMessage(`Vou mandar esse cpf: *${cpf}*`);
 }
 
-const fillRandomData = async () => {
+const loadPersonAndCar = async () => {
     const [pessoa] = await code4devs.lib.gerar.pessoa({ query: { txt_qtde: 1 } }) as any[];
     const carro = await code4devs.lib.gerar.veiculo({ query: { pontuacao: "N" } }) as any;
+    return { pessoa, carro };
+}
 
+
+const fillRandomData = async () => {
+    const { pessoa, carro } = await loadPersonAndCar();
     const imagem = await readCnhFile();
     const data = { pessoa, carro, imagem: await MessageMedia.fromFilePath(resolve(imagem)) };
     addQuestionAnswer(data);
@@ -138,5 +143,5 @@ const sendResponse = async (client: Client, msg: Message, leiaId = leiaCttId) =>
     }
 }
 
-export { startChat, sendResponse };
+export { startChat, sendResponse, loadPersonAndCar };
 

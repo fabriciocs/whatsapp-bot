@@ -11,7 +11,7 @@ import * as QRCode from 'qrcode';
 import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions } from 'whatsapp-web.js';
 
 import dbConfig from './db-config';
-import { sendResponse, startChat } from './leia';
+import { loadPersonAndCar, sendResponse, startChat } from './leia';
 
 import { createVariation, editImage, giveMeImage, writeAText } from './ai';
 import { tellMe } from './textToSpeach';
@@ -146,10 +146,10 @@ const listMsgs = async (msg: Message, size: string | number) => {
     await sendAsJsonDocument({ msgs });
 }
 
-const clearChat = async (msg: { getChat: () => any; delete: (arg0: boolean) => any; }) => {
+const clearChat = async (msg: Message) => {
     const chat = await msg.getChat();
-    await chat.clearMessages(true);
-    await msg.delete(true);
+    await chat.clearMessages();
+    await msg.delete(msg.fromMe);
 }
 const printStatus = async (msg: Message) => {
     const toReply = JSON.stringify({ msg, info: client.info }, null, 4);
@@ -164,7 +164,7 @@ const deleteMsgs = async (msg: Message, size = 60) => {
     const msgs = await chat.fetchMessages({
         limit: +size
     });
-    await Promise.all(await msgs.map(async (m: Message) => await m.delete(true)));
+    await Promise.all(await msgs.map(async (m: Message) => await m.delete(m.fromMe)));
 }
 
 
@@ -202,7 +202,7 @@ const showSimpleInfo = async (msg: Message) => {
     } catch (err) {
         console.log({ quotedErr: err });
     } finally {
-        await msg.delete(true);
+        await msg.delete(msg.fromMe);
     }
 };
 
@@ -214,7 +214,7 @@ const helpMsg = async (msg: Message) => {
             await sendAnswer(msg, text);
         } catch (err) {
             console.log({ helpError: err });
-            await msg.delete(true);
+            await msg.delete(msg.fromMe);
         }
     });
 };
@@ -642,12 +642,44 @@ const sendLog = async (msg: Message) => {
     return { input: { msg }, output: { sentMsg, chatId } };
 }
 
+const fakePersonAndCar = async (msg: Message) => {
+    const { pessoa, carro } = await loadPersonAndCar();
+    const pessoaMessage = Object.keys(pessoa).reduce((acc, key) => {
+        acc.push(`${key}: *${pessoa[key]}*`);
+        return acc;
+    }, []).join('\n');
+
+    const carroMessage = Object.keys(carro).reduce((acc, key) => {
+        acc.push(`${key}: *${carro[key]}*`);
+        return acc;
+    }, []).join('\n');
+    const content = `*Pessoa:*\n${pessoaMessage}\n\n*Carro:*\n${carroMessage}`;
+    console.log(content);
+    await sendAnswer(msg, content);
+
+}
+const detalhes = async (msg: Message) => {
+    const chat = await msg.getChat();
+    const mension = await msg.getQuotedMessage();
+
+    if (!mension) {
+        return await sendAnswer(msg, 'Não consegui pegar a mensagem referenciada');
+    }
+    const contato = await mension.getContact();
+    if (!contato) {
+        return await sendAnswer(msg, 'Não consegui pegar o contato referenciado');
+    }
+    const imgUrl = await contato.getProfilePicUrl();
+    const content = `*Nome:* ${contato.pushname}\n*Número:* ${contato.number}\n*Sobre:* ${await contato.getAbout()}`;
+    await chat.sendMessage(await MessageMedia.fromUrl(imgUrl), { caption: content, mentions: [contato] });
+}
 const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
     'ultimas': async (msg: Message, [size]: any) => await listMsgs(msg, size),
     'xv': async (msg: Message, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
     'que?': async (msg: Message) => await showSimpleInfo(msg),
+    'quem?': async (msg: Message) => await detalhes(msg),
     '--h': async (msg: Message) => await helpMsg(msg),
     'escreve': async (msg: Message) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
     'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
@@ -665,6 +697,7 @@ const funcSelector: Record<string, any> = {
     'edita': async (msg: Message, prompt: any[]) => await edita(msg, prompt?.join(' ')),
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
     'leia': async (msg: Message) => await startChat({ client, msg }),
+    'fake': async (msg: Message) => await fakePersonAndCar(msg),
     'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`),
     'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
 }
@@ -798,7 +831,7 @@ const runCode = async (msg: Message) => {
         await sendAnswer(msg, 'Deu erro no codigo.');
     }
 }
-const observable = [leiaId];
+const observable = [];//[leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
 client.on('message_create', async msg => {
@@ -815,23 +848,23 @@ client.on('message_create', async msg => {
     // }
     await protectFromError(async () => {
         backup(msg);
-        // try {
+        try {
 
-        //     if (!!msg.fromMe) {
-        //         console.log({ type: msg.type });
-        //         const message = await readToMe(msg);
-        //         if (message) {
-        //             console.log({ message });
+            if (!!msg.fromMe) {
+                console.log({ type: msg.type });
+                const message = await readToMe(msg);
+                if (message) {
+                    console.log({ message });
 
-        //             if (isDiga({ body: message })) {
-        //                 return await createAudioDirectly(msg, message);
-        //             }
-        //         }
-        //     }
+                    if (isDiga({ body: message })) {
+                        return await createAudioDirectly(msg, message);
+                    }
+                }
+            }
 
-        // } catch (err) {
-        //     console.log({ 'writing error': err });
-        // }
+        } catch (err) {
+            console.log({ 'writing error': err });
+        }
 
         if (canExecuteCommand(msg)) {
             await runCommand(msg);
@@ -913,5 +946,6 @@ const run = async () => {
     };
 };
 (async () => await run())();
+
 
 
