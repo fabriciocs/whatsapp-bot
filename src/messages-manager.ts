@@ -22,4 +22,9 @@ export default class MessagesManager {
     return await msg.val();
   }
 
+  async saveMessage(msg: Message): Promise<any> {
+    const saved = await this.msgsRef.push().set(msg);
+    return saved;
+  }
+
 }

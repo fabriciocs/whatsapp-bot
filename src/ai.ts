@@ -13,11 +13,12 @@ const configuration = new Configuration({
 const clientAi = new OpenAIApi(configuration);
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
-    temperature: 0.7,
+    temperature: 1,
     best_of: 1,
+    top_p: 1,
     max_tokens: 2000,
-    frequency_penalty: 1,
-    presence_penalty: 0.6,
+    frequency_penalty: 0,
+    presence_penalty: 0,
     stop: [" Você:"]
 }
 const defaultConfig = {

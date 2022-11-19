@@ -452,7 +452,7 @@ const readToMe = async (msg: Message) => {
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
             const rel = await msg.reload();
-            if(!rel) return await msg.forward(myId);
+            if (!rel) return await msg.forward(myId);
             const audio = await (rel ?? msg).downloadMedia();
             const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
@@ -489,7 +489,7 @@ const readToMe = async (msg: Message) => {
 
 
 const createATextDirectly = async (msg: Message, prompt: any) => {
-    const result = await writeAText({ prompt });
+    const result = await writeAText({ stop: ['stop'], prompt });
     const answer = result?.choices?.[0]?.text;
     if (answer) {
         await sendAnswer(msg, answer);
@@ -511,7 +511,7 @@ const createATextForConfig = async (msg: Message, prompt: any, config: string) =
 
 
 const responseWithTextDirectly = async (prompt: any) => {
-    const result = await writeAText({ prompt });
+    const result = await writeAText({stop: ['stop'], prompt });
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
@@ -716,6 +716,7 @@ const reloadMedia = async (msg: Message, id: string) => {
     }
 }
 const funcSelector: Record<string, any> = {
+    '-': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
     'ultimas': async (msg: Message, [size]: any) => await listMsgs(msg, size),
@@ -726,7 +727,6 @@ const funcSelector: Record<string, any> = {
     'escreve': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
     'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    '-': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     '🍻': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'sextou'),
     '💖': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'amor'),
     '😔': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'triste'),
