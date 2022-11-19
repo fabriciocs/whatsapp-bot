@@ -55,8 +55,8 @@ export default class CommandManager{
     
     listCommands = async (msg: Message) => {
         const commands = await this.appData.commands.getCommands();
-        const commandsList = Object.keys(commands)?.join(', ');
-        return await this.sendAnswer(msg, commandsList);
+        const commandsList = Object.keys(commands)?.reduce((acc, command) => [...acc, `*${command}* - [${commands[command].steps.join(',')}]`], []);
+        return await this.sendAnswer(msg, commandsList.join('\n'));
     }
     
     removeCommand = async (msg: Message, prompt: string) => {

@@ -9,11 +9,12 @@ import { SpeechClient, protos } from '@google-cloud/speech';
 
 import * as QRCode from 'qrcode';
 import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions } from 'whatsapp-web.js';
+import ClassMessage from 'whatsapp-web.js/src/structures/Message';
 
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
 
-import { createVariation, editImage, giveMeImage, writeAText } from './ai';
+import { createVariation, editImage, giveMeImage, withConfig, writeAText } from './ai';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
 import { getVid } from './xv';
@@ -45,12 +46,16 @@ let db = null;
 
 const toMB = (bytes: number) => bytes / (1024 ** 2);
 
-const backup = (msg: Message) => {
+const backup = async (msg: Message) => {
 
     if (!db) return;
     const ref = db.ref('bee-bot');
-    const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify(msg)));
-    ref.child('messages').push().set(prepared);
+    let media;
+    if (msg.hasMedia) {
+        media = await msg.downloadMedia();
+    }
+    const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg, media })));
+    await ref.child('messages').push().set(prepared);
 }
 
 const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
@@ -93,7 +98,7 @@ const sendVid = async (msg: { to: string; }, page = 1, size = 1, search = '') =>
 
         const vids = await getVid(+page, +size, search, puppeteerConfig);
 
-        await Promise.all(await vids.map(async ({ high, image, url, title, low }) => {
+        await Promise.all(vids.map(async ({ high, image, url, title, low }) => {
             const result = async (vidUrl: string) => {
                 const vidMedia = await MessageMedia.fromUrl(vidUrl);
                 const text = `${title}\n${url}\n${toMB(vidMedia.data.length).toFixed(2)}MB\n`;
@@ -164,7 +169,18 @@ const deleteMsgs = async (msg: Message, size = 60) => {
     const msgs = await chat.fetchMessages({
         limit: +size
     });
-    await Promise.all(await msgs.map(async (m: Message) => await m.delete(m.fromMe)));
+    await Promise.all(msgs.filter(({ id: { id } }) => id !== msg.id.id).map(async (m: Message) => {
+        try {
+            const reloaded = await m.reload();
+            if (reloaded) {
+                await reloaded.delete(reloaded.fromMe);
+            } else {
+                await m.delete(true);
+            }
+        } catch (e) {
+            console.log({ deleteMsgsError: e, msg: { body: m.body, id: m.id } });
+        }
+    }));
 }
 
 
@@ -400,34 +416,32 @@ const queroMais = async (msg: Message) => {
 
 
 
-const writeToMe = async (msg: Message) => {
-    if (!msg) {
-        await sweetError(msg, { err: 'sem mensagem' });
-    }
-    const songTypes = ['VOICE', 'AUDIO', 'PTT']
-    if (songTypes.includes(msg.type?.toUpperCase())) {
-        await sweetTry(msg, async () => {
-            const audio = await msg.downloadMedia();
-            const speechClient = new SpeechClient();
-            const content = Buffer.from(audio.data, 'base64');
-            const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
-                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
-                sampleRateHertz: 16000,
-                languageCode: "pt-BR",
-                enableAutomaticPunctuation: true,
+// const writeToMe = async (msg: Message) => {
+//     if (!msg) {
+//         await sweetError(msg, { err: 'sem mensagem' });
+//     }
+//     const songTypes = ['VOICE', 'AUDIO', 'PTT']
+//     if (songTypes.includes(msg.type?.toUpperCase())) {
+//         await sweetTry(msg, async () => {
+//             const audio = await msg.downloadMedia();
+//             const speechClient = new SpeechClient();
+//             const content = Buffer.from(audio.data, 'base64');
+//             const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
+//                 encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
+//                 sampleRateHertz: 16000,
+//                 languageCode: "pt-BR",
+//                 enableAutomaticPunctuation: true,
 
-            };
-            const [response] = await speechClient.recognize({
-                audio: { content }, config
-            });
-            const transcription = response.results
-                .map(result => result.alternatives[0].transcript)
-                .join('\n');
-            console.log(JSON.stringify({ transcription }, null, 4));
-            await sendAnswer(msg, transcription);
-        });
-    }
-};
+//             };
+//             const [response] = await speechClient.recognize({
+//                 audio: { content }, config
+//             });
+//             const transcription = response.results.map(result => result.alternatives[0].transcript).join('\n');
+//             console.log(JSON.stringify({ transcription }, null, 4));
+//             await sendAnswer(msg, transcription);
+//         });
+//     }
+// };
 
 const readToMe = async (msg: Message) => {
     if (!msg) {
@@ -437,7 +451,9 @@ const readToMe = async (msg: Message) => {
     const songTypes = ['VOICE', 'PTT', 'AUDIO']
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
-            const audio = await msg.downloadMedia();
+            const rel = await msg.reload();
+            if(!rel) return await msg.forward(myId);
+            const audio = await (rel ?? msg).downloadMedia();
             const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
             const config: protos.google.cloud.speech.v1.RecognitionConfig = {
@@ -463,10 +479,11 @@ const readToMe = async (msg: Message) => {
                 audio: { content }, config
             });
             const transcription = response?.results?.map(result => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
+            await sendAnswer(msg, transcription);
             return transcription;
         });
     }
-    return 'Não consegui. 😂😂😂';
+    return 'Não ';
 };
 
 
@@ -476,6 +493,17 @@ const createATextDirectly = async (msg: Message, prompt: any) => {
     const answer = result?.choices?.[0]?.text;
     if (answer) {
         await sendAnswer(msg, answer);
+    } else {
+        await sendAnswer(msg, "Sem resposta!!");
+    }
+};
+
+
+const createATextForConfig = async (msg: Message, prompt: any, config: string) => {
+    const result = await withConfig(prompt, config);
+    const answer = result?.choices?.[0]?.text;
+    if (answer) {
+        await sendAnswer(msg, answer.replace('🤖', msg?.body?.split(' ')?.[1]));
     } else {
         await sendAnswer(msg, "Sem resposta!!");
     }
@@ -507,7 +535,7 @@ const desenha = async (msg: Message, prompt: string) => {
     if (prompt) {
         const url = await giveMeImage(msg, prompt);
         const image = await MessageMedia.fromUrl(url)
-        return await chat.sendMessage(image, { sendMediaAsDocument: true, caption: prompt });
+        return await chat.sendMessage(image, { caption: prompt });
     }
 }
 
@@ -673,6 +701,20 @@ const detalhes = async (msg: Message) => {
     const content = `*Nome:* ${contato.pushname}\n*Número:* ${contato.number}\n*Sobre:* ${await contato.getAbout()}`;
     await chat.sendMessage(await MessageMedia.fromUrl(imgUrl), { caption: content, mentions: [contato] });
 }
+
+const reloadMedia = async (msg: Message, id: string) => {
+    const chat = await msg.getChat();
+    const fromDb = await appData.msgs.getMessage(id);
+    if (fromDb) {
+        if (fromDb.media) {
+            const { mimetype, data, filename, filesize } = fromDb.media;
+            const media = await new MessageMedia(mimetype, data, filename, filesize);
+            await chat.sendMessage(media, { caption: fromDb.body });
+        } else {
+            await chat.sendMessage(fromDb.body);
+        }
+    }
+}
 const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
@@ -681,10 +723,32 @@ const funcSelector: Record<string, any> = {
     'que?': async (msg: Message) => await showSimpleInfo(msg),
     'quem?': async (msg: Message) => await detalhes(msg),
     '--h': async (msg: Message) => await helpMsg(msg),
-    'escreve': async (msg: Message) => await writeToMe((await (await msg.getQuotedMessage())?.reload())),
+    'escreve': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
     'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'elon': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    '-': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    '🍻': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'sextou'),
+    '💖': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'amor'),
+    '😔': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'triste'),
+    '😭': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'triste'),
+    'triste': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'triste'),
+    'meupastor': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'pastor'),
+    'wenderson': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'pastor'),
+    'pastor': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'pastor'),
+    'abrão': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'pastor'),
+    'danilo': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    'renato': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    'dinho': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    '🚚': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    '🚜': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    'boso': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    'agro': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    'wellen-beu': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista'),
+    '🛋': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela'),
+    'pre-venda': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela'),
+    'gean': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela'),
+    'carla': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela'),
+    'wdany': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'constelacao-familiar'),
     'sandro': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
@@ -698,8 +762,9 @@ const funcSelector: Record<string, any> = {
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
     'leia': async (msg: Message) => await startChat({ client, msg }),
     'fake': async (msg: Message) => await fakePersonAndCar(msg),
-    'err': async (msg: Message, [, text]: string[]) => await sendAnswer(msg, `Comando ${text} não encontrado`),
-    'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
+    'reload': async (msg: Message, [prompt]) => await reloadMedia(msg, prompt),
+    'err': async (msg: Message) => await sendAnswer(msg, `Comando *${msg?.body.split(' ')?.[1]}* não encontrado`),
+    'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload()))
 }
 
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
@@ -724,7 +789,7 @@ const logTotalInfo = async (msg: Message) => {
 
 const safeMsgIds = ['556499736478@c.us'];
 const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us'].concat(safeMsgIds);
-const commandMarker = '@ ';
+const commandMarker = '🤖 ';
 const codeMarker = '@run';
 
 const isSafe = (msg: Message) => safeMsgIds.includes(msg.from);
@@ -809,7 +874,7 @@ const runCommand = async (msg: Message) => {
 
     } catch (error) {
         console.error({ error });
-        await sendAnswer(msg, 'Deu erro no comando. 😂😂😂');
+        await sendAnswer(msg, 'Executado com falha');
     }
 }
 const codeToRun = (code: any) => {
@@ -828,7 +893,7 @@ const runCode = async (msg: Message) => {
         });
     } catch (error) {
         console.error({ error });
-        await sendAnswer(msg, 'Deu erro no codigo.');
+        await sendAnswer(msg, 'executado com falha');
     }
 }
 const observable = [];//[leiaId];
@@ -847,7 +912,7 @@ client.on('message_create', async msg => {
     //     });
     // }
     await protectFromError(async () => {
-        backup(msg);
+        await backup(msg);
         try {
 
             if (!!msg.fromMe) {

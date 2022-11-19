@@ -60,7 +60,7 @@ export default class Contexts {
     async addLog(plainId: string, log: string): Promise<Context> {
         const id = prepareId(plainId);
         const context = await this.getContext(id);
-        const logs = context.log || [];
+        const logs = context?.log || [];
         logs.push(log);
         await this.contextsDbRef.child(id).update({ log: logs });
         return await this.getContext(id);
