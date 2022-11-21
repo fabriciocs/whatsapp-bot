@@ -26,5 +26,9 @@ export default class MessagesManager {
     const saved = await this.msgsRef.push().set(msg);
     return saved;
   }
+  async updateMessage(id: string, msg: Message): Promise<any> {
+    const updated = await this.msgsRef.child(id).update(msg);
+    return updated;
+  }
 
 }

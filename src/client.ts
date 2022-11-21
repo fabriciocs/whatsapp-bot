@@ -511,7 +511,7 @@ const createATextForConfig = async (msg: Message, prompt: any, config: string) =
 
 
 const responseWithTextDirectly = async (prompt: any) => {
-    const result = await writeAText({stop: ['stop'], prompt });
+    const result = await writeAText({ stop: ['stop'], prompt });
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
@@ -727,6 +727,11 @@ const funcSelector: Record<string, any> = {
     'escreve': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
     'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'demostenes': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c'),
+    'maru': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c'),
+    'deivid': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c'),
+    'juarez': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c'),
+    'sextou': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'sextou'),
     '🍻': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'sextou'),
     '💖': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'amor'),
     '😔': async (msg: Message, prompt: any[]) => await createATextForConfig(msg, prompt?.join(' '), 'triste'),
@@ -788,8 +793,8 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us'].concat(safeMsgIds);
-const commandMarker = '🤖 ';
+const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us'].concat(safeMsgIds);
+const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
 const codeMarker = '@run';
 
 const isSafe = (msg: Message) => safeMsgIds.includes(msg.from);
@@ -815,7 +820,7 @@ const isNotString = (msg: { body: any; }) => typeof msg?.body !== "string";
 const isToMe = (msg: { to: string; }) => msg.to === myId;
 const isCommand = (msg: { body: string; }) => {
     if (isNotString(msg)) return false;
-    return msg?.body?.startsWith(commandMarker);
+    return commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
 }
 const isDiga = (msg: { body: any; }) => {
     if (isNotString(msg)) return false;
@@ -861,7 +866,7 @@ const extractCodeInfo = (msg: Message) => {
     return params?.join(' ');
 }
 
-const isAuthorized = (msg: { fromMe: any; from: string; }) => !!msg.fromMe || !!external.includes(msg.from);
+const isAuthorized = (msg: Message) => !!msg.fromMe || !!external.includes(msg.from);
 const runCommand = async (msg: Message) => {
     try {
         const [text, params] = extractExecutionInfo(msg);
@@ -913,23 +918,23 @@ client.on('message_create', async msg => {
     // }
     await protectFromError(async () => {
         await backup(msg);
-        try {
+        // try {
 
-            if (!!msg.fromMe) {
-                console.log({ type: msg.type });
-                const message = await readToMe(msg);
-                if (message) {
-                    console.log({ message });
+        //     if (!!msg.fromMe) {
+        //         console.log({ type: msg.type });
+        //         const message = await readToMe(msg);
+        //         if (message) {
+        //             console.log({ message });
 
-                    if (isDiga({ body: message })) {
-                        return await createAudioDirectly(msg, message);
-                    }
-                }
-            }
+        //             if (isDiga({ body: message })) {
+        //                 return await createAudioDirectly(msg, message);
+        //             }
+        //         }
+        //     }
 
-        } catch (err) {
-            console.log({ 'writing error': err });
-        }
+        // } catch (err) {
+        //     console.log({ 'writing error': err });
+        // }
 
         if (canExecuteCommand(msg)) {
             await runCommand(msg);

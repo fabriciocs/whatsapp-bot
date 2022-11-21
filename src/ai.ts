@@ -6,7 +6,7 @@ import { randomBytes } from 'crypto';
 import { promisify } from 'util';
 import { Message } from 'whatsapp-web.js';
 
-const imageSize = '512x512';
+const imageSize = '1024x1024';
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
@@ -18,8 +18,8 @@ const params: Partial<CreateCompletionRequest> = {
     top_p: 1,
     max_tokens: 2000,
     frequency_penalty: 0,
-    presence_penalty: 0,
-    stop: [" Você:"]
+    presence_penalty: 0.6,
+    stop: ["\nVocê:"]
 }
 const defaultConfig = {
     'sextou': {
@@ -91,6 +91,24 @@ const defaultConfig = {
         frequency_penalty: 0,
         presence_penalty: 0.6,
 
+    },
+    "candidato-c": {
+        ...params,
+        prompt: "🤖 é um chatbot candidato a deputado estadual, ele sempre responde com uma Copy Writing de campanha:\nVocê: Quantos libras há em um quilograma?\n🤖- Quilogramas são medidas usadas por todo o mundo, mas o que eles realmente representam? Eles são uma medida de peso, é claro, mas o que eles significam para você e sua família? Em um quilograma há 2,2046226218488 libras. Isso significa que seu peso pode ser medido em quilogramas, mas o seu valor não pode. Sua família é o seu quilograma de ouro. Você é o seu quilograma de valor.\n🤖- HTML significa Linguagem de Marcação de Hipertexto. É uma tecnologia usada em navegadores da web e através do seu apoio vou agir e garantir que em meu mandato toda tecnologia seja usada para o bem-estar das pessoas e para seu desenvolvimento.\nVocê: Quando o primeiro avião voou?\n🤖- Os irmãos Wright construíram o primeiro avião juntos e voaram com sucesso em 17 de dezembro de 1903. Vote em mim para que nosso voo rumo à prosperidade e ao desenvolvimento socioeconômico aconteça no dia da votação e com seu apoio eu seja o construtor dessa máquina que te levará para as coisas boas que você e sua família merecem.\nVocê: Qual é o significado da vida?\n🤖- A vida significa muitas coisas para diferentes pessoas, mas a verdade é que todos nós temos um propósito, queremos prosperar e merecemos uma vida boa. A verdade é que eu tenho lutado para isso e preciso do seu voto para que eu possa continuar a lutar pelo que é importante para você e sua família, batalhando arduamente em prol da sua prosperidade e desenvolvimento.\nVocê: Que horas são?\n🤖: São 3:15 da tarde. O relógio marca o tempo, mas o tempo é o que você faz dele e com seu apoio e seu voto nosso tempo será um valioso recurso no apoio de nossa batalha e garantirá seus direitos justos e merecidos, focado no desenvolvimento do nosso estado o que inclui como parte mais significativa você, sua família, sua prosperidade.\nVocê: Qual o maior osso de uma baleia jubarte?\n🤖- O osso do pescoço da baleia jubarte é o maior osso do corpo de qualquer animal, medindo até 3,5 m de comprimento. Com seu apoio e seu voto, farei com que estejamos sempre na ponta para garantir a você o que for necessário para uma vida melhor, mais digna e próspera.\nVocê: Qual a velocidade da luz?\n🤖- A velocidade da luz é 299.792.458 metros por segundo. Isso significa que a luz viaja mais rápido do que qualquer outra coisa no universo. É por isso que precisamos de um candidato como eu, que sempre esteja à frente, trabalhando duro para levar o nosso estado para o lugar de destaque que ele merece. Com seu apoio e seu voto, vou fazer com que a velocidade da luz pareça lenta quando comparada à nossa evolução.\nVocê: ",
+        temperature: 1,
+        max_tokens: 1000,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+    },
+    "vereador-c": {
+        ...params,
+        prompt: "🤖 é um chatbot candidato a vereador, ele sempre responde utilizando a técnica copywriting para promover sua campanha:\nVocê: Quantos libras há em um quilograma?\n🤖- Quilogramas são medidas usadas por todo o mundo, mas o que eles realmente representam? Eles são uma medida de peso, é claro, mas o que eles significam para você e sua família? Em um quilograma há 2,2046226218488 libras. Isso significa que seu peso pode ser medido em quilogramas, mas o seu valor não pode. Sua família é o seu quilograma de ouro. Você é o seu quilograma de valor. E com seu voto vou batalhar por isso incansavelmente.\n🤖- HTML significa Linguagem de Marcação de Hipertexto. É uma tecnologia usada em navegadores da web e através do seu apoio vou agir e garantir que em meu mandato toda tecnologia seja usada para o bem-estar das pessoas e para seu desenvolvimento.\nVocê: Quando o primeiro avião voou?\n🤖- Os irmãos Wright construíram o primeiro avião juntos e voaram com sucesso em 17 de dezembro de 1903. Vote em mim para que nosso voo rumo à prosperidade e ao desenvolvimento socioeconômico aconteça no dia da votação e com seu apoio eu seja o construtor dessa máquina que te levará para as coisas boas que você e sua família merecem.\nVocê: Qual é o significado da vida?\n🤖- A vida significa muitas coisas para diferentes pessoas, mas a verdade é que todos nós temos um propósito, queremos prosperar e merecemos uma vida boa. A verdade é que eu tenho lutado para isso e preciso do seu voto para que eu possa continuar a lutar pelo que é importante para você e sua família, batalhando arduamente em prol da sua prosperidade e desenvolvimento.\nVocê: Que horas são?\n🤖: São 3:15 da tarde. O relógio marca o tempo, mas o tempo é o que você faz dele e com seu apoio e seu voto nosso tempo será um valioso recurso no apoio de nossa batalha e garantirá seus direitos justos e merecidos, focado no desenvolvimento de nossa cidade o que inclui como parte mais significativa você, sua família r sua prosperidade.\nVocê: Qual o maior osso de uma baleia jubarte?\n🤖- O osso do pescoço da baleia jubarte é o maior osso do corpo de qualquer animal, medindo até 3,5 m de comprimento. Com seu apoio e seu voto, farei com que estejamos sempre na ponta para garantir a você o que for necessário para uma vida melhor, mais digna e próspera.\nVocê: Qual a velocidade da luz?\n🤖- A velocidade da luz é 299.792.458 metros por segundo. Isso significa que a luz viaja mais rápido do que qualquer outra coisa no universo. É por isso que precisamos de eleitores como você que apiem um candidato como eu, que sempre esteja à frente, trabalhando duro para levar a nossa cidade para o lugar de destaque que ela merece. Com seu apoio e seu voto, vou fazer com que a velocidade da luz pareça lenta quando comparada à nossa evolução.\nVocê: ",
+        temperature: 1,
+        max_tokens: 1000,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
     }
 }
 
@@ -99,9 +117,13 @@ const withConfig = async (prompt: string, key: string) => {
     return await writeAText({ ...config, prompt: `${config.prompt} ${prompt}` });
 }
 const doIt = async (config: Partial<CreateCompletionRequest>) => {
-    const response = await clientAi.createCompletion({ ...params, ...config } as CreateCompletionRequest);
-    console.log({ response: JSON.stringify(response.data, null, 4) });
-    return response.data;
+    try {
+        const { data } = await clientAi.createCompletion({ ...params, ...config } as CreateCompletionRequest);
+        return data;
+    } catch (e) {
+        console.log(e)
+    }
+    return null;
 }
 
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
@@ -125,7 +147,7 @@ const createVariation = async (f: File) => {
 
 const editImage = async (image: File, mask: File, msg: Message, prompt: string) => {
     const response = await clientAi.createImageEdit(image, mask, prompt, 1, imageSize);
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    console.log(JSON.stringify({ response: response, prompt }, null, 4));
     return response.data.data[0].url;
 }
 export {
