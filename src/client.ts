@@ -25,6 +25,8 @@ import Contexts, { Context } from './context';
 import { CompressionType } from '@aws-sdk/client-s3';
 import CommandManager from './commands-manager';
 import MessagesManager from './messages-manager';
+import { Database } from 'firebase-admin/database';
+import { Storage } from 'firebase-admin/storage';
 
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
@@ -42,7 +44,8 @@ const client = new Client({
     puppeteer: puppeteerConfig
 });
 
-let db = null;
+let db: Database = null;
+let storage: Storage = null;
 
 const toMB = (bytes: number) => bytes / (1024 ** 2);
 
@@ -50,12 +53,20 @@ const backup = async (msg: Message) => {
 
     if (!db) return;
     const ref = db.ref('bee-bot');
-    let media;
+    let media: MessageMedia;
     if (msg.hasMedia) {
         media = await msg.downloadMedia();
     }
-    const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg, media })));
-    await ref.child('messages').push().set(prepared);
+    const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg })));
+    const allMessagesRef = await ref.child('messages');
+    const msgRef = await allMessagesRef.push(prepared);
+
+    if (!storage || !media) return;
+    const f = await storage.bucket().file(media.filename ?? msgRef.key);
+    const url = f.cloudStorageURI;
+    await f.save(media.data, { contentType: media.mimetype });
+    await allMessagesRef.child(msgRef.key).update({ mediaUrl: url });
+
 }
 
 const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
@@ -485,12 +496,12 @@ const readToMe = async (msg: Message, shouldAnswer = true) => {
             return transcription;
         });
     }
-    return '';
+    return;
 };
 
 
 
-const createATextDirectly = async (msg: Message, prompt: any) => {
+const createATextDirectly = async (msg: Message, prompt: string) => {
     const result = await writeAText({ stop: ['stop'], prompt });
     const answer = result?.choices?.[0]?.text;
     if (answer) {
@@ -512,8 +523,8 @@ const createATextForConfig = async (msg: Message, prompt: any, config: string, s
 };
 
 
-const responseWithTextDirectly = async (prompt: any) => {
-    const result = await writeAText({ stop: ['stop'], prompt });
+const responseWithTextDirectly = async (prompt: string) => {
+    const result = await writeAText({ stop: ['stop', '\n🤖'], prompt, max_tokens: prompt?.length + 495 });
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
@@ -759,6 +770,7 @@ const funcSelector: Record<string, any> = {
     'sandro': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
+    'om': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
     'desenha': async (msg: Message, prompt: any[]) => await desenha(msg, prompt?.join(' ')),
     'add': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
     'remove': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
@@ -824,7 +836,7 @@ const isCommand = (msg: { body: string; }) => {
     if (isNotString(msg)) return false;
     return commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
 }
-const isDiga = (msg: { body: any; }) => {
+const isDiga = (msg: Message) => {
     if (isNotString(msg)) return false;
     const msgBody = msg.body?.toLowerCase();
     return (msgBody.startsWith('diga') || msgBody.startsWith('fale') || msgBody.startsWith('comente') || msgBody.startsWith('descreva') || msgBody.startsWith('explique') || msgBody.startsWith('bibot'));
@@ -936,23 +948,31 @@ client.on('message_create', async msg => {
     // }
     await protectFromError(async () => {
         await backup(msg);
-        // try {
+        try {
 
-        //     if (!!msg.fromMe) {
-        //         console.log({ type: msg.type });
-        //         const message = await readToMe(msg);
-        //         if (message) {
-        //             console.log({ message });
+            if (!!msg.fromMe) {
+                console.log({ type: msg.type });
+                let message;
+                const songTypes = ['VOICE', 'PTT', 'AUDIO']
+                if (songTypes.includes(msg.type?.toUpperCase())) {
+                    message = await readToMe(msg, false);
+                } else {
+                    const [, params] = extractExecutionInfo(msg);
+                    message = params.join(' ');
+                }
 
-        //             if (isDiga({ body: message })) {
-        //                 return await createAudioDirectly(msg, message);
-        //             }
-        //         }
-        //     }
+                if (message) {
+                    console.log({ message });
+                    if (isDiga(msg)) {
+                        return await createAudioDirectly(msg, message);
+                    }
+                }
+            }
 
-        // } catch (err) {
-        //     console.log({ 'writing error': err });
-        // }
+
+        } catch (err) {
+            console.log({ 'writing error': err });
+        }
 
         if (canExecuteCommand(msg)) {
             await runCommand(msg);
@@ -967,13 +987,13 @@ client.on('message_create', async msg => {
             });
         }
 
-        if (isSafe(msg)) {
-            if (msg.type == MessageTypes.TEXT) {
-                await protectFromError(async () => {
-                    await funcSelector['💖'](msg, [msg.body], '💖 ');
-                });
-            }
-        }
+        // if (isSafe(msg)) {
+        //     if (msg.type == MessageTypes.TEXT) {
+        //         await protectFromError(async () => {
+        //             await funcSelector['💖'](msg, [msg.body], '💖 ');
+        //         });
+        //     }
+        // }
     });
 });
 
@@ -1010,6 +1030,7 @@ const prepareJsonToFirebase = (obj: Record<string, any>) => {
 const run = async () => {
     const { admin } = await dbConfig()
     db = admin.database();
+    storage = admin.storage();
     await client.initialize();
     appData.defaultSteps = {
         'open_context': openContext,
