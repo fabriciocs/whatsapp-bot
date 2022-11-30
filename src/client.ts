@@ -14,7 +14,8 @@ import ClassMessage from 'whatsapp-web.js/src/structures/Message';
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
 
-import { createVariation, editImage, giveMeImage, withConfig, writeAText } from './ai';
+import OpenAIManager, { createVariation, editImage, giveMeImage, withConfig, writeAText } from './ai';
+import CurrierModel from './currier';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
 import { getVid } from './xv';
@@ -27,6 +28,7 @@ import CommandManager from './commands-manager';
 import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
+import Wikipedia from './wiki';
 
 const myId = '120363044726737866@g.us';
 const leiaId = '551140030407@c.us';
@@ -157,8 +159,18 @@ const buttons = [
 
 
 
-const listMsgs = async (msg: Message, size: string | number) => {
+const listMsgs = async (msg: Message, size: string | number, params = []) => {
     const msgs = await appData?.msgs?.filterByFrom(msg.to, +size);
+    const msgKeys = Object.keys(msgs) ?? [];
+    if (params.length && msgKeys.length) {
+        const joined = msgKeys.reduce((acc, upKey) => {
+            const msg = msgs[upKey];
+            return Object.keys(msg)?.filter(key => params.includes(key))?.reduce((acc, key) => {
+                return `${acc}${msg[key]}\n`;
+            }, acc);
+        }, "");
+        await sendAnswer(msg, joined);
+    }
     await sendAsJsonDocument({ msgs });
 }
 
@@ -728,18 +740,25 @@ const reloadMedia = async (msg: Message, id: string) => {
         }
     }
 }
+
+const curie = new CurrierModel(new OpenAIManager().getClient());
+const wikipedia = new Wikipedia();
 const funcSelector: Record<string, any> = {
     '-': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
-    'ultimas': async (msg: Message, [size]: any) => await listMsgs(msg, size),
+    'ultimas': async (msg: Message, [size, ...params]: any) => await listMsgs(msg, size, params),
     'xv': async (msg: Message, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
     'que?': async (msg: Message) => await showSimpleInfo(msg),
     'quem?': async (msg: Message) => await detalhes(msg),
     '--h': async (msg: Message) => await helpMsg(msg),
     'escreve': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
+    '✏': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
     'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
     'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'key': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await curie.keyPoints(prompt?.join(' '))),
+    'keyw': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await curie.keyWords(prompt?.join(' '))),
+    'wiki': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await wikipedia.sumary(prompt?.join(','))),
     'demostenes': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
     'maru': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
     'deivid': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),

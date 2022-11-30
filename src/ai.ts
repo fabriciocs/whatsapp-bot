@@ -1,11 +1,17 @@
 import { Configuration, CreateCompletionRequest, OpenAIApi } from 'openai';
 import { Message } from 'whatsapp-web.js';
 
-const imageSize = '1024x1024';
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
 const clientAi = new OpenAIApi(configuration);
+export default class OpenAIManager {
+    public getClient(): OpenAIApi {
+        return clientAi;
+    }
+}
+const imageSize = '1024x1024';
+
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
     temperature: 1,
