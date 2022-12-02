@@ -60,7 +60,7 @@ const backup = async (msg: Message) => {
         media = await msg.downloadMedia();
     }
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg })));
-    const allMessagesRef = await ref.child('messages');
+    const allMessagesRef = await ref.child(`messages/${msg.from.replace(/\D+/gm, '')}`);
     const msgRef = await allMessagesRef.push(prepared);
 
     if (!storage || !media) return;
@@ -215,6 +215,7 @@ const showSimpleInfo = async (msg: Message) => {
             return await showSimpleInfo(await quotedMsg.reload());
         }
     }
+    //melhore o código abaixo utilizando funções não assíncronas
     try {
         await protectFromError(async () => {
             await sendAsJsonDocument({ msg, chat: await msg.getChat(), contact: await msg.getContact() });
@@ -370,28 +371,28 @@ const searchByChassiDf = async (msg: Message, chassi: any) => {
 }
 const searchByLicensePlate = async (msg: Message, placa: any, full = false) => {
     try {
-        let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
-        if (full) {
-            await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
-        }
-        const chassi = vehicle?.data?.extra?.chassi;
-        const uf = vehicle?.data?.uf;
+        // let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
+        // if (full) {
+        //     await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
+        // }
+        const chassi = placa;
+        const uf = 'GO';
         if (chassi) {
             try {
                 if (uf === 'GO') {
                     await searchByChassiGo(msg, chassi);
                 }
-                if (uf === 'DF') {
-                    await searchByChassiDf(msg, chassi);
-                }
+                // if (uf === 'DF') {
+                //     await searchByChassiDf(msg, chassi);
+                // }
 
                 // const extra = await axios.get(`https://www.detran.go.gov.br/psw/rest/gravame?chassi=${chassi}`);
                 // await client.sendMessage(msg.from, JSON.stringify(extra?.data ?? {}, null, 4));
             } catch (err) {
                 console.log({ extra: err });
                 await client.sendMessage(msg.to, jsonToText(err));
-                await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
-                await sendAnswer(msg, `falha na consulta dados extras ${uf}-${chassi}`);
+                // await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
+                // await sendAnswer(msg, `falha na consulta dados extras ${uf}-${chassi}`);
             }
         }
     } catch (err) {
@@ -826,7 +827,7 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us'].concat(safeMsgIds);
+const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us'].concat(safeMsgIds);
 const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
 const codeMarker = '@run';
 
@@ -967,31 +968,31 @@ client.on('message_create', async msg => {
     // }
     await protectFromError(async () => {
         await backup(msg);
-        try {
+        // try {
 
-            if (!!msg.fromMe) {
-                console.log({ type: msg.type });
-                let message;
-                const songTypes = ['VOICE', 'PTT', 'AUDIO']
-                if (songTypes.includes(msg.type?.toUpperCase())) {
-                    message = await readToMe(msg, false);
-                } else {
-                    const [, params] = extractExecutionInfo(msg);
-                    message = params.join(' ');
-                }
+        //     if (!!msg.fromMe) {
+        //         console.log({ type: msg.type });
+        //         let message;
+        //         const songTypes = ['VOICE', 'PTT', 'AUDIO']
+        //         if (songTypes.includes(msg.type?.toUpperCase())) {
+        //             message = await readToMe(msg, false);
+        //         } else {
+        //             const [, params] = extractExecutionInfo(msg);
+        //             message = params.join(' ');
+        //         }
 
-                if (message) {
-                    console.log({ message });
-                    if (isDiga(msg)) {
-                        return await createAudioDirectly(msg, message);
-                    }
-                }
-            }
+        //         if (message) {
+        //             console.log({ message });
+        //             if (isDiga(msg)) {
+        //                 return await createAudioDirectly(msg, message);
+        //             }
+        //         }
+        //     }
 
 
-        } catch (err) {
-            console.log({ 'writing error': err });
-        }
+        // } catch (err) {
+        //     console.log({ 'writing error': err });
+        // }
 
         if (canExecuteCommand(msg)) {
             await runCommand(msg);

@@ -13,7 +13,7 @@ export default class MessagesManager {
   }
 
   async filterByFrom(from: string, size: number = 10): Promise<any> {
-    const snapshot = await this.msgsRef.orderByChild('from').equalTo(from).limitToFirst(size).once('value');
+    const snapshot = await this.msgsRef.orderByChild('timestamp').equalTo(from).limitToFirst(size).once('value');
     const msgs = snapshot.val();
     return msgs;
   }

@@ -1,7 +1,7 @@
 import { CreateCompletionRequest, CreateCompletionResponse, OpenAIApi } from "openai";
 
 export default class CurrierModel {
-    private readonly maxTokens = 233;
+    private readonly maxTokens = 1000;
     private params = {
         model: "text-curie-001",
         temperature: 0.5,
