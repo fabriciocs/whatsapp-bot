@@ -827,7 +827,7 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us'].concat(safeMsgIds);
+const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us','556493060933@c.us'].concat(safeMsgIds);
 const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
 const codeMarker = '@run';
 
