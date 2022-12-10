@@ -12,7 +12,7 @@ const getServiceAccountData = async () => {
 const dbConfig = async () => {
     const app = admin.initializeApp({
         credential: admin.credential.cert(await getServiceAccountData()),
-        databaseURL: 'https://bee-bot-auto-ans-1662763022379-default-rtdb.firebaseio.com/',
+        databaseURL: 'https://bot-4customers-default-rtdb.firebaseio.com/',
         storageBucket: process.env.BUCKET_URL
     });
     return { admin, app };

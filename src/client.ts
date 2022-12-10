@@ -2,14 +2,12 @@ import { resolve } from 'path';
 import { config as dotEnvConfig } from 'dotenv';
 dotEnvConfig({ path: resolve('.env') });
 
-import axios from 'axios';
 import * as puppeteer from 'puppeteer';
 
 import { SpeechClient, protos } from '@google-cloud/speech';
 
 import * as QRCode from 'qrcode';
 import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions, MessageTypes } from 'whatsapp-web.js';
-import ClassMessage from 'whatsapp-web.js/src/structures/Message';
 
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
@@ -30,7 +28,7 @@ import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
 import Wikipedia from './wiki';
 
-const myId = '120363044726737866@g.us';
+const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
 const appData: {
     commands?: Commands,
@@ -402,8 +400,8 @@ const searchByLicensePlate = async (msg: Message, placa: any, full = false) => {
     }
 };
 const sweetError = async (msg: Message, err: Record<string, any>) => {
-    if (msg) {
-        await sendAnswer(msg, 'Não consegui. 😂😂😂');
+    if (msg && err?.err) {
+        await sendAnswer(msg, err.err);
     }
     if (err) {
         await client.sendMessage(myId, jsonToText(err));
@@ -437,9 +435,14 @@ const queroMais = async (msg: Message) => {
     });
 
 };
-
-
-
+const ocupado = async (msg: Message, prompt: string[] = []) => {
+    if (!msg) {
+        await sweetError(msg, { err: 'sem mensagem' });
+    }
+    return await sweetTry(msg, async () => {
+        await msg.reply('já respondo, muito ocupado aqui, mas assim que eu conseguir te respondo');
+    });
+}
 // const writeToMe = async (msg: Message) => {
 //     if (!msg) {
 //         await sweetError(msg, { err: 'sem mensagem' });
@@ -471,7 +474,7 @@ const queroMais = async (msg: Message) => {
 //     client.lo
 // }
 
-const readToMe = async (msg: Message, shouldAnswer = true) => {
+const readToMe = async (msg: Message, languageCode = 'pt-BR', shouldAnswer = true) => {
     if (!msg) {
         await sweetError(msg, { err: 'sem mensagem' });
         return '';
@@ -487,7 +490,7 @@ const readToMe = async (msg: Message, shouldAnswer = true) => {
             const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
                 encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
-                languageCode: "pt-BR",
+                languageCode,
                 enableAutomaticPunctuation: true,
                 enableWordTimeOffsets: true,
                 enableWordConfidence: true,
@@ -529,7 +532,8 @@ const createATextForConfig = async (msg: Message, prompt: any, config: string, s
     const result = await withConfig(prompt, config);
     const answer = result?.choices?.[0]?.text;
     if (answer) {
-        await sendAnswer(msg, answer.replace('🤖', splitFor ?? msg?.body?.split(' ')?.[1]));
+        const response = splitFor ? answer.replace('🤖', splitFor) : answer;
+        await sendAnswer(msg, response);
     } else {
         await sendAnswer(msg, "Sem resposta!!");
     }
@@ -541,9 +545,9 @@ const responseWithTextDirectly = async (prompt: string) => {
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
-const createAudioDirectly = async (msg: Message, prompt: string) => {
+const createAudioDirectly = async (msg: Message, languageCode: string, prompt: string) => {
     const answer = await responseWithTextDirectly(prompt);
-    const content = await tellMe(answer);
+    const content = await tellMe(answer, languageCode);
     const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
     await client.sendMessage(msg.to, song);
 };
@@ -741,69 +745,75 @@ const reloadMedia = async (msg: Message, id: string) => {
         }
     }
 }
-
+const om = async (msg: Message, [first, ...prompt]: string[]) => {
+    const language = first?.split?.('::')?.shift?.();
+    return await createAudioDirectly(msg, language, [language ?? '', ...prompt ?? ['']].join(' '));
+}
+const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
 const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
 const funcSelector: Record<string, any> = {
-    '-': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    '-': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'status': async (msg: Message) => await printStatus(msg),
-    'panic': async (msg: Message, [size]: any) => await deleteMsgs(msg, size),
-    'ultimas': async (msg: Message, [size, ...params]: any) => await listMsgs(msg, size, params),
-    'xv': async (msg: Message, [page, size, ...search]: any) => await sendVid(msg, page, size, search.join(' ')),
+    'panic': async (msg: Message, [size]: string[]) => await deleteMsgs(msg, +size),
+    'ultimas': async (msg: Message, [size, ...params]: string[]) => await listMsgs(msg, size, params),
+    'xv': async (msg: Message, [page, size, ...search]: string[]) => await sendVid(msg, +page, +size, search.join(' ')),
     'que?': async (msg: Message) => await showSimpleInfo(msg),
     'quem?': async (msg: Message) => await detalhes(msg),
     '--h': async (msg: Message) => await helpMsg(msg),
-    'escreve': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
-    '✏': async (msg: Message) => await readToMe(await msg.getQuotedMessage()),
-    'placa': async (msg: Message, [placa, full]: any) => await searchByLicensePlate(msg, placa, full),
-    'elon_musk': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'key': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await curie.keyPoints(prompt?.join(' '))),
-    'keyw': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await curie.keyWords(prompt?.join(' '))),
-    'wiki': async (msg: Message, prompt: any[]) => await sendAnswer(msg, await wikipedia.sumary(prompt?.join(','))),
-    'demostenes': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
-    'maru': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
-    'deivid': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
-    'juarez': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
-    'sextou': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
-    '🍻': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
-    '💖': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'amor', splitFor),
-    '😔': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
-    '😭': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
-    'triste': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
-    'meupastor': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
-    'wenderson': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
-    'pastor': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
-    'abrão': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
-    'danilo': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    'renato': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    'dinho': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    '🚚': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    '🚜': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    'boso': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    'agro': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    'wellen-beu': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-    '🛋': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
-    'pre-venda': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
-    'gean': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
-    'carla': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
-    'wdany': async (msg: Message, prompt: any[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'constelacao-familiar', splitFor),
-    'sandro': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'poliana': async (msg: Message, prompt: any[]) => await createATextDirectly(msg, prompt?.join(' ')),
-    'diga': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
-    'om': async (msg: Message, prompt: any[]) => await createAudioDirectly(msg, prompt?.join(' ')),
-    'desenha': async (msg: Message, prompt: any[]) => await desenha(msg, prompt?.join(' ')),
-    'add': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
-    'remove': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
-    'cmd': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).executeCommand(msg, prompt?.join(' ')),
-    'cmd-h': async (msg: Message, prompt: any[]) => await new CommandManager(appData, client).listCommands(msg),
-    'redesenha': async (msg: Message, prompt: any[]) => await redesenha(msg),
-    'edita': async (msg: Message, prompt: any[]) => await edita(msg, prompt?.join(' ')),
+    escreve,
+    '✏': escreve,
+    'placa': async (msg: Message, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
+    'elon_musk': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'key': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyPoints(prompt?.join(' '))),
+    'keyw': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyWords(prompt?.join(' '))),
+    'wiki': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await wikipedia.sumary(prompt?.join(','))),
+    'demostenes': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
+    'maru': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
+    'deivid': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
+    'juarez': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
+    'sextou': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
+    '🍻': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
+    '💖': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'amor', splitFor),
+    '😔': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
+    '😭': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
+    '😢': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
+    'triste': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
+    'meupastor': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
+    'wenderson': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
+    'pastor': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
+    'abrão': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'pastor', splitFor),
+    'danilo': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'renato': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'dinho': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    '🚚': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    '🚜': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'boso': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'agro': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'wellen-beu': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    '🛋': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
+    'pre-venda': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
+    'gean': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
+    'carla': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
+    'wdany': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'constelacao-familiar', splitFor),
+    'sandro': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'poliana': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    'diga': om,
+    om,
+    'desenha': async (msg: Message, prompt: string[]) => await desenha(msg, prompt?.join(' ')),
+    'add': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
+    'remove': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
+    'cmd': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).executeCommand(msg, prompt?.join(' ')),
+    'cmd-h': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).listCommands(msg),
+    'redesenha': async (msg: Message, prompt: string[]) => await redesenha(msg),
+    'edita': async (msg: Message, prompt: string[]) => await edita(msg, prompt?.join(' ')),
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
     'leia': async (msg: Message) => await startChat({ client, msg }),
     'fake': async (msg: Message) => await fakePersonAndCar(msg),
     'reload': async (msg: Message, [prompt]) => await reloadMedia(msg, prompt),
     'err': async (msg: Message) => await sendAnswer(msg, `Comando *${msg?.body.split(' ')?.[1]}* não encontrado`),
-    'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload()))
+    'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
+    't': async (msg: Message, prompt: string[]) => await ocupado(msg, prompt),
 }
 
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
@@ -827,9 +837,23 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us','556493060933@c.us'].concat(safeMsgIds);
+const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us', '556493060933@c.us', '556499918954@c.us', '556496252626@c.us'].concat(safeMsgIds);
 const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
 const codeMarker = '@run';
+const cmdMarker = '-';
+
+const chatConfig = {
+    '556496252626': {
+        commands: ['💖'],
+        isAutomatic: true,
+        commandMarkers: commandMarkers
+    },
+    '556493060933': {
+        commands: ['🍻'],
+        isAutomatic: true,
+        commandMarkers: commandMarkers
+    }
+}
 
 const isSafe = (msg: Message) => safeMsgIds.includes(msg.from);
 
@@ -844,24 +868,37 @@ const isLicensePlate = (msg: Message) => {
 }
 
 
+
+
 const fastAnswer = {
 }
 
 const sendWaiting = async (msg: { from: string; }) => {
     await client.sendMessage(msg.from, 'Executando, um momento por favor');
 };
-const isNotString = (msg: { body: any; }) => typeof msg?.body !== "string";
+const isNotString = (msg: Message) => typeof msg?.body !== "string";
 const isToMe = (msg: { to: string; }) => msg.to === myId;
-const isCommand = (msg: { body: string; }) => {
+const isCommand = (msg: Message, isAutomatic = false) => {
     if (isNotString(msg)) return false;
-    return commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
+    return isAutomatic || commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
+}
+
+const isConfig = (msg: Message) => {
+    if (isNotString(msg)) return false;
+    const number = msg.from.replace(/\D/gm, '');
+    const config = chatConfig[number];
+    if (!config) return false;
+    const unique = config.commands.length === 1;
+    return config.isAutomatic || unique || (config.commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0 && config.commands.filter(command => msg?.body?.split(' ')?.[1] === command).length > 0);
 }
 const isDiga = (msg: Message) => {
     if (isNotString(msg)) return false;
     const msgBody = msg.body?.toLowerCase();
-    return (msgBody.startsWith('diga') || msgBody.startsWith('fale') || msgBody.startsWith('comente') || msgBody.startsWith('descreva') || msgBody.startsWith('explique') || msgBody.startsWith('bibot'));
+    const instructions = ['diga', 'fale', 'comente', 'descreva', 'explique', 'resuma', 'bibot', 'robo', 'robô', 'bimbim', 'bee-bot', 'beebot'];
+    return instructions.filter(instruction => msgBody.startsWith(instruction)).length > 0;
+
 }
-const isCode = (msg: { body: string; }) => {
+const isCode = (msg: Message) => {
     if (isNotString(msg)) return false;
     return msg.body.startsWith(codeMarker);
 }
@@ -883,16 +920,17 @@ const canExecuteCode = (msg: Message) => {
 }
 
 
+
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
-const extractExecutionInfo = (msg: Message): executionType => {
-    if (isCommand(msg)) {
-        const [, text, ...params] = msg?.body?.split(' ').filter(Boolean);
+const extractExecutionInfo = (msg: Message, isAutomatic = false): executionType => {
+    if (isCommand(msg, isAutomatic)) {
+        const [, text, ...params] = `${isAutomatic ? 'auto ' : ''}${msg?.body}`.split(' ').filter(Boolean);
         return [text, params];
     }
     if (isLicensePlate(msg)) {
         return ['placa', [msg?.body?.toUpperCase(), true]];
     }
-    return ['err', msg?.body?.split(' ').filter(Boolean)];
+    return null;
 }
 const extractCodeInfo = (msg: Message) => {
 
@@ -917,12 +955,37 @@ const runCommand = async (msg: Message) => {
     }
 }
 
-const runAutomatic = async (msg: Message, automatic) => {
+const runAutomatic = async (msg: Message) => {
     try {
-        const [text, params] = extractExecutionInfo(msg);
+        const info = extractExecutionInfo(msg, true);
+        if (!info) return;
+        const [text, params] = info;
         console.log({ text, params });
 
-        const command = funcSelector[text?.toLowerCase?.()] ?? funcSelector.err;
+        const command = funcSelector[text?.toLowerCase?.()];
+        if (!command) return;
+
+        await command(msg, params);
+
+
+    } catch (error) {
+        console.error({ error });
+        await sendAnswer(msg, 'Executado com falha');
+    }
+}
+
+const runConfig = async (msg: Message) => {
+    const number = msg.from.replace(/\D/gm, '');
+    const config = chatConfig[number];
+    if (!isConfig(msg)) return;
+    try {
+        const info = extractExecutionInfo(msg, config.isAutomatic);
+        if (!info) return;
+        const [text, params] = info;
+        console.log({ text, params });
+
+        const command = funcSelector[text?.toLowerCase?.()];
+        if (!command) return;
 
         await command(msg, params);
 
@@ -955,7 +1018,7 @@ const observable = [];//[leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
 client.on('message_create', async msg => {
-    if (msg.isForwarded && msg.fromMe) return await msg.reload();
+    if (msg.isForwarded) return await msg.reload();
     // if (isSafe(msg)) {
     //     await protectFromError(async () => {
 
@@ -967,7 +1030,8 @@ client.on('message_create', async msg => {
     //     });
     // }
     await protectFromError(async () => {
-        await backup(msg);
+
+        // await backup(msg);
         // try {
 
         //     if (!!msg.fromMe) {
@@ -993,27 +1057,23 @@ client.on('message_create', async msg => {
         // } catch (err) {
         //     console.log({ 'writing error': err });
         // }
-
+        if (!!msg.fromMe) {
+            return await runAutomatic(msg)
+        }
         if (canExecuteCommand(msg)) {
-            await runCommand(msg);
+            return await runCommand(msg);
         }
         if (canExecuteCode(msg)) {
-            await runCode(msg);
+            return await runCode(msg);
         }
 
         if (isObservable(msg)) {
-            await protectFromError(async () => {
-                await sendResponse(client, msg);
+            return await protectFromError(async () => {
+                return await sendResponse(client, msg);
             });
         }
+        await runConfig(msg);
 
-        // if (isSafe(msg)) {
-        //     if (msg.type == MessageTypes.TEXT) {
-        //         await protectFromError(async () => {
-        //             await funcSelector['💖'](msg, [msg.body], '💖 ');
-        //         });
-        //     }
-        // }
     });
 });
 

@@ -4,14 +4,14 @@ import { google } from '@google-cloud/text-to-speech/build/protos/protos';
 
 const client = new textToSpeech.TextToSpeechClient();
 
-const tellMe = async (text: string) => {
+const tellMe = async (text: string, languageCode = 'pt-BR') => {
 
   const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     // The text to synthesize
     input: { text: text?.substring(0, 5000) },
 
     // The language code and SSML Voice Gender
-    voice: { languageCode: 'pt-BR', name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' },
+    voice: { languageCode, name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' },
 
     // The audio encoding type
     audioConfig: {

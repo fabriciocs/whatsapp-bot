@@ -10,7 +10,7 @@ export default class OpenAIManager {
         return clientAi;
     }
 }
-const imageSize = '1024x1024';
+const imageSize = '256x256';
 
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
