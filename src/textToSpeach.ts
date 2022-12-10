@@ -11,7 +11,7 @@ const tellMe = async (text: string, languageCode = 'pt-BR') => {
     input: { text: text?.substring(0, 5000) },
 
     // The language code and SSML Voice Gender
-    voice: { languageCode, name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' },
+    voice: { languageCode, ssmlGender: 'MALE' },
 
     // The audio encoding type
     audioConfig: {
@@ -19,7 +19,7 @@ const tellMe = async (text: string, languageCode = 'pt-BR') => {
       "effectsProfileId": [
         "telephony-class-application"
       ],
-      "pitch": 3.2,
+      "pitch": 4.55,
       "speakingRate": 1
     }
   };

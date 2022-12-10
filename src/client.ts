@@ -7,7 +7,7 @@ import * as puppeteer from 'puppeteer';
 import { SpeechClient, protos } from '@google-cloud/speech';
 
 import * as QRCode from 'qrcode';
-import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions, MessageTypes } from 'whatsapp-web.js';
+import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions, MessageTypes, RemoteAuth } from 'whatsapp-web.js';
 
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
@@ -16,8 +16,6 @@ import OpenAIManager, { createVariation, editImage, giveMeImage, withConfig, wri
 import CurrierModel from './currier';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
-import { getVid } from './xv';
-
 import * as child_process from 'child_process';
 import Commands from './commands';
 import Contexts, { Context } from './context';
@@ -27,6 +25,8 @@ import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
 import Wikipedia from './wiki';
+import { keyReplacer, baseName } from './util';
+import SessionsManager from './sessions-manager';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -35,8 +35,10 @@ const appData: {
     contexts?: Contexts,
     msgs?: MessagesManager,
     defaultSteps?: Record<string, any>;
+    sessionManager?: SessionsManager
 } = {
 };
+
 
 const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
@@ -48,23 +50,22 @@ let db: Database = null;
 let storage: Storage = null;
 
 const toMB = (bytes: number) => bytes / (1024 ** 2);
-
 const backup = async (msg: Message) => {
 
     if (!db) return;
-    const ref = db.ref('bee-bot');
+    const ref = db.ref(baseName);
     let media: MessageMedia;
     if (msg.hasMedia) {
         media = await msg.downloadMedia();
     }
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg })));
-    const allMessagesRef = await ref.child(`${client.info.wid.user.replace(/\D+/gm,'')}/messages/${msg.from.replace(/\D+/gm, '')}`);
+    const allMessagesRef = await ref.child(`${keyReplacer(client.info.wid.user)}/messages/${keyReplacer(msg.from)}`);
     const msgRef = await allMessagesRef.push(prepared);
 
     if (!storage || !media) return;
     const f = await storage.bucket().file(media.filename ?? msgRef.key);
     const url = f.cloudStorageURI;
-    await f.save(media.data, { contentType: media.mimetype });
+    await f.save(Buffer.from(media.data, 'base64'), { contentType: media.mimetype });
     await allMessagesRef.child(msgRef.key).update({ mediaUrl: url });
 
 }
@@ -89,9 +90,10 @@ client.on('auth_failure', msg => {
 
 client.on('ready', async () => {
     console.log('READY');
-    appData.commands = new Commands(db.ref('bee-bot/commands'));
-    appData.contexts = new Contexts(db.ref('bee-bot/contexts'));
-    appData.msgs = new MessagesManager(db.ref('bee-bot/messages'));
+    appData.commands = new Commands(db.ref(`${baseName}/commands`));
+    appData.contexts = new Contexts(db.ref(`${baseName}/contexts`));
+    appData.msgs = new MessagesManager(db.ref(`${baseName}/messages`));
+    appData.sessionManager = new SessionsManager(db.ref(`${baseName}/sessions`));
 });
 
 client.on('disconnected', (reason) => {
@@ -103,57 +105,6 @@ client.on('qr', (qr) => {
         console.log(url)
     });
 });
-
-const sendVid = async (msg: { to: string; }, page = 1, size = 1, search = '') => {
-    try {
-
-        const vids = await getVid(+page, +size, search, puppeteerConfig);
-
-        await Promise.all(vids.map(async ({ high, image, url, title, low }) => {
-            const result = async (vidUrl: string) => {
-                const vidMedia = await MessageMedia.fromUrl(vidUrl);
-                const text = `${title}\n${url}\n${toMB(vidMedia.data.length).toFixed(2)}MB\n`;
-                return await client.sendMessage(msg.to, vidMedia, { caption: text, sendMediaAsDocument: true });
-            };
-            try {
-                const textImg = `Baixando o vídeo: ${title}`;
-                const imgMedia = await MessageMedia.fromUrl(image);
-                await client.sendMessage(msg.to, imgMedia, { caption: textImg });
-
-                await result(high);
-            } catch (error) {
-                console.error({ error });
-                await client.sendMessage(msg.to, 'erro na mídia');
-            }
-
-        }));
-    } catch (error) {
-        console.log({ getVidError: error });
-        throw error;
-    }
-
-};
-
-const buttons = [
-    {
-        "id": "0",
-        "displayText": "teste1",
-        "subtype": "quick_reply",
-        "selectionId": { "eventName": "inform" }
-    },
-    {
-        "id": "1",
-        "displayText": "teste2",
-        "subtype": "quick_reply",
-        "selectionId": { "eventName": "event-rg" }
-    },
-    {
-        "id": "2",
-        "displayText": "teste3",
-        "subtype": "quick_reply",
-        "selectionId": { "eventName": "event-cnh" }
-    }
-];
 
 
 
@@ -479,12 +430,11 @@ const readToMe = async (msg: Message, languageCode = 'pt-BR', shouldAnswer = tru
         await sweetError(msg, { err: 'sem mensagem' });
         return '';
     }
-    const songTypes = ['VOICE', 'PTT', 'AUDIO']
+
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
-            const rel = await msg.reload();
-            if (!rel) return await msg.forward(myId);
-            const audio = await (rel ?? msg).downloadMedia();
+            if (!msg.hasMedia) return;
+            const audio = await msg.downloadMedia();
             const speechClient = new SpeechClient();
             const content = Buffer.from(audio.data, 'base64');
             const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
@@ -496,7 +446,6 @@ const readToMe = async (msg: Message, languageCode = 'pt-BR', shouldAnswer = tru
                 enableWordConfidence: true,
                 audioChannelCount: 0,
                 enableSeparateRecognitionPerChannel: false,
-                alternativeLanguageCodes: [],
                 maxAlternatives: 0,
                 profanityFilter: false,
                 speechContexts: [],
@@ -545,12 +494,14 @@ const responseWithTextDirectly = async (prompt: string) => {
     const answer = result?.choices?.[0]?.text;
     return answer;
 };
+
 const createAudioDirectly = async (msg: Message, languageCode: string, prompt: string) => {
     const answer = await responseWithTextDirectly(prompt);
-    const content = await tellMe(answer, languageCode);
-    const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
-    await client.sendMessage(msg.to, song);
+    await onlySay(msg, languageCode, answer);
 };
+
+
+
 const sendSafeMsg = async (msg: Message) => {
     const contact = await client.getContactById(safeMsgIds.pop());
     const chat = await contact.getChat();
@@ -745,10 +696,26 @@ const reloadMedia = async (msg: Message, id: string) => {
         }
     }
 }
-const om = async (msg: Message, [first, ...prompt]: string[]) => {
-    const language = first?.split?.('::')?.shift?.();
-    return await createAudioDirectly(msg, language, [language ?? '', ...prompt ?? ['']].join(' '));
+
+const extractLanguageAndAnswer = ([first, ...prompt]: string[]) => {
+    const language = first?.split?.('::')?.[0];
+    const answer = [!language ? first : '', ...prompt].join(' ');
+    return { language, answer };
 }
+const om = async (msg: Message, prompt: string[]) => {
+    const { language, answer } = extractLanguageAndAnswer(prompt);
+    return await createAudioDirectly(msg, language, answer);
+}
+const onlySay = async (msg: Message, languageCode: string, answer: string) => {
+    const content = await tellMe(answer, languageCode);
+    const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
+    await client.sendMessage(msg.to, song);
+}
+const voice = async (msg: Message, prompt: string[]) => {
+    const { language, answer } = extractLanguageAndAnswer(prompt);
+    return await onlySay(msg, language, answer);
+}
+
 const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
 const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
@@ -757,7 +724,6 @@ const funcSelector: Record<string, any> = {
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: string[]) => await deleteMsgs(msg, +size),
     'ultimas': async (msg: Message, [size, ...params]: string[]) => await listMsgs(msg, size, params),
-    'xv': async (msg: Message, [page, size, ...search]: string[]) => await sendVid(msg, +page, +size, search.join(' ')),
     'que?': async (msg: Message) => await showSimpleInfo(msg),
     'quem?': async (msg: Message) => await detalhes(msg),
     '--h': async (msg: Message) => await helpMsg(msg),
@@ -800,6 +766,9 @@ const funcSelector: Record<string, any> = {
     'poliana': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'diga': om,
     om,
+    '🔈': voice,
+    voice,
+    'fala': voice,
     'desenha': async (msg: Message, prompt: string[]) => await desenha(msg, prompt?.join(' ')),
     'add': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
     'remove': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
@@ -836,9 +805,11 @@ const logTotalInfo = async (msg: Message) => {
     await sendAsJsonDocument(list);
 }
 
+const songTypes = ['VOICE', 'PTT', 'AUDIO'];
 const safeMsgIds = ['556499736478@c.us'];
 const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us', '556493060933@c.us', '556499918954@c.us', '556496252626@c.us'].concat(safeMsgIds);
 const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
+const quoteMarkers = ['<add/>'];
 const codeMarker = '@run';
 const cmdMarker = '-';
 
@@ -922,6 +893,21 @@ const canExecuteCode = (msg: Message) => {
 
 
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
+
+const readRealCommandText = async (msg: Message) => {
+    const quotedMarkFound = quoteMarkers.find(quoteMarker => !!msg?.body?.includes(quoteMarker));
+    let newBody = msg?.body;
+    if (!!quotedMarkFound && !!newBody) {
+        const quotedMsg = await msg.getQuotedMessage();
+        if (quotedMsg?.body?.trim?.()) {
+            newBody = msg.body.replace(quotedMarkFound, quotedMsg.body);
+        }
+    }
+    msg.body = newBody;
+    return msg;
+}
+
+
 const extractExecutionInfo = (msg: Message, isAutomatic = false): executionType => {
     if (isCommand(msg, isAutomatic)) {
         const [, text, ...params] = `${isAutomatic ? 'auto ' : ''}${msg?.body}`.split(' ').filter(Boolean);
@@ -939,6 +925,7 @@ const extractCodeInfo = (msg: Message) => {
 }
 
 const isAuthorized = (msg: Message) => !!msg.fromMe || !!external.includes(msg.from);
+
 const runCommand = async (msg: Message) => {
     try {
         const [text, params] = extractExecutionInfo(msg);
@@ -1017,8 +1004,8 @@ const runCode = async (msg: Message) => {
 const observable = [];//[leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
-client.on('message_create', async msg => {
-    if (msg.isForwarded) return await msg.reload();
+client.on('message_create', async receivedMsg => {
+    if (receivedMsg.isForwarded) return await receivedMsg.reload();
     // if (isSafe(msg)) {
     //     await protectFromError(async () => {
 
@@ -1031,7 +1018,8 @@ client.on('message_create', async msg => {
     // }
     await protectFromError(async () => {
 
-        // await backup(msg);
+        await backup(receivedMsg);
+        const msg = await readRealCommandText(receivedMsg);
         // try {
 
         //     if (!!msg.fromMe) {
@@ -1091,7 +1079,7 @@ const sendAsJsonDocument = async (obj: Record<string, any>) => {
 const prepareJsonToFirebase = (obj: Record<string, any>) => {
     if (!obj) return null;
 
-    const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
+
 
     return Object.keys(obj).reduce((acc, fullKey) => {
         const key = keyReplacer(fullKey);

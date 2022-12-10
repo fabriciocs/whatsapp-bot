@@ -22,7 +22,6 @@
     "@google-cloud/text-to-speech": "^4.0.3",
     "@google-cloud/translate": "^7.0.3",
     "@google-cloud/vision": "^3.0.0",
-    "@rodrigogs/xvideos": "^1.3.0",
     "axios": "^1.1.2",
     "dalle-node": "^1.0.8",
     "dotenv": "^16.0.1",
