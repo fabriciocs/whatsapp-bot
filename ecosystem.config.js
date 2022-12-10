@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
-        name: 'bee-bot',
-        script: './server.js',
+        name: 'runner-whats',
+        script: './dist/client.js',
         watch: false,
         listen_timeout: 10000
     }],
