@@ -58,7 +58,7 @@ const backup = async (msg: Message) => {
         media = await msg.downloadMedia();
     }
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg })));
-    const allMessagesRef = await ref.child(`messages/${msg.from.replace(/\D+/gm, '')}`);
+    const allMessagesRef = await ref.child(`${client.info.wid.user.replace(/\D/gm,'')}/messages/${msg.from.replace(/\D+/gm, '')}`);
     const msgRef = await allMessagesRef.push(prepared);
 
     if (!storage || !media) return;
