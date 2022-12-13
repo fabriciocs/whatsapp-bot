@@ -25,8 +25,10 @@ import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
 import Wikipedia from './wiki';
-import { keyReplacer, baseName } from './util';
+import { keyReplacer, baseName, ChatConfigType, commandMarkers } from './util';
 import SessionsManager from './sessions-manager';
+import ChatConfigsManager from './chat-configs-manager';
+import CommandConfigsManager from './command-configs-manager';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -35,7 +37,9 @@ const appData: {
     contexts?: Contexts,
     msgs?: MessagesManager,
     defaultSteps?: Record<string, any>;
-    sessionManager?: SessionsManager
+    sessionManager?: SessionsManager;
+    chatConfigsManager?: ChatConfigsManager;
+    commandConfigsManager?: CommandConfigsManager;
 } = {
 };
 
@@ -70,8 +74,12 @@ const backup = async (msg: Message) => {
 
 }
 
-const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
-    await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
+const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}, isAudio = false) => {
+    if (isAudio) {
+        return await onlySay(msg, null, `${content}`);
+    } else {
+        await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
+    }
 }
 
 
@@ -94,6 +102,8 @@ client.on('ready', async () => {
     appData.contexts = new Contexts(db.ref(`${baseName}/contexts`));
     appData.msgs = new MessagesManager(db.ref(`${baseName}/messages`));
     appData.sessionManager = new SessionsManager(db.ref(`${baseName}/sessions`));
+    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${baseName}/chatConfigs`));
+    appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${baseName}/commandConfigs`));
 });
 
 client.on('disconnected', (reason) => {
@@ -161,7 +171,7 @@ const showSimpleInfo = async (msg: Message) => {
     if (msg.hasQuotedMsg) {
         let quotedMsg = await msg.getQuotedMessage();
         if (quotedMsg) {
-            return await showSimpleInfo(await quotedMsg.reload());
+            return await showSimpleInfo(quotedMsg);
         }
     }
     //melhore o código abaixo utilizando funções não assíncronas
@@ -477,7 +487,7 @@ const createATextDirectly = async (msg: Message, prompt: string) => {
 };
 
 
-const createATextForConfig = async (msg: Message, prompt: any, config: string, splitFor: string = null) => {
+const createATextForConfig = async (msg: Message, prompt: any, config: string, splitFor: string = null, isAudio = false) => {
     const result = await withConfig(prompt, config);
     const answer = result?.choices?.[0]?.text;
     if (answer) {
@@ -698,10 +708,11 @@ const reloadMedia = async (msg: Message, id: string) => {
 }
 
 const extractLanguageAndAnswer = ([first, ...prompt]: string[]) => {
-    const language = first?.split?.('::')?.[0];
+    const language = first?.includes?.('::') ? first.replace('::', '') : null;
     const answer = [!language ? first : '', ...prompt].join(' ');
     return { language, answer };
 }
+
 const om = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await createAudioDirectly(msg, language, answer);
@@ -736,11 +747,11 @@ const funcSelector: Record<string, any> = {
     'wiki': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await wikipedia.sumary(prompt?.join(','))),
     'demostenes': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
     'maru': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
-    'deivid': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
+    'deivid': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', '*Pré atendimento inteligente*'),
     'juarez': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
     'sextou': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
     '🍻': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
-    '💖': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'amor', splitFor),
+    '💖': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'amor', '*bimbim*'),
     '😔': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
     '😭': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
     '😢': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'triste', splitFor),
@@ -783,7 +794,33 @@ const funcSelector: Record<string, any> = {
     'err': async (msg: Message) => await sendAnswer(msg, `Comando *${msg?.body.split(' ')?.[1]}* não encontrado`),
     'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
     't': async (msg: Message, prompt: string[]) => await ocupado(msg, prompt),
+    'bind': async (msg: Message, prompt: string[]) => await bindChatConfig(msg, prompt),
+    'unbind': async (msg: Message, prompt: string[]) => await unbindChatConfig(msg),
+    'admin-add': async (msg: Message, prompt: string[]) => await addAdmin(msg),
+    'admin-del': async (msg: Message, prompt: string[]) => await delAdmin(msg),
 }
+const addAdmin = async (msg: Message) => {
+    await appData.commandConfigsManager.save(msg.to);
+}
+
+const delAdmin = async (msg: Message) => {
+    await appData.commandConfigsManager.delete(msg.to);
+}
+
+const bindChatConfig = async (msg: Message, prompt: string[]) => {
+    const from = msg.to;
+    const isAutomatic = prompt?.[0] === 'auto';
+    const commands = prompt?.[1]?.split(',')?.map((cmd: string) => cmd.trim());
+    await appData.chatConfigsManager.saveConfig(from, commands, isAutomatic);
+
+}
+
+const unbindChatConfig = async (msg: Message) => {
+    const from = msg.to;
+    await appData.chatConfigsManager.deleteConfig(from);
+
+}
+
 
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
     if (clean.hasMedia) {
@@ -808,23 +845,44 @@ const logTotalInfo = async (msg: Message) => {
 const songTypes = ['VOICE', 'PTT', 'AUDIO'];
 const safeMsgIds = ['556499736478@c.us'];
 const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us', '556493060933@c.us', '556499918954@c.us', '556496252626@c.us'].concat(safeMsgIds);
-const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot '];
-const quoteMarkers = ['<add/>'];
+
+const quoteMarkers = ['<add/>', '<add>', '<add />', '<add >', '</>'];
 const codeMarker = '@run';
 const cmdMarker = '-';
+const isUnique = (config) => config.commands.length === 1;
 
-const chatConfig = {
-    '556496252626': {
-        commands: ['💖'],
-        isAutomatic: true,
-        commandMarkers: commandMarkers
-    },
-    '556493060933': {
-        commands: ['🍻'],
-        isAutomatic: true,
-        commandMarkers: commandMarkers
-    }
-}
+// const chatConfig = {
+//     '556496252626': {
+//         commands: ['💖'],
+//         isAutomatic: false,
+//         commandMarkers: commandMarkers,
+//         isUnique: () => isUnique(chatConfig['556496252626'])
+//     },
+//     '556493060933': {
+//         commands: ['🍻'],
+//         isAutomatic: false,
+//         commandMarkers: commandMarkers,
+//         isUnique: () => isUnique(chatConfig['556493060933'])
+//     },
+//     '556492997625': {
+//         commands: ['-'],
+//         isAutomatic: false,
+//         commandMarkers: commandMarkers,
+//         isUnique: () => isUnique(chatConfig['556492997625'])
+//     },
+//     '556492026971': {
+//         commands: Object.keys(funcSelector),
+//         isAutomatic: true,
+//         commandMarkers: commandMarkers,
+//         isUnique: () => isUnique(chatConfig['556492026971'])
+//     },
+//     '556492995244': {
+//         commands: ['deivid'],
+//         isAutomatic: true,
+//         commandMarkers: commandMarkers,
+//         isUnique: () => isUnique(chatConfig['556492995244'])
+//     }
+// }
 
 const isSafe = (msg: Message) => safeMsgIds.includes(msg.from);
 
@@ -849,18 +907,23 @@ const sendWaiting = async (msg: { from: string; }) => {
 };
 const isNotString = (msg: Message) => typeof msg?.body !== "string";
 const isToMe = (msg: { to: string; }) => msg.to === myId;
-const isCommand = (msg: Message, isAutomatic = false) => {
+const isCommand = (msg: Message) => {
+
     if (isNotString(msg)) return false;
-    return isAutomatic || commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
+    return commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0;
 }
 
-const isConfig = (msg: Message) => {
-    if (isNotString(msg)) return false;
-    const number = msg.from.replace(/\D/gm, '');
-    const config = chatConfig[number];
-    if (!config) return false;
-    const unique = config.commands.length === 1;
-    return config.isAutomatic || unique || (config.commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0 && config.commands.filter(command => msg?.body?.split(' ')?.[1] === command).length > 0);
+const getConfig = async (msg: Message) => {
+    if (isNotString(msg)) return;
+    const config = await appData.chatConfigsManager.getByNumber(msg.from);
+    if (!config) return;
+
+    if (config.isAutomatic
+        || (config.commandMarkers.filter(commandMarker => msg?.body?.startsWith(commandMarker)).length > 0 && config.commands.filter(command => msg?.body?.split(' ')?.[1] === command).length > 0)
+    ) {
+        return config;
+    }
+    return;
 }
 const isDiga = (msg: Message) => {
     if (isNotString(msg)) return false;
@@ -895,6 +958,10 @@ const canExecuteCode = (msg: Message) => {
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
 
 const readRealCommandText = async (msg: Message) => {
+    const songTypes = ['VOICE', 'PTT', 'AUDIO']
+    if (songTypes.includes(msg.type?.toUpperCase())) {
+        return await readRealCommandAudio(msg);
+    }
     const quotedMarkFound = quoteMarkers.find(quoteMarker => !!msg?.body?.includes(quoteMarker));
     let newBody = msg?.body;
     if (!!quotedMarkFound && !!newBody) {
@@ -904,13 +971,22 @@ const readRealCommandText = async (msg: Message) => {
         }
     }
     msg.body = newBody;
-    return msg;
+    return { msg, audio: false };
 }
 
 
-const extractExecutionInfo = (msg: Message, isAutomatic = false): executionType => {
-    if (isCommand(msg, isAutomatic)) {
-        const [, text, ...params] = `${isAutomatic ? 'auto ' : ''}${msg?.body}`.split(' ').filter(Boolean);
+const readRealCommandAudio = async (msg: Message) => {
+    msg.body = await readToMe(msg, null, false);
+    return { msg, audio: true };
+}
+const bodyToParams = (msg: Message) => {
+    if (isNotString(msg)) return [];
+    return msg.body?.split(' ').filter(Boolean);
+}
+
+const extractExecutionInfo = (msg: Message, config?: ChatConfigType): executionType => {
+    if (isCommand(msg)) {
+        const [, text, ...params] = `${config?.isAutomatic ? 'auto ' : ''}${config?.isUnique?.() ? `${config?.commands?.[0]} ` : ''}${msg?.body}`.split(' ').filter(Boolean);
         return [text, params];
     }
     if (isLicensePlate(msg)) {
@@ -928,7 +1004,7 @@ const isAuthorized = (msg: Message) => !!msg.fromMe || !!external.includes(msg.f
 
 const runCommand = async (msg: Message) => {
     try {
-        const [text, params] = extractExecutionInfo(msg);
+        const [text, params] = extractExecutionInfo(msg, null);
         console.log({ text, params });
 
         const command = funcSelector[text?.toLowerCase?.()] ?? funcSelector.err;
@@ -942,31 +1018,11 @@ const runCommand = async (msg: Message) => {
     }
 }
 
-const runAutomatic = async (msg: Message) => {
+const runConfig = async (msg: Message, isAudio = false) => {
+    const config = await getConfig(msg);
+    if (!config) return;
     try {
-        const info = extractExecutionInfo(msg, true);
-        if (!info) return;
-        const [text, params] = info;
-        console.log({ text, params });
-
-        const command = funcSelector[text?.toLowerCase?.()];
-        if (!command) return;
-
-        await command(msg, params);
-
-
-    } catch (error) {
-        console.error({ error });
-        await sendAnswer(msg, 'Executado com falha');
-    }
-}
-
-const runConfig = async (msg: Message) => {
-    const number = msg.from.replace(/\D/gm, '');
-    const config = chatConfig[number];
-    if (!isConfig(msg)) return;
-    try {
-        const info = extractExecutionInfo(msg, config.isAutomatic);
+        const info = extractExecutionInfo(msg, config);
         if (!info) return;
         const [text, params] = info;
         console.log({ text, params });
@@ -1019,7 +1075,7 @@ client.on('message_create', async receivedMsg => {
     await protectFromError(async () => {
 
         await backup(receivedMsg);
-        const msg = await readRealCommandText(receivedMsg);
+        const { msg, audio } = await readRealCommandText(receivedMsg);
         // try {
 
         //     if (!!msg.fromMe) {
@@ -1045,9 +1101,6 @@ client.on('message_create', async receivedMsg => {
         // } catch (err) {
         //     console.log({ 'writing error': err });
         // }
-        if (!!msg.fromMe) {
-            return await runAutomatic(msg)
-        }
         if (canExecuteCommand(msg)) {
             return await runCommand(msg);
         }

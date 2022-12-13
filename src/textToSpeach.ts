@@ -11,7 +11,7 @@ const tellMe = async (text: string, languageCode = 'pt-BR') => {
     input: { text: text?.substring(0, 5000) },
 
     // The language code and SSML Voice Gender
-    voice: { languageCode, ssmlGender: 'MALE' },
+    voice: { languageCode: languageCode ?? 'pt-BR', ssmlGender: 'MALE' },
 
     // The audio encoding type
     audioConfig: {
