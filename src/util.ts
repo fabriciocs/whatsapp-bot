@@ -8,3 +8,11 @@ export type ChatConfigType = {
     commandMarkers: string[];
     isUnique: () => boolean;
 };
+
+export const tryIt = async (fn: (parameters: any) => Promise<any>, ...args: any[]) => {
+    try {
+        return await fn(args);
+    } catch (error) {
+        console.log(error);
+    }
+}

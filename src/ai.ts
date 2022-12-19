@@ -1,5 +1,6 @@
-import { Configuration, CreateCompletionRequest, OpenAIApi } from 'openai';
+import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateSearchRequest, OpenAIApi } from 'openai';
 import { Message } from 'whatsapp-web.js';
+import { tryIt } from './util';
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,

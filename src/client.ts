@@ -7,7 +7,7 @@ import * as puppeteer from 'puppeteer';
 import { SpeechClient, protos } from '@google-cloud/speech';
 
 import * as QRCode from 'qrcode';
-import { Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions, MessageTypes, RemoteAuth } from 'whatsapp-web.js';
+import { Buttons, Chat, Client, LocalAuth, Message, MessageContent, MessageMedia, MessageSendOptions, MessageTypes, RemoteAuth } from 'whatsapp-web.js';
 
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
@@ -629,36 +629,90 @@ const openContext = async (msg: Message, prompt: string) => {
     const command = prompt.split(' ')[0];
     const contextData = await appData.contexts.createContext(await appData.commands.getCommand(command), { id, chatId, msgId });
     await appData.contexts.addContext(contextData);
-    return { input: { msg, prompt, id }, output: { contextData, chatId } };
+    return { input: { msg, prompt, id }, output: { data: contextData, chatId } };
 }
 const closeContext = async (msg: Message) => {
     const chatId = (await msg.getChat()).id._serialized;
     const id = `${msg.from}${chatId}`;
     const contextData = await appData.contexts.getContext(id);
     await appData.contexts.removeContext(id);
-    return { input: { msg, id }, output: { contextData, chatId } };
+    return { input: { msg, id }, output: { data: contextData, chatId } };
+}
+
+
+
+const getContextId = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    const id = `${msg.from}${chatId}`;
+    return { id, chatId };
 }
 
 const getContext = async (msg: Message) => {
-    const chatId = (await msg.getChat()).id._serialized;
-    const id = `${msg.from}${chatId}`;
+    const { id, chatId } = await getContextId(msg);
     const contextData = await appData.contexts.getContext(id);
-    return { input: { msg, id }, output: { contextData, chatId } };
+    return { input: { msg, id }, output: { data: contextData, chatId } };
 }
 
 const sendMessage = async (msg: Message, prompt: string) => {
     const chatId = (await msg.getChat()).id._serialized;
     const sentMsg = await client.sendMessage(chatId, prompt);
-    return { input: { msg, prompt }, output: { sentMsg, chatId } };
+    return { input: { msg, prompt }, output: { data: sentMsg, chatId } };
 }
 
 const sendLog = async (msg: Message) => {
-    const chatId = (await msg.getChat()).id._serialized;
-    const id = `${msg.from}${chatId}`;
+    const { id, chatId } = await getContextId(msg);
     const context = await appData.contexts.getContext(id);
     const log = context.log;
     const sentMsg = await sendAnswer(msg, JSON.stringify(log));
-    return { input: { msg }, output: { sentMsg, chatId } };
+    return { input: { msg }, output: { data: sentMsg, chatId } };
+}
+const requestMedia = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    let media = null;
+    if (msg.hasMedia) {
+        media = await msg.downloadMedia();
+    }
+    return { input: { msg }, output: { data: media, chatId } };
+}
+const requestQuoted = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    let quotedMsg = null;
+    if (msg.hasQuotedMsg) {
+        quotedMsg = await msg.getQuotedMessage();
+    }
+    return { input: { msg }, output: { data: quotedMsg, chatId } };
+}
+const isAudio = async (msg: Message) => {
+    if (songTypes.includes(msg.type?.toUpperCase())) {
+        return true;
+    }
+    return false;
+}
+const requestAudio = async (msg: Message) => {
+    let audio = null;
+    const chatId = (await msg.getChat()).id._serialized;
+    if (isAudio(msg) && msg.hasMedia) {
+        audio = await msg.downloadMedia();
+    }
+    return { input: { msg }, output: { data: audio, chatId } };
+}
+const requestAudioText = async (msg: Message) => {
+    let audio = null;
+    const chatId = (await msg.getChat()).id._serialized;
+    if (isAudio(msg) && msg.hasMedia) {
+        audio = await msg.downloadMedia();
+    }
+    return { input: { msg }, output: { data: await readToMe(msg), chatId } };
+}
+
+const requestText = async (msg: Message) => {
+    const chatId = (await msg.getChat()).id._serialized;
+    let text = null;
+
+    if (msg.body) {
+        text = msg.body;
+    }
+    return { input: { msg }, output: { data: text, chatId } };
 }
 
 const fakePersonAndCar = async (msg: Message) => {
@@ -725,6 +779,23 @@ const onlySay = async (msg: Message, languageCode: string, answer: string) => {
 const voice = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await onlySay(msg, language, answer);
+}
+
+const showAdministrationButtons = async (msg: Message) => {
+    // const buttons = [
+    //     { buttonId: 'bind', buttonText: { body: 'Vincular' }, type: 1 },
+    //     { buttonId: 'unbind', buttonText: { body: 'Desvincular' }, type: 2 },
+    //     { buttonId: 'admin-add', buttonText: { body: 'Add Admin' }, type: 3 },
+    //     { buttonId: 'admin-del', buttonText: { body: 'Del Admin' }, type: 4 },
+    // ];
+    // const chat = await msg.getChat();
+    
+    const buttonMessage = new Buttons('Administração', [
+        { body: 'Vincular' },
+        { body: 'Desvincular' },
+        { body: 'Add Admin' },
+        { body: 'Del Admin' }],'title','footer');
+    await client.sendMessage(msg.from, buttonMessage);
 }
 
 const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
@@ -798,6 +869,7 @@ const funcSelector: Record<string, any> = {
     'unbind': async (msg: Message, prompt: string[]) => await unbindChatConfig(msg),
     'admin-add': async (msg: Message, prompt: string[]) => await addAdmin(msg),
     'admin-del': async (msg: Message, prompt: string[]) => await delAdmin(msg),
+    'admin': async (msg: Message, prompt: string[]) => await showAdministrationButtons(msg),
 }
 const addAdmin = async (msg: Message) => {
     await appData.commandConfigsManager.save(msg.to);
@@ -962,15 +1034,17 @@ const readRealCommandText = async (msg: Message) => {
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await readRealCommandAudio(msg);
     }
-    const quotedMarkFound = quoteMarkers.find(quoteMarker => !!msg?.body?.includes(quoteMarker));
-    let newBody = msg?.body;
-    if (!!quotedMarkFound && !!newBody) {
-        const quotedMsg = await msg.getQuotedMessage();
-        if (quotedMsg?.body?.trim?.()) {
-            newBody = msg.body.replace(quotedMarkFound, quotedMsg.body);
+    if (msg.type?.toUpperCase() === 'TEXT') {
+        const quotedMarkFound = quoteMarkers.find(quoteMarker => !!msg?.body?.includes(quoteMarker));
+        let newBody = msg?.body;
+        if (!!quotedMarkFound && !!newBody) {
+            const quotedMsg = await msg.getQuotedMessage();
+            if (quotedMsg?.body?.trim?.()) {
+                newBody = msg.body.replace(quotedMarkFound, quotedMsg.body);
+            }
         }
+        msg.body = newBody;
     }
-    msg.body = newBody;
     return { msg, audio: false };
 }
 
@@ -1158,7 +1232,8 @@ const run = async () => {
         'close_context': closeContext,
         'get_context': getContext,
         'send_log': sendLog,
-        // 'request_audio': requestAudio,
+        'request_media': requestMedia,
+        'request_audio': requestAudio,
         // 'request_image': requestImage,
         // 'request_video': requestVideo,
         // 'request_document': requestDocument,
@@ -1166,8 +1241,9 @@ const run = async () => {
         // 'request_location': requestLocation,
         // 'request_sticker': requestSticker,
         // 'request_voice': requestVoice,
-        // 'request_text': requestText,
-        // 'request_quoted': requestQuoted,
+        'request_text': requestText,
+        'request_audio_text': requestAudioText,
+        'request_quoted': requestQuoted,
         //  'compose_form': composeForm,
         // 'validate_form': validateForm,
         'send_message': sendMessage,
@@ -1184,6 +1260,4 @@ const run = async () => {
     };
 };
 (async () => await run())();
-
-
 

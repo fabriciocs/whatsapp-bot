@@ -1,13 +1,13 @@
 import { Client, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
 
-export default class CommandManager{
-    constructor(private appData: any, private client: Client){
+export default class CommandManager {
+    constructor(private appData: any, private client: Client) {
     }
 
     private sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
         await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
     }
-    
+
 
     addCommand = async (msg: Message, prompt: string) => {
         if (!prompt) {
@@ -18,7 +18,7 @@ export default class CommandManager{
         if (!command || !instruction.length) {
             return await this.sendAnswer(msg, 'Preciso de um comando e uma instrucao para adicionar');
         }
-    
+
         if (await this.appData.commands.exists(command)) {
             return await this.sendAnswer(msg, 'Esse comando já existe');
         }
@@ -38,27 +38,30 @@ export default class CommandManager{
         }
         const commandData = await this.appData.commands.getCommand(command);
         const steps = commandData.steps;
-    
+
         const msgId = msg.id._serialized;
         const chatId = (await msg.getChat()).id._serialized;
         const id = `${msg.from}${chatId}`;
-    
+        let lastResult = null;
         const proccess = await Promise.all(await steps.map(async (step) => {
             console.log(step);
-            const result = await this.appData.defaultSteps[step](msg, prompt);
-            await this.appData.contexts.addLog(id, JSON.stringify({ result }));
+            lastResult = await this.appData.defaultSteps[step](msg, prompt, lastResult);
+            await this.appData.contexts.addLog(id, JSON.stringify({ lastResult, step, msgId, chatId }));
         }));
         const context = await this.appData.contexts.getContext(id);
         console.log('Executado com sucesso!');
         console.log(...context.log);
     };
-    
+
     listCommands = async (msg: Message) => {
         const commands = await this.appData.commands.getCommands();
+        if (!commands) {
+            return await this.sendAnswer(msg, 'Nenhum comando encontrado');
+        }
         const commandsList = Object.keys(commands)?.reduce((acc, command) => [...acc, `*${command}* - [${commands[command].steps.join(',')}]`], []);
         return await this.sendAnswer(msg, commandsList.join('\n'));
     }
-    
+
     removeCommand = async (msg: Message, prompt: string) => {
         if (!prompt) {
             return await this.sendAnswer(msg, 'Preciso de um comando para remover');
@@ -73,5 +76,5 @@ export default class CommandManager{
         await this.appData.commands.removeCommand(command);
         return await this.sendAnswer(msg, 'Comando removido com sucesso');
     }
-    
+
 }
