@@ -20,7 +20,7 @@ import * as child_process from 'child_process';
 import Commands from './commands';
 import Contexts, { Context } from './context';
 import { CompressionType } from '@aws-sdk/client-s3';
-import CommandManager from './commands-manager';
+import CommandManager, { CommandResponse, StepFunction } from './commands-manager';
 import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
@@ -36,7 +36,7 @@ const appData: {
     commands?: Commands,
     contexts?: Contexts,
     msgs?: MessagesManager,
-    defaultSteps?: Record<string, any>;
+    defaultSteps?: Record<string, StepFunction>;
     sessionManager?: SessionsManager;
     chatConfigsManager?: ChatConfigsManager;
     commandConfigsManager?: CommandConfigsManager;
@@ -44,7 +44,7 @@ const appData: {
 };
 
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'], ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
@@ -436,14 +436,9 @@ const ocupado = async (msg: Message, prompt: string[] = []) => {
 // }
 
 const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) => {
-    if (!msg) {
-        await sweetError(msg, { err: 'sem mensagem' });
-        return '';
-    }
-
-    if (songTypes.includes(msg.type?.toUpperCase())) {
+    if (songTypes.includes(msg?.type?.toUpperCase())) {
         return await sweetTry(msg, async () => {
-            if (!msg.hasMedia) return;
+            if (!msg?.hasMedia) return;
             const audio = await msg.downloadMedia();
             const speechClient = new SpeechClient();
             const content = audio.data;
@@ -465,6 +460,7 @@ const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) 
             return transcription;
         });
     }
+    console.log({ msg: msg?.type });
     return;
 };
 
@@ -616,97 +612,94 @@ const edita = async (msg: Message, prompt) => {
         return await sendAnswer(msg, 'Não consegui editar a imagem');
     }
 }
-const openContext = async (msg: Message, prompt: string) => {
+const openContext: StepFunction = async ({ msg, prompt }) => {
     const msgId = msg.id._serialized;
     const chatId = (await msg.getChat()).id._serialized;
     const id = `${msg.from}${chatId}`;
-    const command = prompt.split(' ')[0];
+    const command = prompt.split(/\s/)[0];
     const contextData = await appData.contexts.createContext(await appData.commands.getCommand(command), { id, chatId, msgId });
     await appData.contexts.addContext(contextData);
-    return { input: { msg, prompt, id }, output: { data: contextData, chatId } };
+    return { data: contextData, chatId };
 }
-const closeContext = async (msg: Message) => {
-    const chatId = (await msg.getChat()).id._serialized;
-    const id = `${msg.from}${chatId}`;
+const closeContext: StepFunction = async ({ msg }) => {
+    const { data: id, chatId } = await getContextId({msg});
     const contextData = await appData.contexts.getContext(id);
     await appData.contexts.removeContext(id);
-    return { input: { msg, id }, output: { data: contextData, chatId } };
+    return { data: contextData, chatId };
 }
 
 
 
-const getContextId = async (msg: Message) => {
+const getContextId: StepFunction = async ({ msg }) => {
     const chatId = (await msg.getChat()).id._serialized;
     const id = `${msg.from}${chatId}`;
-    return { id, chatId };
+    return { data: id, chatId };
 }
 
-const getContext = async (msg: Message) => {
-    const { id, chatId } = await getContextId(msg);
+const getContext: StepFunction = async ({ msg }) => {
+    const { data: id, chatId } = await getContextId({msg});
     const contextData = await appData.contexts.getContext(id);
-    return { input: { msg, id }, output: { data: contextData, chatId } };
+    return { data: contextData, chatId };
 }
 
-const sendMessage = async (msg: Message, prompt: string) => {
-    const chatId = (await msg.getChat()).id._serialized;
-    const sentMsg = await client.sendMessage(chatId, prompt);
-    return { input: { msg, prompt }, output: { data: sentMsg, chatId } };
+const sendMessage: StepFunction = async ({ msg, lastResult: { data, chatId } }) => {
+    const sentMsg = await client.sendMessage(chatId, data);
+    return { data: sentMsg, chatId };
 }
 
-const sendLog = async (msg: Message) => {
-    const { id, chatId } = await getContextId(msg);
+const sendLog: StepFunction = async ({ msg }) => {
+    const { data: id, chatId } = await getContextId({msg});
     const context = await appData.contexts.getContext(id);
     const log = context.log;
     const sentMsg = await sendAnswer(msg, JSON.stringify(log));
-    return { input: { msg }, output: { data: sentMsg, chatId } };
+    return { data: sentMsg, chatId };
 }
-const requestMedia = async (msg: Message) => {
+const requestMedia: StepFunction = async ({ msg, lastResult }) => {
     const chatId = (await msg.getChat()).id._serialized;
     let media = null;
-    if (msg.hasMedia) {
-        media = await msg.downloadMedia();
+    const msgData = lastResult?.data;
+    if (msgData?.hasMedia) {
+        media = await msgData.downloadMedia();
     }
-    return { input: { msg }, output: { data: media, chatId } };
+    return { data: media, chatId };
 }
-const requestQuoted = async (msg: Message) => {
+const requestQuoted: StepFunction = async ({ msg }) => {
     const chatId = (await msg.getChat()).id._serialized;
     let quotedMsg = null;
     if (msg.hasQuotedMsg) {
         quotedMsg = await msg.getQuotedMessage();
     }
-    return { input: { msg }, output: { data: quotedMsg, chatId } };
+    return { data: quotedMsg, chatId };
 }
-const isAudio = async (msg: Message) => {
-    if (songTypes.includes(msg.type?.toUpperCase())) {
+const isAudio = async ({ lastResult }) => {
+    const msgData = lastResult?.data;
+    if (songTypes.includes(msgData?.type?.toUpperCase())) {
         return true;
     }
     return false;
 }
-const requestAudio = async (msg: Message) => {
+const requestAudio = async ({ msg, lastResult }) => {
     let audio = null;
+    const msgData = lastResult?.data;
     const chatId = (await msg.getChat()).id._serialized;
-    if (isAudio(msg) && msg.hasMedia) {
-        audio = await msg.downloadMedia();
+    if (msgData?.hasMedia && await isAudio({ lastResult })) {
+        audio = await msgData.downloadMedia();
     }
-    return { input: { msg }, output: { data: audio, chatId } };
+    return { data: audio, chatId };
 }
-const requestAudioText = async (msg: Message) => {
-    let audio = null;
-    const chatId = (await msg.getChat()).id._serialized;
-    if (isAudio(msg) && msg.hasMedia) {
-        audio = await msg.downloadMedia();
-    }
-    return { input: { msg }, output: { data: await readToMe(msg), chatId } };
+const requestAudioText: StepFunction = async ({ lastResult: { data, chatId } }) => {
+    return { data: await readToMe(data), chatId };
 }
 
-const requestText = async (msg: Message) => {
+const requestText = async ({ msg, lastResult }) => {
     const chatId = (await msg.getChat()).id._serialized;
+    const msgData = lastResult?.data;
     let text = null;
 
-    if (msg.body) {
-        text = msg.body;
+    if (msgData?.body) {
+        text = msgData?.body;
     }
-    return { input: { msg }, output: { data: text, chatId } };
+    return { data: text, chatId };
 }
 
 const fakePersonAndCar = async (msg: Message) => {

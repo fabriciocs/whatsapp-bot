@@ -1,4 +1,16 @@
 import { Client, Message, MessageContent, MessageSendOptions } from "whatsapp-web.js";
+export type CommandResponse = {
+    data: any,
+    chatId: string
+
+};
+export type StepFunctionParams = {
+    msg: Message,
+    prompt?: string,
+    lastResult?: CommandResponse,
+    receivedId?: string
+};
+export type StepFunction = (params: StepFunctionParams) => Promise<CommandResponse>;
 
 export default class CommandManager {
     constructor(private appData: any, private client: Client) {
@@ -42,12 +54,12 @@ export default class CommandManager {
         const msgId = msg.id._serialized;
         const chatId = (await msg.getChat()).id._serialized;
         const id = `${msg.from}${chatId}`;
-        let lastResult = null;
-        const proccess = await Promise.all(await steps.map(async (step) => {
+        let lastResult: CommandResponse = null;
+        for (const step of steps) {
             console.log(step);
-            lastResult = await this.appData.defaultSteps[step](msg, prompt, lastResult);
+            lastResult = await this.appData.defaultSteps[step]({ msg, prompt, lastResult, id });
             await this.appData.contexts.addLog(id, JSON.stringify({ lastResult, step, msgId, chatId }));
-        }));
+        };
         const context = await this.appData.contexts.getContext(id);
         console.log('Executado com sucesso!');
         console.log(...context.log);
