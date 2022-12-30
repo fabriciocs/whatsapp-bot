@@ -44,7 +44,7 @@ const appData: {
 };
 
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: false, args: ['--no-sandbox', '--disable-setuid-sandbox'], ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: puppeteerConfig
