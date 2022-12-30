@@ -23,7 +23,7 @@ export default class MessagesManager {
   }
 
   async saveMessage(msg: Message): Promise<void> {
-    await this.msgsRef.push().set({ fromParsed: keyReplacer(msg.from), ...msg });
+    await this.msgsRef.push().set({ ...msg, fromParsed: keyReplacer(msg.from)});
   }
   
   async updateMessage(id: string, msg: Message): Promise<any> {

@@ -435,7 +435,7 @@ const ocupado = async (msg: Message, prompt: string[] = []) => {
 //     client.lo
 // }
 
-const readToMe = async (msg: Message, languageCode = 'pt-BR', shouldAnswer = true) => {
+const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) => {
     if (!msg) {
         await sweetError(msg, { err: 'sem mensagem' });
         return '';
@@ -446,20 +446,14 @@ const readToMe = async (msg: Message, languageCode = 'pt-BR', shouldAnswer = tru
             if (!msg.hasMedia) return;
             const audio = await msg.downloadMedia();
             const speechClient = new SpeechClient();
-            const content = Buffer.from(audio.data, 'base64');
+            const content = audio.data;
             const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
-                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
+                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.LINEAR16,
                 sampleRateHertz: 16000,
-                languageCode,
+                languageCode: languageCode ?? 'pt-BR',
                 enableAutomaticPunctuation: true,
-                enableWordTimeOffsets: true,
-                enableWordConfidence: true,
-                audioChannelCount: 0,
                 enableSeparateRecognitionPerChannel: false,
-                maxAlternatives: 0,
                 profanityFilter: false,
-                speechContexts: [],
-                useEnhanced: false
             };
             const [response] = await speechClient.recognize({
                 audio: { content }, config
@@ -789,15 +783,24 @@ const showAdministrationButtons = async (msg: Message) => {
     //     { buttonId: 'admin-del', buttonText: { body: 'Del Admin' }, type: 4 },
     // ];
     // const chat = await msg.getChat();
-    
+
     const buttonMessage = new Buttons('Administração', [
         { body: 'Vincular' },
         { body: 'Desvincular' },
         { body: 'Add Admin' },
-        { body: 'Del Admin' }],'title','footer');
+        { body: 'Del Admin' }], 'title', 'footer');
     await client.sendMessage(msg.from, buttonMessage);
 }
-
+// const registerMkAuth = async (msg: Message,  clientAnswer: string) => {
+//     const chat = await msg.getChat();
+//     const chatId = chat.id._serialized;
+//     const auths = await appData.auths.getAuths(chatId);
+//     if (auths.length > 0) {
+//         return await sendAnswer(msg, 'Já existe um usuário vinculado a este chat');
+//     }
+//     await appData.auths.addAuth(chatId, auth);
+//     await sendAnswer(msg, 'Usuário vinculado com sucesso');
+// }
 const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
 const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
@@ -870,6 +873,7 @@ const funcSelector: Record<string, any> = {
     'admin-add': async (msg: Message, prompt: string[]) => await addAdmin(msg),
     'admin-del': async (msg: Message, prompt: string[]) => await delAdmin(msg),
     'admin': async (msg: Message, prompt: string[]) => await showAdministrationButtons(msg),
+    // 'tyesko': async (msg: Message, prompt: string[]) => await registerMkAuth(msg, prompt?.join(' ')),
 }
 const addAdmin = async (msg: Message) => {
     await appData.commandConfigsManager.save(msg.to);

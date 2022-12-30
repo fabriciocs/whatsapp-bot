@@ -30,21 +30,4 @@ export default class ChatConfigsManager {
     if (!from) return;
     await this.getRef(from).remove();
   }
-
-  async addCommands(from: string, commands: string[]): Promise<string[]> {
-    const cmdsRef = await this.getRef(from).child('commands').once('value');
-    const cmds = await cmdsRef.val();
-    const newCmds = [...cmds, ...commands];
-    await this.getRef(from).child('commands').set(newCmds);
-    return newCmds;
-  }
-
-  async removeCommands(from: string, commands: string[]): Promise<string[]> {
-    const cmdsRef = await this.getRef(from).child('commands').once('value');
-    const cmds = await cmdsRef.val();
-    const newCmds = cmds?.filter(cmd => !commands.includes(cmd));
-    await this.getRef(from).child('commands').set(newCmds);
-    return newCmds;
-  }
-
 }
