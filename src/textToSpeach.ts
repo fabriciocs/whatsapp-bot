@@ -12,7 +12,7 @@ const tellMe = async (content: string, language) => {
   const text = content?.substring(0, 5000);
 
   const [voicesResponse] = await client.listVoices({ languageCode });
-  const voice = voicesResponse?.voices?.find(v => v.ssmlGender === 'MALE');
+  const voice = voicesResponse?.voices?.find(v => v.ssmlGender === 'MALE' && v.languageCodes?.includes(languageCode));
   const selectedVoice = { ...voice, languageCode }
   const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
     // The text to synthesize
