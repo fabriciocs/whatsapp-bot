@@ -12,7 +12,7 @@ import { Buttons, Chat, Client, LocalAuth, Message, MessageContent, MessageMedia
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
 
-import OpenAIManager, { createVariation, editImage, giveMeImage, withConfig, writeAText } from './ai';
+import OpenAIManager, { createVariation, editImage, giveMeImage, withConfig, writeAText, writeInstructions } from './ai';
 import CurrierModel from './currier';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
@@ -29,6 +29,7 @@ import { keyReplacer, baseName, ChatConfigType, commandMarkers } from './util';
 import SessionsManager from './sessions-manager';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
+import Wordpress from './wordpress';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -53,7 +54,6 @@ const client = new Client({
 let db: Database = null;
 let storage: Storage = null;
 
-const toMB = (bytes: number) => bytes / (1024 ** 2);
 const backup = async (msg: Message) => {
 
     if (!db) return;
@@ -71,11 +71,10 @@ const backup = async (msg: Message) => {
     const url = f.cloudStorageURI;
     await f.save(Buffer.from(media.data, 'base64'), { contentType: media.mimetype });
     await allMessagesRef.child(msgRef.key).update({ mediaUrl: url });
-
 }
 
-const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}, isAudio = false) => {
-    if (isAudio) {
+const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
+    if (await isAudioMsg(msg)) {
         return await onlySay(msg, null, `${content}`);
     } else {
         await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
@@ -97,15 +96,26 @@ client.on('auth_failure', msg => {
 
 
 client.on('ready', async () => {
-    console.log('READY');
     appData.commands = new Commands(db.ref(`${baseName}/commands`));
     appData.contexts = new Contexts(db.ref(`${baseName}/contexts`));
     appData.msgs = new MessagesManager(db.ref(`${baseName}/messages`));
     appData.sessionManager = new SessionsManager(db.ref(`${baseName}/sessions`));
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${baseName}/chatConfigs`));
     appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${baseName}/commandConfigs`));
+    console.log('READY');
+
+
 });
 
+
+// const t = async (msg: Message) => {
+//     const acc = new Wordpress(curie, 'https://accg.org.br/wp-json');
+//     const posts = await acc.Api.posts({ per_page: 1000 });
+//     const users = await acc.Api.users({ per_page: 1000 });
+//     const media = await acc.upload('https://accg.org.br/wp-content/uploads/2022/11/SITE_7532022_SDI_-_DIVULGACAO_DOACAO_DE_BRINQUEDOS-1024x670.png');
+
+//     const post = await acc.Api.posts().create({ title: 'Teste', content: 'Teste', featured_media: media.id });
+// }
 client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
@@ -115,9 +125,6 @@ client.on('qr', (qr) => {
         console.log(url)
     });
 });
-
-
-
 const listMsgs = async (msg: Message, size: string | number, params = []) => {
     const msgs = await appData?.msgs?.filterByFrom(msg.to, +size);
     const msgKeys = Object.keys(msgs) ?? [];
@@ -174,7 +181,6 @@ const showSimpleInfo = async (msg: Message) => {
             return await showSimpleInfo(quotedMsg);
         }
     }
-    //melhore o código abaixo utilizando funções não assíncronas
     try {
         await protectFromError(async () => {
             await sendAsJsonDocument({ msg, chat: await msg.getChat(), contact: await msg.getContact() });
@@ -250,15 +256,6 @@ const searchByChassiGo = async (msg: Message, chassi: any) => {
         await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
     }
     await browser.close();
-    // page.on('response', async (response) => {
-    //     if (response.url())) {
-    //         const responseBody = await response.buffer();
-    //        
-    //     }
-    // });
-    // await page.click(`button.button-primary.notranslate.mat-raised-button`);
-
-
 }
 const protectFromError = async (anyFunc: () => Promise<any>) => {
     try {
@@ -408,7 +405,6 @@ const ocupado = async (msg: Message, prompt: string[] = []) => {
 //     if (!msg) {
 //         await sweetError(msg, { err: 'sem mensagem' });
 //     }
-//     const songTypes = ['VOICE', 'AUDIO', 'PTT']
 //     if (songTypes.includes(msg.type?.toUpperCase())) {
 //         await sweetTry(msg, async () => {
 //             const audio = await msg.downloadMedia();
@@ -443,9 +439,9 @@ const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) 
             const speechClient = new SpeechClient();
             const content = audio.data;
             const config: protos.google.cloud.speech.v1.IRecognitionConfig = {
-                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.LINEAR16,
+                encoding: protos.google.cloud.speech.v1.RecognitionConfig.AudioEncoding.OGG_OPUS,
                 sampleRateHertz: 16000,
-                languageCode: languageCode ?? 'pt-BR',
+                languageCode: languageCode === null ? 'pt-BR' : languageCode,
                 enableAutomaticPunctuation: true,
                 enableSeparateRecognitionPerChannel: false,
                 profanityFilter: false,
@@ -468,6 +464,16 @@ const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) 
 
 const createATextDirectly = async (msg: Message, prompt: string) => {
     const result = await writeAText({ stop: ['stop'], prompt });
+    const answer = result?.choices?.[0]?.text;
+    if (answer) {
+        await sendAnswer(msg, answer);
+    } else {
+        await sendAnswer(msg, "Sem resposta!!");
+    }
+};
+
+const createInstructionsDirectly = async (msg: Message, prompt: string) => {
+    const result = await writeInstructions(prompt);
     const answer = result?.choices?.[0]?.text;
     if (answer) {
         await sendAnswer(msg, answer);
@@ -514,9 +520,20 @@ const desenha = async (msg: Message, prompt: string) => {
         return await sendAnswer(msg, 'informe o que deseja desenhar');
     }
     if (prompt) {
-        const url = await giveMeImage(msg, prompt);
+        const url = await giveMeImage(prompt);
         const image = await MessageMedia.fromUrl(url)
         return await chat.sendMessage(image, { caption: prompt });
+    }
+}
+
+const draw = async (msg: Message, prompt: string) => {
+    if (!prompt) {
+        return await sendAnswer(msg, 'informe o que deseja desenhar');
+    }
+    if (prompt) {
+        const url = await giveMeImage(prompt, '1024x1024');
+        const image = await MessageMedia.fromUrl(url)
+        return await msg.reply(image);
     }
 }
 
@@ -622,7 +639,7 @@ const openContext: StepFunction = async ({ msg, prompt }) => {
     return { data: contextData, chatId };
 }
 const closeContext: StepFunction = async ({ msg }) => {
-    const { data: id, chatId } = await getContextId({msg});
+    const { data: id, chatId } = await getContextId({ msg });
     const contextData = await appData.contexts.getContext(id);
     await appData.contexts.removeContext(id);
     return { data: contextData, chatId };
@@ -637,7 +654,7 @@ const getContextId: StepFunction = async ({ msg }) => {
 }
 
 const getContext: StepFunction = async ({ msg }) => {
-    const { data: id, chatId } = await getContextId({msg});
+    const { data: id, chatId } = await getContextId({ msg });
     const contextData = await appData.contexts.getContext(id);
     return { data: contextData, chatId };
 }
@@ -648,7 +665,7 @@ const sendMessage: StepFunction = async ({ msg, lastResult: { data, chatId } }) 
 }
 
 const sendLog: StepFunction = async ({ msg }) => {
-    const { data: id, chatId } = await getContextId({msg});
+    const { data: id, chatId } = await getContextId({ msg });
     const context = await appData.contexts.getContext(id);
     const log = context.log;
     const sentMsg = await sendAnswer(msg, JSON.stringify(log));
@@ -674,6 +691,12 @@ const requestQuoted: StepFunction = async ({ msg }) => {
 const isAudio = async ({ lastResult }) => {
     const msgData = lastResult?.data;
     if (songTypes.includes(msgData?.type?.toUpperCase())) {
+        return true;
+    }
+    return false;
+}
+const isAudioMsg = async (msg: Message) => {
+    if (msg.hasMedia && await isAudio({ lastResult: { data: msg } })) {
         return true;
     }
     return false;
@@ -753,7 +776,11 @@ const extractLanguageAndAnswer = ([first, ...prompt]: string[]) => {
     const answer = [!language ? first : '', ...prompt].join(' ');
     return { language, answer };
 }
-
+const extractPostParams = (requestText: string) => {
+    const groups = requestText.matchAll(/(titulo:)(.*?)(conteudo:)(.*)/gm);
+    const [, , title, , content] = groups?.next()?.value;
+    return { title, content };
+}
 const om = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await createAudioDirectly(msg, language, answer);
@@ -769,13 +796,6 @@ const voice = async (msg: Message, prompt: string[]) => {
 }
 
 const showAdministrationButtons = async (msg: Message) => {
-    // const buttons = [
-    //     { buttonId: 'bind', buttonText: { body: 'Vincular' }, type: 1 },
-    //     { buttonId: 'unbind', buttonText: { body: 'Desvincular' }, type: 2 },
-    //     { buttonId: 'admin-add', buttonText: { body: 'Add Admin' }, type: 3 },
-    //     { buttonId: 'admin-del', buttonText: { body: 'Del Admin' }, type: 4 },
-    // ];
-    // const chat = await msg.getChat();
 
     const buttonMessage = new Buttons('Administração', [
         { body: 'Vincular' },
@@ -784,19 +804,24 @@ const showAdministrationButtons = async (msg: Message) => {
         { body: 'Del Admin' }], 'title', 'footer');
     await client.sendMessage(msg.from, buttonMessage);
 }
-// const registerMkAuth = async (msg: Message,  clientAnswer: string) => {
-//     const chat = await msg.getChat();
-//     const chatId = chat.id._serialized;
-//     const auths = await appData.auths.getAuths(chatId);
-//     if (auths.length > 0) {
-//         return await sendAnswer(msg, 'Já existe um usuário vinculado a este chat');
-//     }
-//     await appData.auths.addAuth(chatId, auth);
-//     await sendAnswer(msg, 'Usuário vinculado com sucesso');
-// }
 const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
 const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
+const createPost = async (msg: Message, prompt?: string[]) => {
+    return await sweetTry(msg, async () => {
+        const wordpress = new Wordpress(curie);
+        const { title, content } = extractPostParams(prompt?.join(' '));
+        const response = await wordpress.createAiPost({
+            title,
+            prompt: content,
+            status: 'publish',
+        });
+        if (!response) {
+            return await sendAnswer(msg, `Não consegui criar o post`);
+        }
+        await sendAnswer(msg, `Post criado com sucesso: ${response.link}`);
+    });
+}
 const funcSelector: Record<string, any> = {
     '-': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'status': async (msg: Message) => await printStatus(msg),
@@ -807,7 +832,7 @@ const funcSelector: Record<string, any> = {
     '--h': async (msg: Message) => await helpMsg(msg),
     escreve,
     '✏': escreve,
-    'placa': async (msg: Message, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
+    'chassi': async (msg: Message, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
     'elon_musk': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'key': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyPoints(prompt?.join(' '))),
     'keyw': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyWords(prompt?.join(' '))),
@@ -834,6 +859,7 @@ const funcSelector: Record<string, any> = {
     '🚜': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
     'boso': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
     'agro': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+    'goel': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
     'wellen-beu': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
     '🛋': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
     'pre-venda': async (msg: Message, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
@@ -860,14 +886,18 @@ const funcSelector: Record<string, any> = {
     'reload': async (msg: Message, [prompt]) => await reloadMedia(msg, prompt),
     'err': async (msg: Message) => await sendAnswer(msg, `Comando *${msg?.body.split(' ')?.[1]}* não encontrado`),
     'quero+': async (msg: Message) => await queroMais((await (await msg.getQuotedMessage())?.reload())),
-    't': async (msg: Message, prompt: string[]) => await ocupado(msg, prompt),
     'bind': async (msg: Message, prompt: string[]) => await bindChatConfig(msg, prompt),
     'unbind': async (msg: Message, prompt: string[]) => await unbindChatConfig(msg),
     'admin-add': async (msg: Message, prompt: string[]) => await addAdmin(msg),
     'admin-del': async (msg: Message, prompt: string[]) => await delAdmin(msg),
     'admin': async (msg: Message, prompt: string[]) => await showAdministrationButtons(msg),
-    // 'tyesko': async (msg: Message, prompt: string[]) => await registerMkAuth(msg, prompt?.join(' ')),
+    'posts': async (msg: Message, prompt: string[]) => console.log(await new Wordpress(curie).getPosts()),
+    'post': async (msg: Message, prompt: string[]) => await createPost(msg, prompt),
+    r: async (msg: Message) => await runCommand((await (await msg.getQuotedMessage())?.reload())),
+    ins: async (msg: Message, prompt: string[]) => await createInstructionsDirectly(msg, prompt?.join(' ')),
+    draw: async (msg: Message, prompt: string[]) => await draw(msg, prompt?.join(' ')),
 }
+
 const addAdmin = async (msg: Message) => {
     await appData.commandConfigsManager.save(msg.to);
 }
@@ -994,11 +1024,15 @@ const getConfig = async (msg: Message) => {
     }
     return;
 }
-const isDiga = (msg: Message) => {
-    if (isNotString(msg)) return false;
+const prepareBody = (msg: Message) => {
+    if (isNotString(msg)) return msg;
     const msgBody = msg.body?.toLowerCase();
     const instructions = ['diga', 'fale', 'comente', 'descreva', 'explique', 'resuma', 'bibot', 'robo', 'robô', 'bimbim', 'bee-bot', 'beebot'];
-    return instructions.filter(instruction => msgBody.startsWith(instruction)).length > 0;
+    const instruction = instructions.find(instruction => msgBody.startsWith(instruction));
+    if (instruction) {
+        return { ...msg, body: msgBody.replace(instruction, '').trim() };
+    }
+    return msg;
 
 }
 const isCode = (msg: Message) => {
@@ -1013,10 +1047,8 @@ const canExecuteCommand = (msg: Message) => {
     if (isLicensePlate(msg)) {
         return licensePlateSearch.includes(msg.from) || !!msg.fromMe;
     }
-
 }
 const canExecuteCode = (msg: Message) => {
-
     if (isCode(msg)) {
         return !!msg?.fromMe && isToMe(msg)
     }
@@ -1027,20 +1059,17 @@ const canExecuteCode = (msg: Message) => {
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
 
 const readRealCommandText = async (msg: Message) => {
-    const songTypes = ['VOICE', 'PTT', 'AUDIO']
     if (songTypes.includes(msg.type?.toUpperCase())) {
         return await readRealCommandAudio(msg);
     }
     if (msg.type?.toUpperCase() === 'TEXT') {
         const quotedMarkFound = quoteMarkers.find(quoteMarker => !!msg?.body?.includes(quoteMarker));
-        let newBody = msg?.body;
-        if (!!quotedMarkFound && !!newBody) {
+        if (!!quotedMarkFound && !!msg?.hasQuotedMsg) {
             const quotedMsg = await msg.getQuotedMessage();
             if (quotedMsg?.body?.trim?.()) {
-                newBody = msg.body.replace(quotedMarkFound, quotedMsg.body);
+                msg.body = msg.body.replace(quotedMarkFound, quotedMsg.body);
             }
         }
-        msg.body = newBody;
     }
     return { msg, audio: false };
 }
@@ -1109,8 +1138,9 @@ const runConfig = async (msg: Message, isAudio = false) => {
         await sendAnswer(msg, 'Executado com falha');
     }
 }
-const codeToRun = (code: any) => {
-
+// crie uma função pra receber a mensagem e responder com o texto 'fazendo'
+const sendDoing = async (msg: Message) => {
+    await sendAnswer(msg, '*Beebot*: - Fazendo...');
 }
 const runCode = async (msg: Message) => {
     try {
@@ -1133,45 +1163,12 @@ const isObservable = (msg: Message) => observable.includes(msg.from);
 
 client.on('message_create', async receivedMsg => {
     if (receivedMsg.isForwarded) return await receivedMsg.reload();
-    // if (isSafe(msg)) {
-    //     await protectFromError(async () => {
-
-    //         const chat = await msg.getChat();
-    //         await msg.forward(await client.getChatById(myId));
-    //         await msg.delete();
-    //         await Promise.all((await chat.fetchMessages({})).map(async (msg: Message) => await msg.delete()));
-
-    //     });
-    // }
     await protectFromError(async () => {
 
         await backup(receivedMsg);
-        const { msg, audio } = await readRealCommandText(receivedMsg);
-        // try {
+        const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
+        const msg = audio ? prepareBody(parsed) : parsed;
 
-        //     if (!!msg.fromMe) {
-        //         console.log({ type: msg.type });
-        //         let message;
-        //         const songTypes = ['VOICE', 'PTT', 'AUDIO']
-        //         if (songTypes.includes(msg.type?.toUpperCase())) {
-        //             message = await readToMe(msg, false);
-        //         } else {
-        //             const [, params] = extractExecutionInfo(msg);
-        //             message = params.join(' ');
-        //         }
-
-        //         if (message) {
-        //             console.log({ message });
-        //             if (isDiga(msg)) {
-        //                 return await createAudioDirectly(msg, message);
-        //             }
-        //         }
-        //     }
-
-
-        // } catch (err) {
-        //     console.log({ 'writing error': err });
-        // }
         if (canExecuteCommand(msg)) {
             return await runCommand(msg);
         }

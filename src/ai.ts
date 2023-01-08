@@ -1,4 +1,4 @@
-import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateSearchRequest, OpenAIApi } from 'openai';
+import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateImageRequestSizeEnum, CreateSearchRequest, OpenAIApi } from 'openai';
 import { Message } from 'whatsapp-web.js';
 import { tryIt } from './util';
 
@@ -11,16 +11,15 @@ export default class OpenAIManager {
         return clientAi;
     }
 }
-const imageSize = '256x256';
+const imageSize: CreateImageRequestSizeEnum = '256x256';
 
 const params: Partial<CreateCompletionRequest> = {
     prompt: "",
     temperature: 1,
     best_of: 1,
-    top_p: 1,
-    max_tokens: 2000,
+    max_tokens: 1500,
     frequency_penalty: 0,
-    presence_penalty: 0.6,
+    presence_penalty: 0,
     stop: ["\nVocê:"]
 }
 const defaultConfig = {
@@ -85,7 +84,6 @@ const defaultConfig = {
         max_tokens: 1200,
         frequency_penalty: 0,
         presence_penalty: 0.6,
-
     },
     "candidato-c": {
         ...params,
@@ -123,16 +121,17 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
     return await doIt({ ...config, "model": "text-davinci-003" })
 };
-const giveMeImage = async (msg: Message, prompt: string) => {
+
+const writeInstructions = async (prompt) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, top_p: 0, presence_penalty: 2 });
+const giveMeImage = async (prompt: string, size: CreateImageRequestSizeEnum = imageSize) => {
     const response = await clientAi.createImage({
         prompt,
         n: 1,
-        size: imageSize,
+        size,
     });
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    console.log(JSON.stringify({ response: response.data.data[0], prompt }, null, 4));
     return response.data.data[0].url;
 };
-
 const createVariation = async (f: File) => {
     const response = await clientAi.createImageVariation(f, 1, imageSize);
     console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
@@ -149,6 +148,7 @@ export {
     withConfig,
     giveMeImage,
     createVariation,
-    editImage
+    editImage,
+    writeInstructions
 };
 

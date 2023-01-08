@@ -1,0 +1,127 @@
+<!--  crie uma página html com booststrap e material-ui que seja um formulário com nome e email e 3 questões sobre o ideal platônico e sua relevância na atualidade  que estimulem a reflexão e solicitem pelo menos um exemplo prático da aplicação dessa reflexão e no botão de submit tenha o texto 'enviar com paixão' e o metodo do formulário seja link do wa.me para o numero +55 62 9901-7515 com os valores do formulário, limpe os campos após o envio.-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulário - Ideal Platônico e sua Relevância na Atualidade</title>
+    <!-- Adicionar css do Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- Adicionar css do Material-UI -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+</head>
+
+<body>
+    <div class="container my-2">
+        <div class="row">
+            <!-- Início do Formulário -->
+
+            <form
+                action="#"
+                method="get" class="px-3 py-5 font-weight-bold" id="form_id">
+                <!-- Início: Dados Pessoais -->
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h3>Dados Pessoais</h3>
+                    </div>
+                    <!-- Nome -->
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" name="name" id="name" required />
+                        </div>
+                    </div>
+                    <!-- E-mail -->
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label for="email_id">E-mail</label>
+                            <input type="email" class="form-control" name="email" id="email_id" required />
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim: Dados Pessoais -->
+                <!-- Início: Questões -->
+                <div class="row py-5">
+                    <div class="col-12">
+                        <h3>Questões</h3>
+                    </div>
+                    <div class="col-12">
+                        <!-- Questão 1 -->
+                        <div class="form-group">
+                            <label for="questao_1">1- Qual o papel do Ideal Platônico na atualidade?</label>
+                            <textarea class="form-control" name="questao_1" rows="2" id="questao_1" required></textarea>
+                        </div>
+                        <!-- Questão 2 -->
+                        <div class="form-group">
+                            <label for="questao_2">2- Como o Ideal Platônico pode ser aplicado nas relações
+                                interpessoais num movimento de socialização humanizada?</label>
+                            <textarea class="form-control" name="questao_2" rows="2" id="questao_2" required></textarea>
+                        </div>
+                        <!-- Questão 3 -->
+                        <div class="form-group">
+                            <label for="questao_3">3- Como as ideias de Platão se encontra em nossa sociedade
+                                atualmente e quais a importância de sua aplicação?</label>
+                            <textarea class="form-control" name="questao_3" rows="2" id="questao_3" required></textarea>
+                        </div>
+                        <!-- Exemplo Prático -->
+                        <div class="form-group">
+                            <label for="exemplo_pratico">Exemplo Prático:</label>
+                            <textarea class="form-control" name="exemplo_pratico" rows="2" id="exemplo_pratico"
+                                required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim: Questões -->
+                <!-- Submit -->
+                <div class="row mt-5 mb-2">
+                    <div class="col-12 text-right">
+                        <button class="btn btn-success font-weight-bold mx-2" type="submit">Enviar com
+                            Paixão</button>
+                        <button class="btn btn-danger font-weight-bold mx-2" type="reset">Limpar</button>
+                    </div>
+                                  
+                </div>
+            </form>
+            <!-- Fim do Formulário -->
+        </div>
+    </div>
+    <!-- Adicionar jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <!-- Adicionar JavaScript do Material-UI -->
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <!-- Adicionar JavaScript do Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Adicionar JavaScript do Bootstrap Validator -->
+
+    <script>
+        //crie uma função que será chamada quando o formulário for enviado que formate os dados do formulário em uma url get do wa.me para o numero 556299017515 com o numero da questão e a resposta, além dos dados pessoais.
+        let form = document.getElementById('form_id');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let formData = new FormData(form);
+            let url = 'https://wa.me/556299017515?text=';
+            let questoes = [];
+            let dadosPessoais = [];
+            let exemploPratico = [];
+            for (let [key, value] of formData.entries()) {
+                if (key.includes('questao')) {
+                    questoes.push(key + ': ' + value);
+                } else if (key.includes('exemplo_pratico')) {
+                    exemploPratico.push(key + ': ' + value);
+                } else {
+                    dadosPessoais.push(key + ': ' + value);
+                }
+            }
+            url += questoes.join('%0A') + '%0A' + exemploPratico.join('%0A') + '%0A' + dadosPessoais.join('%0A');
+            //abre a url em uma nova guia
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+
+</html>
