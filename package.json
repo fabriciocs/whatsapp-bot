@@ -6,7 +6,8 @@
   "main": "dist/client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " yarn mon",
+    "start": "yarn ts-node-dev --respawn ./src/client.ts",
+    "start:debug": " yarn mon",
     "start:build": "yarn build && node ./dist/client.js",
     "build": "yarn clean &&  yarn tsc --build",
     "clean": "yarn shx rm -rf ./dist",
@@ -17,6 +18,7 @@
   "dependencies": {
     "4code4devs": "https://github.com/fcs-lab/4code4devs.git#main",
     "@aws-sdk/client-s3": "^3.201.0",
+    "@google-cloud/dialogflow-cx": "^3.1.2",
     "@google-cloud/language": "^5.1.0",
     "@google-cloud/speech": "^5.1.0",
     "@google-cloud/text-to-speech": "^4.0.3",

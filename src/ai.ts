@@ -117,11 +117,23 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
     }
     return null;
 }
-
+const editIt = async (config: Partial<CreateEditRequest>) => {
+    try {
+        const requestConfig = { ...params, ...config } as CreateEditRequest
+        const { data } = await clientAi.createEdit(requestConfig);
+        return data;
+    } catch (e) {
+        console.log(e)
+    }
+    return null;
+}
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
     return await doIt({ ...config, "model": "text-davinci-003" })
 };
 
+const editingText = async (config: Partial<CreateEditRequest>) => {
+    return await editIt({ ...config, "model": "text-davinci-003" })
+};
 const writeInstructions = async (prompt) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, top_p: 0, presence_penalty: 2 });
 const giveMeImage = async (prompt: string, size: CreateImageRequestSizeEnum = imageSize) => {
     const response = await clientAi.createImage({
@@ -149,6 +161,7 @@ export {
     giveMeImage,
     createVariation,
     editImage,
-    writeInstructions
+    writeInstructions,
+    editingText
 };
 

@@ -4,12 +4,10 @@ import { giveMeImage, writeAText, writeInstructions } from './ai';
 import CurrierModel from './currier';
 import { prepareText } from './util';
 
-const baseBlogPrompt = 'Crie um post de blog comercial focado em grandes empresas e startups disruptivas baseado no texto:';
-const baseImagePrompt = 'crie uma intrução aspectos unicamente visuais da mídia digital que ilustre o texto:';
+const baseBlogPrompt = 'crie um post de blog comercial focado em grandes empresas e startups disruptivas baseado no texto:';
+const baseImagePrompt = 'crie uma intrução de design digital para a criação de uma imagem que ilustre o texto:';
 const buildSubject = (subject: string) => `${baseBlogPrompt}\n\n"${subject}"`;
 const buildImageSubject = (prompt: string) => `${baseImagePrompt}\n\n"${prompt}"`;
-
-
 
 export type Post = {
     title: string;
@@ -92,6 +90,11 @@ export default class Wordpress {
     }
     public async getPosts(): Promise<PostResponse[]> {
         return await this.wpApi.posts().get();
+    }
+
+    
+    public async getPages(): Promise<any[]> {
+        return await this.wpApi.pages().get();
     }
     public async createPost(post: Post) {
         return await this.wpApi.posts().create(post);

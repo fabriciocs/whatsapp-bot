@@ -5,11 +5,11 @@ export default class CurrierModel {
 
     private params: CreateCompletionRequest = {
         model: "text-curie-001",
-        temperature: 0.5,
+        temperature: 0,
         max_tokens: this.maxTokens,
         top_p: 1,
-        frequency_penalty: 0.8,
-        presence_penalty: 0
+        frequency_penalty: 2,
+        presence_penalty: -2
     }
     constructor(private client: OpenAIApi) {
 

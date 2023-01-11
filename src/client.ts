@@ -12,7 +12,7 @@ import { Buttons, Chat, Client, LocalAuth, Message, MessageContent, MessageMedia
 import dbConfig from './db-config';
 import { loadPersonAndCar, sendResponse, startChat } from './leia';
 
-import OpenAIManager, { createVariation, editImage, giveMeImage, withConfig, writeAText, writeInstructions } from './ai';
+import OpenAIManager, { createVariation, editImage, editingText, giveMeImage, withConfig, writeAText, writeInstructions } from './ai';
 import CurrierModel from './currier';
 import { tellMe } from './textToSpeach';
 import { readDocument, whatIsIt } from './vision';
@@ -30,6 +30,7 @@ import SessionsManager from './sessions-manager';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
 import Wordpress from './wordpress';
+import { writeFile } from 'fs/promises';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -84,7 +85,7 @@ const sendAnswer = async (msg: Message, content: MessageContent, options: Messag
 
 client.on('loading_screen', (percent, message) => {
     console.log('LOADING SCREEN', percent, message);
-});
+});1
 
 client.on('authenticated', () => {
     console.log('AUTHENTICATED');
@@ -102,11 +103,15 @@ client.on('ready', async () => {
     appData.sessionManager = new SessionsManager(db.ref(`${baseName}/sessions`));
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${baseName}/chatConfigs`));
     appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${baseName}/commandConfigs`));
-    console.log('READY');
-
-
 });
 
+const siteToData = async (msg: Message) => {
+    const wp = new Wordpress(curie).Api;
+    const pages = await wp.pages({ per_page: 1000 });
+    const sections = pages.map(p => p.content.rendered.replace(/(<.*?>)|(\r+)/g, '').replace(/\n+/g, '\n').trim()).filter(s => s.length > 0);
+    await sendAsTextDocument(sections.join(';\n'), undefined, 'text/csv');
+    console.log('READY');
+}
 
 // const t = async (msg: Message) => {
 //     const acc = new Wordpress(curie, 'https://accg.org.br/wp-json');
@@ -430,6 +435,15 @@ const ocupado = async (msg: Message, prompt: string[] = []) => {
 // const tryReloadMsg = async(msg: Message) => {
 //     client.lo
 // }
+const sendFileAnswer = async (msg: Message, text: string) => {
+    if (!msg) {
+        await sweetError(msg, { err: 'sem mensagem' });
+    }
+    return await sweetTry(msg, async () => {
+        const chat = await msg.getChat();
+        sendAsTextDocument(text);
+    });
+};
 
 const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) => {
     if (songTypes.includes(msg?.type?.toUpperCase())) {
@@ -464,6 +478,16 @@ const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) 
 
 const createATextDirectly = async (msg: Message, prompt: string) => {
     const result = await writeAText({ stop: ['stop'], prompt });
+    const answer = result?.choices?.[0]?.text;
+    if (answer) {
+        await sendAnswer(msg, answer);
+    } else {
+        await sendAnswer(msg, "Sem resposta!!");
+    }
+};
+const createAEditingDirectly = async (msg: Message, prompt: string) => {
+    const { body } = await (await msg.getQuotedMessage()).reload();
+    const result = await editingText({ input: body, instruction: prompt });
     const answer = result?.choices?.[0]?.text;
     if (answer) {
         await sendAnswer(msg, answer);
@@ -824,6 +848,7 @@ const createPost = async (msg: Message, prompt?: string[]) => {
 }
 const funcSelector: Record<string, any> = {
     '-': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
+    '--': async (msg: Message, prompt: string[]) => await createAEditingDirectly(msg, prompt?.join(' ')),
     'status': async (msg: Message) => await printStatus(msg),
     'panic': async (msg: Message, [size]: string[]) => await deleteMsgs(msg, +size),
     'ultimas': async (msg: Message, [size, ...params]: string[]) => await listMsgs(msg, size, params),
@@ -919,6 +944,15 @@ const unbindChatConfig = async (msg: Message) => {
     await appData.chatConfigsManager.deleteConfig(from);
 
 }
+
+//crie uma funçao que faz uma postagem no instagram
+const createInstaPost = async (msg: Message, prompt: string[]) => {
+    const post = prompt?.join(' ');
+    const postImage = await msg.downloadMedia();
+    const postImageName = `${Date.now()}.jpg`;
+
+}
+
 
 
 const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> => {
@@ -1196,6 +1230,11 @@ const sendAsJsonDocument = async (obj: Record<string, any>) => {
     await client.sendMessage(myId, fileAsMedia, {
         sendMediaAsDocument: true
     });
+}
+
+const sendAsTextDocument = async (obj: string, filename = `${new Date().getTime()}.txt`, mime = 'aplication/text') => {
+    const fileEncoded = Buffer.from(obj, 'utf-8').toString('base64');
+    await writeFile(filename, fileEncoded, 'base64');
 }
 const prepareJsonToFirebase = (obj: Record<string, any>) => {
     if (!obj) return null;
