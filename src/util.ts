@@ -1,13 +1,16 @@
 
 export const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
 export const baseName = 'bot-4customers';
-export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', '*IA* ', '*bimbim* ', 'bimbim ', 'chico '];
+export const botname = '*Fourzinho*';
+export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', 'IA ','*IA* ', '*bimbim* ', 'bimbim ', 'chico '];
 export type ChatConfigType = {
     commands: string[];
     isAutomatic: boolean;
     commandMarkers: string[];
     isUnique: () => boolean;
 };
+
+export const waitFor = async (timeout = 1000) => await new Promise(resolve => setTimeout(resolve, timeout));
 
 export const tryIt = async (fn: (parameters: any) => Promise<any>, ...args: any[]) => {
     try {

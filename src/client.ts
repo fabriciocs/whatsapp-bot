@@ -25,12 +25,13 @@ import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
 import Wikipedia from './wiki';
-import { keyReplacer, baseName, ChatConfigType, commandMarkers } from './util';
+import { keyReplacer, baseName, ChatConfigType, commandMarkers, botname} from './util';
 import SessionsManager from './sessions-manager';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
 import Wordpress from './wordpress';
 import { writeFile } from 'fs/promises';
+import { Intent } from './dialogflow/intent';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -82,10 +83,22 @@ const sendAnswer = async (msg: Message, content: MessageContent, options: Messag
     }
 }
 
+const sendReply = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
+    if (await isAudioMsg(msg)) {
+        return await onlySay(msg, null, `${content}`);
+    } else {
+        try {
+            await msg.reply(content);
+        } catch (e) {
+            await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
+        }
+    }
+}
 
-client.on('loading_screen', (percent, message) => {
-    console.log('LOADING SCREEN', percent, message);
-});1
+
+client.on('loading_screen', (percent, message, ...rest) => {
+    console.log('LOADING SCREEN', percent, message, rest);
+}); 1
 
 client.on('authenticated', () => {
     console.log('AUTHENTICATED');
@@ -97,12 +110,13 @@ client.on('auth_failure', msg => {
 
 
 client.on('ready', async () => {
-    appData.commands = new Commands(db.ref(`${baseName}/commands`));
-    appData.contexts = new Contexts(db.ref(`${baseName}/contexts`));
-    appData.msgs = new MessagesManager(db.ref(`${baseName}/messages`));
-    appData.sessionManager = new SessionsManager(db.ref(`${baseName}/sessions`));
-    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${baseName}/chatConfigs`));
-    appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${baseName}/commandConfigs`));
+    const fullBaseName = `${baseName}/${keyReplacer(client.info.wid.user)}}`;
+    appData.commands = new Commands(db.ref(`${fullBaseName}/commands`));
+    appData.contexts = new Contexts(db.ref(`${fullBaseName}/contexts`));
+    appData.msgs = new MessagesManager(db.ref(`${fullBaseName}/messages`));
+    appData.sessionManager = new SessionsManager(db.ref(`${fullBaseName}/sessions`));
+    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
+    appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
 });
 
 const siteToData = async (msg: Message) => {
@@ -921,6 +935,26 @@ const funcSelector: Record<string, any> = {
     r: async (msg: Message) => await runCommand((await (await msg.getQuotedMessage())?.reload())),
     ins: async (msg: Message, prompt: string[]) => await createInstructionsDirectly(msg, prompt?.join(' ')),
     draw: async (msg: Message, prompt: string[]) => await draw(msg, prompt?.join(' ')),
+    b: async (msg: Message, prompt: string[]) => await intentChat(msg, prompt),
+    u: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updateIntent()),
+    up: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updatePage()),
+    fl: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updateFlow()),
+    v: async (msg: Message, [id, ...prompt]: string[]) => await verify(msg, id, prompt),
+}
+const intentChat = async (msg: Message, prompt: string[]) => {
+
+    const responses = (await new Intent().getIntent(keyReplacer(msg.from), prompt?.join(' '))).map(m=>m?.trim?.()).filter(Boolean);
+    for (let i = 0; i < responses?.length; i++) {
+        await sendReply(msg, `${botname}: ${responses[i]}`);
+    }
+}
+const verify = async (msg: Message, id: string, prompt: string[]) => {
+    const ctt = await client.getContactById(id);
+    const chat = await ctt.getChat();
+    const messages = await chat?.fetchMessages({ limit: +prompt?.[0] || 1000 });
+    console.log({ messages: messages.map(m => m.body) });
+    const dbMessages = await appData.msgs.filterByFrom(id);
+    console.log({ dbMessages: dbMessages.map(m => m.body) });
 }
 
 const addAdmin = async (msg: Message) => {
@@ -976,8 +1010,8 @@ const logTotalInfo = async (msg: Message) => {
 }
 
 const songTypes = ['VOICE', 'PTT', 'AUDIO'];
-const safeMsgIds = ['556499736478@c.us'];
-const external = [myId, '556499163599@c.us', '556481509722@c.us', '556492979416@c.us', '556292274772@c.us', '556492052071@c.us', '556292070240@c.us', '556493060933@c.us', '556499918954@c.us', '556496252626@c.us'].concat(safeMsgIds);
+const safeMsgIds = [];
+const external = [myId].concat(safeMsgIds);
 
 const quoteMarkers = ['<add/>', '<add>', '<add />', '<add >', '</>'];
 const codeMarker = '@run';
@@ -1119,8 +1153,9 @@ const bodyToParams = (msg: Message) => {
 }
 
 const extractExecutionInfo = (msg: Message, config?: ChatConfigType): executionType => {
-    if (isCommand(msg)) {
-        const [, text, ...params] = `${config?.isAutomatic ? 'auto ' : ''}${config?.isUnique?.() ? `${config?.commands?.[0]} ` : ''}${msg?.body}`.split(' ').filter(Boolean);
+    if (isCommand(msg) || config?.isAutomatic) {
+        const buildBody = `${config?.isAutomatic ? 'auto ' : ''}${config?.isUnique?.() ? `${config?.commands?.[0]} ` : ''}${msg?.body}`;
+        const [, text, ...params] = buildBody.split(/\s/).filter(Boolean);
         return [text, params];
     }
     if (isLicensePlate(msg)) {
@@ -1196,10 +1231,21 @@ const observable = [];//[leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
 client.on('message_create', async receivedMsg => {
-    if (receivedMsg.isForwarded) return await receivedMsg.reload();
     await protectFromError(async () => {
-
+        if (receivedMsg.isForwarded) return await receivedMsg.reload();
         await backup(receivedMsg);
+        const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
+        const msg = audio ? prepareBody(parsed) : parsed;
+        if (canExecuteCommand(msg)) {
+            return await runCommand(msg);
+        }
+        if (receivedMsg.fromMe && !receivedMsg.hasQuotedMsg && !msg?.body?.startsWith(botname)) {
+            await runConfig(msg);
+        }
+    });
+});
+client.on('message', async receivedMsg => {
+    await protectFromError(async () => {
         const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
         const msg = audio ? prepareBody(parsed) : parsed;
 

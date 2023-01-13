@@ -1,6 +1,6 @@
 import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateImageRequestSizeEnum, CreateSearchRequest, OpenAIApi } from 'openai';
 import { Message } from 'whatsapp-web.js';
-import { tryIt } from './util';
+import { tryIt, waitFor } from './util';
 
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -155,6 +155,19 @@ const editImage = async (image: File, mask: File, msg: Message, prompt: string) 
     console.log(JSON.stringify({ response: response, prompt }, null, 4));
     return response.data.data[0].url;
 }
+const translateTrainingPhrases = async (trainingPhrases: string) => {
+    const response = await doIt({
+        model: "text-davinci-003",
+        prompt: `create an correponding list of sentences in portuguese:\n${trainingPhrases}\n["`,
+        temperature: 1,
+        max_tokens: 700,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      });
+      
+      return `["${response?.choices?.[0]?.text}`;
+}
 export {
     writeAText,
     withConfig,
@@ -162,6 +175,7 @@ export {
     createVariation,
     editImage,
     writeInstructions,
-    editingText
+    editingText,
+    translateTrainingPhrases
 };
 
