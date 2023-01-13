@@ -25,7 +25,7 @@ import MessagesManager from './messages-manager';
 import { Database } from 'firebase-admin/database';
 import { Storage } from 'firebase-admin/storage';
 import Wikipedia from './wiki';
-import { keyReplacer, baseName, ChatConfigType, commandMarkers, botname} from './util';
+import { keyReplacer, baseName, ChatConfigType, commandMarkers, botname } from './util';
 import SessionsManager from './sessions-manager';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
@@ -85,7 +85,7 @@ const sendAnswer = async (msg: Message, content: MessageContent, options: Messag
 
 const sendReply = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
     if (await isAudioMsg(msg)) {
-        return await onlySay(msg, null, `${content}`);
+        return await onlySay(msg, null, `${content}`, true);
     } else {
         try {
             await msg.reply(content);
@@ -823,10 +823,17 @@ const om = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await createAudioDirectly(msg, language, answer);
 }
-const onlySay = async (msg: Message, languageCode: string, answer: string) => {
+const onlySay = async (msg: Message, languageCode: string, answer: string, reply = false) => {
     const content = await tellMe(answer, languageCode);
     const song = new MessageMedia("audio/mp3", content, `${new Date().getTime()}.mp3`);
-    await client.sendMessage(msg.to, song);
+    if (reply) {
+        try {
+            return await msg.reply(song);
+        } catch (e) {
+            return await (await msg.getChat()).sendMessage(song);
+        }
+    }
+    return await client.sendMessage(msg.to, song);
 }
 const voice = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
@@ -936,16 +943,18 @@ const funcSelector: Record<string, any> = {
     ins: async (msg: Message, prompt: string[]) => await createInstructionsDirectly(msg, prompt?.join(' ')),
     draw: async (msg: Message, prompt: string[]) => await draw(msg, prompt?.join(' ')),
     b: async (msg: Message, prompt: string[]) => await intentChat(msg, prompt),
-    u: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updateIntent()),
-    up: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updatePage()),
-    fl: async (msg: Message, prompt: string[]) => await sendAnswer(msg, await new Intent().updateFlow()),
     v: async (msg: Message, [id, ...prompt]: string[]) => await verify(msg, id, prompt),
+    par: async (msg: Message, [id, ...prompt]: string[]) => await new Intent().updateIntentParams()
 }
 const intentChat = async (msg: Message, prompt: string[]) => {
+    const isSound = await isAudioMsg(msg);
+    const chat = await msg.getChat();
+    const id = chat.id.user;
+    const responses = (await new Intent().getIntent(keyReplacer(id), isSound ? (await msg.downloadMedia()).data : prompt?.join(' '), isSound)).map(m => m?.trim?.()).filter(Boolean);
 
-    const responses = (await new Intent().getIntent(keyReplacer(msg.from), prompt?.join(' '))).map(m=>m?.trim?.()).filter(Boolean);
     for (let i = 0; i < responses?.length; i++) {
-        await sendReply(msg, `${botname}: ${responses[i]}`);
+        const resp = isSound ? responses[i] : `${botname}: ${responses[i]}`;
+        await sendReply(msg, resp);
     }
 }
 const verify = async (msg: Message, id: string, prompt: string[]) => {
