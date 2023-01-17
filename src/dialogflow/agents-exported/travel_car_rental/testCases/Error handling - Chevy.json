@@ -1,0 +1,1612 @@
+{
+  "name": "7c6513ce-f00a-4ab3-b167-d5e231f33b20",
+  "tags": [
+    "#error",
+    "#nomatch",
+    "#goback"
+  ],
+  "displayName": "Error handling - Chevy",
+  "notes": "User reverses the vehicle type and model decision and inputs incorrect information for payment.",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Good evening"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I'd like to book a car for this weekend starting on Friday"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ]
+        },
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Where would you like to pick it up?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Boston"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is your drop off location different from your pickup location?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "nope"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to drop off the vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sunday at 9 pm"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "So to confirm:\n\nYou will be picking the vehicle up in Boston, 2020-11-27 and dropping it off at the same location, 2020-11-29 21:00:00 \n\nDoes that sound right?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great! Now let's choose a vehicle."
+            ]
+          },
+          {
+            "text": [
+              "Would you like an economy or luxury vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "lets try economy"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like the Nissan Versa or the Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hmmm the nissan"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Nissan Versa",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The Nissan Versa is $54.20 per day. It fits 4 people and comes with an AM/FM radio. \nWould you like to proceed to payment?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no, go back actually"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, let's look at other options."
+            ]
+          },
+          {
+            "text": [
+              "Would you like an economy or luxury vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "luxury please"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like our Chevy Tahoe or Dodge Charger luxury option?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ill do the tahoe"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The Chevy Tahoe is $65.53 per day. It fits 7 people and comes with unlimited mileage included.\nWould you like to proceed to payment?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes!"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What card type will you be using?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visa"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter the card number."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the name on the card?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Client Name"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing street address?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "."
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I'm sorry, I missed that. What is billing street number and street name?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Sorry, its 1600 Amphitheatre Parkway"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing ZIP code?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You will be picking the Chevrolet Tahoe up in Boston, 2020-11-27 and dropping it off, 2020-11-29 21:00:00. \nThe total for this trip will be $175.38."
+            ]
+          },
+          {
+            "text": [
+              "Thank you for renting with us and have a wonderful day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Boa noite"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu gostaria de reservar um carro para este fim de semana a partir de sexta-feira"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ]
+        },
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de retirá-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Boston"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "domingo às 21h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê pegará o veículo em Boston, 27/11/2020 e o deixará no mesmo local, 29/11/2020 21:00:00\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "vamos tentar a economia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hummm o nissan"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Nissan Versa",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Nissan Versa custa US$ 54,20 por dia. Acomoda 4 pessoas e vem com rádio AM/FM.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não, volte na verdade"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, vamos ver outras opções."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "luxo por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "vou fazer o tahoe"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Chevy Tahoe custa $ 65,53 por dia. Acomoda 7 pessoas e vem com quilometragem ilimitada incluída.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim!"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Nome do cliente"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "."
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Me desculpe, eu perdi isso. O que é o número da rua de cobrança e o nome da rua?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Desculpe, é 1600 Amphitheatre Parkway"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 29,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": [
+            {
+              "day": 27,
+              "month": 11,
+              "year": 2020
+            }
+          ],
+          "pickup_location": "Boston",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você pegará o Chevrolet Tahoe em Boston, 27/11/2020 e o entregará, 29/11/2020 21:00:00.\nO total para esta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1606150738,
+    "nanos": 985440000
+  }
+}

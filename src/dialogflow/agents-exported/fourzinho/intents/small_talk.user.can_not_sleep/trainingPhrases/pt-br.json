@@ -1,0 +1,45 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Eu sou insônio"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Eu estou sem sono"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Não consigo dormir"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Não consigo dormir de jeito nenhum"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Não consigo adormecer"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Eu sou insone"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Não consigo nem dormir"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  } ]
+}

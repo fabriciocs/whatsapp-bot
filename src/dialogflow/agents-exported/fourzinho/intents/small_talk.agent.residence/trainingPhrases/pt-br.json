@@ -1,0 +1,105 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Qual é a sua cidade?"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Sua casa"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "É sua cidade natal?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Qual é a sua residência?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Qual é a sua cidade natal?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde fica a sua residência?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Sua cidade"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Sua cidade natal?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde é a sua cidade natal?"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Sua residência"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde fica a sua casa?"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Sua cidade "
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde você mora?"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Conte-me sobre a sua cidade"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Qual é a sua casa?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Em qual cidade você mora?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde está a sua casa?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  } ]
+}

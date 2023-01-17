@@ -1,0 +1,69 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Qual é o seu trabalho?"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "O que você faz para ganhar a vida?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "O que você faz para trabalhar?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Qual é sua ocupação?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Qual é a localização do seu escritório?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde é a sua localização de escritório?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde é o seu escritório?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde está o seu escritório?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde você trabalha?"
+    } ],
+    "repeatCount": 2,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Você trabalha?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  }, {
+    "parts": [ {
+      "text": "Onde é o seu trabalho?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "pt-br"
+  } ]
+}

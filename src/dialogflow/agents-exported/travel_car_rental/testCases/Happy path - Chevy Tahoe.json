@@ -1,0 +1,1464 @@
+{
+  "name": "ae39a965-e6da-4daa-94f3-9d60032a2a11",
+  "tags": [
+    "#chevy",
+    "#samedropoff",
+    "#morelegroom"
+  ],
+  "displayName": "Happy path - Chevy Tahoe",
+  "notes": "User successfully created a car rental reservation for a Chevy Tahoe from SFO.",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hello"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "i want to rent a car"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Where would you like to pick up the vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sfo"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is your drop off location different from your pickup location?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "San Francisco"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to pick up the vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "tomorrow at 4 pm"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to drop off the vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sunday at noon"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "So to confirm:\n\nYou will be picking the vehicle up in San Francisco, 2020-11-05 16:00:00 and dropping it off at the same location, 2020-11-08 12:00:00 \n\nDoes that sound right?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yep"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great! Now let's choose a vehicle."
+            ]
+          },
+          {
+            "text": [
+              "Would you like an economy or luxury vehicle?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "economy"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like the Nissan Versa or the Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "is there anything with more leg room?"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_type": "economy_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "car_rental.larger_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Our luxury vehicles are more spacious and can accommodate more passengers."
+            ]
+          },
+          {
+            "text": [
+              "Would you like our Chevy Tahoe or Dodge Charger luxury option?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "i'll take the tahoe please"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The Chevy Tahoe is $65.53 per day. It fits 7 people and comes with unlimited mileage included.\nWould you like to proceed to payment?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes plz"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What card type will you be using?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visa"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter the card number."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the name on the card?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Client Name"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing street address?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1600 Amphitheatre Parkway"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing ZIP code?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You will be picking the Chevrolet Tahoe up in San Francisco, 2020-11-05 16:00:00 and dropping it off, 2020-11-08 12:00:00. \nThe total for this trip will be $175.38."
+            ]
+          },
+          {
+            "text": [
+              "Thank you for renting with us and have a wonderful day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "thanks!"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_thank.thanks"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Anytime."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "olá"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu quero alugar um carro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de pegar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sfo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "San Francisco"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Em que data e hora pretende levantar a viatura?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "amanhã às 16h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "domingo ao meio-dia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê retirará o veículo em São Francisco, 2020-11-05 16:00:00 e o deixará no mesmo local, 2020-11-08 12:00:00\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "economia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Existe algo com mais espaço para as pernas?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_type": "economy_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "car_rental.larger_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Nossos veículos de luxo são mais espaçosos e podem acomodar mais passageiros."
+            ]
+          },
+          {
+            "text": [
+              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "eu vou pegar o tahoe por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Chevy Tahoe custa $ 65,53 por dia. Acomoda 7 pessoas e vem com quilometragem ilimitada incluída.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Nome do cliente"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1600 Amphitheatre Parkway"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 8,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 5,
+            "hours": 16,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "San Francisco",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você pegará o Chevrolet Tahoe em San Francisco, 2020/11/05 16:00:00 e o entregará, 2020/11/08 12:00:00.\nO total desta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "obrigado!"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_thank.thanks"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "A qualquer momento."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1604528627,
+    "nanos": 91000000
+  }
+}

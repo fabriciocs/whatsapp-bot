@@ -32,6 +32,7 @@ import CommandConfigsManager from './command-configs-manager';
 import Wordpress from './wordpress';
 import { writeFile } from 'fs/promises';
 import { Intent } from './dialogflow/intent';
+import AgentTranslation from './dialogflow/agent-translation';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -867,6 +868,8 @@ const createPost = async (msg: Message, prompt?: string[]) => {
         await sendAnswer(msg, `Post criado com sucesso: ${response.link}`);
     });
 }
+const forzinhoTranslationAgent = new AgentTranslation('fourzinho');
+
 const funcSelector: Record<string, any> = {
     '-': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     '--': async (msg: Message, prompt: string[]) => await createAEditingDirectly(msg, prompt?.join(' ')),
@@ -943,8 +946,15 @@ const funcSelector: Record<string, any> = {
     ins: async (msg: Message, prompt: string[]) => await createInstructionsDirectly(msg, prompt?.join(' ')),
     draw: async (msg: Message, prompt: string[]) => await draw(msg, prompt?.join(' ')),
     b: async (msg: Message, prompt: string[]) => await intentChat(msg, prompt),
+    tcr: async (msg: Message, prompt: string[]) => await intentChat(msg, prompt),
     v: async (msg: Message, [id, ...prompt]: string[]) => await verify(msg, id, prompt),
-    par: async (msg: Message, [id, ...prompt]: string[]) => await new Intent().updateIntentParams()
+    par: async (msg: Message, [id, ...prompt]: string[]) => await new Intent().updateIntentParams(),
+    tra: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateAgent(),
+    trai: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateIntents(),
+    traf: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateFlows(),
+    trap: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translatePages(),
+    trat: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateTestCases(),
+    '4i': async (msg: Message, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateIntents(),
 }
 const intentChat = async (msg: Message, prompt: string[]) => {
     const isSound = await isAudioMsg(msg);

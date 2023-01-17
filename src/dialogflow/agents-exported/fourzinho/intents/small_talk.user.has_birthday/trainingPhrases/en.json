@@ -1,0 +1,65 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "it is my birthday "
+    }, {
+      "text": "today",
+      "parameterId": "date-time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm celebrating my birthday "
+    }, {
+      "text": "today",
+      "parameterId": "date-time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "it's my birthday "
+    }, {
+      "text": "today",
+      "parameterId": "date-time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I was born "
+    }, {
+      "text": "today",
+      "parameterId": "date-time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "today",
+      "parameterId": "date-time",
+      "auto": true
+    }, {
+      "text": " is my birthday"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "it is my birthday"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "it's my b-day"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

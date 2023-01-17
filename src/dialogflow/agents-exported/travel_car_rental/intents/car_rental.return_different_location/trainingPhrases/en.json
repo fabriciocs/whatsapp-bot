@@ -1,0 +1,204 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "i guess i want it diffrent yeah",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "yeah not the same",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "it will be diferent",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i will be going someplace else and staying ther",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "yes i will drop it off in ",
+      "auto": true
+    }, {
+      "text": "Kanab",
+      "parameterId": "drop_off_location",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "UT",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "no return to the same place for me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "it will be a one-way trip",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what if i want a different return location?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do i have to return it there?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i return in "
+    }, {
+      "text": "Philadelphia",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do i need to drop it back off there or can i take it somewhere else?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what if i need to drop it off somewhere else?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i drop it off in colorado?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Yeah can i drop it off in "
+    }, {
+      "text": "LA",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I need to bring it back to a "
+    }, {
+      "text": "Fort Worth",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": " location is that possible?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I need to drop it off in "
+    }, {
+      "text": "Portland",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": " can i do that?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "yeah different place, "
+    }, {
+      "text": "Oakland",
+      "parameterId": "drop_off_location"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I cant drive it all the way back so ill drop it off at a location in Colorado if thats ok?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i drop it off in "
+    }, {
+      "text": "Santa Cruz",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Ill be driving from San Francisco to "
+    }, {
+      "text": "Philadelphia",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": " so ill drop it off there if possible"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Yeah, "
+    }, {
+      "text": "New York",
+      "parameterId": "drop_off_location"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Yeah, can i return it in "
+    }, {
+      "text": "Denver",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to drop it off in "
+    }, {
+      "text": "Las Vegas",
+      "parameterId": "drop_off_location"
+    }, {
+      "text": ", can i do that?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

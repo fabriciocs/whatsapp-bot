@@ -1,0 +1,239 @@
+{
+  "name": "00000000-0000-0000-0000-000000000000",
+  "displayName": "Default Start Flow",
+  "description": "A start flow created along with the agent",
+  "transitionRoutes": [
+    {
+      "intent": "Default Welcome Intent",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "a1280672-a978-4d7b-9b86-791ee8007dee"
+    },
+    {
+      "intent": "car_rental.reservation_create",
+      "triggerFulfillment": {},
+      "targetPage": "Pickup Location",
+      "name": "5f36a039-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "intent": "small_thank.thanks",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "You are welcome!",
+                "No problem!",
+                "Glad I could help!",
+                "Anytime."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Você é bem vindo!",
+                "Sem problemas!",
+                "Que bom que pude ajudar!",
+                "A qualquer momento."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "5f36a03a-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "intent": "small_talk.agent_redirect",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "One moment while I connect you."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um momento enquanto eu conecto você."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Contact Agent",
+      "name": "5f36a03b-0000-210f-859a-f403043d09f0"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "event": "sys.no-match-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I didn't get that. Can you say it again?",
+                "I missed what you said. What was that?",
+                "Sorry, could you say that again?",
+                "Sorry, can you say that again?",
+                "Can you say that again?",
+                "Sorry, I didn't get that. I can help you start a new car rental reservation. Can you rephrase?",
+                "Sorry, what was that?",
+                "One more time?",
+                "What was that?",
+                "Say that one more time?",
+                "I didn't get that. Can you repeat?",
+                "I missed that, say that again?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu não entendi. Pode repetir?",
+                "Eu perdi o que você disse. O que é que foi isso?",
+                "Desculpe, você poderia dizer isso de novo?",
+                "Desculpe, você pode dizer isso de novo?",
+                "Você pode dizer isso de novo?",
+                "Desculpe, não entendi. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Você pode reformular?",
+                "Desculpe, o que foi isso?",
+                "Mais uma vez?",
+                "O que é que foi isso?",
+                "Dizer isso mais uma vez?",
+                "Eu não entendi. Você pode repetir?",
+                "Eu perdi isso, dizer isso de novo?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "5f36a035-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "event": "sys.no-input-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I didn't get that. Can you say it again?",
+                "I missed what you said. What was that?",
+                "Sorry, could you say that again?",
+                "Sorry, can you say that again?",
+                "Can you say that again?",
+                "Sorry, I didn't get that. Can you rephrase?",
+                "Sorry, what was that?",
+                "One more time?",
+                "What was that?",
+                "Say that one more time?",
+                "I didn't get that. Can you repeat?",
+                "I missed that, say that again?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu não entendi. Pode repetir?",
+                "Eu perdi o que você disse. O que é que foi isso?",
+                "Desculpe, você poderia dizer isso de novo?",
+                "Desculpe, você pode dizer isso de novo?",
+                "Você pode dizer isso de novo?",
+                "Desculpe, não entendi. Você pode reformular?",
+                "Desculpe, o que foi isso?",
+                "Mais uma vez?",
+                "O que é que foi isso?",
+                "Dizer isso mais uma vez?",
+                "Eu não entendi. Você pode repetir?",
+                "Eu perdi isso, dizer isso de novo?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "5f36a036-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "targetPage": "Pickup Location",
+      "event": "No-input Options",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Hi! I'm the Rental Car Virtual Agent. I can help with renting a car, looking at luxury or economy vehicle options in your pickup area, and comparing rental costs. To get started say rent a car"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Oi! Sou o Agente Virtual de Aluguel de Carros. Posso ajudar com o aluguel de um carro, procurando opções de veículos de luxo ou econômicos em sua área de coleta e comparando os custos de aluguel. Para começar, diga alugar um carro"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "5f36a037-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "event": "sys.no-match-1",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I'm sorry, I can help you start a new car rental reservation. How can I help today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Lamento, posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudar hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "81eef2d3-aaf6-490c-aec2-7b25cc628863"
+    }
+  ],
+  "nluSettings": {
+    "modelType": "MODEL_TYPE_STANDARD",
+    "classificationThreshold": 0.30000001
+  }
+}

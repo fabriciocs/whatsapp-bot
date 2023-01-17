@@ -1,17 +1,14 @@
 
 import { IntentsClient, SessionsClient } from '@google-cloud/dialogflow-cx';
-const { v4 } = require('uuid');
 
-
-//crie uma classe para incluir frases de treinamento no intent Default Welcome Intent
 export class Intent {
-    async getIntent(id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = 'pt-br') {
-        // A new session needs to be created for each request.
+    async getIntent(id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = process.env.AGENT_LANGUAGE_CODE) {
+
         const sessionClient = new SessionsClient({
             apiEndpoint: process.env.AGENT_ENDPOINT,
         });
         const sessionPath = sessionClient.projectLocationAgentSessionPath(projectId, process.env.AGENT_LOCATION, agentId, id);
-        console.log(sessionPath);
+        
         const queryInput = {
             languageCode
         } as any;

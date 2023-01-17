@@ -1,0 +1,19 @@
+{
+  "entities": [ {
+    "value": "Chevrolet Tahoe",
+    "synonyms": [ "SUV ", "veículo utilitário esportivo", "Chevrolet ", "Tahoe", "Chevy", "chevy", "tahoe", "chevrolet" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "Dodge Charger",
+    "synonyms": [ "conversível", "carro esportivo", "Charger", "Dodge", "dodge", "charger" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "Mitsubishi Mirage",
+    "synonyms": [ "sedan", "Mitsubishi", "Mirage", "mitsubishi", "mirage" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "Nissan Versa",
+    "synonyms": [ "compact_car", "Nissan", "Versa", "nissan ", "versa" ],
+    "languageCode": "pt-br"
+  } ]
+}
