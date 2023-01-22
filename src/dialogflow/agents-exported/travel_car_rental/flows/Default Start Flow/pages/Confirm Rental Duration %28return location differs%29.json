@@ -1,53 +1,95 @@
 {
   "name": "cbbde1c6-4a59-4512-bdb7-545ffcac8e1c",
   "displayName": "Confirm Rental Duration (return location differs)",
-  "form": {
-  
-  },
+  "form": {},
   "entryFulfillment": {
-    "messages": [ {
-      "text": {
-        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in \n $session.params.pickup_location \n $session.params.pickup_date_time and dropping it off \n in $session.params.drop_off_location \n $session.params.drop_off_date_time\n\nDoes that sound right?" ]
+    "messages": [
+      {
+        "text": {
+          "text": [
+            "So to confirm:\n\nYou will be picking the vehicle up in \n $session.params.pickup_location \n $session.params.pickup_date_time and dropping it off \n in $session.params.drop_off_location \n $session.params.drop_off_date_time\n\nDoes that sound right?"
+          ]
+        },
+        "languageCode": "en"
       },
-      "languageCode": "en"
-    } ]
+      {
+        "text": {
+          "text": [
+            "Então para confirmar:\n\nVocê vai retirar o veículo em\n $session.params.pickup_location\n $session.params.pickup_date_time e deixando-o\n em $session.params.drop_off_location\n $session.params.drop_off_date_time\n\nIsso soa certo?"
+          ]
+        },
+        "languageCode": "pt-br"
+      }
+    ]
   },
-  "transitionRoutes": [ {
-    "intent": "small_talk.confirmation.yes",
-    "triggerFulfillment": {
-      "messages": [ {
-        "text": {
-          "text": [ "Great! Now let's choose a vehicle." ]
-        },
-        "languageCode": "en"
-      } ]
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Great! Now let's choose a vehicle."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Excelente! Agora vamos escolher um veículo."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Vehicle Disambiguation ",
+      "name": "5f36a04a-0000-210f-859a-f403043d09f0"
     },
-    "targetPage": "Vehicle Disambiguation ",
-    "name": "5f36a04a-0000-210f-859a-f403043d09f0"
-  }, {
-    "intent": "small_talk.confirmation.no",
-    "triggerFulfillment": {
-      "messages": [ {
-        "text": {
-          "text": [ "Ok, let's try again." ]
-        },
-        "languageCode": "en"
-      } ],
-      "setParameterActions": [ {
-        "parameter": "pickup_location ",
-        "value": null
-      }, {
-        "parameter": "pickup_date_time",
-        "value": null
-      }, {
-        "parameter": "drop_off_location",
-        "value": null
-      }, {
-        "parameter": "drop_off_date_time",
-        "value": null
-      } ]
-    },
-    "targetPage": "Pickup Location",
-    "name": "5f36a04b-0000-210f-859a-f403043d09f0"
-  } ]
+    {
+      "intent": "small_talk.confirmation.no",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, let's try again."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Ok, vamos tentar novamente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ],
+        "setParameterActions": [
+          {
+            "parameter": "pickup_location ",
+            "value": null
+          },
+          {
+            "parameter": "pickup_date_time",
+            "value": null
+          },
+          {
+            "parameter": "drop_off_location",
+            "value": null
+          },
+          {
+            "parameter": "drop_off_date_time",
+            "value": null
+          }
+        ]
+      },
+      "targetPage": "Pickup Location",
+      "name": "5f36a04b-0000-210f-859a-f403043d09f0"
+    }
+  ]
 }

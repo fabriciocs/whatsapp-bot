@@ -2,45 +2,70 @@
   "name": "9ec6d74a-8bc5-464b-8002-423bf3b84418",
   "displayName": "Rental Duration ",
   "form": {
-    "parameters": [ {
-      "displayName": "pickup_date_time",
-      "required": true,
-      "entityType": "@sys.date-time",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What date and time would you like to pick up the vehicle?" ]
-            },
-            "languageCode": "en"
-          } ]
+    "parameters": [
+      {
+        "displayName": "pickup_date_time",
+        "required": true,
+        "entityType": "@sys.date-time",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What date and time would you like to pick up the vehicle?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Em que dia e hora pretende levantar a viatura?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "displayName": "drop_off_date_time",
+        "required": true,
+        "entityType": "@sys.date-time",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What date and time would you like to drop off the vehicle?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Que dia e hora gostaria de entregar o veículo?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
         }
       }
-    }, {
-      "displayName": "drop_off_date_time",
-      "required": true,
-      "entityType": "@sys.date-time",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What date and time would you like to drop off the vehicle?" ]
-            },
-            "languageCode": "en"
-          } ]
-        }
-      }
-    } ]
+    ]
   },
-  "entryFulfillment": {
-  
-  },
-  "transitionRoutes": [ {
-    "condition": "$page.params.status = \"FINAL\"",
-    "triggerFulfillment": {
-    
-    },
-    "targetPage": "Confirm Rental Duration",
-    "name": "5f36a049-0000-210f-859a-f403043d09f0"
-  } ]
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "condition": "$page.params.status = \"FINAL\"",
+      "triggerFulfillment": {},
+      "targetPage": "Confirm Rental Duration",
+      "name": "5f36a049-0000-210f-859a-f403043d09f0"
+    }
+  ]
 }

@@ -177,7 +177,7 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
     const countResponse = trainingPhrases.length;
     //`Write ${countResponse} training phrases in pt-br:\n${JSON.stringify(trainingPhrases.map(a=> a.trim()))}\n["`,
     //const prompt = `create an correponding array of sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`;
-    const prompt = `create a corresponding list of sentences in portuguese:\n${JSON.stringify(trainingPhrases)}\n\n["`
+    const prompt = `create a corresponding list with ${countResponse} sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`
     const response = await completion({
         model: "text-davinci-003",
         prompt,

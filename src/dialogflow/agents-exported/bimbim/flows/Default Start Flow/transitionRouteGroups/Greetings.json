@@ -1,0 +1,303 @@
+{
+  "name": "26b76469-185d-4f6a-92b2-c8b5e43b27e9",
+  "displayName": "Greetings",
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.greetings.bye",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "See you soon!",
+                "Bye-bye!",
+                "Till next time!",
+                "Bye."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Vejo você em breve!",
+                "Tchau tchau!",
+                "Até a próxima!",
+                "Tchau."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "24143f04-1cb2-4bee-ba9c-ef804991142b"
+    },
+    {
+      "intent": "small_talk.greetings.good_evening",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Good evening! How is your day going?",
+                "Good evening! How's the day treating you so far?",
+                "Good evening! How's your day been?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Boa noite! Como está o seu dia?",
+                "Boa noite! Como o dia está te tratando até agora?",
+                "Boa noite! Como tem sido o teu dia?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "575daf8b-5158-46da-8cf3-a414dfeaf828"
+    },
+    {
+      "intent": "small_talk.greetings.good_morning",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "How are you this morning?",
+                "How's the morning treating you so far?",
+                "Good morning! How are you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Como você está nesta manhã?",
+                "Como a manhã está tratando você até agora?",
+                "Bom Dia! Como você está hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "81450d0a-f5e4-46c2-bb19-41e624c214b0"
+    },
+    {
+      "intent": "small_talk.greetings.good_night",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Sleep tight!",
+                "Have a good one!",
+                "Talk to you soon!"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Dorme bem!",
+                "Tenha um bom dia!",
+                "Falo com você em breve!"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "0ef1e4d2-099d-4485-a38f-c146ffe4b92e"
+    },
+    {
+      "intent": "small_talk.greetings.hello",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Hi there, friend!",
+                "Hi!",
+                "Hey!",
+                "Hey there!",
+                "Good day!",
+                "Hello!",
+                "Greetings!"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Olá, amigo!",
+                "Oi!",
+                "Ei!",
+                "Ei!",
+                "Bom dia!",
+                "Olá!",
+                "Saudações!"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "b103c5ee-7334-4998-bca7-4031872027c5"
+    },
+    {
+      "intent": "small_talk.greetings.how_are_you",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Doing great, thanks.",
+                "I'm doing very well. Thanks!",
+                "Feeling wonderful!",
+                "Wonderful! Thanks for asking."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Indo muito bem, obrigado.",
+                "Eu estou fazendo muito bem. Obrigado!",
+                "Sentindo maravilhoso!",
+                "Maravilhoso! Obrigado por perguntar."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "c1b44e60-0702-41ea-9462-d30f2a75310a"
+    },
+    {
+      "intent": "small_talk.greetings.nice_to_meet_you",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "It's nice meeting you, too.",
+                "Likewise. I'm looking forward to helping you out.\n",
+                "Nice meeting you, as well.\n",
+                "The pleasure is mine."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "É um prazer conhecê-lo também.",
+                "Da mesma maneira. Estou ansioso para ajudá-lo.\n",
+                "Prazer em conhecê-lo também.\n",
+                "O prazer é meu."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "5883c25a-b14e-42d3-ba11-d8c154947f19"
+    },
+    {
+      "intent": "small_talk.greetings.nice_to_see_you",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Likewise!",
+                "So glad we meet again!",
+                "Same here. I was starting to miss you."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Da mesma maneira!",
+                "Que bom que nos encontramos novamente!",
+                "Mesmo aqui. Eu estava começando a sentir sua falta."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "af2290cb-d0b3-4228-96dd-c2f9d539f679"
+    },
+    {
+      "intent": "small_talk.greetings.nice_to_talk_to_you",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "It sure was. We can chat again anytime.",
+                "I enjoy talking to you, too.",
+                "You know I'm here to talk anytime."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Com certeza foi. Podemos conversar novamente a qualquer momento.",
+                "Eu também gosto de conversar com você.",
+                "Você sabe que estou aqui para conversar a qualquer hora."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "82bc9e49-aede-404c-8e1e-ce009f6d5c40"
+    },
+    {
+      "intent": "small_talk.greetings.whats_up",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Not a whole lot. ",
+                "Not much. ",
+                "Just here, waiting to help someone."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Não um lote inteiro.",
+                "Não muito.",
+                "Apenas aqui, esperando para ajudar alguém."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "fb2229aa-f3d5-4df7-947e-62562aaee0c3"
+    }
+  ]
+}

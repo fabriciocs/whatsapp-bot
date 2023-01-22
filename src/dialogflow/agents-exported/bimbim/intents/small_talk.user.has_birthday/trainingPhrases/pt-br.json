@@ -1,0 +1,92 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "é o meu aniversário"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "date-time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou comemorando meu aniversário"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "date-time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "é meu aniversário"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "date-time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu nasci"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "date-time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "hoje",
+          "parameterId": "date-time",
+          "auto": true
+        },
+        {
+          "text": " é meu aniversário"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "é o meu aniversário"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "é meu aniversário"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ export default class AgentTranslation {
         return await agentsClient.getAgent({ name: agentName });
 
     }
+
     private async walk(dir: string, endsWithFile = 'en.json') {
         let results: string[] = [];
         const list = await readdir(dir);
@@ -174,7 +175,27 @@ export default class AgentTranslation {
         }
         return [entryList, translatedEntryList, files, eventList, translatedEventList, formList, translatedFormList, transitionList, translatedTransitionList, formRepromptList, translatedFormRepromptList];
     }
+    async transitionRouteGroupsAsList() {
+        const flowsFolder = resolve(this.basePath, this.agentFolderName, 'flows/Default Start Flow/transitionRouteGroups');
+        const files = await this.walk(flowsFolder, '.json');
 
+        let transitionList = [];
+
+
+        let translatedTransitionList = [];
+
+        for (const file of files) {
+            const transitionRouteGroups = await this.getTransitionRouteGroupsFromFile(file);
+
+            const fileTransitionTexts = (await this.getTransitionRouteGroupsFulfillment(transitionRouteGroups))?.filter(Boolean);
+
+            if (fileTransitionTexts?.length > 0) {
+                transitionList = transitionList.concat(fileTransitionTexts);
+                translatedTransitionList = translatedTransitionList.concat(await new GoogleTranslate().translateText(fileTransitionTexts));
+            }
+        }
+        return [transitionList, translatedTransitionList, files];
+    }
     async getTrainingPhrasesFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
         const intent = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IIntent;
@@ -197,6 +218,18 @@ export default class AgentTranslation {
 
     async getPageTransitionTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.transitionRoutes?.reduce((acc, { triggerFulfillment }) => {
+            triggerFulfillment?.messages?.forEach(({ text }) => {
+                if (text?.text?.length) {
+                    acc.push(...text?.text);
+                }
+            });
+            return acc;
+        }, [] as string[]);
+        return list;
+    }
+
+    async getTransitionRouteGroupsFulfillment(transitionRouteGroup: google.cloud.dialogflow.cx.v3.ITransitionRouteGroup) {
+        const list = transitionRouteGroup.transitionRoutes?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => {
                 if (text?.text?.length) {
                     acc.push(...text?.text);
@@ -232,6 +265,11 @@ export default class AgentTranslation {
     private async getPageFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
         const page = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IPage;
+        return page;
+    }
+    private async getTransitionRouteGroupsFromFile(filePath: string) {
+        const jsonContent = await readFile(filePath, 'utf-8');
+        const page = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
         return page;
     }
 
@@ -285,6 +323,9 @@ export default class AgentTranslation {
         await this.translateFlows();
         await this.translatePages();
         await this.translateTestCases();
+        await this.translateTransitionRouteGroup();
+        const [agent] = await this.getAgent();
+
     }
 
     async translateIntents() {
@@ -305,12 +346,13 @@ export default class AgentTranslation {
                     }
                 }
             }
+            console.log(`Writing ${filePath}`);
             await writeFile(`${dirname(filePath)}/pt-br.json`, JSON.stringify(intent, null, 2));
         }
     }
     async translateFlows() {
         const [list, translatedList, files, eventList, translatedEventList] = await this.flowsAsList();
-        let idx = { translated: 0, event: 0 };
+        const idx = { translated: 0, event: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
@@ -341,6 +383,7 @@ export default class AgentTranslation {
                     triggerFulfillment?.messages.push(message);
                 }
             }
+            console.log(`Writing ${filePath}`);
             await writeFile(`${filePath}`, JSON.stringify(flow, null, 2));
         }
     }
@@ -370,13 +413,14 @@ export default class AgentTranslation {
                 }
                 testCase.testCaseConversationTurns.push(conversationTurn);
             }
+            console.log(`Writing ${filePath}`);
             await writeFile(`${filePath}`, JSON.stringify(testCase, null, 2));
         }
     }
 
     async translatePages() {
         const [entryList, translatedEntryList, files, eventList, translatedEventList, formList, translatedFormList, transitionList, translatedTransitionList, formRepromptList, translatedFormRepromptList] = await this.pagesAsList();
-        let idx = { entry: 0, event: 0, form: 0, transition: 0, reprompt: 0 };
+        const idx = { entry: 0, event: 0, form: 0, transition: 0, reprompt: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
@@ -449,7 +493,32 @@ export default class AgentTranslation {
                     triggerFulfillment?.messages.push(message);
                 }
             }
+            console.log(`Writing ${filePath}`);
             await writeFile(`${filePath}`, JSON.stringify(page, null, 2));
+        }
+    }
+    async translateTransitionRouteGroup() {
+        const [transitionList, translatedTransitionList, files] = await this.transitionRouteGroupsAsList();
+        const idx = {  transition: 0 };
+        for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+            const filePath = files[fileIndex];
+            const jsonContent = await readFile(filePath, 'utf-8');
+            const transitionRouteGroup = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
+            for (let i = 0; i < transitionRouteGroup.transitionRoutes.length; i++) {
+                const triggerFulfillment = transitionRouteGroup.transitionRoutes[i].triggerFulfillment;
+                const size = triggerFulfillment?.messages?.length;
+                for (let j = 0; j < size; j++) {
+                    const message = JSON.parse(JSON.stringify(triggerFulfillment.messages[j]));
+                    message['languageCode'] = 'pt-br';
+                    for (let t = 0; t < message.text?.text?.length; t++) {
+                        message.text.text[t] = translatedTransitionList[idx.transition];
+                        idx.transition++;
+                    }
+                    triggerFulfillment?.messages.push(message);
+                }
+            }
+            console.log(`Writing ${filePath}`);
+            await writeFile(`${filePath}`, JSON.stringify(transitionRouteGroup, null, 2));
         }
     }
 

@@ -1,0 +1,325 @@
+{
+  "name": "17831c47-b4a0-4c09-9aec-1c1c271d0b04",
+  "tags": [
+    "#testing",
+    "#real",
+    "#see_you_again"
+  ],
+  "displayName": "Happy path - testing agent and asks if human, like to see agent again",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hello"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi! I'm the virtual small talk agent. I can tell you a joke, tell you about myself, or answer miscellaneous questions."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat can I help you with today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ok I am going to test you then"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.user.testing_agent"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I hope to pass your tests. Feel free to test me often."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat questions can I help answer for you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "are you a human"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.agent.real"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I must have impressed you if you think I'm real. But no, I'm a virtual being."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat questions can I help you with?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ok I'd like to see you again"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.user.wants_to_see_agent_again"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure. I enjoy talking to you. I hope to see you again soon."
+            ]
+          },
+          {
+            "text": [
+              "\nHow can I help?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "bye bye"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.greetings.bye"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thanks for chatting with me today. Goodbye!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "olá"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Oi! Eu sou o agente virtual de conversa fiada. Posso contar uma piada, falar sobre mim ou responder a perguntas diversas."
+            ]
+          },
+          {
+            "text": [
+              "\nEm que posso te ajudar hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ok vou te testar então"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.user.testing_agent"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Espero passar nos seus testes. Sinta-se à vontade para me testar com frequência."
+            ]
+          },
+          {
+            "text": [
+              "\nQue perguntas posso ajudar a responder para você?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Você é um humano"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.agent.real"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Devo ter te impressionado se você pensa que sou real. Mas não, sou um ser virtual."
+            ]
+          },
+          {
+            "text": [
+              "\nEm quais questões posso te ajudar?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ok gostaria de te ver de novo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.user.wants_to_see_agent_again"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Certo. Eu gosto de falar com você. Espero vê-lo novamente em breve."
+            ]
+          },
+          {
+            "text": [
+              "\nComo posso ajudar?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "tchau tchau"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.greetings.bye"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigado por conversar comigo hoje. Adeus!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1608326113,
+    "nanos": 10567000
+  }
+}

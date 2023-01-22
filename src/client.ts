@@ -835,7 +835,7 @@ const createPost = async (msg: Message, prompt?: string[]) => {
         await sendAnswer(msg, `Post criado com sucesso: ${response.link}`);
     });
 }
-const forzinhoTranslationAgent = new AgentTranslation('fourzinho');
+const forzinhoTranslationAgent = new AgentTranslation('bimbim');
 
 const funcSelector: Record<string, any> = {
     '-': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
@@ -921,7 +921,8 @@ const funcSelector: Record<string, any> = {
     traf: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateFlows(),
     trap: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translatePages(),
     trat: async (msg: Message, [id, ...prompt]: string[]) => await new AgentTranslation().translateTestCases(),
-    '4i': async (msg: Message, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateIntents(),
+    '4i': async (msg: Message, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateAgent(),
+    '4t': async (msg: Message, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
 }
 const intentChat = async (msg: Message, prompt: string[]) => {
     const isSound = await isAudioMsg(msg);
@@ -1166,7 +1167,7 @@ const runCommand = async (msg: Message) => {
 
         await command(msg, params);
 
-        await sendReply(msg, 'Feito');
+        // await sendReply(msg, 'Feito');
 
     } catch (error) {
         console.error({ error });
@@ -1188,7 +1189,7 @@ const runConfig = async (msg: Message, isAudio = false) => {
 
         await command(msg, params);
 
-        await sendReply(msg, 'Feito');
+        // await sendReply(msg, 'Feito');
 
 
     } catch (error) {

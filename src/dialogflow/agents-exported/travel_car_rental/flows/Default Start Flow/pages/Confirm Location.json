@@ -1,37 +1,45 @@
 {
   "name": "16af1216-5bed-492b-9bcc-2aaeb6827163",
   "displayName": "Confirm Location",
-  "form": {
-  
-  },
+  "form": {},
   "entryFulfillment": {
-    "messages": [ {
-      "text": {
-        "text": [ "Is your drop off location different from your pickup location?" ]
+    "messages": [
+      {
+        "text": {
+          "text": [
+            "Is your drop off location different from your pickup location?"
+          ]
+        },
+        "languageCode": "en"
       },
-      "languageCode": "en"
-    } ]
+      {
+        "text": {
+          "text": [
+            "O local de entrega é diferente do local de retirada?"
+          ]
+        },
+        "languageCode": "pt-br"
+      }
+    ]
   },
-  "transitionRoutes": [ {
-    "intent": "small_talk.confirmation.yes",
-    "triggerFulfillment": {
-    
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {},
+      "targetPage": "Drop Off Location",
+      "name": "5f36a03e-0000-210f-859a-f403043d09f0"
     },
-    "targetPage": "Drop Off Location",
-    "name": "5f36a03e-0000-210f-859a-f403043d09f0"
-  }, {
-    "intent": "small_talk.confirmation.no",
-    "triggerFulfillment": {
-    
+    {
+      "intent": "small_talk.confirmation.no",
+      "triggerFulfillment": {},
+      "targetPage": "Rental Duration ",
+      "name": "5f36a03f-0000-210f-859a-f403043d09f0"
     },
-    "targetPage": "Rental Duration ",
-    "name": "5f36a03f-0000-210f-859a-f403043d09f0"
-  }, {
-    "intent": "car_rental.return_different_location",
-    "triggerFulfillment": {
-    
-    },
-    "targetPage": "Drop Off Location",
-    "name": "5f36a040-0000-210f-859a-f403043d09f0"
-  } ]
+    {
+      "intent": "car_rental.return_different_location",
+      "triggerFulfillment": {},
+      "targetPage": "Drop Off Location",
+      "name": "5f36a040-0000-210f-859a-f403043d09f0"
+    }
+  ]
 }

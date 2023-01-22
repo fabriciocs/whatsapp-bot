@@ -1,483 +1,1124 @@
 {
   "name": "c5c7f85a-f237-4728-b0c8-315c30903d87",
-  "tags": [ "#economy", "#samedropoff" ],
+  "tags": [
+    "#economy",
+    "#samedropoff"
+  ],
   "displayName": "Error handling - City No Match",
-  "testCaseConversationTurns": [ {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "i want to rent a car"
-        },
-        "languageCode": "en"
-      }
-    },
-    "virtualAgentOutput": {
-      "triggeredIntent": {
-        "name": "car_rental.reservation_create"
-      },
-      "currentPage": {
-        "name": "Pickup Location",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Where would you like to pick up the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "languageCode": "en",
-        "event": {
-          "event": "No-Match City"
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "i want to rent a car"
+          },
+          "languageCode": "en"
         }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Where would you like to pick up the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "currentPage": {
-        "name": "Pickup Location",
-        "flow": "Default Start Flow"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "languageCode": "en",
+          "event": {
+            "event": "No-Match City"
+          }
+        }
       },
-      "textResponses": [ {
-        "text": [ "Where would you like to pick up the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "almaty"
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
         },
-        "languageCode": "en"
+        "textResponses": [
+          {
+            "text": [
+              "Where would you like to pick up the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_location": "Almaty"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "almaty"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Location",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Is your drop off location different from your pickup location?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "no"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Almaty"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is your drop off location different from your pickup location?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_location": "Almaty"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.no"
-      },
-      "currentPage": {
-        "name": "Rental Duration ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What date and time would you like to pick up the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "this friday"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Almaty"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to pick up the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "this friday"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Rental Duration ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What date and time would you like to drop off the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "next friday"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to drop off the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "next friday"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Rental Duration",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in Almaty, 2020-12-04 and dropping it off at the same location, 2020-12-11 \n\nDoes that sound right?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "yes"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "So to confirm:\n\nYou will be picking the vehicle up in Almaty, 2020-12-04 and dropping it off at the same location, 2020-12-11 \n\nDoes that sound right?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.yes"
-      },
-      "currentPage": {
-        "name": "Vehicle Disambiguation ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Great! Now let's choose a vehicle." ]
-      }, {
-        "text": [ "Would you like an economy or luxury vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "economy"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great! Now let's choose a vehicle."
+            ]
+          },
+          {
+            "text": [
+              "Would you like an economy or luxury vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "economy"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Economy Options",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Would you like the Nissan Versa or the Mitsubishi Mirage?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "nissan"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like the Nissan Versa or the Mitsubishi Mirage?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "nissan"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Nissan Versa",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "The Nissan Versa is $54.20 per day. It fits 4 people and comes with an AM/FM radio. \nWould you like to proceed to payment?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "yes"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Nissan Versa",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The Nissan Versa is $54.20 per day. It fits 4 people and comes with an AM/FM radio. \nWould you like to proceed to payment?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.yes"
-      },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What card type will you be using?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "visa"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What card type will you be using?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "card_type": "visa",
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visa"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Please enter the card number." ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "123456789012"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter the card number."
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "card_number": "123456789012",
-        "card_type": "visa",
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "123456789012"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the name on the card?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "Boris Pasternak"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the name on the card?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Boris Pasternak",
-        "card_number": "123456789012",
-        "card_type": "visa",
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Boris Pasternak"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the billing street address?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "456 Zhivago Ave, Moscow, CA"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing street address?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Boris Pasternak",
-        "billing_street_address": "456 Zhivago Ave, Moscow, CA",
-        "card_number": "123456789012",
-        "card_type": "visa",
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "456 Zhivago Ave, Moscow, CA"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the billing ZIP code?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "89054"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "billing_street_address": "456 Zhivago Ave, Moscow, CA",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing ZIP code?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Boris Pasternak",
-        "billing_street_address": "456 Zhivago Ave, Moscow, CA",
-        "billing_zip_code": "89054",
-        "card_number": "123456789012",
-        "card_type": "visa",
-        "drop_off_date_time": {
-          "day": 11,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 4,
-          "month": 12,
-          "year": 2020
-        },
-        "pickup_location": "Almaty",
-        "vehicle_model": "Nissan Versa",
-        "vehicle_type": "economy_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "89054"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "End Session",
-        "flow": "Default Start Flow"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "billing_street_address": "456 Zhivago Ave, Moscow, CA",
+          "billing_zip_code": "89054",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You will be picking the Nissan Versa up in Almaty, 2020-12-04 and dropping it off, 2020-12-11. \nThe total for this trip will be $175.38."
+            ]
+          },
+          {
+            "text": [
+              "Thank you for renting with us and have a wonderful day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu quero alugar um carro"
+          },
+          "languageCode": "pt-br"
+        }
       },
-      "textResponses": [ {
-        "text": [ "You will be picking the Nissan Versa up in Almaty, 2020-12-04 and dropping it off, 2020-12-11. \nThe total for this trip will be $175.38." ]
-      }, {
-        "text": [ "Thank you for renting with us and have a wonderful day!" ]
-      } ]
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de pegar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "languageCode": "pt-br",
+          "event": {
+            "event": "No-Match City"
+          }
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de pegar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "almaty"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Almaty"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Almaty"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Em que data e hora pretende levantar a viatura?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "esta sexta"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "próxima sexta"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê irá retirar o veículo em Almaty, 2020-12-04 e devolvê-lo no mesmo local, 2020-12-11\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "economia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Nissan"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Nissan Versa",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Nissan Versa custa US$ 54,20 por dia. Acomoda 4 pessoas e vem com rádio AM/FM.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "123456789012"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Boris Pasternak"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "456 Zhivago Ave, Moscou, CA"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "billing_street_address": "456 Zhivago Ave, Moscow, CA",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "89054"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Boris Pasternak",
+          "billing_street_address": "456 Zhivago Ave, Moscow, CA",
+          "billing_zip_code": "89054",
+          "card_number": "123456789012",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 11,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 4,
+            "month": 12,
+            "year": 2020
+          },
+          "pickup_location": "Almaty",
+          "vehicle_model": "Nissan Versa",
+          "vehicle_type": "economy_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você pegará o Nissan Versa em Almaty, 04/12/2020 e o entregará, 11/12/2020.\nO total desta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
     }
-  } ],
+  ],
   "creationTime": {
     "seconds": 1606858813,
     "nanos": 543150000

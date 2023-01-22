@@ -2,131 +2,223 @@
   "name": "63475c0f-057a-4ef0-a353-a8bc9c73552b",
   "displayName": "Payment",
   "form": {
-    "parameters": [ {
-      "displayName": "card_type",
-      "required": true,
-      "entityType": "@sys.any",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What card type will you be using?" ]
-            },
-            "languageCode": "en"
-          } ]
-        }
-      },
-      "advancedSettings": {
-        "dtmfSettings": {
-          "useSystemEntityRule": false
-        }
-      }
-    }, {
-      "displayName": "card_number",
-      "required": true,
-      "entityType": "@sys.number-sequence",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "Please enter the card number." ]
-            },
-            "languageCode": "en"
-          } ]
-        }
-      },
-      "advancedSettings": {
-        "dtmfSettings": {
-          "useSystemEntityRule": false
-        }
-      }
-    }, {
-      "displayName": "billing_name",
-      "required": true,
-      "entityType": "@sys.any",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What is the name on the card?" ]
-            },
-            "languageCode": "en"
-          } ]
-        }
-      }
-    }, {
-      "displayName": "billing_street_address",
-      "required": true,
-      "entityType": "@sys.address",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What is the billing street address?" ]
-            },
-            "languageCode": "en"
-          } ]
-        },
-        "repromptEventHandlers": [ {
-          "event": "sys.no-match-default",
-          "triggerFulfillment": {
-            "messages": [ {
-              "text": {
-                "text": [ "I'm sorry, I missed that. What is billing street number and street name?" ]
+    "parameters": [
+      {
+        "displayName": "card_type",
+        "required": true,
+        "entityType": "@sys.any",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What card type will you be using?"
+                  ]
+                },
+                "languageCode": "en"
               },
-              "languageCode": "en"
-            } ]
-          },
-          "name": "1b68b4cf-19ce-4068-bc2d-4f04c8340a19"
-        } ]
-      },
-      "advancedSettings": {
-        "dtmfSettings": {
-          "useSystemEntityRule": false
-        }
-      }
-    }, {
-      "displayName": "billing_zip_code",
-      "required": true,
-      "entityType": "@sys.zip-code",
-      "fillBehavior": {
-        "initialPromptFulfillment": {
-          "messages": [ {
-            "text": {
-              "text": [ "What is the billing ZIP code?" ]
-            },
-            "languageCode": "en"
-          } ]
+              {
+                "text": {
+                  "text": [
+                    "Que tipo de cartão você usará?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
         },
-        "repromptEventHandlers": [ {
-          "event": "sys.no-match-default",
-          "triggerFulfillment": {
-            "messages": [ {
-              "text": {
-                "text": [ "I'm sorry, I missed that. What is billing ZIP code?" ]
-              },
-              "languageCode": "en"
-            } ]
-          },
-          "name": "0b81c7ac-93f9-47ff-b7ff-3d67475429b3"
-        } ]
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
       },
-      "advancedSettings": {
-        "dtmfSettings": {
-          "useSystemEntityRule": false
+      {
+        "displayName": "card_number",
+        "required": true,
+        "entityType": "@sys.number-sequence",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Please enter the card number."
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Por favor, insira o número do cartão."
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      },
+      {
+        "displayName": "billing_name",
+        "required": true,
+        "entityType": "@sys.any",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What is the name on the card?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Qual é o nome no cartão?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "displayName": "billing_street_address",
+        "required": true,
+        "entityType": "@sys.address",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What is the billing street address?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Qual é o endereço de cobrança?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "I'm sorry, I missed that. What is billing street number and street name?"
+                      ]
+                    },
+                    "languageCode": "en"
+                  },
+                  {
+                    "text": {
+                      "text": [
+                        "Me desculpe, eu perdi isso. O que é o número da rua de cobrança e o nome da rua?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              },
+              "name": "1b68b4cf-19ce-4068-bc2d-4f04c8340a19"
+            }
+          ]
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      },
+      {
+        "displayName": "billing_zip_code",
+        "required": true,
+        "entityType": "@sys.zip-code",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "What is the billing ZIP code?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Qual é o CEP de cobrança?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "I'm sorry, I missed that. What is billing ZIP code?"
+                      ]
+                    },
+                    "languageCode": "en"
+                  },
+                  {
+                    "text": {
+                      "text": [
+                        "Me desculpe, eu perdi isso. O que é CEP de cobrança?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              },
+              "name": "0b81c7ac-93f9-47ff-b7ff-3d67475429b3"
+            }
+          ]
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
         }
       }
-    } ]
+    ]
   },
-  "entryFulfillment": {
-  
-  },
-  "transitionRoutes": [ {
-    "condition": "$page.params.status = \"FINAL\"",
-    "triggerFulfillment": {
-    
-    },
-    "targetPage": "Rental Confirmation",
-    "name": "227da8a1-d7a2-4641-8514-df5c4c7784c5"
-  } ]
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "condition": "$page.params.status = \"FINAL\"",
+      "triggerFulfillment": {},
+      "targetPage": "Rental Confirmation",
+      "name": "227da8a1-d7a2-4641-8514-df5c4c7784c5"
+    }
+  ]
 }

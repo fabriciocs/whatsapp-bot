@@ -47,7 +47,6 @@ export class Intent {
             console.log(`  Intent: ${result.intent.displayName}`);
         } else {
             console.log(`  No intent matched.`);
-            return [];
         }
         return responseMsgs;
     }

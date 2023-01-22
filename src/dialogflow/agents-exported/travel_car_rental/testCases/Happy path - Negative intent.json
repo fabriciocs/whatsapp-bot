@@ -1,589 +1,1347 @@
 {
   "name": "39701d18-5ff7-4ee7-8e36-ab99ffa7910b",
-  "tags": [ "#nomatch", "#chevy", "#negativeintent" ],
+  "tags": [
+    "#nomatch",
+    "#chevy",
+    "#negativeintent"
+  ],
   "displayName": "Happy path - Negative intent",
-  "testCaseConversationTurns": [ {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "Hello"
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Hello"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "triggeredIntent": {
-        "name": "Default Welcome Intent"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I'd like to buy a car"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Start Page",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "I'd like to buy a car"
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
         },
-        "languageCode": "en"
+        "textResponses": [
+          {
+            "text": [
+              "I'm sorry, I can help you start a new car rental reservation. How can I help today?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "currentPage": {
-        "name": "Start Page",
-        "flow": "Default Start Flow"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "fine, rent a car for this weekend please"
+          },
+          "languageCode": "en"
+        }
       },
-      "textResponses": [ {
-        "text": [ "I'm sorry, I can help you start a new car rental reservation. How can I help today?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "fine, rent a car for this weekend please"
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Where would you like to pick up the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "triggeredIntent": {
-        "name": "car_rental.reservation_create"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "las vegas"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Pickup Location",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Where would you like to pick up the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "las vegas"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Las Vegas"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is your drop off location different from your pickup location?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_location": "Las Vegas"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Location",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Is your drop off location different from your pickup location?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "no"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Las Vegas"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to pick up the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_location": "Las Vegas"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "friday at noon"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.no"
-      },
-      "currentPage": {
-        "name": "Rental Duration ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What date and time would you like to pick up the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "friday at noon"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What date and time would you like to drop off the vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sunday at 9 pm"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Rental Duration ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What date and time would you like to drop off the vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "sunday at 9 pm"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "So to confirm:\n\nYou will be picking the vehicle up in Las Vegas, 2020-11-20 12:00:00 and dropping it off at the same location, 2020-11-22 21:00:00 \n\nDoes that sound right?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Rental Duration",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in Las Vegas, 2020-11-20 12:00:00 and dropping it off at the same location, 2020-11-22 21:00:00 \n\nDoes that sound right?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "yes"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great! Now let's choose a vehicle."
+            ]
+          },
+          {
+            "text": [
+              "Would you like an economy or luxury vehicle?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "luxury please"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.yes"
-      },
-      "currentPage": {
-        "name": "Vehicle Disambiguation ",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Great! Now let's choose a vehicle." ]
-      }, {
-        "text": [ "Would you like an economy or luxury vehicle?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "luxury please"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like our Chevy Tahoe or Dodge Charger luxury option?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "chevy"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Luxury Options",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Would you like our Chevy Tahoe or Dodge Charger luxury option?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "chevy"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The Chevy Tahoe is $65.53 per day. It fits 7 people and comes with unlimited mileage included.\nWould you like to proceed to payment?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes please"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Confirm Chevy Tahoe",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "The Chevy Tahoe is $65.53 per day. It fits 7 people and comes with unlimited mileage included.\nWould you like to proceed to payment?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "yes please"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What card type will you be using?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "VISA"
+          },
+          "languageCode": "en"
+        }
       },
-      "triggeredIntent": {
-        "name": "small_talk.confirmation.yes"
-      },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What card type will you be using?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "VISA"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter the card number."
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "card_type": "VISA",
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "Please enter the card number." ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "1234567812345678"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the name on the card?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "card_number": "1234567812345678",
-        "card_type": "VISA",
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Client Name"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the name on the card?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "Client Name"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing street address?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Client Name",
-        "card_number": "1234567812345678",
-        "card_type": "VISA",
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1600 Amphitheatre Parkway"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the billing street address?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "1600 Amphitheatre Parkway"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is the billing ZIP code?"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Client Name",
-        "billing_street_address": "1600 Amphitheatre Parkway",
-        "card_number": "1234567812345678",
-        "card_type": "VISA",
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "en"
+        }
       },
-      "currentPage": {
-        "name": "Payment",
-        "flow": "Default Start Flow"
-      },
-      "textResponses": [ {
-        "text": [ "What is the billing ZIP code?" ]
-      } ]
-    }
-  }, {
-    "userInput": {
-      "isWebhookEnabled": true,
-      "input": {
-        "text": {
-          "text": "94043"
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
         },
-        "languageCode": "en"
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You will be picking the Chevrolet Tahoe up in Las Vegas, 2020-11-20 12:00:00 and dropping it off, 2020-11-22 21:00:00. \nThe total for this trip will be $175.38."
+            ]
+          },
+          {
+            "text": [
+              "Thank you for renting with us and have a wonderful day!"
+            ]
+          }
+        ]
       }
     },
-    "virtualAgentOutput": {
-      "sessionParameters": {
-        "billing_name": "Client Name",
-        "billing_street_address": "1600 Amphitheatre Parkway",
-        "billing_zip_code": "94043",
-        "card_number": "1234567812345678",
-        "card_type": "VISA",
-        "drop_off_date_time": {
-          "day": 22,
-          "hours": 21,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_date_time": {
-          "day": 20,
-          "hours": 12,
-          "minutes": 0,
-          "month": 11,
-          "nanos": 0,
-          "seconds": 0,
-          "year": 2020
-        },
-        "pickup_location": "Las Vegas",
-        "vehicle_model": "Chevrolet Tahoe",
-        "vehicle_type": "luxury_vehicle"
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Olá"
+          },
+          "languageCode": "pt-br"
+        }
       },
-      "currentPage": {
-        "name": "End Session",
-        "flow": "Default Start Flow"
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "eu gostaria de comprar um carro"
+          },
+          "languageCode": "pt-br"
+        }
       },
-      "textResponses": [ {
-        "text": [ "You will be picking the Chevrolet Tahoe up in Las Vegas, 2020-11-20 12:00:00 and dropping it off, 2020-11-22 21:00:00. \nThe total for this trip will be $175.38." ]
-      }, {
-        "text": [ "Thank you for renting with us and have a wonderful day!" ]
-      } ]
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Lamento, posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudar hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "tudo bem, alugue um carro para este fim de semana, por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de pegar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Las Vegas"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Las Vegas"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Las Vegas"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Em que dia e hora pretende levantar a viatura?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sexta-feira ao meio-dia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
+        },
+        "currentPage": {
+          "name": "Rental Duration ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "domingo às 21h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê pegará o veículo em Las Vegas, 20/11/2020 12:00:00 e o deixará no mesmo local, 22/11/2020 21:00:00\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "luxo por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "chevy"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Chevy Tahoe",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Chevy Tahoe custa $ 65,53 por dia. Acomoda 7 pessoas e vem com quilometragem ilimitada incluída.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "VISTO"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1234567812345678"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Nome do cliente"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1600 Amphitheatre Parkway"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "1234567812345678",
+          "card_type": "VISA",
+          "drop_off_date_time": {
+            "day": 22,
+            "hours": 21,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_date_time": {
+            "day": 20,
+            "hours": 12,
+            "minutes": 0,
+            "month": 11,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Las Vegas",
+          "vehicle_model": "Chevrolet Tahoe",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você pegará o Chevrolet Tahoe em Las Vegas, 20/11/2020 12:00:00 e o entregará, 22/11/2020 21:00:00.\nO total desta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
     }
-  } ],
+  ],
   "creationTime": {
     "seconds": 1605806261,
     "nanos": 669000000

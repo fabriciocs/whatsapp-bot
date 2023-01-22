@@ -1,0 +1,410 @@
+{
+  "name": "9a1c14e8-3dee-43a6-8e58-10d4a1fb8a70",
+  "tags": [
+    "#user_birthday",
+    "#user_joking",
+    "#help",
+    "#lonely"
+  ],
+  "displayName": "Happy path - user birthday, just joking, asking for help, feeling lonely ",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hey"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.greetings.hello"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi there, friend!\nI'm the virtual small talk agent. I can tell you a joke, tell you about myself or answer questions. You can also tell me about yourself or give me feedback.\nWhat can I help you with today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "It's my birthday today did you know?"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.has_birthday"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Happy Birthday. Well, this calls for a celebration."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I was just joking"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.joking"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You got me!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "can you help me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.agent.can_you_help"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I'll certainly try my best."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I feel kind of lonely what should I do"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.lonely"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I'm sorry. I'm always available if you need someone to talk to."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "thanks"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.appraisal.thank_you"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "You're welcome! Thanks for chatting with me today."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Ei"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.greetings.hello"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, amigo!\nEu sou o agente virtual de conversa fiada. Posso contar uma piada, falar sobre mim ou responder a perguntas. Você também pode me contar sobre você ou me dar feedback.\nEm que posso te ajudar hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Hoje é meu aniversário sabia?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.has_birthday"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Feliz aniversário. Bem, isso exige uma celebração."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu só estava brincando"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.joking"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você me pegou!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "pode me ajudar"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.agent.can_you_help"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Certamente farei o meu melhor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me sinto meio sozinho o que devo fazer"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.user.lonely"
+        },
+        "currentPage": {
+          "name": "Request",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu sinto Muito. Estou sempre disponível se precisar de alguém para conversar."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "obrigado"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date-time": {
+            "day": 5,
+            "month": 1,
+            "year": 2021
+          }
+        },
+        "triggeredIntent": {
+          "name": "small_talk.appraisal.thank_you"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "De nada! Obrigado por conversar comigo hoje."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1609864947,
+    "nanos": 586460000
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "name": "df20b17b-91ed-48df-9465-27eb234f21e5",
+  "displayName": "Request",
+  "form": {},
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.appraisal.thank_you",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "You're welcome! Thanks for chatting with me today."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "De nada! Obrigado por conversar comigo hoje."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "b5e9b58b-9f7e-40f0-b2bd-70e5cdd3c033"
+    },
+    {
+      "intent": "small_talk.greetings.bye",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Thanks for chatting with me today. Goodbye!"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Obrigado por conversar comigo hoje. Adeus!"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "ccc5613e-6e1e-4f3a-b67f-18b376bd7837"
+    }
+  ],
+  "transitionRouteGroups": [
+    "Confirmation",
+    "Agent",
+    "Appraisal",
+    "Dialog",
+    "Emotions",
+    "Greetings",
+    "User",
+    "tcc"
+  ]
+}
