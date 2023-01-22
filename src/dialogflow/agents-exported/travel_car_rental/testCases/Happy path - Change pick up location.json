@@ -1,1662 +1,724 @@
 {
   "name": "d12db02f-78eb-45a7-b943-d46c8147e5f1",
-  "tags": [
-    "#luxury",
-    "#different_dropoff"
-  ],
+  "tags": [ "#luxury", "#different_dropoff" ],
   "displayName": "Happy path - Change pick up location",
-  "testCaseConversationTurns": [
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "i want to rent a car"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
+  "testCaseConversationTurns": [ {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "i want to rent a car"
         },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Where would you like to pick up the vehicle?"
-            ]
-          }
-        ]
+        "languageCode": "en"
       }
     },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "miami"
-          },
-          "languageCode": "en"
-        }
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "car_rental.reservation_create"
       },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Is your drop off location different from your pickup location?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "no"
-          },
-          "languageCode": "en"
-        }
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
       },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to pick up the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "1 dec 1 pm"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_date_time": {
-            "day": 1,
-            "hours": 13,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to drop off the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "3 dec 3 pm"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 3,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 1,
-            "hours": 13,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "So to confirm:\n\nYou will be picking the vehicle up in Miami, 2020-12-01 13:00:00 and dropping it off at the same location, 2020-12-03 15:00:00 \n\nDoes that sound right?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "no"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Ok, let's try again."
-            ]
-          },
-          {
-            "text": [
-              "Where would you like to pick it up?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "san francisco"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Is your drop off location different from your pickup location?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "yes"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "San Francisco"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Drop Off Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Where will you be returning the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "miami"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_location": "Miami",
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to pick up the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "2 dec 3 pm"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to drop off the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "7 dec 4 pm"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "So to confirm:\n\nYou will be picking the vehicle up in \n San Francisco \n 2020-12-02 15:00:00 and dropping it off \n in Miami \n 2020-12-07 16:00:00\n\nDoes that sound right?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "yes"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Vehicle Disambiguation ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Great! Now let's choose a vehicle."
-            ]
-          },
-          {
-            "text": [
-              "Would you like an economy or luxury vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "luxury"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Luxury Options",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Would you like our Chevy Tahoe or Dodge Charger luxury option?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "dodge"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Confirm Dodge Charger",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "The Dodge Charger is $67.23 per day. It fits 4 people and comes with unlimited mileage included.\nWould you like to proceed to payment?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "yes"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What card type will you be using?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "visa"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Please enter the card number."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "12345667890"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the name on the card?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Leo Tolstoy"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the billing street address?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "23 Russian st, Moscow, TX"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "billing_street_address": "23 Russian st, Moscow, TX",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the billing ZIP code?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "45678"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "billing_street_address": "23 Russian st, Moscow, TX",
-          "billing_zip_code": "45678",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "You will be picking the Dodge Charger up in San Francisco, 2020-12-02 15:00:00 and dropping it off, 2020-12-07 16:00:00. \nThe total for this trip will be $175.38."
-            ]
-          },
-          {
-            "text": [
-              "Thank you for renting with us and have a wonderful day!"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Eu quero alugar um carro"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Onde você gostaria de pegar o veículo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Miami"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "O local de entrega é diferente do local de retirada?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "não"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Em que data e hora pretende levantar a viatura?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "1 de dezembro 13h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_date_time": {
-            "day": 1,
-            "hours": 13,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Que dia e hora gostaria de entregar o veículo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "3 de dezembro 15h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 3,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 1,
-            "hours": 13,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Então para confirmar:\n\nVocê retirará o veículo em Miami, 01/12/2020 13:00:00 e o entregará no mesmo local, 03/12/2020 15:00:00\n\nIsso soa certo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "não"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Ok, vamos tentar novamente."
-            ]
-          },
-          {
-            "text": [
-              "Onde você gostaria de retirá-lo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "São Francisco"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "O local de entrega é diferente do local de retirada?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "sim"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "San Francisco"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Drop Off Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Onde você vai devolver o veículo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Miami"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_location": "Miami",
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Em que data e hora pretende levantar a viatura?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "2 de dezembro 15h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Que dia e hora gostaria de entregar o veículo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "7 de dezembro 16h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration (return location differs)",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Então para confirmar:\n\nVocê vai retirar o veículo em\n São Francisco\n 2020-12-02 15:00:00 e entregando-o\n em Miami\n 07/12/2020 16:00:00\n\nIsso soa certo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "sim"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Vehicle Disambiguation ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Excelente! Agora vamos escolher um veículo."
-            ]
-          },
-          {
-            "text": [
-              "Você gostaria de um veículo econômico ou de luxo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "luxo"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Luxury Options",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "desviar"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Confirm Dodge Charger",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "O Dodge Charger custa $ 67,23 por dia. Acomoda 4 pessoas e vem com quilometragem ilimitada incluída.\nDeseja proceder ao pagamento?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "sim"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Que tipo de cartão você usará?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "visto"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Por favor, insira o número do cartão."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "12345667890"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o nome no cartão?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Leo Tolstoy"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o endereço de cobrança?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Rua Russa 23, Moscou, Texas"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "billing_street_address": "23 Russian st, Moscow, TX",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o CEP de cobrança?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "45678"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Leo Tolstoy",
-          "billing_street_address": "23 Russian st, Moscow, TX",
-          "billing_zip_code": "45678",
-          "card_number": "12345667890",
-          "card_type": "visa",
-          "drop_off_date_time": {
-            "day": 7,
-            "hours": 16,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "drop_off_location": "Miami",
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 15,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "San Francisco",
-          "vehicle_model": "Dodge Charger",
-          "vehicle_type": "luxury_vehicle"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Você pegará o Dodge Charger em San Francisco, 02/12/2020 15:00:00 e entregará, 07/12/2020 16:00:00.\nO total desta viagem será de $ 175,38."
-            ]
-          },
-          {
-            "text": [
-              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
-            ]
-          }
-        ]
-      }
+      "textResponses": [ {
+        "text": [ "Where would you like to pick up the vehicle?" ]
+      } ]
     }
-  ],
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "miami"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Confirm Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Is your drop off location different from your pickup location?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "no"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Miami"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.no"
+      },
+      "currentPage": {
+        "name": "Rental Duration ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "1 dec 1 pm"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_date_time": {
+          "day": 1,
+          "hours": 13,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Rental Duration ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to drop off the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "3 dec 3 pm"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 3,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 1,
+          "hours": 13,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Confirm Rental Duration",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in Miami, 2020-12-01 13:00:00 and dropping it off at the same location, 2020-12-03 15:00:00 \n\nDoes that sound right?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "no"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.no"
+      },
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Ok, let's try again." ]
+      }, {
+        "text": [ "Where would you like to pick it up?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "san francisco"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "San Francisco"
+      },
+      "currentPage": {
+        "name": "Confirm Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Is your drop off location different from your pickup location?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "San Francisco"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Drop Off Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Where will you be returning the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "miami"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_location": "Miami",
+        "pickup_location": "San Francisco"
+      },
+      "currentPage": {
+        "name": "Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "2 dec 3 pm"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco"
+      },
+      "currentPage": {
+        "name": "Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to drop off the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "7 dec 4 pm"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco"
+      },
+      "currentPage": {
+        "name": "Confirm Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in \n San Francisco \n 2020-12-02 15:00:00 and dropping it off \n in Miami \n 2020-12-07 16:00:00\n\nDoes that sound right?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Vehicle Disambiguation ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Great! Now let's choose a vehicle." ]
+      }, {
+        "text": [ "Would you like an economy or luxury vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "luxury"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Luxury Options",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Would you like our Chevy Tahoe or Dodge Charger luxury option?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "dodge"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Confirm Dodge Charger",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "The Dodge Charger is $67.23 per day. It fits 4 people and comes with unlimited mileage included.\nWould you like to proceed to payment?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What card type will you be using?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "visa"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_type": "visa",
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Please enter the card number." ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "12345667890"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_number": "12345667890",
+        "card_type": "visa",
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the name on the card?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Leo Tolstoy"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Leo Tolstoy",
+        "card_number": "12345667890",
+        "card_type": "visa",
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing street address?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "23 Russian st, Moscow, TX"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Leo Tolstoy",
+        "billing_street_address": "23 Russian st, Moscow, TX",
+        "card_number": "12345667890",
+        "card_type": "visa",
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing ZIP code?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "45678"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Leo Tolstoy",
+        "billing_street_address": "23 Russian st, Moscow, TX",
+        "billing_zip_code": "45678",
+        "card_number": "12345667890",
+        "card_type": "visa",
+        "drop_off_date_time": {
+          "day": 7,
+          "hours": 16,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Miami",
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 15,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "San Francisco",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "End Session",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "You will be picking the Dodge Charger up in San Francisco, 2020-12-02 15:00:00 and dropping it off, 2020-12-07 16:00:00. \nThe total for this trip will be $175.38." ]
+      }, {
+        "text": [ "Thank you for renting with us and have a wonderful day!" ]
+      } ]
+    }
+  } ],
   "creationTime": {
     "seconds": 1606851123,
     "nanos": 466393000

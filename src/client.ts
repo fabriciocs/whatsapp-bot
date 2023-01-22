@@ -44,15 +44,13 @@ const appData: {
     sessionManager?: SessionsManager;
     chatConfigsManager?: ChatConfigsManager;
     commandConfigsManager?: CommandConfigsManager;
+    client?: Client;
 } = {
 };
 
 
 const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
-const client = new Client({
-    authStrategy: new LocalAuth(),
-    puppeteer: puppeteerConfig
-});
+
 
 let db: Database = null;
 let storage: Storage = null;
@@ -66,7 +64,7 @@ const backup = async (msg: Message) => {
         media = await msg.downloadMedia();
     }
     const prepared = prepareJsonToFirebase(JSON.parse(JSON.stringify({ msg })));
-    const allMessagesRef = await ref.child(`${keyReplacer(client.info.wid.user)}/messages/${keyReplacer(msg.from)}`);
+    const allMessagesRef = await ref.child(`${keyReplacer(appData.client.info.wid.user)}/messages/${keyReplacer(msg.from)}`);
     const msgRef = await allMessagesRef.push(prepared);
 
     if (!storage || !media) return;
@@ -76,16 +74,16 @@ const backup = async (msg: Message) => {
     await allMessagesRef.child(msgRef.key).update({ mediaUrl: url });
 }
 
-const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
-    if (await isAudioMsg(msg)) {
+const sendAnswer = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}, onlyText = true) => {
+    if (!onlyText && await isAudioMsg(msg)) {
         return await onlySay(msg, null, `${content}`);
     } else {
         await (await msg.getChat()).sendMessage(content, { ...options, sendSeen: true });
     }
 }
 
-const sendReply = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}) => {
-    if (await isAudioMsg(msg)) {
+const sendReply = async (msg: Message, content: MessageContent, options: MessageSendOptions = {}, onlyText = true) => {
+    if (!onlyText && await isAudioMsg(msg)) {
         return await onlySay(msg, null, `${content}`, true);
     } else {
         try {
@@ -96,29 +94,6 @@ const sendReply = async (msg: Message, content: MessageContent, options: Message
     }
 }
 
-
-client.on('loading_screen', (percent, message, ...rest) => {
-    console.log('LOADING SCREEN', percent, message, rest);
-}); 1
-
-client.on('authenticated', () => {
-    console.log('AUTHENTICATED');
-});
-
-client.on('auth_failure', msg => {
-    console.error('AUTHENTICATION FAILURE', msg);
-});
-
-
-client.on('ready', async () => {
-    const fullBaseName = `${baseName}/${keyReplacer(client.info.wid.user)}}`;
-    appData.commands = new Commands(db.ref(`${fullBaseName}/commands`));
-    appData.contexts = new Contexts(db.ref(`${fullBaseName}/contexts`));
-    appData.msgs = new MessagesManager(db.ref(`${fullBaseName}/messages`));
-    appData.sessionManager = new SessionsManager(db.ref(`${fullBaseName}/sessions`));
-    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
-    appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
-});
 
 const siteToData = async (msg: Message) => {
     const wp = new Wordpress(curie).Api;
@@ -136,15 +111,6 @@ const siteToData = async (msg: Message) => {
 
 //     const post = await acc.Api.posts().create({ title: 'Teste', content: 'Teste', featured_media: media.id });
 // }
-client.on('disconnected', (reason) => {
-    console.log('Client was logged out', reason);
-});
-
-client.on('qr', (qr) => {
-    QRCode.toString(qr, { type: 'terminal', small: true }, function (err: any, url: any) {
-        console.log(url)
-    });
-});
 const listMsgs = async (msg: Message, size: string | number, params = []) => {
     const msgs = await appData?.msgs?.filterByFrom(msg.to, +size);
     const msgKeys = Object.keys(msgs) ?? [];
@@ -166,7 +132,7 @@ const clearChat = async (msg: Message) => {
     await msg.delete(msg.fromMe);
 }
 const printStatus = async (msg: Message) => {
-    const toReply = JSON.stringify({ msg, info: client.info }, null, 4);
+    const toReply = JSON.stringify({ msg, info: appData.client.info }, null, 4);
     console.log(toReply);
     await showSimpleInfo(msg);
 }
@@ -212,13 +178,13 @@ const showSimpleInfo = async (msg: Message) => {
                 const res = await whatIsIt(vision);
                 const [{ labelAnnotations }] = res;
                 const details = labelAnnotations?.reduce((p, { description }) => description ? p.concat([description]) : p, [] as string[]);
-                await client.sendMessage(msg.to, details?.join(',') ?? 'não consegui identificar');
+                await appData.client.sendMessage(msg.to, details?.join(',') ?? 'não consegui identificar');
                 const whatIsWritten = await readDocument(vision);
                 const [{ fullTextAnnotation }] = whatIsWritten;
-                await client.sendMessage(msg.to, fullTextAnnotation?.text ?? 'não consegui ler');
+                await appData.client.sendMessage(msg.to, fullTextAnnotation?.text ?? 'não consegui ler');
                 const fileEncoded = Buffer.from(JSON.stringify(fullTextAnnotation?.pages ?? [], null, 4)).toString('base64');
                 const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${new Date().getTime()}.json`);
-                await client.sendMessage(myId, fileAsMedia, {
+                await appData.client.sendMessage(myId, fileAsMedia, {
                     sendMediaAsDocument: true
                 });
             });
@@ -243,40 +209,40 @@ const helpMsg = async (msg: Message) => {
         }
     });
 };
-const searchByChassiGo = async (msg: Message, chassi: any) => {
-    const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
-    try {
-        const page = await browser.newPage();
-        await page.goto('https://www.detran.go.gov.br/psw/#/pages/conteudo/gravame', { waitUntil: "networkidle2" });
+// const searchByChassiGo = async (msg: Message, chassi: any) => {
+//     const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
+//     try {
+//         const page = await browser.newPage();
+//         await page.goto('https://www.detran.go.gov.br/psw/#/pages/conteudo/gravame', { waitUntil: "networkidle2" });
 
 
-        await page.click(`button.mat-raised-button.mat-primary.ng-star-inserted`);
-        await page.focus('input[formcontrolname="chassi"]');
-        await page.keyboard.type(chassi);
-        await page.click(`button.button-primary.notranslate.mat-raised-button`);
-        try {
-            const r = await page.waitForResponse((response: { url: () => string | string[]; status: () => number; }) =>
-                response.url().includes('www.detran.go.gov.br/psw/rest/gravame') && response.status() === 200);
-            const txt = JSON.stringify(await r?.json(), null, 4);
-            console.log({ txt });
-            await sendAnswer(msg, txt ?? 'resposta vazia');
-        } catch (err) {
-            console.log({ semGravame: err });
-            await page.click(`button.button-primary.notranslate.mat-raised-button`);
-            await new Promise(r => setTimeout(r, 4000));
-            const screenshotData = await page.screenshot({ encoding: 'base64', fullPage: true });
-            const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
-            await client.sendMessage(msg.from, dataAsMedia);
-        }
+//         await page.click(`button.mat-raised-button.mat-primary.ng-star-inserted`);
+//         await page.focus('input[formcontrolname="chassi"]');
+//         await page.keyboard.type(chassi);
+//         await page.click(`button.button-primary.notranslate.mat-raised-button`);
+//         try {
+//             const r = await page.waitForResponse((response: { url: () => string | string[]; status: () => number; }) =>
+//                 response.url().includes('www.detran.go.gov.br/psw/rest/gravame') && response.status() === 200);
+//             const txt = JSON.stringify(await r?.json(), null, 4);
+//             console.log({ txt });
+//             await sendAnswer(msg, txt ?? 'resposta vazia');
+//         } catch (err) {
+//             console.log({ semGravame: err });
+//             await page.click(`button.button-primary.notranslate.mat-raised-button`);
+//             await new Promise(r => setTimeout(r, 4000));
+//             const screenshotData = await page.screenshot({ encoding: 'base64', fullPage: true });
+//             const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
+//             await client.sendMessage(msg.from, dataAsMedia);
+//         }
 
-        await page.close();
-    } catch (err) {
-        console.log({ page: err });
-        await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
-    }
-    await browser.close();
-}
+//         await page.close();
+//     } catch (err) {
+//         console.log({ page: err });
+//         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
+//         await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
+//     }
+//     await browser.close();
+// }
 const protectFromError = async (anyFunc: () => Promise<any>) => {
     try {
         return await anyFunc?.();
@@ -285,104 +251,105 @@ const protectFromError = async (anyFunc: () => Promise<any>) => {
     }
 }
 
-const searchByChassiDf = async (msg: Message, chassi: any) => {
-    const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
-    try {
-        const page = await browser.newPage();
-        await page.goto('https://www.detran.df.gov.br/wp-content/uploads/2020/10/html_consulta_sng.html', { waitUntil: "networkidle2" });
+// const searchByChassiDf = async (msg: Message, chassi: any) => {
+//     const browser = await puppeteer.launch({ ...puppeteerConfig, headless: true });
+//     try {
+//         const page = await browser.newPage();
+//         await page.goto('https://www.detran.df.gov.br/wp-content/uploads/2020/10/html_consulta_sng.html', { waitUntil: "networkidle2" });
 
-        await page.focus('input[name="CHASSI"]');
-        await page.keyboard.type(chassi);
-        await page.click(`input[type="submit"]`);
-        try {
-            // await protectFromError(async () => {
+//         await page.focus('input[name="CHASSI"]');
+//         await page.keyboard.type(chassi);
+//         await page.click(`input[type="submit"]`);
+//         try {
+//             // await protectFromError(async () => {
 
-            //     const txt = await page.evaluate(doc => {
-            //         const table = doc.querySelectorAll('table.brdinteiraverde');
-            //         return [...table].map(e => {
-            //             const obj = {};
-            //             const title = e.querySelector('td.titalphaverde')?.innerText;
-            //             const bodyContent = {};
-            //             const bodyList = [...e.querySelectorAll('td.txt11, td.fundodadosbold')].map(e => e.innerText);
-            //             for (let i = 0; i < bodyList.length; i += 2) {
-            //                 bodyContent[bodyList[i]] = bodyList[i + 1];
-            //             }
-            //             obj[title] = bodyContent;
-            //             return obj;
-            //         })
-            //     });
-            //     await client.sendMessage(msg.to, jsonToText(txt));
-            // });
-            await protectFromError(async () => {
-                const screenshotData = await page.screenshot({ encoding: 'base64' });
-                const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
-                await sendAnswer(msg, dataAsMedia);
-            });
-            // await protectFromError(async () => {
-            //     const pdf = (await page.pdf({ format: 'A4', fullPage: true })).toString('base64');
-            //     const pdfAsMedia = new MessageMedia("application/pdf", pdf, `${new Date().getTime()}.pdf`);
-            //     await client.sendMessage(msg.to, pdfAsMedia, {
-            //         sendMediaAsDocument: true
-            //     });
-            // });
-        } catch (err) {
-            console.log({ semGravame: err });
-        }
-        await page.close();
-    } catch (err) {
-        console.log({ page: err });
-        await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
-    }
-    await browser.close();
-    // page.on('response', async (response) => {
-    //     if (response.url())) {
-    //         const responseBody = await response.buffer();
-    //        
-    //     }
-    // });
-    // await page.click(`button.button-primary.notranslate.mat-raised-button`);
+//             //     const txt = await page.evaluate(doc => {
+//             //         const table = doc.querySelectorAll('table.brdinteiraverde');
+//             //         return [...table].map(e => {
+//             //             const obj = {};
+//             //             const title = e.querySelector('td.titalphaverde')?.innerText;
+//             //             const bodyContent = {};
+//             //             const bodyList = [...e.querySelectorAll('td.txt11, td.fundodadosbold')].map(e => e.innerText);
+//             //             for (let i = 0; i < bodyList.length; i += 2) {
+//             //                 bodyContent[bodyList[i]] = bodyList[i + 1];
+//             //             }
+//             //             obj[title] = bodyContent;
+//             //             return obj;
+//             //         })
+//             //     });
+//             //     await client.sendMessage(msg.to, jsonToText(txt));
+//             // });
+//             await protectFromError(async () => {
+//                 const screenshotData = await page.screenshot({ encoding: 'base64' });
+//                 const dataAsMedia = new MessageMedia("image/png", `${screenshotData}`, `${new Date().getTime()}.png`);
+//                 await sendAnswer(msg, dataAsMedia);
+//             });
+//             // await protectFromError(async () => {
+//             //     const pdf = (await page.pdf({ format: 'A4', fullPage: true })).toString('base64');
+//             //     const pdfAsMedia = new MessageMedia("application/pdf", pdf, `${new Date().getTime()}.pdf`);
+//             //     await client.sendMessage(msg.to, pdfAsMedia, {
+//             //         sendMediaAsDocument: true
+//             //     });
+//             // });
+//         } catch (err) {
+//             console.log({ semGravame: err });
+//         }
+//         await page.close();
+//     } catch (err) {
+//         console.log({ page: err });
+//         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
+//         await sendAnswer(msg, `falha na consulta dados extras ${chassi}`);
+//     }
+//     await browser.close();
+//     // page.on('response', async (response) => {
+//     //     if (response.url())) {
+//     //         const responseBody = await response.buffer();
+//     //        
+//     //     }
+//     // });
+//     // await page.click(`button.button-primary.notranslate.mat-raised-button`);
 
 
-}
-const searchByLicensePlate = async (msg: Message, placa: any, full = false) => {
-    try {
-        // let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
-        // if (full) {
-        //     await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
-        // }
-        const chassi = placa;
-        const uf = 'GO';
-        if (chassi) {
-            try {
-                if (uf === 'GO') {
-                    await searchByChassiGo(msg, chassi);
-                }
-                // if (uf === 'DF') {
-                //     await searchByChassiDf(msg, chassi);
-                // }
+// }
 
-                // const extra = await axios.get(`https://www.detran.go.gov.br/psw/rest/gravame?chassi=${chassi}`);
-                // await client.sendMessage(msg.from, JSON.stringify(extra?.data ?? {}, null, 4));
-            } catch (err) {
-                console.log({ extra: err });
-                await client.sendMessage(msg.to, jsonToText(err));
-                // await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
-                // await sendAnswer(msg, `falha na consulta dados extras ${uf}-${chassi}`);
-            }
-        }
-    } catch (err) {
-        console.log({ licensePlate: err });
-        await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
-        await sendAnswer(msg, `falha na consulta da placa ${placa}`);
-    }
-};
+// const searchByLicensePlate = async (msg: Message, placa: any, full = false) => {
+//     try {
+//         // let vehicle = await axios.get(`https://apicarros.com/v2/consultas/${placa}/8e976a5c05bd3035c75efa7b459296bd/json`);
+//         // if (full) {
+//         //     await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
+//         // }
+//         const chassi = placa;
+//         const uf = 'GO';
+//         if (chassi) {
+//             try {
+//                 if (uf === 'GO') {
+//                     await searchByChassiGo(msg, chassi);
+//                 }
+//                 // if (uf === 'DF') {
+//                 //     await searchByChassiDf(msg, chassi);
+//                 // }
+
+//                 // const extra = await axios.get(`https://www.detran.go.gov.br/psw/rest/gravame?chassi=${chassi}`);
+//                 // await client.sendMessage(msg.from, JSON.stringify(extra?.data ?? {}, null, 4));
+//             } catch (err) {
+//                 console.log({ extra: err });
+//                 await client.sendMessage(msg.to, jsonToText(err));
+//                 // await sendAnswer(msg, JSON.stringify(vehicle.data, null, 4));
+//                 // await sendAnswer(msg, `falha na consulta dados extras ${uf}-${chassi}`);
+//             }
+//         }
+//     } catch (err) {
+//         console.log({ licensePlate: err });
+//         await client.sendMessage(msg.to, JSON.stringify(err, null, 4));
+//         await sendAnswer(msg, `falha na consulta da placa ${placa}`);
+//     }
+// };
 const sweetError = async (msg: Message, err: Record<string, any>) => {
     if (msg && err?.err) {
         await sendAnswer(msg, err.err);
     }
     if (err) {
-        await client.sendMessage(myId, jsonToText(err));
+        await appData.client.sendMessage(myId, jsonToText(err));
     }
 }
 
@@ -406,7 +373,7 @@ const queroMais = async (msg: Message) => {
         if (msg.hasMedia) {
             const media = await msg.downloadMedia();
             if (!chat || chat.isGroup) {
-                return await client.sendMessage(myId, media);
+                return await appData.client.sendMessage(myId, media);
             }
             return chat.sendMessage(media);
         }
@@ -480,7 +447,7 @@ const readToMe = async (msg: Message, languageCode = null, shouldAnswer = true) 
             });
             const transcription = response?.results?.map(result => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
             if (shouldAnswer) {
-                await sendAnswer(msg, transcription);
+                await sendAnswer(msg, transcription, {}, true);
             }
             return transcription;
         });
@@ -547,11 +514,11 @@ const createAudioDirectly = async (msg: Message, languageCode: string, prompt: s
 
 
 
-const sendSafeMsg = async (msg: Message) => {
-    const contact = await client.getContactById(safeMsgIds.pop());
-    const chat = await contact.getChat();
-    await msg.forward(chat);
-}
+// const sendSafeMsg = async (msg: Message) => {
+//     const contact = await client.getContactById(safeMsgIds.pop());
+//     const chat = await contact.getChat();
+//     await msg.forward(chat);
+// }
 
 const desenha = async (msg: Message, prompt: string) => {
     const chat = await msg.getChat();
@@ -699,7 +666,7 @@ const getContext: StepFunction = async ({ msg }) => {
 }
 
 const sendMessage: StepFunction = async ({ msg, lastResult: { data, chatId } }) => {
-    const sentMsg = await client.sendMessage(chatId, data);
+    const sentMsg = await appData.client.sendMessage(chatId, data);
     return { data: sentMsg, chatId };
 }
 
@@ -834,7 +801,7 @@ const onlySay = async (msg: Message, languageCode: string, answer: string, reply
             return await (await msg.getChat()).sendMessage(song);
         }
     }
-    return await client.sendMessage(msg.to, song);
+    return await appData.client.sendMessage(msg.to, song);
 }
 const voice = async (msg: Message, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
@@ -848,7 +815,7 @@ const showAdministrationButtons = async (msg: Message) => {
         { body: 'Desvincular' },
         { body: 'Add Admin' },
         { body: 'Del Admin' }], 'title', 'footer');
-    await client.sendMessage(msg.from, buttonMessage);
+    await appData.client.sendMessage(msg.from, buttonMessage);
 }
 const escreve = async (msg: Message, [language,]: string[]) => await readToMe(await msg.getQuotedMessage(), language);
 const curie = new CurrierModel(new OpenAIManager().getClient());
@@ -881,7 +848,7 @@ const funcSelector: Record<string, any> = {
     '--h': async (msg: Message) => await helpMsg(msg),
     escreve,
     '✏': escreve,
-    'chassi': async (msg: Message, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
+    // 'chassi': async (msg: Message, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
     'elon_musk': async (msg: Message, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
     'key': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyPoints(prompt?.join(' '))),
     'keyw': async (msg: Message, prompt: string[]) => await sendAnswer(msg, await curie.keyWords(prompt?.join(' '))),
@@ -923,14 +890,14 @@ const funcSelector: Record<string, any> = {
     voice,
     'fala': voice,
     'desenha': async (msg: Message, prompt: string[]) => await desenha(msg, prompt?.join(' ')),
-    'add': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).addCommand(msg, prompt?.join(' ')),
-    'remove': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).removeCommand(msg, prompt?.join(' ')),
-    'cmd': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).executeCommand(msg, prompt?.join(' ')),
-    'cmd-h': async (msg: Message, prompt: string[]) => await new CommandManager(appData, client).listCommands(msg),
+    'add': async (msg: Message, prompt: string[]) => await new CommandManager(appData, appData.client).addCommand(msg, prompt?.join(' ')),
+    'remove': async (msg: Message, prompt: string[]) => await new CommandManager(appData, appData.client).removeCommand(msg, prompt?.join(' ')),
+    'cmd': async (msg: Message, prompt: string[]) => await new CommandManager(appData, appData.client).executeCommand(msg, prompt?.join(' ')),
+    'cmd-h': async (msg: Message, prompt: string[]) => await new CommandManager(appData, appData.client).listCommands(msg),
     'redesenha': async (msg: Message, prompt: string[]) => await redesenha(msg),
     'edita': async (msg: Message, prompt: string[]) => await edita(msg, prompt?.join(' ')),
     'ping': async (msg: Message) => await sendAnswer(msg, 'pong'),
-    'leia': async (msg: Message) => await startChat({ client, msg }),
+    'leia': async (msg: Message) => await startChat({ client: appData.client, msg }),
     'fake': async (msg: Message) => await fakePersonAndCar(msg),
     'reload': async (msg: Message, [prompt]) => await reloadMedia(msg, prompt),
     'err': async (msg: Message) => await sendAnswer(msg, `Comando *${msg?.body.split(' ')?.[1]}* não encontrado`),
@@ -968,7 +935,7 @@ const intentChat = async (msg: Message, prompt: string[]) => {
     }
 }
 const verify = async (msg: Message, id: string, prompt: string[]) => {
-    const ctt = await client.getContactById(id);
+    const ctt = await appData.client.getContactById(id);
     const chat = await ctt.getChat();
     const messages = await chat?.fetchMessages({ limit: +prompt?.[0] || 1000 });
     console.log({ messages: messages.map(m => m.body) });
@@ -1017,7 +984,7 @@ const simpleMsgInfo = ({ rawData, body, ...clean }: Message): Partial<Message> =
 
 
 const logTotalInfo = async (msg: Message) => {
-    const chats = await client.getChats();
+    const chats = await appData.client.getChats();
     const currentChat = await msg.getChat();
     const list: Partial<Message>[] = [];
     [currentChat, ...chats].map(async (chat: Chat) => {
@@ -1089,7 +1056,7 @@ const fastAnswer = {
 }
 
 const sendWaiting = async (msg: { from: string; }) => {
-    await client.sendMessage(msg.from, 'Executando, um momento por favor');
+    await appData.client.sendMessage(msg.from, 'Executando, um momento por favor');
 };
 const isNotString = (msg: Message) => typeof msg?.body !== "string";
 const isToMe = (msg: { to: string; }) => msg.to === myId;
@@ -1199,10 +1166,11 @@ const runCommand = async (msg: Message) => {
 
         await command(msg, params);
 
+        await sendReply(msg, 'Feito');
 
     } catch (error) {
         console.error({ error });
-        await sendAnswer(msg, 'Executado com falha');
+        await sendReply(msg, 'Executado com falha');
     }
 }
 
@@ -1219,6 +1187,8 @@ const runConfig = async (msg: Message, isAudio = false) => {
         if (!command) return;
 
         await command(msg, params);
+
+        await sendReply(msg, 'Feito');
 
 
     } catch (error) {
@@ -1249,42 +1219,6 @@ const runCode = async (msg: Message) => {
 const observable = [];//[leiaId];
 const isObservable = (msg: Message) => observable.includes(msg.from);
 
-client.on('message_create', async receivedMsg => {
-    await protectFromError(async () => {
-        if (receivedMsg.isForwarded) return await receivedMsg.reload();
-        await backup(receivedMsg);
-        const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
-        const msg = audio ? prepareBody(parsed) : parsed;
-        if (canExecuteCommand(msg)) {
-            return await runCommand(msg);
-        }
-        if (receivedMsg.fromMe && !receivedMsg.hasQuotedMsg && !msg?.body?.startsWith(botname)) {
-            await runConfig(msg);
-        }
-    });
-});
-client.on('message', async receivedMsg => {
-    await protectFromError(async () => {
-        const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
-        const msg = audio ? prepareBody(parsed) : parsed;
-
-        if (canExecuteCommand(msg)) {
-            return await runCommand(msg);
-        }
-        if (canExecuteCode(msg)) {
-            return await runCode(msg);
-        }
-
-        if (isObservable(msg)) {
-            return await protectFromError(async () => {
-                return await sendResponse(client, msg);
-            });
-        }
-        await runConfig(msg);
-
-    });
-});
-
 
 
 const jsonToText = (err: Record<string, any>) => JSON.stringify(err, null, 4);
@@ -1292,7 +1226,7 @@ const jsonToText = (err: Record<string, any>) => JSON.stringify(err, null, 4);
 const sendAsJsonDocument = async (obj: Record<string, any>) => {
     const fileEncoded = Buffer.from(jsonToText(obj)).toString('base64');
     const fileAsMedia = new MessageMedia("text/json", fileEncoded, `${obj?.timestamp ?? new Date().getTime()}.json`);
-    await client.sendMessage(myId, fileAsMedia, {
+    await appData.client.sendMessage(myId, fileAsMedia, {
         sendMediaAsDocument: true
     });
 }
@@ -1324,7 +1258,22 @@ const run = async () => {
     const { admin } = await dbConfig()
     db = admin.database();
     storage = admin.storage();
-    await client.initialize();
+    const me = '64992026971';
+    const fullBaseName = `${baseName}/${me}`;
+    appData.commands = new Commands(db.ref(`${fullBaseName}/commands`));
+    appData.contexts = new Contexts(db.ref(`${fullBaseName}/contexts`));
+    appData.msgs = new MessagesManager(db.ref(`${fullBaseName}/messages`));
+    appData.sessionManager = new SessionsManager();
+    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
+    appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
+    appData.client = new Client({
+        authStrategy: new RemoteAuth({
+            clientId: me,
+            store: appData.sessionManager,
+            backupSyncIntervalMs: 60000,
+        }),
+        puppeteer: puppeteerConfig
+    });
     appData.defaultSteps = {
         'open_context': openContext,
         'close_context': closeContext,
@@ -1356,6 +1305,74 @@ const run = async () => {
         // 'send_url_image': sendUrlImage,
 
     };
+
+
+
+    appData.client.on('loading_screen', (percent, message, ...rest) => {
+        console.log('LOADING SCREEN', percent, message, rest);
+    });
+
+    appData.client.on('authenticated', () => {
+        console.log('AUTHENTICATED');
+    });
+
+    appData.client.on('auth_failure', msg => {
+        console.error('AUTHENTICATION FAILURE', msg);
+    });
+
+
+    appData.client.on('ready', async () => {
+
+        console.log('READY');
+    });
+
+    appData.client.on('disconnected', (reason) => {
+        console.log('Client was logged out', reason);
+    });
+
+    appData.client.on('qr', (qr) => {
+        QRCode.toString(qr, { type: 'terminal', small: true }, function (err: any, url: any) {
+            console.log(url)
+        });
+    });
+
+
+    appData.client.on('message_create', async receivedMsg => {
+        await protectFromError(async () => {
+            if (receivedMsg.isForwarded) return await receivedMsg.reload();
+            await backup(receivedMsg);
+            // const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
+            // const msg = audio ? prepareBody(parsed) : parsed;
+            if (canExecuteCommand(receivedMsg)) {
+                return await runCommand(receivedMsg);
+            }
+            if (receivedMsg.fromMe && !receivedMsg.hasQuotedMsg && !receivedMsg?.body?.startsWith(botname)) {
+                await runConfig(receivedMsg);
+            }
+        });
+    });
+    appData.client.on('message', async receivedMsg => {
+        await protectFromError(async () => {
+            const { msg: parsed, audio } = await readRealCommandText(receivedMsg);
+            const msg = audio ? prepareBody(parsed) : parsed;
+
+            if (canExecuteCommand(msg)) {
+                return await runCommand(msg);
+            }
+            if (canExecuteCode(msg)) {
+                return await runCode(msg);
+            }
+
+            if (isObservable(msg)) {
+                return await protectFromError(async () => {
+                    return await sendResponse(appData.client, msg);
+                });
+            }
+            await runConfig(msg);
+
+        });
+    });
+    await appData.client.initialize();
 };
 (async () => await run())();
 

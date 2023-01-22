@@ -1,119 +1,52 @@
 {
   "name": "6d2a8179-2a76-449e-a751-0a7f59f8e76b",
-  "tags": [
-    "#redierect"
-  ],
+  "tags": [ "#redierect" ],
   "displayName": "Agent redirect - Beginning of the conversation",
-  "testCaseConversationTurns": [
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "i want to rent a car"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
+  "testCaseConversationTurns": [ {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "i want to rent a car"
         },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Where would you like to pick it up?"
-            ]
-          }
-        ]
+        "languageCode": "en"
       }
     },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "can i talk to someone"
-          },
-          "languageCode": "en"
-        }
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "car_rental.reservation_create"
       },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_talk.agent_redirect"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "One moment while I connect you."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Eu quero alugar um carro"
-          },
-          "languageCode": "pt-br"
-        }
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
       },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Onde você gostaria de retirá-lo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "posso falar com alguém?"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_talk.agent_redirect"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Um momento enquanto eu conecto você."
-            ]
-          }
-        ]
-      }
+      "textResponses": [ {
+        "text": [ "Where would you like to pick it up?" ]
+      } ]
     }
-  ],
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "can i talk to someone"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "small_talk.agent_redirect"
+      },
+      "currentPage": {
+        "name": "End Session",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "One moment while I connect you." ]
+      } ]
+    }
+  } ],
   "creationTime": {
     "seconds": 1606851177,
     "nanos": 680371000

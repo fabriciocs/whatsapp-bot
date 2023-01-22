@@ -33,7 +33,7 @@
     "puppeteer": "^19.4.1",
     "qrcode": "^1.5.1",
     "sinesp-api": "^3.0.0",
-    "whatsapp-web.js": "^1.18.4",
+    "whatsapp-web.js": "^1.19.2",
     "wikijs": "^6.4.0",
     "wpapi": "^1.2.2"
   },

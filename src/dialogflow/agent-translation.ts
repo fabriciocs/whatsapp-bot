@@ -3,6 +3,7 @@ import { AgentsClient } from '@google-cloud/dialogflow-cx';
 import { google } from '@google-cloud/dialogflow-cx/build/protos/protos';
 import { readFile, writeFile, readdir, stat } from 'fs/promises';
 import { resolve, dirname } from 'path';
+import { createTrainingPhrases } from '../ai';
 import GoogleTranslate from '../translate/translate';
 
 export default class AgentTranslation {
@@ -37,6 +38,13 @@ export default class AgentTranslation {
             }
         }
         return results;
+    }
+    async listPhrases() {
+        const intentsFile = resolve(this.basePath, this.agentFolderName, 'intents/car_rental.compare_cost_luxury/trainingPhrases/en.json');
+
+        const fileTexts = await this.getTrainingPhrasesFromFile(intentsFile);
+        const response = await createTrainingPhrases(fileTexts);
+        console.log(response);
     }
     async intentsAsList() {
         const intentsFolder = resolve(this.basePath, this.agentFolderName, 'intents');
@@ -290,8 +298,11 @@ export default class AgentTranslation {
                 const parts = intent.trainingPhrases[i]?.parts;
                 intent.trainingPhrases[i]['languageCode'] = 'pt-br';
                 for (let j = 0; j < parts?.length; j++) {
-                    parts[j].text = originalTranslatedList[idx];
-                    idx++;
+                    const text = originalTranslatedList[idx];
+                    if (text) {
+                        parts[j].text = text;
+                        idx++;
+                    }
                 }
             }
             await writeFile(`${dirname(filePath)}/pt-br.json`, JSON.stringify(intent, null, 2));

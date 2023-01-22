@@ -3,35 +3,28 @@ import * as admin from 'firebase-admin';
 import { Message, Store } from 'whatsapp-web.js';
 export default class SessionsManager implements Store {
 
-  constructor(private sessionsRef: admin.database.Reference) {
-  }
-
-  private base64(session: string) {
-    return Buffer.from(session).toString('base64');
+  constructor(private storage = admin.storage().bucket(process.env.BUCKET_SESSIONS_URL)) {
   }
   async sessionExists(option: { session: string; }): Promise<boolean> {
-    return !!(await this.extract(option));
+    const [exists] = await this.storage.file(option.session).exists();
+    return exists;
   }
 
   async delete(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    await ref.remove();
+    await this.storage.file(options.session).delete();
   }
 
   async save(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    await ref.set(true);
+    await this.storage.upload(`${options.session}.zip`, {
+      destination: options.session,
+    });
   };
 
-  async extract(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    const snapshot = await ref.once('value');
-    return await snapshot.val();
-  };
-
-  async extractRef({ session }: { session: string; }) {
-    if (!session) throw new Error('No session found');
-    return await this.sessionsRef.child(this.base64(session));
+  async extract(options: { session: string; path?: string; }) {
+    const destination = options.path ?? `${options.session}.zip`;
+    await this.storage.file(options.session).download({
+      destination
+    });
   };
 
 }

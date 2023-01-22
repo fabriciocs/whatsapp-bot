@@ -1,1374 +1,600 @@
 {
   "name": "3e12c0af-6ec1-44a6-a7e6-101f52013498",
-  "tags": [
-    "#samedropoff",
-    "#economy"
-  ],
+  "tags": [ "#samedropoff", "#economy" ],
   "displayName": "Happy path - Nissan",
-  "testCaseConversationTurns": [
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "hey"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "Default Welcome Intent"
+  "testCaseConversationTurns": [ {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "hey"
         },
-        "currentPage": {
-          "name": "Start Page",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?"
-            ]
-          }
-        ]
+        "languageCode": "en"
       }
     },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "i want to rent a car"
-          },
-          "languageCode": "en"
-        }
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "Default Welcome Intent"
       },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Where would you like to pick it up?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Miami"
-          },
-          "languageCode": "en"
-        }
+      "currentPage": {
+        "name": "Start Page",
+        "flow": "Default Start Flow"
       },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Is your drop off location different from your pickup location?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "no"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to pick up the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "2 Dec 11 am"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What date and time would you like to drop off the vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "5 Dec 5 pm"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "So to confirm:\n\nYou will be picking the vehicle up in Miami, 2020-12-02 11:00:00 and dropping it off at the same location, 2020-12-05 17:00:00 \n\nDoes that sound right?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "yes"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Vehicle Disambiguation ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Great! Now let's choose a vehicle."
-            ]
-          },
-          {
-            "text": [
-              "Would you like an economy or luxury vehicle?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "injectedParameters": {
-          "vehicle_type": "economy_vehicle"
-        },
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "economy"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_type": "economy_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "car_rental.compare_cost_economy"
-        },
-        "currentPage": {
-          "name": "Economy Options",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Let's look at economy options."
-            ]
-          },
-          {
-            "text": [
-              "Would you like the Nissan Versa or the Mitsubishi Mirage?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "nissan"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Confirm Nissan Versa",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "The Nissan Versa is $54.20 per day. It fits 4 people and comes with an AM/FM radio. \nWould you like to proceed to payment?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "yes"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What card type will you be using?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "master card"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Please enter the card number."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "123456789012"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the name on the card?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Anna Dolgushina"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the billing street address?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "31 Coral dr, Key Largo, FL"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "billing_street_address": "31 Coral dr, Key Largo, FL",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "What is the billing ZIP code?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "90456"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "billing_street_address": "31 Coral dr, Key Largo, FL",
-          "billing_zip_code": "90456",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "You will be picking the Nissan Versa up in Miami, 2020-12-02 11:00:00 and dropping it off, 2020-12-05 17:00:00. \nThe total for this trip will be $175.38."
-            ]
-          },
-          {
-            "text": [
-              "Thank you for renting with us and have a wonderful day!"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "thanks"
-          },
-          "languageCode": "en"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_thank.thanks"
-        },
-        "currentPage": {
-          "name": "Start Page",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "No problem!"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Ei"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "Default Welcome Intent"
-        },
-        "currentPage": {
-          "name": "Start Page",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Eu quero alugar um carro"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "car_rental.reservation_create"
-        },
-        "currentPage": {
-          "name": "Pickup Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Onde você gostaria de retirá-lo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Miami"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Location",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "O local de entrega é diferente do local de retirada?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "não"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.no"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Em que dia e hora pretende levantar a viatura?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "2 de dezembro 11h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Rental Duration ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Que dia e hora gostaria de entregar o veículo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "5 de dezembro 17h"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "currentPage": {
-          "name": "Confirm Rental Duration",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Então para confirmar:\n\nVocê retirará o veículo em Miami, 2020-12-02 11:00:00 e o deixará no mesmo local, 2020-12-05 17:00:00\n\nIsso soa certo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "sim"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Vehicle Disambiguation ",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Excelente! Agora vamos escolher um veículo."
-            ]
-          },
-          {
-            "text": [
-              "Você gostaria de um veículo econômico ou de luxo?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "injectedParameters": {
-          "vehicle_type": "economy_vehicle"
-        },
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "economia"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_type": "economy_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "car_rental.compare_cost_economy"
-        },
-        "currentPage": {
-          "name": "Economy Options",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Vejamos as opções econômicas."
-            ]
-          },
-          {
-            "text": [
-              "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Nissan"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Confirm Nissan Versa",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "O Nissan Versa custa US$ 54,20 por dia. Acomoda 4 pessoas e vem com rádio AM/FM.\nDeseja proceder ao pagamento?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "sim"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "triggeredIntent": {
-          "name": "small_talk.confirmation.yes"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Que tipo de cartão você usará?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "cartão mestre"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Por favor, insira o número do cartão."
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "123456789012"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o nome no cartão?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "Anna Dolgushina"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o endereço de cobrança?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "31 Coral dr, Key Largo, FL"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "billing_street_address": "31 Coral dr, Key Largo, FL",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "Payment",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Qual é o CEP de cobrança?"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "90456"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "sessionParameters": {
-          "billing_name": "Anna Dolgushina",
-          "billing_street_address": "31 Coral dr, Key Largo, FL",
-          "billing_zip_code": "90456",
-          "card_number": "123456789012",
-          "card_type": "master card",
-          "drop_off_date_time": {
-            "day": 5,
-            "hours": 17,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_date_time": {
-            "day": 2,
-            "hours": 11,
-            "minutes": 0,
-            "month": 12,
-            "nanos": 0,
-            "seconds": 0,
-            "year": 2020
-          },
-          "pickup_location": "Miami",
-          "vehicle_model": "Nissan Versa",
-          "vehicle_type": "economy_vehicle"
-        },
-        "currentPage": {
-          "name": "End Session",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Você pegará o Nissan Versa em Miami, 02/12/2020 11:00:00 e o entregará, 05/12/2020 17:00:00.\nO total desta viagem será de $ 175,38."
-            ]
-          },
-          {
-            "text": [
-              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "userInput": {
-        "isWebhookEnabled": true,
-        "input": {
-          "text": {
-            "text": "obrigado"
-          },
-          "languageCode": "pt-br"
-        }
-      },
-      "virtualAgentOutput": {
-        "triggeredIntent": {
-          "name": "small_thank.thanks"
-        },
-        "currentPage": {
-          "name": "Start Page",
-          "flow": "Default Start Flow"
-        },
-        "textResponses": [
-          {
-            "text": [
-              "Sem problemas!"
-            ]
-          }
-        ]
-      }
+      "textResponses": [ {
+        "text": [ "Hi! I'm the virtual car rental agent. I can help you start a new car rental reservation. How can I assist you today?" ]
+      } ]
     }
-  ],
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "i want to rent a car"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "car_rental.reservation_create"
+      },
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Where would you like to pick it up?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Miami"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Confirm Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Is your drop off location different from your pickup location?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "no"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Miami"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.no"
+      },
+      "currentPage": {
+        "name": "Rental Duration ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "2 Dec 11 am"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Rental Duration ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to drop off the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "5 Dec 5 pm"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami"
+      },
+      "currentPage": {
+        "name": "Confirm Rental Duration",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in Miami, 2020-12-02 11:00:00 and dropping it off at the same location, 2020-12-05 17:00:00 \n\nDoes that sound right?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Vehicle Disambiguation ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Great! Now let's choose a vehicle." ]
+      }, {
+        "text": [ "Would you like an economy or luxury vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "injectedParameters": {
+        "vehicle_type": "economy_vehicle"
+      },
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "economy"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_type": "economy_vehicle"
+      },
+      "triggeredIntent": {
+        "name": "car_rental.compare_cost_economy"
+      },
+      "currentPage": {
+        "name": "Economy Options",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Let's look at economy options." ]
+      }, {
+        "text": [ "Would you like the Nissan Versa or the Mitsubishi Mirage?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "nissan"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "Confirm Nissan Versa",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "The Nissan Versa is $54.20 per day. It fits 4 people and comes with an AM/FM radio. \nWould you like to proceed to payment?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What card type will you be using?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "master card"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_type": "master card",
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Please enter the card number." ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "123456789012"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_number": "123456789012",
+        "card_type": "master card",
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the name on the card?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Anna Dolgushina"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Anna Dolgushina",
+        "card_number": "123456789012",
+        "card_type": "master card",
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing street address?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "31 Coral dr, Key Largo, FL"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Anna Dolgushina",
+        "billing_street_address": "31 Coral dr, Key Largo, FL",
+        "card_number": "123456789012",
+        "card_type": "master card",
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing ZIP code?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "90456"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Anna Dolgushina",
+        "billing_street_address": "31 Coral dr, Key Largo, FL",
+        "billing_zip_code": "90456",
+        "card_number": "123456789012",
+        "card_type": "master card",
+        "drop_off_date_time": {
+          "day": 5,
+          "hours": 17,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_date_time": {
+          "day": 2,
+          "hours": 11,
+          "minutes": 0,
+          "month": 12,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Miami",
+        "vehicle_model": "Nissan Versa",
+        "vehicle_type": "economy_vehicle"
+      },
+      "currentPage": {
+        "name": "End Session",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "You will be picking the Nissan Versa up in Miami, 2020-12-02 11:00:00 and dropping it off, 2020-12-05 17:00:00. \nThe total for this trip will be $175.38." ]
+      }, {
+        "text": [ "Thank you for renting with us and have a wonderful day!" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "thanks"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "small_thank.thanks"
+      },
+      "currentPage": {
+        "name": "Start Page",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "No problem!" ]
+      } ]
+    }
+  } ],
   "creationTime": {
     "seconds": 1606850677,
     "nanos": 383650000

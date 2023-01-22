@@ -117,6 +117,10 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
     }
     return null;
 }
+const completion = async (config: CreateCompletionRequest) => {
+    const { data } = await clientAi.createCompletion(config);
+    return data;
+};
 const editIt = async (config: Partial<CreateEditRequest>) => {
     try {
         const requestConfig = { ...params, ...config } as CreateEditRequest
@@ -164,10 +168,28 @@ const translateTrainingPhrases = async (trainingPhrases: string) => {
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
-      });
-      
-      return `["${response?.choices?.[0]?.text}`;
+        stop: '"]',
+    });
+
+    return `["${response?.choices?.[0]?.text}`;
 }
+const createTrainingPhrases = async (trainingPhrases: string[]) => {
+    const countResponse = trainingPhrases.length;
+    //`Write ${countResponse} training phrases in pt-br:\n${JSON.stringify(trainingPhrases.map(a=> a.trim()))}\n["`,
+    //const prompt = `create an correponding array of sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`;
+    const prompt = `create a corresponding list of sentences in portuguese:\n${JSON.stringify(trainingPhrases)}\n\n["`
+    const response = await completion({
+        model: "text-davinci-003",
+        prompt,
+        temperature: 0,
+        max_tokens: 2000,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0
+    });
+    return `["${response?.choices?.[0]?.text}`;
+}
+
 export {
     writeAText,
     withConfig,
@@ -176,6 +198,7 @@ export {
     editImage,
     writeInstructions,
     editingText,
-    translateTrainingPhrases
+    translateTrainingPhrases,
+    createTrainingPhrases
 };
 
