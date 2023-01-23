@@ -1,0 +1,265 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Can you check if ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is prior authorization needed?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think prior authorization is required, is it?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "prior authorization is required, am ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " right?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "So do ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Prior authorization needs to be done or no?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you please let ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " know if ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " confused, do ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you confirm if ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not sure if ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " understand if ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is it absolutely required to do prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "please check if i need ",
+      "auto": true
+    }, {
+      "text": "approval",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Could I get approval in order to make it happen for it too?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would I need confirmation in order to proceed for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " if request are to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " made before hand to access ",
+      "auto": true
+    }, {
+      "text": "authorization",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "any request have to be made before in time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I have to request in order to plan for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would I need explicit permission in ahead of time for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "And I need access permission in order to plan for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I have to confirmation in good time for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Should I get permissions in ahead of time for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I need approval in ahead of time for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I need authorization in advance for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I need a prior authorization for that?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

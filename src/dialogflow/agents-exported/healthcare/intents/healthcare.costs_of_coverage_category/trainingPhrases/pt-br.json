@@ -1,0 +1,848 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "você pode me informar o pagamento por",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me informar o valor para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me informar as taxas para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " pagar?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o pagamento",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou coberto para",
+          "auto": true
+        },
+        {
+          "text": "Medicina alternativa",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " montante?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vão me cobrar por um",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " cobranças",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais são as taxas para",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "encargos para",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais são as taxas para",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " preço",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o preço de",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " custou-me",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é a quantidade de",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quantidade de",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tomografia computadorizada",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " honorários",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " taxas de digitalização",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo de",
+          "auto": true
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo de",
+          "auto": true
+        },
+        {
+          "text": "Formulário",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "custo de"
+        },
+        {
+          "text": "raio X",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "gostaria de saber qual o custo"
+        },
+        {
+          "text": "Atenção Primária",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo de"
+        },
+        {
+          "text": "serviços de saúde mental",
+          "parameterId": "costs_of_coverage_category",
+          "auto": true
+        },
+        {
+          "text": " Visita"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai"
+        },
+        {
+          "text": "muletas",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " custo para mim?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor informe",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode informar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": ", por favor ajude",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "Tratamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": ", contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": ", quanto eu pago?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": ", Qual o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " vai custar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " quantos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu preciso pagar por",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho que pagar por",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, diga o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " custos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu preciso pagar",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode dizer",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu tenho que pagar",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai",
+          "auto": true
+        },
+        {
+          "text": "walk-in",
+          "parameterId": "costs_of_coverage_category"
+        },
+        {
+          "text": " custo",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

@@ -1,0 +1,643 @@
+{
+  "name": "180fe2bd-96b9-47a1-99a1-c7a4841a4af1",
+  "tags": [
+    "#LA"
+  ],
+  "displayName": "Agent Redirect - transferring to live in middle of the flow",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "want to see someone for dental"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22 1988"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for dental?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I see your address on file is 1600 Amphitheatre Pkwy, Mountain View, CA 94043, United States. Would you like to search nearby? "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay. Please tell me the zip code or address where you would like to search."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "421301"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "currentPage": {
+          "name": "Address Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like me to find a doctor around 421301 ?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The nearest dental provider is at 550 Cochituate Rd, Framingham, MA 01701, United States. Would you like me to find another location?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "live agent"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand, I will transfer your call to a customer service representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "quero ver alguém para dentista"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1988"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para dentista?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Vejo que seu endereço registrado é 1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos. Gostaria de pesquisar nas proximidades?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "OK. Por favor, diga-me o código postal ou endereço onde você gostaria de pesquisar."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "421301"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "currentPage": {
+          "name": "Address Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria que eu encontrasse um médico por volta de 421301?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O dentista mais próximo fica em 550 Cochituate Rd, Framingham, MA 01701, Estados Unidos. Você gostaria que eu encontrasse outro local?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "agente ao vivo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "421301"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607089503,
+    "nanos": 569016000
+  }
+}

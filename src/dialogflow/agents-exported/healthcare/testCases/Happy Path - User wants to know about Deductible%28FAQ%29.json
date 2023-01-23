@@ -1,0 +1,175 @@
+{
+  "name": "d7c61bff-4831-46dd-9b21-f20b8556675e",
+  "tags": [
+    "#Deductible(FAQ)"
+  ],
+  "displayName": "Happy Path - User wants to know about Deductible(FAQ)",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "heya"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\" What’s a deductible \""
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.faq_deductible"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "A deductible is the amount of money you need to pay before your health insurance will start to pay a portion of the cost of your care. A deductible is different from the monthly premium you pay via payroll deduction for your overall insurance.\n\nI can further help you and answer your questions about your benefits plan, healthcare claims and assist you to find a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"No, thank you for the help \""
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "até"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\" O que é uma franquia \""
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.faq_deductible"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Uma franquia é a quantia de dinheiro que você precisa pagar antes que seu seguro de saúde comece a pagar uma parte do custo de seu tratamento. Uma franquia é diferente do prêmio mensal que você paga por meio de desconto em folha de pagamento para seu seguro geral.\n\nPosso ajudá-lo ainda mais e responder às suas perguntas sobre seu plano de benefícios, reivindicações de saúde e ajudá-lo a encontrar um médico."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Não, obrigado pela ajuda\""
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, fico feliz em poder ajudar. Uma transcrição de nossa conversa será armazenada na seção de mensagens do portal do paciente. Pressione 5 se estiver disposto a preencher uma pesquisa sobre sua experiência hoje. Tenha um ótimo dia!\n"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607091495,
+    "nanos": 41293000
+  }
+}

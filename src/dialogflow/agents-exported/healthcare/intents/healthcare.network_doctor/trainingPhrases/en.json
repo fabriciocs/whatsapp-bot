@@ -1,0 +1,291 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " have a doubt, can an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how can ",
+      "auto": true
+    }, {
+      "text": "i",
+      "auto": true
+    }, {
+      "text": " know if out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you confirm if  an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you check if  an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " curious, can an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " if  out-of-network doctor can be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can in-network coverage be offered to an out-of-network ",
+      "auto": true
+    }, {
+      "text": "general practitioner",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is it possible that an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Will an out-of-network doctor treatment cost be covered like the in network one?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can an out-of-network doctor be compensated by in-network coverage?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Will the cost of an out of network provider be covered similar to the in-network doctor?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can in-network coverage be extended to an out-of-network doctor?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can the  out in network doc be covered similar to in-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Will an out-of-network doctor be covered like the in network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can an out-of-network practitioner be covered in-network?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would a ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " from outside the network be taken up by the network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Does a ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " outside the out-of-network be taken up by the network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would a practitioner outside of the network be filled by the network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Will a ",
+      "auto": true
+    }, {
+      "text": "physicians",
+      "auto": true
+    }, {
+      "text": " outside of the network be taken up by the network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Could a ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " outside of the network be covered by the network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "please tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " if out-of-network ",
+      "auto": true
+    }, {
+      "text": "specialist",
+      "auto": true
+    }, {
+      "text": " can be covered in-",
+      "auto": true
+    }, {
+      "text": "network",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "check if an out-of-network doctor can be covered by in-",
+      "auto": true
+    }, {
+      "text": "network",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can a doctor outside of the network be covered by the in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can an out-of-network ",
+      "auto": true
+    }, {
+      "text": "physician",
+      "auto": true
+    }, {
+      "text": " be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can an out-of-network doctor be covered in-network?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

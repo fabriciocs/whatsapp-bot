@@ -1,0 +1,495 @@
+{
+  "name": "b72c153f-2185-4a3e-8168-8f701f3ae92a",
+  "tags": [
+    "#LA#appointment"
+  ],
+  "displayName": "Agent Redirect - transfer to live agent after entering time for appointment",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I want to see someone for primary care"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22 1988"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for primary care?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the day and time you want to schedule an appointment.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like to talk to someone now, or would you like to schedule for a later time and date?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am transferring you to a customer care representative to assist you with appointment scheduling. Thank you for your patience."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu quero ver alguém para cuidados primários"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1988"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para cuidados primários?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Podemos marcar uma visita virtual se você quiser ser atendido hoje.\n\nSeu plano inclui acesso a visitas virtuais sem nenhum custo para você depois de cumprir sua franquia ou por $ 50 antes disso.\n\nVocê pode conhecer o provedor virtual agora ou agendar uma consulta de acordo com sua conveniência. Por favor, especifique o dia e a hora que deseja agendar uma consulta.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria de falar com alguém agora ou gostaria de agendar para um horário e data posteriores?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Estou transferindo você para um representante de atendimento ao cliente para ajudá-lo com o agendamento de consultas. Obrigado pela sua paciência."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607088576,
+    "nanos": 688356000
+  }
+}

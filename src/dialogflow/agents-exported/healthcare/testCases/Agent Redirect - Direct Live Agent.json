@@ -1,0 +1,67 @@
+{
+  "name": "b665d9fb-6b0b-4d9c-bb69-054a13500011",
+  "tags": [
+    "#DirectLiveAgent#Defult"
+  ],
+  "displayName": "Agent Redirect - Direct Live Agent",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "live agent"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand, I will transfer your call to a customer service representative"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "agente ao vivo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607083640,
+    "nanos": 803765000
+  }
+}

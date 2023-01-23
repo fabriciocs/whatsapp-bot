@@ -1,0 +1,335 @@
+{
+  "name": "7f729fce-3996-4cbc-a972-2693b3f064bf",
+  "tags": [
+    "#claims"
+  ],
+  "displayName": "Happy Path - claims flow anythign else end session",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "claims"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat is your member ID?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "abc123"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oct 22 1998"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How may I help you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no thank you"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "reivindicações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "\nQual é a sua identificação de membro?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "abc123"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1998"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso te ajudar, hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não, obrigado"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, fico feliz em poder ajudar. Uma transcrição de nossa conversa será armazenada na seção de mensagens do portal do paciente. Pressione 5 se estiver disposto a preencher uma pesquisa sobre sua experiência hoje. Tenha um ótimo dia!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607084746,
+    "nanos": 595604000
+  }
+}

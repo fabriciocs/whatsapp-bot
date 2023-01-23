@@ -1,0 +1,2231 @@
+{
+  "name": "10ff9f99-152a-43da-9475-774b75b78296",
+  "tags": [
+    "#noinput"
+  ],
+  "displayName": "Error Handling - no input responses in FAD and switching",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "my copay"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_benefits"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I can help you answer your questions about your deductible, co-insurance, out of pocket maximums, covered services, your healthcare claims, and finding a doctor. \n\nFor further assistance should I transfer you to a customer service representative?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. Would you like me to transfer your call to someone who can help? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I can further help you and answer your questions about your benefits plan, healthcare claims and assist you to find a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I am not feeling well"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.symptoms"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies I can't address your symptoms but I can assist you to find a doctor, would you like help with this?\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I cannot answer that. I can assist you to find a doctor, would you like help with this?  Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor and answer your billing questions.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. Please provide a valid member ID consisting of numbers and letters. Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. Can you please state the month, day and year of your date of birth? You can say the date in the same format as October 22, 1982. Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22 1988"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. The primary subscriber can be you, your spouse, or a parent. Please select one of these. Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What type of doctor would you like to see?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that.I am here to assist you to find a doctor. Do you wish to see a specialist, for example a dermatologist, cardiologist, or someone for rehabilitative therapy, chiropractic services, acupuncture, mental health services, urgent care or someone for your annual physical check-up? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "primary care"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for primary care?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that.To confirm, you want to see a doctor which falls under the coverage category of primary care? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the date and time you want to schedule an appointment.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that.Please provide a valid date and time. You can say December 22 at 7 pm.Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "free now"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_now"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great, you can visit livehealthonline.com/google to set up an account and you’ll be connected with a provider. This process typically takes less than 10 minutes. I can also transfer you to an agent who can assist.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that.I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How may I help you today? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I can help answer your questions about your medical benefits. You can also ask me about benefits terminology. Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "amount seems less. do you have more info"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.more_info"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand. I can transfer you to a live agent who can assist.\n\nIn addition, if you’d like to see progress toward your deductible or any other details we’ve discussed today, you can go to your benefits dashboard online.\n\nWould you still like to transfer your call to live agent? "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. Would you like me to transfer your call to someone who can help? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Do you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "out of network doctor"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.network_doctor"
+        },
+        "currentPage": {
+          "name": "Network Doctor Confirmation",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Unfortunately, we cannot make that exception. Can I help you look up other in-network provider options in your area?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Network Doctor Confirmation",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I am here to help you find a in-network provider in your area. Do you need assistance with that? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Do you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "claims"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "amount seems high. do you have more info"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I can connect you to someone who can help you with that.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no thanks"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am transferring you to a customer care representative to help you with your claims questions. Thank you for your patience."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "meu copagamento"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_benefits"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, posso ajudá-lo a responder suas perguntas sobre sua franquia, co-seguro, valores máximos, serviços cobertos, suas reivindicações de saúde e como encontrar um médico.\n\nPara obter mais assistência, devo transferi-lo para um representante de atendimento ao cliente?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Quer que eu transfira sua ligação para alguém que possa ajudar? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Posso ajudá-lo ainda mais e responder às suas perguntas sobre seu plano de benefícios, reivindicações de saúde e ajudá-lo a encontrar um médico."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "eu não estou me sentindo bem"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.symptoms"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Peço desculpas por não poder lidar com seus sintomas, mas posso ajudá-lo a encontrar um médico. Gostaria de ajuda com isso?\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Eu não posso responder a isso. Posso ajudá-lo a encontrar um médico, gostaria de ajuda com isso? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico e responder às suas perguntas sobre cobrança.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Por favor, forneça um ID de membro válido composto por números e letras. Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ch1212"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Você pode por favor informar o mês, dia e ano da sua data de nascimento? Você pode dizer a data no mesmo formato de 22 de outubro de 1982. Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1988"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. O assinante principal pode ser você, seu cônjuge ou um de seus pais. Por favor, selecione um destes. Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de médico você gostaria de ver?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender. Estou aqui para ajudá-lo a encontrar um médico. Deseja consultar um especialista, por exemplo, um dermatologista, cardiologista ou alguém para terapia de reabilitação, serviços de quiropraxia, acupuntura, serviços de saúde mental, atendimento de urgência ou alguém para seu check-up físico anual? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "cuidados primários"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para cuidados primários?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender isso. Para confirmar, você deseja consultar um médico que se enquadre na categoria de cobertura de cuidados primários? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Podemos marcar uma visita virtual se você quiser ser atendido hoje.\n\nSeu plano inclui acesso a visitas virtuais sem nenhum custo para você depois que você cumprir sua franquia ou por $ 50 fixos antes disso.\n\nVocê pode conhecer o provedor virtual agora ou agendar um horário conforme sua conveniência. Por favor, especifique a data e a hora que deseja agendar uma consulta.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender isso. Forneça uma data e hora válidas. Você pode dizer 22 de dezembro às 19h. Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "livre agora"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_now"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ótimo, você pode visitar livehealthonline.com/google para configurar uma conta e se conectar a um provedor. Esse processo geralmente leva menos de 10 minutos. Também posso transferi-lo para um agente que pode ajudar.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender isso. Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso te ajudar, hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Existe uma parte específica de seus benefícios que você gostaria de ouvir? Você pode me perguntar sobre sua franquia, co-seguro, valores máximos do bolso e serviços cobertos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Posso ajudar a responder suas perguntas sobre seus benefícios médicos. Você também pode me perguntar sobre a terminologia de benefícios. Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "montante parece menor. Você tem mais informações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.more_info"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo. Posso transferi-lo para um agente ao vivo que pode ajudar.\n\nAlém disso, se você quiser ver o progresso em relação à sua franquia ou qualquer outro detalhe que discutimos hoje, acesse seu painel de benefícios on-line.\n\nVocê ainda gostaria de transferir sua chamada para o agente ao vivo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Quer que eu transfira sua ligação para alguém que possa ajudar? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "médico fora de rede"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.network_doctor"
+        },
+        "currentPage": {
+          "name": "Network Doctor Confirmation",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Infelizmente, não podemos abrir essa exceção. Posso ajudá-lo a procurar outras opções de provedores na rede em sua área?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Network Doctor Confirmation",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Estou aqui para ajudá-lo a encontrar um provedor na rede em sua área. Você precisa de ajuda com isso? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "reivindicações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "montante parece alto. Você tem mais informações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Posso conectá-lo a alguém que pode ajudá-lo com isso.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não, obrigado"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1988
+          },
+          "member_id": "ch1212",
+          "out-of-scope-benefits": "copay",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Estou transferindo você para um representante de atendimento ao cliente para ajudá-lo com suas dúvidas sobre sinistros. Obrigado pela sua paciência."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607330824,
+    "nanos": 836939000
+  }
+}

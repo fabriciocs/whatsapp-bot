@@ -1,0 +1,351 @@
+{
+  "name": "779b4d96-3688-416d-8355-03e57c98fcbc",
+  "displayName": "Default Landing",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "dtmf",
+        "entityType": "@dtmf",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "advancedSettings": {
+              "playbackInterruptionSettings": {
+                "allowPlaybackInterruption": true
+              }
+            }
+          }
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "enabled": true,
+            "maxDigits": 1,
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "intent": "healthcare.initialize_claims",
+      "triggerFulfillment": {},
+      "targetFlow": "Claim Status",
+      "name": "b645354d-59fd-498d-bb26-7e8a60568f63"
+    },
+    {
+      "intent": "healthcare.initialize_benefits",
+      "triggerFulfillment": {
+        "setParameterActions": [
+          {
+            "parameter": "benefits",
+            "value": ""
+          }
+        ]
+      },
+      "targetFlow": "Benefits",
+      "name": "282823a8-8864-4233-bc96-41617391df91"
+    },
+    {
+      "intent": "healthcare.list_benefits_services",
+      "triggerFulfillment": {},
+      "targetFlow": "Benefits",
+      "name": "da30f0aa-d035-4e06-a92a-82f96261f429"
+    },
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "a10be80b-a3d9-4239-bfab-17ee8194abb9"
+    },
+    {
+      "intent": "healthcare.out_of_scope_questions",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I’m sorry I can’t answer this particular question. Would you like me to transfer you to someone who can help?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Lamento não poder responder a esta pergunta específica. Quer que eu o transfira para alguém que possa ajudar?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Live Agent",
+      "name": "50e6595b-bac7-4e87-b66e-3248622f7564"
+    },
+    {
+      "intent": "healthcare.find_doctor",
+      "triggerFulfillment": {},
+      "targetFlow": "Find a Doctor",
+      "name": "c6213773-82cd-4554-ab2c-2b947c180ce0"
+    },
+    {
+      "intent": "healthcare.agent_transfer",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I understand, I will transfer your call to a customer service representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "c0b34fb8-1087-4929-aea7-a33740062eef"
+    },
+    {
+      "intent": "healthcare.symptoms",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies I can't address your symptoms but I can assist you to find a doctor, would you like help with this?\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Peço desculpas por não poder lidar com seus sintomas, mas posso ajudá-lo a encontrar um médico. Gostaria de ajuda com isso?\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Symptoms",
+      "name": "431f36f2-d8a3-421d-8a9d-a55430a46bab"
+    },
+    {
+      "intent": "healthcare.end_session",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!\n"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Ok, fico feliz em poder ajudar. Uma transcrição de nossa conversa será armazenada na seção de mensagens do portal do paciente. Pressione 5 se estiver disposto a preencher uma pesquisa sobre sua experiência hoje. Tenha um ótimo dia!\n"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "ef3cb0e0-94a6-4797-9b10-23645c3c5b53"
+    },
+    {
+      "intent": "healthcare.out_of_scope_benefits",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I can help you answer your questions about your deductible, co-insurance, out of pocket maximums, covered services, your healthcare claims, and finding a doctor. \n\nFor further assistance should I transfer you to a customer service representative?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, posso ajudá-lo a responder suas perguntas sobre sua franquia, co-seguro, valores máximos, serviços cobertos, suas reivindicações de saúde e como encontrar um médico.\n\nPara obter mais assistência, devo transferi-lo para um representante de atendimento ao cliente?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Live Agent",
+      "name": "aff50a5f-05c8-442f-b896-bb55156c8df5"
+    },
+    {
+      "intent": "healthcare.costs_of_coverage_category",
+      "triggerFulfillment": {},
+      "targetFlow": "Find a Doctor",
+      "name": "77fa4ba7-526b-495d-bce4-0491bd3972bd"
+    },
+    {
+      "intent": "healthcare.initialize_doctor",
+      "triggerFulfillment": {},
+      "targetFlow": "Find a Doctor",
+      "name": "7a9516a1-0eb2-472e-a43d-6a007b9aaca3"
+    },
+    {
+      "condition": "$session.params.dtmf = 0",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I understand, I will transfer your call to a customer service representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Live Agent",
+      "name": "5e6f5d0e-e57e-4ec3-8c5e-34f580117fe1"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "event": "sys.no-match-1",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "d33671c7-fb22-4f40-9931-e15ab18ffd7e"
+    },
+    {
+      "event": "sys.no-match-2",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Sorry, I was unable to understand that. I am your healthcare assistant. I can assist you to understand your healthcare claims, benefits coverage and find a doctor."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, não consegui entender isso. Eu sou seu assistente de saúde. Posso ajudá-lo a entender suas reivindicações de saúde, cobertura de benefícios e encontrar um médico."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "a881fea1-52c0-4126-82da-b27d0d0ee63f"
+    },
+    {
+      "targetPage": "End Session",
+      "event": "sys.no-match-3",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, um representante de atendimento ao cliente poderá ajudá-lo melhor. Deixe-me transferir sua ligação. Obrigado pela sua paciência."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "78e779b5-0ee2-4548-867b-9c55f5319110"
+    },
+    {
+      "event": "sys.no-input-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I was not able to understand that. I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpas, não consegui entender isso. Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "8b5b6355-3306-4c12-bcb9-3dde75c66c9b"
+    }
+  ],
+  "transitionRouteGroups": [
+    "Benefits_FAQ"
+  ]
+}

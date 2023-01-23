@@ -1,0 +1,1009 @@
+{
+  "name": "a2fa34e7-3292-40b0-a5a0-87d3d98368ea",
+  "tags": [
+    "#AllBenefits"
+  ],
+  "displayName": "Happy Path - all benefits",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "tell me about my claims"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat is your member ID?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "6868858"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Aug 22"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter a valid year.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "aug 3 1998"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"transfer me to live agent"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How may I help you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"help me to undersatand about benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"deductible"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"coinsuarnce"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"out of pocket maximums"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour out of pocket maximum is $3000 in network and $4500 out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"difference between in netwoork and out network"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_network"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Network providers have signed a contract with us to offer high quality services at a lower price. When you see these in network providers, savings are passed along to you since you pay less out of pocket.\n\nFor example: If an in network provider charges $100 for an office visit, a provider not contracted with your plan is likely to charge the plan significantly more.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"what is HSA"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_hsa"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Health Savings Accounts (or HSAs) can be opened by employees who have a high-deductible health plan. You can put money in a HSA up to a set annual limit which is then treated as tax advantaged.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"what are out of pocket maximums"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour out of pocket maximum is $3000 in network and $4500 out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "conte-me sobre minhas reivindicações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "\nQual é a sua identificação de membro?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "6868858"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de agosto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor insira um ano válido.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "3 de agosto de 1998"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"transfira-me para agente vivo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso te ajudar, hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"me ajude a entender sobre os benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Existe uma parte específica de seus benefícios que você gostaria de ouvir? Você pode me perguntar sobre sua franquia, co-seguro, valores máximos do bolso e serviços cobertos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"franquia"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSua franquia individual anual na rede é de $ 2.000 e você tem $ 1.200 restantes para o ano.\nSua franquia fora da rede é de $ 4.000 e você tem $ 1.400 restantes para o ano.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"coinsurance"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"máximos fora do bolso"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSeu máximo de bolso é $ 3.000 na rede e $ 4.500 fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"diferença entre dentro da rede e fora da rede"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_network"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Os provedores de rede assinaram um contrato conosco para oferecer serviços de alta qualidade a um preço mais baixo. Quando você vê isso nos provedores da rede, a economia é repassada para você, pois você paga menos do próprio bolso.\n\nPor exemplo: se um provedor da rede cobra $ 100 por uma visita ao escritório, um provedor não contratado com seu plano provavelmente cobrará do plano significativamente mais.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"o que é HSA"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_hsa"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Contas de poupança de saúde (ou HSAs) podem ser abertas por funcionários que possuem um plano de saúde de alta franquia. Você pode colocar dinheiro em um HSA até um limite anual definido, que é então tratado como um benefício fiscal.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"o que são máximos fora do bolso"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 3,
+            "month": 8,
+            "year": 1998
+          },
+          "member_id": "6868858",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSeu máximo de bolso é $ 3.000 na rede e $ 4.500 fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607077319,
+    "nanos": 436071000
+  }
+}

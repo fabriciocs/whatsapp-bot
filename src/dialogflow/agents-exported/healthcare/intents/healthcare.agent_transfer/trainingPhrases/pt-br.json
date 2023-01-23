@@ -1,0 +1,635 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "não estou nada satisfeito com a maneira como você respondeu",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não é uma resposta clara",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "resposta não é clara",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Esta é uma resposta vaga",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "resposta inválida",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "essa resposta é vaga",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "espero que não se importe, mas suas respostas não são apropriadas",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "suas respostas não estão corretas",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você está me dando a resposta errada",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sua resposta não me satisfaz.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sua resposta não me satisfaz.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não estou feliz com sua resposta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não estou feliz com sua resposta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não estou satisfeito com a sua resposta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não estou satisfeito com a sua resposta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não estou satisfeito com sua resposta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não estou satisfeito com sua resposta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não me lembro",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não sei a data de nascimento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não lembro a data de nascimento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não me lembro do meu DOB",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sim Por favor, transfira minha chamada para o agente virtual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "nenhuma idéia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por que você não consegue me entender",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "gostaria de falar com um agente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não é isso que eu",
+          "auto": true
+        },
+        {
+          "text": "procurado"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não, não é isso que eu",
+          "auto": true
+        },
+        {
+          "text": "procurado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso falar com um gerente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso falar com uma pessoa?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso falar com um verdadeiro",
+          "auto": true
+        },
+        {
+          "text": "pessoa"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode escalar isso para um humano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "humano",
+          "auto": true
+        },
+        {
+          "text": "por favor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso falar com um real",
+          "auto": true
+        },
+        {
+          "text": "pessoa"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso falar com alguém",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu só quero falar com um humano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agente ao vivo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "viva humano agora",
+          "auto": true
+        },
+        {
+          "text": "por favor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "representante ao vivo",
+          "auto": true
+        },
+        {
+          "text": "por favor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Gerente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "sem robôs humanos reais",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "operador",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor transfira",
+          "auto": true
+        },
+        {
+          "text": "mim"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "pessoa real",
+          "auto": true
+        },
+        {
+          "text": "por favor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "redirecionar",
+          "auto": true
+        },
+        {
+          "text": "mim"
+        },
+        {
+          "text": " para um representante",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "redirecionar",
+          "auto": true
+        },
+        {
+          "text": "mim"
+        },
+        {
+          "text": " ao cliente",
+          "auto": true
+        },
+        {
+          "text": "serviço"
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "por favor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "representante",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "falar com humano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "isso é frustrante",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso falar com alguém?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "isso não está funcionando",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "transferir",
+          "auto": true
+        },
+        {
+          "text": "mim"
+        },
+        {
+          "text": " para um real",
+          "auto": true
+        },
+        {
+          "text": "pessoa"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "transição",
+          "auto": true
+        },
+        {
+          "text": "mim"
+        },
+        {
+          "text": " para um cliente",
+          "auto": true
+        },
+        {
+          "text": "ajudante"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "zero"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conecte-me a um agente ao vivo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero falar com um agente ao vivo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

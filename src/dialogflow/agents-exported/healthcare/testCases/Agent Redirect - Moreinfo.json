@@ -1,0 +1,251 @@
+{
+  "name": "e3386593-9153-4941-a127-8c5af62bd7b7",
+  "tags": [
+    "#Moreinfo#LA"
+  ],
+  "displayName": "Agent Redirect - Moreinfo",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what is my co insurance"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"1234ew Oct 22 1990"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please provide a valid member ID consisting of numbers and letters."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "This member ID seems invalid. Can you please share your valid member ID? You can say 123ABC9."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Live agent"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand, I will transfer your call to a customer service representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qual é o meu co seguro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"1234ew 22 de outubro de 1990"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, forneça um ID de membro válido composto por números e letras."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Este ID de membro parece inválido. Você pode compartilhar seu ID de membro válido? Você pode dizer 123ABC9."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "agente ao vivo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607084248,
+    "nanos": 726721000
+  }
+}

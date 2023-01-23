@@ -1,0 +1,121 @@
+{
+  "name": "5042d983-9357-444d-b241-eda7fe1f8474",
+  "tags": [
+    "#LA_No_More_Help_Reqd"
+  ],
+  "displayName": "Agent Redirect - User says I am not well flow 10",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Hi,I am not feeling well"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.symptoms"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies I can't address your symptoms but I can assist you to find a doctor, would you like help with this?\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "No"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, A customer care representative, will be able to help you out better. Transferring your call to him. Thank you for your patience."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Olá, não estou me sentindo bem"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.symptoms"
+        },
+        "currentPage": {
+          "name": "Symptoms",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Peço desculpas por não poder lidar com seus sintomas, mas posso ajudá-lo a encontrar um médico. Gostaria de ajuda com isso?\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, Um representante de atendimento ao cliente poderá ajudá-lo melhor. Transferindo sua ligação para ele. Obrigado pela sua paciência."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607079697,
+    "nanos": 239606000
+  }
+}

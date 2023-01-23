@@ -1,0 +1,739 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Can ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " see my past claims?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " see my other claims?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need to pay? How much do ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need to pay ",
+      "auto": true
+    }, {
+      "text": "out-of-pocket",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What does my explanation of benefit statement mean?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't know what this claim means. Can you help?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think got the right ",
+      "auto": true
+    }, {
+      "text": "service",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " got the right bill",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My EOB is wrong",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My EOB is not ",
+      "auto": true
+    }, {
+      "text": "correct",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My EOB seems too high",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My bill is wrong",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My bill is not ",
+      "auto": true
+    }, {
+      "text": "correct",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My bill seems too high",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My claim is wrong",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My claim is not ",
+      "auto": true
+    }, {
+      "text": "correct",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "My claim seems too high",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not too sure about this amount. It seems way too high. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not too affirmative about this amount. It seems to be on the higher side",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is this the right amount? It seems way too high",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "The amount seems wrong. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "The amount seems wrong",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Umm, this amount seems to be slightly on a higher side. ",
+      "auto": true
+    }, {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not sure if that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Ummm, this amount does not seem right. Is this ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": "? ",
+      "auto": true
+    }, {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not too sure",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "According to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ", this amount is higher. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think this is for ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " have certain doubts about this amount. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " have certain doubts about this amount.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " not sure about this amount. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "The amount seems incorrect. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " guess that wasn't ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " guess the amount is a bit higher. ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "The amount seems slightly high.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "The amount does not seem right, ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " don't think that was ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Need to know about my other claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with understand the status of my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Any updates on my other claims status?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "And what about my other claims?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am",
+      "auto": true
+    }, {
+      "text": " curious, about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would like to know the status of my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you also help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the status of my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " understand my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " want to know about my other claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Umm",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would like to see my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " understand the status of my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What is the status of my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with some information about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would like to know about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with some information about my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would like to see my other ",
+      "auto": true
+    }, {
+      "text": "claims",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have more claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "but there is more than one claim"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "we have quite a few claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have two claims to ask about"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "there is more than one"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have more than one"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have more than one claim"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can I ask about two claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can I ask about other claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What if i have more claims?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Why just one claim?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How many claims can I ask about?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have multiple claims"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "There is more than one claim"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

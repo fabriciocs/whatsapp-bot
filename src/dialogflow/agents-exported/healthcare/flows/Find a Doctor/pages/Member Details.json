@@ -1,0 +1,275 @@
+{
+  "name": "2ba9bbd8-3b42-401e-a029-a8306e918327",
+  "displayName": "Member Details",
+  "form": {
+    "parameters": [ {
+      "displayName": "member_id",
+      "required": true,
+      "entityType": "@member-id",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "What is your member ID?\n" ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Please provide a valid member ID consisting of numbers and letters." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "5234e881-7d5a-4123-b562-cf6cc18c2624"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "This member ID seems invalid. Can you please share your valid member ID? You can say 123ABC9." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "ca86003e-a1fd-4b6a-94cc-2c6ed0239bef"
+        }, {
+          "targetPage": "Live Agent",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "a1a62057-8115-48fb-97f3-24f3eb9a89a8"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that. Please provide a valid member ID consisting of numbers and letters. Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "359aad9f-8063-4428-8877-6d08576ea950"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "date_of_birth",
+      "required": true,
+      "entityType": "@sys.date",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "What is your date of birth? You can say the date as October 22 ,1982." ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Can you please state the month, day and year of your date of birth? You can say the date in the same format as October 22 ,1982." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "7d5fcae1-fe12-48cb-8a8e-1061ce7d9b57"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "This date of birth seems invalid. Can you please share your valid date of birth including month, date and birth year? For instance, November 17, 1989." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "263d0eb5-20d3-42fd-9684-0e0eb70a5ccc"
+        }, {
+          "targetPage": "Live Agent",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "f50a8706-ea29-4cab-a376-cec36e261685"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that. Can you please state the month, day and year of your date of birth? You can say the date in the same format as October 22, 1982. Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "b2c65179-e981-45ce-b216-2e573c9f86db"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "primary_subscriber",
+      "required": true,
+      "entityType": "@primary-subscriber",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "Who is the primary subscriber?" ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "The primary subscriber can be you, your spouse, or a parent. Please select one of these." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "2c5dfd66-2f11-4d23-87b0-68f5da9a59ec"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Can you please tell me the primary subscriber for your benefits plan? For instance, you can say \"me\" or \"my partner\"" ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "f439d7e7-d503-422a-902e-400e5fdbe4e0"
+        }, {
+          "targetPage": "Live Agent",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "580f535d-5cf3-4246-8a9f-c2e47017b053"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that. The primary subscriber can be you, your spouse, or a parent. Please select one of these. Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "2a09ddd1-df41-48d2-92ec-1671aeb3c32a"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "322c143c-8890-47b2-9c18-adb87f4415ca"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = null AND $page.params.status = FINAL",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Type of Doctor",
+    "name": "c6964cd6-0ba7-4e3f-a7d4-17537a9fb4cd"
+  }, {
+    "condition": "$page.params.status = FINAL AND $session.params.costs_of_coverage_category != null",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Costs of Coverage Category",
+    "name": "7a6d515d-5eb0-419e-9fe8-60f0afaa98d2"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "d947fc31-13f0-482f-a698-3d513bfbba85"
+  }, {
+    "condition": "$session.params.date_of_birth.year \u003e 2020",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Please enter a valid year.\n\n" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "date_of_birth",
+        "value": null
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "641d1837-95e6-47cf-ad4b-8eb18ea87dcb"
+  } ]
+}

@@ -1,0 +1,211 @@
+{
+  "name": "feeadd82-82cb-4ee7-9ced-1d53066b2a8e",
+  "tags": [
+    "#LiveAgent"
+  ],
+  "displayName": "Agent Redirect - default-start-live agent ",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$1400 seems wrong, I've spent more"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$1400 seems wrong, I've spent more"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sorry, I was unable to understand that, I am your Healthcare assistant. I can assist you in healthcare claims, benefits coverage and help you to find a doctor"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$1400 seems wrong, I've spent more"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$ 1400 parece errado, eu gastei mais"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$ 1400 parece errado, eu gastei mais"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender isso, sou seu assistente de saúde. Posso ajudá-lo em reivindicações de saúde, cobertura de benefícios e ajudá-lo a encontrar um médico"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "$ 1400 parece errado, eu gastei mais"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, um representante de atendimento ao cliente poderá ajudá-lo melhor. Deixe-me transferir sua ligação. Obrigado pela sua paciência."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607086939,
+    "nanos": 740347000
+  }
+}

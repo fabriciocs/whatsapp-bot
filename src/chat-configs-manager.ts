@@ -15,9 +15,16 @@ export default class ChatConfigsManager {
     if (!from) return;
     const snapshot = await this.getRef(from).once('value');
     const config = await snapshot.val();
-    if(!config) return;
+    if (!config) return;
     const isUnique = () => config.commands.length === 1;
     config.isUnique = isUnique;
+    return config;
+  }
+  async getByNumberOrSession(from: string, id: string): Promise<ChatConfigType> {
+    if (!from && !id) return;
+    let config = await this.getByNumber(id);
+    if (!config) config = await this.getByNumber(from);
+    if (!config) return;
     return config;
   }
 

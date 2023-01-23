@@ -9,7 +9,15 @@ export type ChatConfigType = {
     commandMarkers: string[];
     isUnique: () => boolean;
 };
-
+export const chunked = (arr: any[], size: number) => {
+    const chunked_arr = [];
+    let index = 0;
+    while (index < arr.length) {
+        chunked_arr.push(arr.slice(index, size + index));
+        index += size;
+    }
+    return chunked_arr;
+}
 export const waitFor = async (timeout = 1000) => await new Promise(resolve => setTimeout(resolve, timeout));
 
 export const tryIt = async (fn: (parameters: any) => Promise<any>, ...args: any[]) => {

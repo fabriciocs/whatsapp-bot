@@ -1,0 +1,109 @@
+{
+  "name": "251ad2f6-80ba-438f-bcd6-e87a7c64586d",
+  "tags": [
+    "#RandomQuestion"
+  ],
+  "displayName": "Error Handling - Random question",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "jhggj"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sbdjvkjsd"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sorry, I was unable to understand that, I am your Healthcare assistant. I can assist you in healthcare claims, benefits coverage and help you to find a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "jhggj"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sbdjvkjsd"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, não consegui entender isso, sou seu assistente de saúde. Posso ajudá-lo em reivindicações de saúde, cobertura de benefícios e ajudá-lo a encontrar um médico."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607088406,
+    "nanos": 847674000
+  }
+}

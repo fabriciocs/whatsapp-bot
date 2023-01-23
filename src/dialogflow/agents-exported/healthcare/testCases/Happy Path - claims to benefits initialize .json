@@ -1,0 +1,555 @@
+{
+  "name": "4a6ace41-1482-4e2c-9a7c-d2221aa47b78",
+  "tags": [
+    "#switchingtobenefits"
+  ],
+  "displayName": "Happy Path - claims to benefits initialize ",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "claims"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "\nWhat is your member ID?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "abc123"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22 1998"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "I want to know my benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "deductible"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no thank you"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "reivindicações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "\nQual é a sua identificação de membro?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "abc123"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1998"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "quero saber meus benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Existe uma parte específica de seus benefícios que você gostaria de ouvir? Você pode me perguntar sobre sua franquia, co-seguro, valores máximos do bolso e serviços cobertos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "dedutível"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSua franquia individual anual na rede é de $ 2.000 e você tem $ 1.200 restantes para o ano.\nSua franquia fora da rede é de $ 4.000 e você tem $ 1.400 restantes para o ano.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não, obrigado"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "abc123",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, fico feliz em poder ajudar. Uma transcrição de nossa conversa será armazenada na seção de mensagens do portal do paciente. Pressione 5 se estiver disposto a preencher uma pesquisa sobre sua experiência hoje. Tenha um ótimo dia!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607086388,
+    "nanos": 264795000
+  }
+}

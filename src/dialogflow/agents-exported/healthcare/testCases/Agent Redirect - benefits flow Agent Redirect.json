@@ -1,0 +1,471 @@
+{
+  "name": "49f063da-792d-48d2-82e1-0b1c18a24340",
+  "tags": [
+    "#AgentRedirect23"
+  ],
+  "displayName": "Agent Redirect - benefits flow Agent Redirect",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what are my coinsurance"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qwer45"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Please enter a valid year.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "oct 22 1998"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "live agent"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand, I will transfer your call to a customer service representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ok"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "quais são meus cosseguros"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qwer45"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor insira um ano válido.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "22 de outubro de 1998"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "co-insurance",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45",
+          "primary_subscriber": "self"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "agente ao vivo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 22,
+            "month": 10,
+            "year": 1998
+          },
+          "member_id": "qwer45",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.agent_transfer"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "OK"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607088881,
+    "nanos": 932168000
+  }
+}

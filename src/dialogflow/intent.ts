@@ -1,5 +1,5 @@
 
-import { IntentsClient, SessionsClient } from '@google-cloud/dialogflow-cx';
+import { IntentsClient, SessionsClient, protos } from '@google-cloud/dialogflow-cx';
 
 export class Intent {
     async getIntent(id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = process.env.AGENT_LANGUAGE_CODE) {
@@ -8,7 +8,7 @@ export class Intent {
             apiEndpoint: process.env.AGENT_ENDPOINT,
         });
         const sessionPath = sessionClient.projectLocationAgentSessionPath(projectId, process.env.AGENT_LOCATION, agentId, id);
-        
+
         const queryInput = {
             languageCode
         } as any;
@@ -16,7 +16,7 @@ export class Intent {
             queryInput.audio = {
                 audio: text,
                 config: {
-                    audioEncoding: 'AUDIO_ENCODING_OGG_OPUS',
+                    audioEncoding: protos.google.cloud.dialogflow.cx.v3.AudioEncoding.AUDIO_ENCODING_OGG_OPUS,
                     sampleRateHertz: 16000
                 }
             };
@@ -47,6 +47,7 @@ export class Intent {
             console.log(`  Intent: ${result.intent.displayName}`);
         } else {
             console.log(`  No intent matched.`);
+            return [];
         }
         return responseMsgs;
     }

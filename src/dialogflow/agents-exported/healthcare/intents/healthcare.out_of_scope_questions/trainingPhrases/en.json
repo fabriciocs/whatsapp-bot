@@ -1,0 +1,596 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "I want to understand my "
+    }, {
+      "text": "life insurance",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I need to "
+    }, {
+      "text": "refill a prescription",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "should I renew by "
+    }, {
+      "text": "healthcare plan",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "help me find a near by "
+    }, {
+      "text": "pharmacy",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you confirm if ",
+      "auto": true
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance is part of my benefits coverage",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How can I pay for my ",
+      "auto": true
+    }, {
+      "text": "insulin",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How can I pay for my ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to confirm if ",
+      "auto": true
+    }, {
+      "text": "eye",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance is a part of my benefits coverage",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is included in benefits coverage?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you confirm if ",
+      "auto": true
+    }, {
+      "text": "tablet",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is part of my benefits plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to confirm if ",
+      "auto": true
+    }, {
+      "text": "eye",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance is a part of my benefits plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is covered in my benefits plan, right?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you confirm if ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is part of my plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to confirm if ",
+      "auto": true
+    }, {
+      "text": "teeth",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance is a part of my plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is covered in my plan, right?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "insulin",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " part of my plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to know if ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is included in my plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "cardiac",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " surgery covered under my benefits coverage",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " part of my benefits coverage",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance included in my benefits plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me if ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " is covered under my benefits plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Does my benefits plan cover ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Am I covered for ",
+      "auto": true
+    }, {
+      "text": "medication",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " under my benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "teeth",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance included in my benefits plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " included in my benefits plan?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is "
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " included in my plan"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me if ",
+      "auto": true
+    }, {
+      "text": "eye",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " insurance is covered under my plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Does my plan cover ",
+      "auto": true
+    }, {
+      "text": "dental",
+      "parameterId": "out_of_scope",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Does my insurance cover ",
+      "auto": true
+    }, {
+      "text": "insulin",
+      "parameterId": "out_of_scope",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Am I covered for ",
+      "auto": true
+    }, {
+      "text": "chemo",
+      "parameterId": "out_of_scope",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is ",
+      "auto": true
+    }, {
+      "text": "annual physical",
+      "parameterId": "out_of_scope",
+      "auto": true
+    }, {
+      "text": " included in the plan?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i ask you questions regarding  "
+    }, {
+      "text": "eye",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me if  insurance cover "
+    }, {
+      "text": "dental",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "does  insurance cover "
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "eye",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "teeth",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "dental",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me more information about "
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what information do you have on "
+    }, {
+      "text": "dental",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me more about "
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "how can i check  "
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is there an insurance coverage for my "
+    }, {
+      "text": "cardiac",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " surgery?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "does my health benefits cover "
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "help me know about my "
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do you cover "
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know about my "
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do you provide answers regarding "
+    }, {
+      "text": "dental",
+      "parameterId": "out_of_scope"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can I ask you questions about my "
+    }, {
+      "text": "dental",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": ", "
+    }, {
+      "text": "vision",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": ", or "
+    }, {
+      "text": "fertility",
+      "parameterId": "out_of_scope"
+    }, {
+      "text": " insurance too?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

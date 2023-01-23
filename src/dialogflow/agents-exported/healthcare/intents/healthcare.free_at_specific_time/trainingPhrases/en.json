@@ -1,0 +1,655 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would prefer wednes ",
+      "auto": true
+    }, {
+      "text": "at 6",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " for the doctor's ",
+      "auto": true
+    }, {
+      "text": "visist",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I would like to visit the doc at "
+    }, {
+      "text": "3pm tomorrow",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "schedule an app for ",
+      "auto": true
+    }, {
+      "text": "tonight at 8",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "book an app for "
+    }, {
+      "text": "tomorrow",
+      "parameterId": "specific_time_period"
+    }, {
+      "text": " evening"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "schedule for ",
+      "auto": true
+    }, {
+      "text": "4pm today",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "First of next month at "
+    }, {
+      "text": "5pm",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " guess, ",
+      "auto": true
+    }, {
+      "text": "next week",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "at 2pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Today",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " anytime works",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Given a choice "
+    }, {
+      "text": "day after tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ", anytime in the eve"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my preference is ",
+      "auto": true
+    }, {
+      "text": "wed at 4pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I would like if it's "
+    }, {
+      "text": "tomorrow",
+      "parameterId": "specific_date_time"
+    }, {
+      "text": " "
+    }, {
+      "text": "morning",
+      "parameterId": "specific_time_period"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would prefer if its ",
+      "auto": true
+    }, {
+      "text": "tomorrow around 9 am",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Ummm, preferabbly "
+    }, {
+      "text": "today",
+      "parameterId": "specific_date_time"
+    }, {
+      "text": " around "
+    }, {
+      "text": "5pm",
+      "parameterId": "specific_time_period"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "will ",
+      "auto": true
+    }, {
+      "text": "wed at 1pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " work?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "8 am, next tues",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "at "
+    }, {
+      "text": "noon",
+      "parameterId": "specific_time_period"
+    }, {
+      "text": " this "
+    }, {
+      "text": "monday",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "at "
+    }, {
+      "text": "7pm",
+      "parameterId": "specific_time_period"
+    }, {
+      "text": " this "
+    }, {
+      "text": "friday",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "2/11/20 at 4 pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "23rd dec at 2 pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "It would be great if we can schedule it ",
+      "auto": true
+    }, {
+      "text": "at 2 pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "thrusday",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Ideally ",
+      "auto": true
+    }, {
+      "text": "tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " between ",
+      "auto": true
+    }, {
+      "text": "1pm - 3pm",
+      "parameterId": "specific_time_period",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " belive ",
+      "auto": true
+    }, {
+      "text": "tomorrow, 6 pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " is fine",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " think, ",
+      "auto": true
+    }, {
+      "text": "8pm this friday",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " works",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "available on ",
+      "auto": true
+    }, {
+      "text": "26th November at 2pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "available "
+    }, {
+      "text": "today between 2pm and 3pm",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am free "
+    }, {
+      "text": "tomorrow",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i",
+      "auto": true
+    }, {
+      "text": " will be available "
+    }, {
+      "text": "today after 4pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " will be available ",
+      "auto": true
+    }, {
+      "text": "today at 2pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tomorrow 2 to 3",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " will be available around ",
+      "auto": true
+    }, {
+      "text": "6pm today",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tomorrow between 12pm and 1pm",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tomorrow at 12pm",
+      "parameterId": "specific_date_time",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i am ready in the "
+    }, {
+      "text": "end of the day",
+      "parameterId": "specific_time_period"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm prepared for "
+    }, {
+      "text": "today",
+      "parameterId": "specific_date_time"
+    }, {
+      "text": " eod."
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm prepared for eod ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm set for ",
+      "auto": true
+    }, {
+      "text": "coming monday",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm set for later ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm prepared for ",
+      "auto": true
+    }, {
+      "text": "coming monday",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm prepared for "
+    }, {
+      "text": "next week",
+      "parameterId": "specific_time_period"
+    }, {
+      "text": "."
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm prepared for ",
+      "auto": true
+    }, {
+      "text": "tomorrow morning",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm ready for "
+    }, {
+      "text": "2 and 3 tomorrow",
+      "parameterId": "specific_date_time"
+    }, {
+      "text": " in the "
+    }, {
+      "text": "evening",
+      "parameterId": "specific_time_period"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I'm ready for ",
+      "auto": true
+    }, {
+      "text": "2",
+      "auto": true
+    }, {
+      "text": " and ",
+      "auto": true
+    }, {
+      "text": "3 tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " I am ready "
+    }, {
+      "text": "about 2 and 3",
+      "parameterId": "specific_time_period"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " I'm free ",
+      "auto": true
+    }, {
+      "text": "between 2 and 3",
+      "parameterId": "specific_time_period",
+      "auto": true
+    }, {
+      "text": " in the morning.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": " I am ready around ",
+      "auto": true
+    }, {
+      "text": "2",
+      "auto": true
+    }, {
+      "text": " and ",
+      "auto": true
+    }, {
+      "text": "3",
+      "auto": true
+    }, {
+      "text": ".",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Between 2 and 3",
+      "parameterId": "specific_time_period",
+      "auto": true
+    }, {
+      "text": ", I'm free ",
+      "auto": true
+    }, {
+      "text": "tomorrow",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "between 2 and 3",
+      "parameterId": "specific_time_period",
+      "auto": true
+    }, {
+      "text": ", I'm free.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tomorrow",
+      "parameterId": "specific_date_time",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "between 2 and 3",
+      "parameterId": "specific_time_period",
+      "auto": true
+    }, {
+      "text": ", I am free.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am free "
+    }, {
+      "text": "tomorrow between 2 and 3",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I am free "
+    }, {
+      "text": "today from 5 pm",
+      "parameterId": "specific_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

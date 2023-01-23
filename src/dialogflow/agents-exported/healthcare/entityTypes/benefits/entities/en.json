@@ -1,0 +1,31 @@
+{
+  "entities": [ {
+    "value": "deductible",
+    "synonyms": [ "deductible", "deductibles", "employee-only deductible", "employee only deductible" ],
+    "languageCode": "en"
+  }, {
+    "value": "co-insurance",
+    "synonyms": [ "co-insurance", "coinsurance", "co insurance" ],
+    "languageCode": "en"
+  }, {
+    "value": "out of pocket maximums",
+    "synonyms": [ "out of pocket maximums", "out of pocket", "out of pocket max", "maximum", "pocket ", "maximums", "pocket maximums", "out of pocket maximum", "out of packet maximum", "pocket max", "employee only out of pocket max", "employee only out of pocket maximum", "employee only out of pocket maximums" ],
+    "languageCode": "en"
+  }, {
+    "value": "covered services",
+    "synonyms": [ "covered services", "services", "covered service" ],
+    "languageCode": "en"
+  }, {
+    "value": "family deductible",
+    "synonyms": [ "family deductible", "spouse deductible", "wife deductible", "dependants deductible", "dependant deductible" ],
+    "languageCode": "en"
+  }, {
+    "value": "family out of pocket maximums",
+    "synonyms": [ "family out of pocket maximums", "family out of pocket max", "family out of pocket maximum", "spouse out of pocket max", "spouse out of pocket maximum", "spouse out of pocket maximums", "wife out of pocket maximum", "wife out of pocket max", "wife out of pocket maximums", "dependants out of pocket max", "dependants out of pocket maximum", "dependants out of pocket maximums", "out of pocket max of my wife", "out of pocket max of my family", "out of pocket max of my spouse", "out of pocket maximum of my wife", "husband out of pocket max", "husband out of pocket maximum", "husband out of pocket maximums", "out of pocket max of my husband" ],
+    "languageCode": "en"
+  }, {
+    "value": "all",
+    "synonyms": [ "all ", "everything", "4 benefits", "four benefits", "all 4 benefits", "all four benefits", "each one of them", "each one", "all of them", "each of them", "everyone of them", "everyone", "all of these", "all of the above", "everyone of those" ],
+    "languageCode": "en"
+  } ]
+}

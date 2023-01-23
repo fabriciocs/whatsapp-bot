@@ -1,0 +1,316 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "I want to schedule a doctor's visit",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to visit my doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I wish schedule an appointment with doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I have a headache, locate a nearby doctor in my area",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Find a doctor near ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " feel nauseous, ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need to see a doctor ",
+      "auto": true
+    }, {
+      "text": "urgently",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " want to see a doctor ",
+      "auto": true
+    }, {
+      "text": "immediately",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Find a practitioner near ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i am",
+      "auto": true
+    }, {
+      "text": " having Allergy, find ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " a doctor now",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to identify a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Its urgent find a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Find a doctor ",
+      "auto": true
+    }, {
+      "text": "immediately",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " need a doctor ",
+      "auto": true
+    }, {
+      "text": "urgently",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to get a doctor ",
+      "auto": true
+    }, {
+      "text": "urgently",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Where could ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " find a health care professional?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Where can ",
+      "auto": true
+    }, {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " locate a doctor?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "where can ",
+      "auto": true
+    }, {
+      "text": "i",
+      "auto": true
+    }, {
+      "text": " find a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hey find a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "please find a doc",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " would like to know about a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "is there a doctor near ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you connect "
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to a doctor"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "connect ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i",
+      "auto": true
+    }, {
+      "text": " want to see a doc",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i",
+      "auto": true
+    }, {
+      "text": " want to see a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "find ",
+      "auto": true
+    }, {
+      "text": "doc",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Find a ",
+      "auto": true
+    }, {
+      "text": "doctor",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

@@ -1,0 +1,463 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por que não agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agora mesmo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "parece incrível para começar agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ótimo momento para começar agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "parece que eu posso começar neste momento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por que não começo agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou prontamente disponível agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "perfeito",
+          "auto": true
+        },
+        {
+          "text": "tempo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tempo perfeito",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "este é o melhor momento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "a qualquer hora funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "desta vez funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu estou pronto agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Parece legal",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Soa agora Certo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Parece funcionar para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " verdade!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ele joga para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " qualquer!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " novamente!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " já!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " verdade!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " no entanto!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " e agora!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " também!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " qualquer maneira!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Funciona para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " agora!",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E agora estou pronto,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E eu estou pronto,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ainda estou disponível,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Agora estou disponível,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E agora estou livre,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E agora estou livre,",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Bem, eu estou livre."
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Agora estou livre."
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Agora sou livre.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agora funciona para mim"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu estou livre agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

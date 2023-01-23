@@ -1,0 +1,1939 @@
+{
+  "name": "9670d7ae-b147-4fdf-ba29-ed6cc4b514f2",
+  "tags": [
+    "#SwtichCase"
+  ],
+  "displayName": "Happy Path - Switch case",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "find a doctor for telemedicine"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "8638768"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "8638768",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Aug 6 1997"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for virtual care?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I see your address on file is 1600 Amphitheatre Pkwy, Mountain View, CA 94043, United States. Would you like to search nearby? "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Home Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The nearest virtual care provider is at 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, United States. Would you like me to find another location?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "No this is fine"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "when it will be open"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.ask_open_timing"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "It is open between 9am-5pm Monday to Friday. \n\nI can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "please tell me what are deductibles"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what is deductible"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_deductible"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "A deductible is the amount of money you need to pay before your health insurance will start to pay a portion of the cost of your care. A deductible is different from the monthly premium you pay via payroll deduction for your overall insurance.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Premiums"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_premium"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "A premium is the amount that you pay for your health insurance plan. It's paid by you, your employer, or shared. It is generally deducted from your pay check.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "HSA"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_hsa"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Health Savings Accounts (or HSAs) can be opened by employees who have a high-deductible health plan. You can put money in a HSA up to a set annual limit which is then treated as tax advantaged.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "coordinates of benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_coordination"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sometimes two insurance plans work together to pay claims for the same person. That process is called coordination of benefits.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "my co insurance"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what is the status of my claims"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "the amount seems to be high for me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I can connect you to someone who can help you with that.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what is the cost for regular healthcheckup"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor and answer your billing questions.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Actual charges may vary among providers, but for your in network provider you are covered at 100% (no deductible or co-pay) for a yearly preventative physical and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "what is the cost for regular healthcheckup"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Actual charges may vary among providers, but for your in network provider you are covered at 100% (no deductible or co-pay) for a yearly preventative physical and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "thats great also help me to find a doctor for Dental"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for dental?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I see your address on file is 1600 Amphitheatre Pkwy, Mountain View, CA 94043, United States. Would you like to search nearby? "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay. Please tell me the zip code or address where you would like to search."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "This zip code seems invalid. Please share a valid zip code or address."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "currentPage": {
+          "name": "Address Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Would you like me to find a doctor around 94043 ?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "The nearest dental provider is at 550 Cochituate Rd, Framingham, MA 01701, United States. Would you like me to find another location?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "No this fine"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "A customer care representative will assist you to find your nearest doctor. Transferring your call. Thank you for your patience."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "encontre um médico para telemedicina"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "8638768"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "8638768",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "6 de agosto de 1997"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para atendimento virtual?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Vejo que seu endereço registrado é 1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos. Gostaria de pesquisar nas proximidades?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Home Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O prestador de atendimento virtual mais próximo fica em 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, Estados Unidos. Você gostaria que eu encontrasse outro local?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Não, isso está bem"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Posso transferi-lo para um agente que pode ajudar a agendar um horário.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "quando estará aberto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "virtual care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.ask_open_timing"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Funciona das 9h às 17h de segunda a sexta.\n\nPosso transferi-lo para um agente que pode ajudar a agendar um horário.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "por favor me diga o que são franquias"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSua franquia individual anual na rede é de $ 2.000 e você tem $ 1.200 restantes para o ano.\nSua franquia fora da rede é de $ 4.000 e você tem $ 1.400 restantes para o ano.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "o que é dedutível"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_deductible"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Uma franquia é a quantia de dinheiro que você precisa pagar antes que seu seguro de saúde comece a pagar uma parte do custo de seu tratamento. Uma franquia é diferente do prêmio mensal que você paga por meio de desconto em folha de pagamento para seu seguro geral.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Prêmios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_premium"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Um prêmio é o valor que você paga pelo seu plano de seguro de saúde. É pago por você, seu empregador ou compartilhado. Geralmente é deduzido do seu cheque de pagamento.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "HSA"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_hsa"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Contas de poupança de saúde (ou HSAs) podem ser abertas por funcionários que possuem um plano de saúde de alta franquia. Você pode colocar dinheiro em um HSA até um limite anual definido, que é então tratado como um benefício fiscal.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "coordenadas de benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_coordination"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Às vezes, dois planos de seguro trabalham juntos para pagar sinistros da mesma pessoa. Esse processo é chamado de coordenação de benefícios.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "meu co seguro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qual é o status das minhas reivindicações"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "a quantidade parece ser alta para mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Posso conectá-lo a alguém que pode ajudá-lo com isso.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qual é o custo para check-up de saúde regular"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico e responder às suas perguntas sobre cobrança.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "As cobranças reais podem variar entre os provedores, mas para o seu provedor de rede você está coberto em 100% (sem franquia ou copagamento) para um exame físico preventivo anual e para o seu provedor fora da rede você paga 30%, depois que a franquia do plano for cumprida .\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qual é o custo para check-up de saúde regular"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "As cobranças reais podem variar entre os provedores, mas para o seu provedor de rede você está coberto em 100% (sem franquia ou copagamento) para um exame físico preventivo anual e para o seu provedor fora da rede você paga 30%, depois que a franquia do plano for cumprida .\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "isso é ótimo também me ajude a encontrar um médico para dentista"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para dentista?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Other than Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Vejo que seu endereço registrado é 1600 Amphitheatre Pkwy, Mountain View, CA 94043, Estados Unidos. Gostaria de pesquisar nas proximidades?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.no"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "OK. Por favor, diga-me o código postal ou endereço onde você gostaria de pesquisar."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental"
+        },
+        "currentPage": {
+          "name": "Nearby Work Address",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Este código postal parece inválido. Compartilhe um CEP ou endereço válido."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "currentPage": {
+          "name": "Address Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você gostaria que eu encontrasse um médico por volta de 94043?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Nearby Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O dentista mais próximo fica em 550 Cochituate Rd, Framingham, MA 01701, Estados Unidos. Você gostaria que eu encontrasse outro local?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Não, está bem"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 6,
+            "month": 8,
+            "year": 1997
+          },
+          "member_id": "8638768",
+          "primary_subscriber": "self",
+          "type_of_doctor": "dental",
+          "work_address": "94043"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Um representante de atendimento ao cliente irá ajudá-lo a encontrar o médico mais próximo. Transferindo sua chamada. Obrigado pela sua paciência."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607086709,
+    "nanos": 973520000
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "entities": [ {
+    "value": "out of scope",
+    "synonyms": [ "eye", "insulin", "chemo", "fracture", "x-ray", "xray", "dental", "medication", "fertility", "vision", "eye drops", "ear", "ear drops", "pain killer", "tablet", "MRI", "check up", "MRI scan", "cardiac surgery", "cardiac", "teeth", "tooth", "therapy", "annual physical", "pharmacy", "life insurance" ],
+    "languageCode": "en"
+  } ]
+}

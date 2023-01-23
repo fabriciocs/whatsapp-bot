@@ -1,0 +1,113 @@
+{
+  "name": "1d7244d0-7bf4-4c04-82e5-d17abe24dcaf",
+  "displayName": "Address Confirmation",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Nearby Doctor",
+    "name": "63c0b377-a3ec-47e1-b8f1-16cffe6521ab"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "work_address",
+        "value": null
+      } ]
+    },
+    "targetPage": "Nearby Work Address",
+    "name": "5cad0a17-16bf-4225-aaf9-958cbe06971f"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "85f25114-a69a-42b4-b2a9-36e5bf6c6fe6"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "6b3dcf0b-5139-45bb-b5a6-abada1289dd9"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Would you like to check for a $session.params.type_of_doctor for $session.params.work_address?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "2809ad1f-49e6-4960-9d9e-4bc556ed4eac"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. Do you want to search for $session.params.type_of_doctor for $session.params.work_address?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "c0437581-d26a-4867-b71f-241a32b8b6b8"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "c251ca85-0d4e-4faa-ab58-ce0cf5caed33"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.Would you like to check for a $session.params.type_of_doctor for $session.params.work_address? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "0637a055-ac8f-462c-9162-5ed6febbabed"
+  } ]
+}

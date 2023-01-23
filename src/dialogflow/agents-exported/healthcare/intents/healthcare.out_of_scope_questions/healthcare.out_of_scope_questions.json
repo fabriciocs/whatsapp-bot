@@ -1,0 +1,9 @@
+{
+  "name": "5d2d3104-51b8-4f43-9f9f-dfc2f651403a",
+  "displayName": "healthcare.out_of_scope_questions",
+  "parameters": [ {
+    "id": "out_of_scope",
+    "entityType": "@out-of-scope"
+  } ],
+  "priority": 500000
+}

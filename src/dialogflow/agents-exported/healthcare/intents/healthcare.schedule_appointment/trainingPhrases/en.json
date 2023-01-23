@@ -1,0 +1,375 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Can I arrange "
+    }, {
+      "text": "tonight",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": " a morning appointment for "
+    }, {
+      "text": "tomorrow",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can I arrange a "
+    }, {
+      "text": "morning",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": " appointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can I schedule my "
+    }, {
+      "text": "morning",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": " appointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "May I arrange a "
+    }, {
+      "text": "morning",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": " appointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "May I book a "
+    }, {
+      "text": "morning",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": " appointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "On ",
+      "auto": true
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": ", will they have availability?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do they have "
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time"
+    }, {
+      "text": " availability?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "On ",
+      "auto": true
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": ", do they have availability?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Have they got the availability on "
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is it available on ",
+      "auto": true
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Are they available on ",
+      "auto": true
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Is there availability on "
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i schedule an apointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": " at "
+    }, {
+      "text": "night",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i schedule an apointment ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": " at ",
+      "auto": true
+    }, {
+      "text": "evening",
+      "parameterId": "appointment_time_period",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i schedule an apointment ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": " at ",
+      "auto": true
+    }, {
+      "text": "afternoon",
+      "parameterId": "appointment_time_period",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i schedule an apointment "
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": " at "
+    }, {
+      "text": "morning",
+      "parameterId": "appointment_time_period"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do they have availability ",
+      "auto": true
+    }, {
+      "text": "day after tomorrow",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do they have availability ",
+      "auto": true
+    }, {
+      "text": "tomorrow",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do they have availability ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would they be free ",
+      "auto": true
+    }, {
+      "text": "day after tomorrow",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would they be free ",
+      "auto": true
+    }, {
+      "text": "today",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Would they be free ",
+      "auto": true
+    }, {
+      "text": "tomorrow",
+      "parameterId": "appointment_date_time",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "check availability on "
+    }, {
+      "text": "tuesday",
+      "parameterId": "appointment_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do they have availability on "
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How do I schedule an appointment?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How do I schedule an appointment? Do they have availability on "
+    }, {
+      "text": "Tuesday",
+      "parameterId": "appointment_date_time"
+    }, {
+      "text": "?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

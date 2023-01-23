@@ -1,0 +1,57 @@
+{
+  "name": "f5378618-704b-412b-a91c-00038fb6bb26",
+  "tags": [
+    "#noinput"
+  ],
+  "displayName": "Error Handling - Start page no input default",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I was not able to understand that. I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {},
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpas, não consegui entender isso. Estou aqui para responder às suas perguntas sobre suas reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607330569,
+    "nanos": 57982000
+  }
+}

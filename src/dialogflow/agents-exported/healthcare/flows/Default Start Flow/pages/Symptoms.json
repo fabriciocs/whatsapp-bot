@@ -1,0 +1,179 @@
+{
+  "name": "3603055e-e839-4ff1-aca3-5cf9f7bba0b2",
+  "displayName": "Symptoms",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "dtmf",
+        "entityType": "@dtmf",
+        "fillBehavior": {
+          "initialPromptFulfillment": {}
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "enabled": true,
+            "maxDigits": 1,
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {},
+      "targetFlow": "Find a Doctor",
+      "name": "390d5889-55ab-49ad-9868-9bb0eaebfda8"
+    },
+    {
+      "intent": "small_talk.confirmation.no",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, um representante de atendimento ao cliente poderá ajudá-lo melhor. Deixe-me transferir sua ligação. Obrigado pela sua paciência."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "60c5a1f0-f687-4fbf-a06d-976b2109d77c"
+    },
+    {
+      "condition": "$session.params.dtmf = 0",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I understand, I will transfer your call to a customer service representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "03275c93-0838-426a-9d83-056e09fe5c3a"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "event": "sys.no-match-1",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I cannot answer that. I can assist you to find a doctor, would you like help with this? "
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpas, não posso responder a isso. Posso ajudá-lo a encontrar um médico, gostaria de ajuda com isso?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "fa9b5027-39e6-43e9-a7de-7416e51863e0"
+    },
+    {
+      "event": "sys.no-match-2",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Sorry, I did not understand that. Do you want me to help you find a doctor?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, eu não entendi isso. Quer que eu o ajude a encontrar um médico?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "be1cc9ec-66b2-4207-80fe-8fb343c2f3ee"
+    },
+    {
+      "targetPage": "End Session",
+      "event": "sys.no-match-3",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, um representante de atendimento ao cliente poderá ajudá-lo melhor. Deixe-me transferir sua ligação. Obrigado pela sua paciência."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "110d84a2-1ef8-4523-9d1e-7d080194d947"
+    },
+    {
+      "event": "sys.no-input-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I was not able to understand that. I cannot answer that. I can assist you to find a doctor, would you like help with this?  Press 0 to re-direct your call to a customer care representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpas, não consegui entender isso. Eu não posso responder a isso. Posso ajudá-lo a encontrar um médico, gostaria de ajuda com isso? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "b5c21a0e-18b5-4eb8-9108-566866d0685c"
+    }
+  ]
+}

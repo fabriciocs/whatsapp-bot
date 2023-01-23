@@ -1,0 +1,35 @@
+{
+  "name": "2e20ecc0-be59-4ebc-96c5-150d68fccab2",
+  "displayName": "Condition for Coverage Category",
+  "form": {
+  
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "condition": "$session.params.type_of_doctor = \"primary care\" OR $session.params.type_of_doctor = \"mental health services\" OR $session.params.type_of_doctor = \"specialist\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the date and time you want to schedule an appointment.\n" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Primary, Specialist and Mental",
+    "name": "763b78a1-dbeb-4709-ab50-838f5285bcb2"
+  }, {
+    "condition": "$session.params.type_of_doctor != \"primary care\" OR $session.params.type_of_doctor != \"mental health services\" OR $session.params.type_of_doctor != \"specialist\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I see your address on file is 1600 Amphitheatre Pkwy, Mountain View, CA 94043, United States. Would you like to search nearby? " ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Other than Primary, Specialist and Mental",
+    "name": "dc5b6dca-3a76-45d3-8db2-32e44fc6955f"
+  } ]
+}

@@ -1,0 +1,207 @@
+{
+  "name": "bcfd781b-5189-4970-83cf-155caed0d051",
+  "displayName": "Member Details",
+  "form": {
+    "parameters": [ {
+      "displayName": "member_id",
+      "required": true,
+      "entityType": "@member-id",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "\nWhat is your member ID?" ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Please provide a valid member ID consisting of numbers and letters." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "3d3a5487-354c-4a7d-8bd0-7e734577485b"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "This member ID seems invalid. Can you please share your valid member ID? You can say 123ABC9." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "b4421018-cc6f-49bd-ac70-fcda20622020"
+        }, {
+          "targetPage": "End Session",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "e6591169-64a8-4fa6-a286-31cb732294e4"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that. Please provide a valid member ID consisting of numbers and letters. Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "9c66839c-3027-4b12-94ef-9027ce1ba9cb"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "date_of_birth",
+      "required": true,
+      "entityType": "@sys.date",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "What is your date of birth? You can say the date as October 22 ,1982." ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Can you please state the month, day and year of your date of birth? You can say the date in the same format as October 22 ,1982." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "3088da8f-27d4-4db4-af17-74e9533a7955"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "This date of birth seems invalid. Can you please share your valid date of birth including month, date and birth year? For instance, November 17, 1989." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "876f6c1f-8320-4e30-b38d-a15878df120e"
+        }, {
+          "targetPage": "End Session",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "f55d8001-dfac-4432-b94d-93ce7bc71333"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that. Can you please state the month, day and year of your date of birth? You can say the date in the same format as October 22, 1982. Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "3b05cb2b-fba7-4909-86a7-00e3a9006610"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "b95f7e4d-aee7-46d4-a04e-4885b75f98f9"
+  }, {
+    "condition": "$session.params.date_of_birth.year \u003e 2020",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Please enter a valid year.\n\n" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "date_of_birth",
+        "value": null
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "8dca9f0b-b023-4dae-b32b-72d894e69578"
+  }, {
+    "condition": "$page.params.status = FINAL",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "38129d48-6bdf-42ec-a3ca-0a969ac6efa1"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "95b11d61-c846-4cf7-8904-1dd8d7cb00ec"
+  } ]
+}

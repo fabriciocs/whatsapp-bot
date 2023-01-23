@@ -1,0 +1,335 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "tudo bem, e o que exatamente você quer dizer com um serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não tenho certeza do que é um serviço coberto, você pode ajudar com isso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você poderia me ajudar a saber sobre o serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajude-me a entender o termo serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como posso encontrar informações sobre o que é um serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso encontrar informações sobre o serviço coberto"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o significado do termo serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode, por favor, definir o serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Definir serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Explique o termo serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Explique o que significa serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode explicar o que é serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que você quer dizer com serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não sei o que é serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Não sei o que são serviços cobertos"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é um",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explicar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informação sobre"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode ajudar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "apresentação"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informação sobre"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " algo sobre"
+        },
+        {
+          "text": "serviço coberto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é",
+          "auto": true
+        },
+        {
+          "text": "serviços cobertos",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

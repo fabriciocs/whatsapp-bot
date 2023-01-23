@@ -1,0 +1,350 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "can i find information on High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "whats a high ",
+      "auto": true
+    }, {
+      "text": "deductble health plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's ",
+      "auto": true
+    }, {
+      "text": "hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "does ",
+      "auto": true
+    }, {
+      "text": "hdhp",
+      "auto": true
+    }, {
+      "text": " has a higher annual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "auto": true
+    }, {
+      "text": " than traditional health plans.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "does high ",
+      "auto": true
+    }, {
+      "text": "deductble health plan",
+      "auto": true
+    }, {
+      "text": " has a higher annual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "auto": true
+    }, {
+      "text": " than traditional health plans.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "which plan has ",
+      "auto": true
+    }, {
+      "text": "high deductible",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about ",
+      "auto": true
+    }, {
+      "text": "HDHP",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about ",
+      "auto": true
+    }, {
+      "text": "Hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hdhp",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about Hdhp"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about High Deductible Health Plan"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " information about ",
+      "auto": true
+    }, {
+      "text": "Hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " information about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " know about ",
+      "auto": true
+    }, {
+      "text": "Hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " know about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let "
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " know about Hdhp"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " know about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about ",
+      "auto": true
+    }, {
+      "text": "Hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about ",
+      "auto": true
+    }, {
+      "text": "Hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " something about ",
+      "auto": true
+    }, {
+      "text": "hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " something about ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is ",
+      "auto": true
+    }, {
+      "text": "hdhp",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is ",
+      "auto": true
+    }, {
+      "text": "High Deductible Health Plan",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

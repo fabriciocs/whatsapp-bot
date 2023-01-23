@@ -324,7 +324,6 @@ export default class AgentTranslation {
         await this.translatePages();
         await this.translateTestCases();
         await this.translateTransitionRouteGroup();
-        const [agent] = await this.getAgent();
 
     }
 

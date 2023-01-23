@@ -1,0 +1,452 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "não, isso é o suficiente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não, isso será o suficiente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não é isso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não foi isso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "nenhuma coisa",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "nah tudo bem",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não é isso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não, eu estou bem",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tudo obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tudo bem obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tudo bem",
+          "auto": true
+        },
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "apreciar"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Felicidades",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Boa",
+          "auto": true
+        },
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu que agradeço",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "perfeito que funciona",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "bom",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "perfeito obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tão gentil da sua parte",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "formidável",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigada",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado novamente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado por"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado eu aprecio isso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "muito obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado vai dar tudo certo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Muito obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado novamente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado parceiro",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado por"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado amor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Muito obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "isso é tudo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Isso soa bem",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "muito bom",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "parece bom",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "bem obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Nós vamos",
+          "auto": true
+        },
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "obrigado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ok obrigado por"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

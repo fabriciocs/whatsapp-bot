@@ -1,0 +1,9 @@
+{
+  "name": "c45a5c1c-a64e-4e99-ad5b-d864d2352f28",
+  "displayName": "healthcare.list_benefits_services",
+  "parameters": [ {
+    "id": "benefits",
+    "entityType": "@benefits"
+  } ],
+  "priority": 500000
+}
