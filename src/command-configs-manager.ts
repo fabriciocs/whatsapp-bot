@@ -1,19 +1,18 @@
 
 import * as admin from 'firebase-admin';
-import { Message } from 'whatsapp-web.js';
 import { ChatConfigType, commandMarkers, keyReplacer } from './util';
 export default class CommandConfigsManager {
 
   constructor(private commandConfigsRef: admin.database.Reference) {
   }
 
-  private getRef(from: string): admin.database.Reference {
-    return this.commandConfigsRef.child(keyReplacer(from));
+  private getRef(id: string): admin.database.Reference {
+    return this.commandConfigsRef.child(keyReplacer(id));
   }
 
-  async getByNumber(from: string): Promise<ChatConfigType> {
-    if (!from) return;
-    const snapshot = await this.getRef(from).once('value');
+  async getByNumber(id: string): Promise<ChatConfigType> {
+    if (!id) return;
+    const snapshot = await this.getRef(id).once('value');
     const commands = await snapshot.val();
     if (!commands) return;
     const isUnique = () => commands.commands.length === 1;
@@ -21,9 +20,9 @@ export default class CommandConfigsManager {
     return commands;
   }
 
-  async save(to: string, cmdMarkers = commandMarkers): Promise<void> {
-    if (!to) return;
-    await this.getRef(to).set({ commandMarkers: cmdMarkers });
+  async save(id: string, cmdMarkers = commandMarkers): Promise<void> {
+    if (!id) return;
+    await this.getRef(id).set({ commandMarkers: cmdMarkers });
   }
 
   async delete(from: string): Promise<void> {

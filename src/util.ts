@@ -1,13 +1,16 @@
 
 export const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
 export const baseName = 'bot-4customers';
-export const botname = '*Fourzinho*';
-export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', 'IA ','*IA* ', '*bimbim* ', 'bimbim ', 'chico '];
+export const botname = '*Fourzinho*: ';
+
+
+export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', 'IA ', '*IA* ', '*bimbim* ', 'bimbim ', 'chico '];
 export type ChatConfigType = {
     commands: string[];
     isAutomatic: boolean;
     commandMarkers: string[];
     isUnique: () => boolean;
+    prefix: string;
 };
 export const chunked = (arr: any[], size: number) => {
     const chunked_arr = [];
@@ -28,3 +31,12 @@ export const tryIt = async (fn: (parameters: any) => Promise<any>, ...args: any[
     }
 }
 export const prepareText = (text: string) => text?.replace(/\n/g, ' ').replace(/\r/g, ' ').replace(/\t/g, ' ').replace(/ +(?= )/g, '').trim();
+
+export const sumArrayItem = (from: number[], to: number[]) => {
+    const size = Math.max(from.length, to.length);
+    const result = [];
+    for (let i = 0; i < size; i++) {
+        result.push((from[i] || 0) + (to[i] || 0));
+    }
+    return result;
+}

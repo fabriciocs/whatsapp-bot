@@ -28,9 +28,9 @@ export default class ChatConfigsManager {
     return config;
   }
 
-  async saveConfig(from: string, commands: string[], isAutomatic = false, cmdMarkers = commandMarkers): Promise<void> {
+  async saveConfig(from: string, commands: string[], isAutomatic = false, cmdMarkers = commandMarkers, prefix=''): Promise<void> {
     if (!from) return;
-    await this.getRef(from).set({ commands, isAutomatic, commandMarkers: cmdMarkers });
+    await this.getRef(from).set({ commands, isAutomatic, commandMarkers: cmdMarkers, prefix });
   }
 
   async deleteConfig(from: string): Promise<void> {
