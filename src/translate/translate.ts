@@ -8,7 +8,7 @@ export default class GoogleTranslate {
     }
 
 
-    async translateChuncked(text: string[], targetLanguage: string = 'pt-BR', chunkSize = 128) {
+    async translateChuncked(text: string[], targetLanguage: string = 'pt-br', chunkSize = 128) {
         const translate = new Translate();
         const chunks = chunked(text, chunkSize);
         const translations = [];
@@ -22,7 +22,7 @@ export default class GoogleTranslate {
 
 
 
-    async translateText(text: string[], targetLanguage: string = 'pt-BR') {
+    async translateText(text: string[], targetLanguage: string = 'pt-br') {
         return await this.translateChuncked(text, targetLanguage);
     }
 }

@@ -88,7 +88,7 @@ export abstract class Msg {
         this._type = value;
     }
     get isAudio(): boolean {
-        return SongTypes.includes(this.type);
+        return SongTypes.includes(this._type);
     }
 
 

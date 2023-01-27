@@ -7,7 +7,7 @@ import { createTrainingPhrases } from '../ai';
 import GoogleTranslate from '../translate/translate';
 
 export default class AgentTranslation {
-    constructor(
+     constructor(
         private agentFolderName = 'travel_car_rental',
         private projectId = process.env.AGENT_PROJECT!,
         private agentId = process.env.AGENT_ID!,
@@ -54,6 +54,21 @@ export default class AgentTranslation {
         let translatedList = [];
         for (const file of files) {
             const fileTexts = await this.getTrainingPhrasesFromFile(file);
+            list = list.concat(fileTexts);
+            translatedList = translatedList.concat(await new GoogleTranslate().translateText(fileTexts));
+        }
+        return [list, translatedList, files];
+    }
+
+
+    
+    async entitiesAsList() {
+        const intentsFolder = resolve(this.basePath, this.agentFolderName, 'entityTypes');
+        const files = await this.walk(intentsFolder);
+        let list = [];
+        let translatedList = [];
+        for (const file of files) {
+            const fileTexts = await this.getEntitiesSynonyms(file);
             list = list.concat(fileTexts);
             translatedList = translatedList.concat(await new GoogleTranslate().translateText(fileTexts));
         }
@@ -205,6 +220,14 @@ export default class AgentTranslation {
         return list;
     }
 
+    
+    async getEntitiesSynonyms (filePath: string) {
+        const jsonContent = await readFile(filePath, 'utf-8');
+        const entityType = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IEntityType;
+        const list = entityType.entities.reduce((acc, { synonyms }) => acc.concat(synonyms), [] as string[]);
+        return list;
+    }
+
 
     async getTriggerFulfillment(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
@@ -325,6 +348,30 @@ export default class AgentTranslation {
         await this.translateTestCases();
         await this.translateTransitionRouteGroup();
 
+    }
+
+
+    async translateEntities() {
+        const [originalList, originalTranslatedList, originalFiles] = await this.entitiesAsList();
+        let idx = 0;
+        for (let fileIndex = 0; fileIndex < originalFiles.length; fileIndex++) {
+            const filePath = originalFiles[fileIndex];
+            const jsonContent = await readFile(filePath, 'utf-8');
+            const intent = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IIntent;
+            for (let i = 0; i < intent.trainingPhrases?.length; i++) {
+                const parts = intent.trainingPhrases[i]?.parts;
+                intent.trainingPhrases[i]['languageCode'] = 'pt-br';
+                for (let j = 0; j < parts?.length; j++) {
+                    const text = originalTranslatedList[idx];
+                    if (text) {
+                        parts[j].text = text;
+                        idx++;
+                    }
+                }
+            }
+            console.log(`Writing ${filePath}`);
+            await writeFile(`${dirname(filePath)}/pt-br.json`, JSON.stringify(intent, null, 2));
+        }
     }
 
     async translateIntents() {

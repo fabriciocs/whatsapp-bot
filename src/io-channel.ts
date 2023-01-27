@@ -12,28 +12,27 @@ export type SendAnswerParams = {
     options?: IoChannelOptions,
     onlyText?: boolean
 };
-
 export default class IoChannel {
+    constructor() {
+    }
 
-
-    async sendAnswer({ msg, content, options = { languageCode: 'pt-br' }, onlyText = true }: SendAnswerParams) {
+    async sendAnswer({ msg, content, options = { languageCode: 'pt-BR' }, onlyText = false }: SendAnswerParams) {
         let answer = await this.extractAnswer({ onlyText, msg, content, options });
 
         await msg.sendMessage(answer, options);
 
     }
-    async sendReply({ msg, content, options = { languageCode: 'pt-br' }, onlyText = true }: SendAnswerParams) {
+    async sendReply({ msg, content, options = { languageCode: 'pt-BR' }, onlyText = false }: SendAnswerParams) {
         let answer = await this.extractAnswer({ onlyText, msg, content, options });
 
         await msg.reply(answer, options);
 
     }
 
-
-    private async extractAnswer({ msg, content, options, onlyText = true }: SendAnswerParams) {
+    private async extractAnswer({ msg, content, options, onlyText = false }: SendAnswerParams) {
         let answer;
         if (!onlyText && msg.isAudio) {
-            answer = await tellMe(content, options);
+            answer = await tellMe(content, options.languageCode);
         } else {
             answer = content;
         }

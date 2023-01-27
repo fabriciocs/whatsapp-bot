@@ -1,0 +1,707 @@
+{
+  "name": "acc7a78d-b69d-4665-83eb-399eca7f2893",
+  "tags": [
+    "#mitsubishi",
+    "#differentdropoff",
+    "#cheapestoption"
+  ],
+  "displayName": "Happy path - Mitsubishi Mirage",
+  "notes": "User explored the various options for a trip starting in Austin and ending in Houston.",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Olá - gostaria de alugar um carro em Austin a partir de amanhã"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ]
+        },
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, sua coleta será em Austin."
+            ]
+          },
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Sim, ele é"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ]
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Drop Off Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você vai devolver o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "houston"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ]
+        },
+        "currentPage": {
+          "name": "Rental Duration (return location differs)",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, seu desembarque será em Houston."
+            ]
+          },
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "algum dia no domingo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ]
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration (return location differs)",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê vai retirar o veículo em\n Austin\n 2020-12-08 e abandonando-o\n em Houston\n 13/12/2020\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim obrigado"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ]
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "vamos fazer luxo!!"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "ooo esses soam caros. algo mais rentável?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "car_rental.economy_option"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "As opções econômicas geralmente são mais baratas. Vamos olhar para eles."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "qual é mais barato?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "car_rental.compare_cost_economy"
+        },
+        "currentPage": {
+          "name": "Economy Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Mitsubishi Mirage é a opção mais barata por US$ 50,33 por dia. Deseja prosseguir com esta opção?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim por favor"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Confirm Mitsubishi Mirage",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Mitsubishi Mirage custa US$ 50,33 por dia. Acomoda 4 pessoas e vem com rádio AM/FM.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "AMEX"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "AMEX",
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "123412341234"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "123412341234",
+          "card_type": "AMEX",
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Nome do cliente"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "card_number": "123412341234",
+          "card_type": "AMEX",
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "1600 Amphitheatre Parkway"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "card_number": "123412341234",
+          "card_type": "AMEX",
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "94043"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Client Name",
+          "billing_street_address": "1600 Amphitheatre Parkway",
+          "billing_zip_code": "94043",
+          "card_number": "123412341234",
+          "card_type": "AMEX",
+          "drop_off_date_time": {
+            "day": 13,
+            "month": 12,
+            "year": 2020
+          },
+          "drop_off_location": "Houston",
+          "pickup_date_time": [
+            {
+              "day": 8,
+              "month": 12,
+              "year": 2020
+            }
+          ],
+          "pickup_location": [
+            "Austin"
+          ],
+          "vehicle_model": "Mitsubishi Mirage",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você pegará o Mitsubishi Mirage em Austin, 08/12/2020 e o entregará, 13/12/2020.\nO total desta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607378675,
+    "nanos": 31472000
+  }
+}

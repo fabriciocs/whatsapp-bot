@@ -1,0 +1,52 @@
+{
+  "name": "07b29464-d289-42e3-b2e2-45decf3371c9",
+  "displayName": "Drop Off Location",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "drop_off_location",
+        "required": true,
+        "entityType": "@sys.geo-city",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Onde você vai devolver o veículo?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          }
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "condition": "$page.params.status = \"FINAL\"",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, sua entrega será em $session.params.drop_off_location."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Rental Duration (return location differs)",
+      "name": "1c0ecfa5-441e-4d15-b4d6-6a44437f8dc0"
+    }
+  ]
+}

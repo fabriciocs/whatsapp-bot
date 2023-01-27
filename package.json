@@ -21,7 +21,7 @@
     "@google-cloud/dialogflow-cx": "^3.1.2",
     "@google-cloud/language": "^5.1.0",
     "@google-cloud/logging": "^10.3.3",
-    "@google-cloud/speech": "^5.1.0",
+    "@google-cloud/speech": "^5.2.0",
     "@google-cloud/text-to-speech": "^4.0.3",
     "@google-cloud/translate": "^7.0.3",
     "@google-cloud/vision": "^3.0.0",

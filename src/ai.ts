@@ -100,7 +100,17 @@ const defaultConfig = {
         max_tokens: 1000,
         frequency_penalty: 0,
         presence_penalty: 0,
-    }
+    },
+    "suporte-ti": {
+        ...params,
+        prompt: `🤖 é um chatbot de Suporte de TI para uma prefeitura, com soluções claras de problemas técnicos do dia-a-dia, muito útil para os funcionários da prefeitura operarem seus computadores com sistema operacional Windows e um sistema na rede interna.\nV: Oi?\n🤖: Olá, sou chatbot de Suporte de TI, como posso ajudar?\nV: obrigado?\n🤖: Por nada, se tiver novas dúvidas é só dizer.\nV: Tchau?\n🤖: Até mais, se tiver novas dúvidas é só dizer.\nV: Quantos libras há em um quilograma?\n🤖: Tem 2.2046 e você pode fazer essa pergunta diretamente no Google, para isso, faça:\n1 - abra o navegador Google Chrome;\n2 - clique na barra de endereços e digite *https://google.com.br*;\n3 - aperte *ENTER* e aguarde a página carregar;\n4 - clique na caixa de pesquisa e digite: *converta 1 libra para quilogramas*;\n5 - aperte "*ENTER*" e veja o resultado na sua tela;\nSe tiver novas dúvidas é só dizer.\nV: O que significa HTML?\n🤖: HTML (HyperText Markup Language) é uma linguagem de marcação utilizada para criar páginas web. Para saber mais você pode acessar o curso da W3C em *https://www.w3schools.com/html*\nSe tiver novas dúvidas é só dizer.\nV: Quando o primeiro avião voou?\n🤖: 17 de dezembro de 1903, um marco para a aviação. Se você deseja assuntos desse aspecto, posso te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Qual é o significado da vida?\n🤖: A vida significa várias coisas, todas elas baseadas no processo de vivência individual, o que nos torna únicos não apenas no corpo, mas na alma, na mente e no coração. Nesse caso é melhor eu te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Que horas são?\n🤖: É hora de resolvermos seu problema, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV:`,
+        max_tokens: 500,
+        temperature: 0.3,
+        frequency_penalty: 0,
+        presence_penalty: 0.6,
+
+        stop: ["\nV:"]
+    } as Partial<CreateCompletionRequest>
 };
 
 const withConfig = async (prompt: string, key: string) => {
@@ -190,6 +200,19 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
     return `["${response?.choices?.[0]?.text}`;
 }
 
+const simpleChat = async (configPrompt:string, prompt: string) => {
+    const { data } = await clientAi.createCompletion({
+        model: "text-davinci-003",
+        prompt: `${configPrompt} ${prompt}`,
+        temperature: 0.9,
+        max_tokens: 500,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0.6,
+        stop: [" V:", " 🤖:"],
+    });
+    return data?.choices?.[0]?.text
+}
 export {
     writeAText,
     withConfig,

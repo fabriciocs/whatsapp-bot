@@ -6,15 +6,16 @@ import { Client, RemoteAuth } from 'whatsapp-web.js';
 
 
 import { MsgAdapter } from './msg/msg';
+import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
+import { readToMe } from './speech-to-text';
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: false, executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 
 export const initWhatsappClient = async (appData) => {
 
     appData.client = new Client({
         authStrategy: new RemoteAuth({
             clientId: process.env.ME,
-            dataPath: resolve('../webjsauth'),
             store: appData.sessionManager,
             backupSyncIntervalMs: 60000,
         }),
@@ -46,13 +47,20 @@ export const initWhatsappClient = async (appData) => {
 
     appData.client.on('qr', (qr) => {
         QRCode.toString(qr, { type: 'terminal', small: true }, function (err: any, url: any) {
-            console.log(url)
+            console.log('\n\n\n');
+            console.log(url);
+            console.log('\n\n\n');
         });
     });
 
 
     appData.client.on('message_create', async receivedMsg => {
-        await appData.processMessage(new MsgAdapter(receivedMsg));
+        const adaptedMessage = new WhatsappMessageAdapter(receivedMsg);
+        if (receivedMsg.hasMedia && adaptedMessage.isAudio) {
+            const media = await receivedMsg.downloadMedia();
+            adaptedMessage.body = await readToMe(media.data);
+        }
+        await appData.processMessage(adaptedMessage);
     });
     await appData.client.initialize();
 }

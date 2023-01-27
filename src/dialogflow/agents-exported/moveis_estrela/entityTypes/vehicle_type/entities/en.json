@@ -1,0 +1,11 @@
+{
+  "entities": [ {
+    "value": "luxury_vehicle",
+    "synonyms": [ "suv", "sports utility vehicle", "town car", "luxury", "luxury vehicle", "fancy", "lux", "lucury", "truck", "a large one", "large one", "first class", "high end", "expensive", "first-class" ],
+    "languageCode": "en"
+  }, {
+    "value": "economy_vehicle",
+    "synonyms": [ "sedan ", "economy", "economy vehicle", "econ", "cheap", "low cost", "eco", "smaller one", "cheaper one", "a small one", "small one", "cheap one", "the cheap one" ],
+    "languageCode": "en"
+  } ]
+}

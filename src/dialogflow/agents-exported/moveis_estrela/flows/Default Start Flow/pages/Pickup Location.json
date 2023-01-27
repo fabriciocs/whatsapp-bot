@@ -1,0 +1,106 @@
+{
+  "name": "fd023683-b6a8-4c70-bc70-a84cfc50569f",
+  "displayName": "Pickup Location",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "pickup_location",
+        "required": true,
+        "entityType": "@sys.geo-city",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Onde você gostaria de pegar o veículo?",
+                    "Onde você gostaria de retirá-lo?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "Desculpe, não entendi. Em qual cidade você gostaria de retirar o carro?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              },
+              "name": "fa995713-d7be-40b8-b713-8d45c7ef8f49"
+            }
+          ]
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "intent": "car_rental.return_different_location",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Certo! Você pode deixá-lo em um local diferente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "00b5e5bc-69ec-409d-a5e5-4c0b5337d220"
+    },
+    {
+      "condition": "$page.params.status = \"FINAL\"",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, sua coleta será em $session.params.pickup_location."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Confirm Location",
+      "name": "c926901f-2eff-46a1-befb-3f586abf75d6"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "targetPage": "Current Page",
+      "event": "No-Match City",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Desculpe, não entendi."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "9eea2eb9-2c0d-47b2-99b9-3112c271b7c5"
+    }
+  ]
+}

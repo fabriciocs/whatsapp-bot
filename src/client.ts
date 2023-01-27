@@ -31,7 +31,7 @@ import Wikipedia from './wiki';
 import Wordpress from './wordpress';
 import { initWhatsappClient } from './whatsapp-client';
 import { Client } from 'whatsapp-web.js';
-import { app } from 'firebase-functions/v1';
+import AgentTranslationRemove from './dialogflow/agent-translation-remove';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -88,7 +88,7 @@ const createATextDirectly = async (msg: Msg, prompt: string) => {
     if (answer) {
         await appData.ioChannel.sendAnswer({ msg, content: answer });
     } else {
-        await appData.ioChannel.sendAnswer({ msg, content: "Sem resposta!!" });
+        await appData.ioChannel.sendAnswer({ msg, content: "Não consegui uma resposta adequada!" });
     }
 };
 
@@ -98,19 +98,22 @@ const createInstructionsDirectly = async (msg: Msg, prompt: string) => {
     if (answer) {
         await appData.ioChannel.sendAnswer({ msg, content: answer });
     } else {
-        await appData.ioChannel.sendAnswer({ msg, content: "Sem resposta!!" });
+        await appData.ioChannel.sendAnswer({ msg, content: "Não consegui uma resposta adequada!" });
     }
 };
 
 
 const createATextForConfig = async (msg: Msg, prompt: any, config: string, splitFor: string = null, isAudio = false) => {
     const result = await withConfig(prompt, config);
-    const answer = result?.choices?.[0]?.text;
+    const answer = result?.choices?.[0]?.text?.trim();
     if (answer) {
+        if (msg.isAudio) {
+            splitFor = ' ';
+        }
         const response = splitFor ? answer.replace('🤖', splitFor) : answer;
         await appData.ioChannel.sendAnswer({ msg, content: response });
     } else {
-        await appData.ioChannel.sendAnswer({ msg, content: "Sem resposta!!" });
+        await appData.ioChannel.sendAnswer({ msg, content: "Não consegui uma resposta adequada!" });
     }
 };
 
@@ -159,7 +162,7 @@ const om = async (msg: Msg, prompt: string[]) => {
     return await createAudioDirectly(msg, language, answer);
 }
 const onlySay = async (params: SendAnswerParams) => {
-    return await appData.ioChannel.sendAnswer(params);
+    return await appData.ioChannel.sendAnswer({ ...params, onlyText: false });
 }
 const voice = async (msg: Msg, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
@@ -185,6 +188,7 @@ const createPost = async (msg: Msg, prompt?: string[]) => {
     });
 }
 const forzinhoTranslationAgent = new AgentTranslation('bimbim');
+const moveisEstrela = new AgentTranslationRemove('moveis_estrela');
 const getAction = (key: string) => {
     return appData.actions[key];
 }
@@ -233,7 +237,7 @@ const bindSessionConfig = async (msg: Msg, prompt: string[] = [], prefix = '') =
     const isAutomatic = prompt?.[0] === 'auto';
     const commands = prompt?.[1]?.split(',')?.map((cmd: string) => cmd.trim());
     await appData.chatConfigsManager.saveConfig(msg.id, commands, isAutomatic, commandMarkers, prefix);
-    
+
 
 }
 
@@ -334,7 +338,7 @@ const runCommand = async (msg: Msg) => {
         };
 
         await command(msg, params);
-
+        await appData.ioChannel.sendReply({ msg, content: 'Executado com sucesso' });
     } catch (error) {
         appData.logger.error(getEntry(error));
         await appData.ioChannel.sendReply({ msg, content: 'Executado com falha' });
@@ -396,7 +400,7 @@ const run = async () => {
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
     appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
     appData.logger = new Logging().log(fullBaseName);
-
+    appData.ioChannel = new IoChannel();
 
 
     appData.actions = {
@@ -411,6 +415,7 @@ const run = async () => {
         'demostenes': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
         'maru': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
         'deivid': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', '*Pré atendimento inteligente*'),
+        'suporte-n1': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.concat(['?'])?.join(' ')?.trim(), 'suporte-ti', '*Suporte N1*'),
         'juarez': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
         'sextou': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
         '🍻': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
@@ -471,16 +476,18 @@ const run = async () => {
         trat: async (msg: Msg, [id, ...prompt]: string[]) => await new AgentTranslation().translateTestCases(),
         '4i': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateAgent(),
         '4ta': async (msg: Msg, [id, ...prompt]: string[]) => await new AgentTranslation(id).translateAgent(),
+        '4mer': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrela.removeAgent(),
         '4t': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
         'quit': async (msg: Msg) => await quit(),
     };
 
 
     appData.processMessage = async (receivedMsg: Msg) => {
-        if (canExecuteCommand(receivedMsg)) {
-            await runCommand(receivedMsg);
-        }
-        else if (receivedMsg.fromMe && !receivedMsg?.body?.startsWith(botname)) {
+        if (receivedMsg.fromMe) {
+            if (canExecuteCommand(receivedMsg)) {
+                await runCommand(receivedMsg);
+            }
+        } else {
             await runConfig(receivedMsg);
         }
     }
@@ -488,7 +495,7 @@ const run = async () => {
 
 const initConsoleClient = async () => {
 
-    appData.ioChannel = new IoChannel();
+
     appData.consoleClient = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
@@ -512,7 +519,7 @@ const initConsoleClient = async () => {
 }
 (async () => {
     await run();
-    await initConsoleClient();
+    // await initConsoleClient();
     await initWhatsappClient(appData);
 })();
 

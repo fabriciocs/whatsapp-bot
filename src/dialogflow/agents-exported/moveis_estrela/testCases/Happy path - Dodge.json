@@ -1,0 +1,696 @@
+{
+  "name": "3ae2f7d3-467c-41b5-b757-907225706102",
+  "tags": [
+    "#luxury",
+    "#differentdropoff"
+  ],
+  "displayName": "Happy path - Dodge",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Eu quero alugar um carro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "car_rental.reservation_create"
+        },
+        "currentPage": {
+          "name": "Pickup Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você gostaria de retirá-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Miami"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Miami"
+        },
+        "currentPage": {
+          "name": "Confirm Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O local de entrega é diferente do local de retirada?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "pickup_location": "Miami"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Drop Off Location",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Onde você vai devolver o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "São Francisco"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_location": "San Francisco",
+          "pickup_location": "Miami"
+        },
+        "currentPage": {
+          "name": "Rental Duration (return location differs)",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Em que dia e hora pretende levantar a viatura?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "3 de dezembro 17h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami"
+        },
+        "currentPage": {
+          "name": "Rental Duration (return location differs)",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que dia e hora gostaria de entregar o veículo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "14 de dezembro 11h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami"
+        },
+        "currentPage": {
+          "name": "Confirm Rental Duration (return location differs)",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Então para confirmar:\n\nVocê vai retirar o veículo em\n Miami\n 2020-12-03 17:00:00 e entregando-o\n em São Francisco\n 14/12/2020 11:00:00\n\nIsso soa certo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Vehicle Disambiguation ",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Excelente! Agora vamos escolher um veículo."
+            ]
+          },
+          {
+            "text": [
+              "Você gostaria de um veículo econômico ou de luxo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "luxo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Luxury Options",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Gostaria de nossa opção de luxo Chevy Tahoe ou Dodge Charger?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "desviar"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Confirm Dodge Charger",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "O Dodge Charger custa $ 67,23 por dia. Acomoda 4 pessoas e vem com quilometragem ilimitada incluída.\nDeseja proceder ao pagamento?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Que tipo de cartão você usará?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "visto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Por favor, insira o número do cartão."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "123456789021"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "card_number": "123456789021",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o nome no cartão?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Fedor Dostoiévski"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Fedor Dostoevsky",
+          "card_number": "123456789021",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o endereço de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "12 Crime st, Punição CA"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Fedor Dostoevsky",
+          "billing_street_address": "12 Crime st, Punishment CA",
+          "card_number": "123456789021",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "Payment",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual é o CEP de cobrança?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "12345"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "billing_name": "Fedor Dostoevsky",
+          "billing_street_address": "12 Crime st, Punishment CA",
+          "billing_zip_code": "12345",
+          "card_number": "123456789021",
+          "card_type": "visa",
+          "drop_off_date_time": {
+            "day": 14,
+            "hours": 11,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "drop_off_location": "San Francisco",
+          "pickup_date_time": {
+            "day": 3,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "pickup_location": "Miami",
+          "vehicle_model": "Dodge Charger",
+          "vehicle_type": "luxury_vehicle"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Você vai pegar o Dodge Charger em Miami, 03/12/2020 17:00:00 e devolvê-lo, 14/12/2020 11:00:00.\nO total desta viagem será de $ 175,38."
+            ]
+          },
+          {
+            "text": [
+              "Obrigado por alugar conosco e tenha um dia maravilhoso!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "obrigado!"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "small_thank.thanks"
+        },
+        "currentPage": {
+          "name": "Start Page",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sem problemas!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1606850856,
+    "nanos": 547744000
+  }
+}

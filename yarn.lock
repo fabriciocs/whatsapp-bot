@@ -1208,14 +1208,14 @@
   resolved "https://registry.yarnpkg.com/@google-cloud/promisify/-/promisify-3.0.1.tgz#8d724fb280f47d1ff99953aee0c1669b25238c2e"
   integrity sha512-z1CjRjtQyBOYL+5Qr9DdYIfrdLBe746jRTYfaYU6MeXkqp7UfYs/jX16lFFVzZ7PGEJvqZNqYUEtb1mvDww4pA==
 
-"@google-cloud/speech@^5.1.0":
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/@google-cloud/speech/-/speech-5.1.0.tgz#f677598c77ebd494c6e3dd44ad6442a1049599cb"
-  integrity sha512-BozG2DIHxd1aqIMXTMARagkDQuzmwet/ZJiji6tM4FDGXqh3eTcQUEd4x67EbEioTMPVho4zd4Gp56P8HieCFg==
+"@google-cloud/speech@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/speech/-/speech-5.2.0.tgz#cb30ffc993742f5e48e56a1e5f30a7baf4023978"
+  integrity sha512-tGofv+6wvDn1AtdBPHi0y0JSOmSl0CqTF90BGIigT/21oea9M7ptNxRe+y/IqZGn7OyfTBnJWBM7NQ0RramdhQ==
   dependencies:
     "@google-cloud/common" "^4.0.0"
     "@types/pumpify" "^1.4.1"
-    google-gax "^3.3.0"
+    google-gax "^3.5.2"
     pumpify "^2.0.0"
     stream-events "^1.0.4"
     uuid "^9.0.0"

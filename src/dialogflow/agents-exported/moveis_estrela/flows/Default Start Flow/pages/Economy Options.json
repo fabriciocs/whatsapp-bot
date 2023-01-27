@@ -1,0 +1,110 @@
+{
+  "name": "bdc1f25b-60e0-4734-893c-243c904f3e5f",
+  "displayName": "Economy Options",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "vehicle_model",
+        "required": true,
+        "entityType": "@vehicle_model",
+        "fillBehavior": {
+          "initialPromptFulfillment": {}
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {
+    "messages": [
+      {
+        "text": {
+          "text": [
+            "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+          ]
+        },
+        "languageCode": "pt-br"
+      }
+    ]
+  },
+  "transitionRoutes": [
+    {
+      "intent": "car_rental.luxury_option",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Vejamos então as nossas opções de luxo."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Luxury Options",
+      "name": "a0e9f46c-d890-44ca-8602-67ed4c8c13ae"
+    },
+    {
+      "intent": "car_rental.larger_vehicle",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Nossos veículos de luxo são mais espaçosos e podem acomodar mais passageiros."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Luxury Options",
+      "name": "39fb0538-fd93-49f6-97df-a3ae4b2ca944"
+    },
+    {
+      "intent": "car_rental.compare_cost_economy",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "O Mitsubishi Mirage é a opção mais barata por US$ 50,33 por dia. Deseja prosseguir com esta opção?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "d550a399-10e3-478b-bd0f-fa22da1e90a4"
+    },
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {
+        "setParameterActions": [
+          {
+            "parameter": "vehicle_model",
+            "value": "Mitsubishi Mirage"
+          }
+        ]
+      },
+      "targetPage": "Confirm Mitsubishi Mirage",
+      "name": "f363ab0f-5ad9-4048-8425-71895f81d044"
+    },
+    {
+      "condition": "$session.params.vehicle_model = \"Mitsubishi Mirage\"",
+      "triggerFulfillment": {},
+      "targetPage": "Confirm Mitsubishi Mirage",
+      "name": "09b8fd13-5b97-4363-88a9-fd7887a67472"
+    },
+    {
+      "condition": "$session.params.vehicle_model = \"Nissan Versa\"",
+      "triggerFulfillment": {},
+      "targetPage": "Confirm Nissan Versa",
+      "name": "9e16f238-8867-4b1a-ad4a-cd340bf8e2f8"
+    }
+  ]
+}
