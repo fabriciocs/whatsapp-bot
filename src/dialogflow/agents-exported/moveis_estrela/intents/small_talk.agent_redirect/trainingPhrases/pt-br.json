@@ -13,7 +13,7 @@
     {
       "parts": [
         {
-          "text": "fazer a transição para um ajudante do cliente"
+          "text": "fazer a transição para um vendedor"
         }
       ],
       "repeatCount": 1,
@@ -67,7 +67,7 @@
     {
       "parts": [
         {
-          "text": "representante"
+          "text": "vendedor"
         }
       ],
       "repeatCount": 1,
@@ -76,7 +76,7 @@
     {
       "parts": [
         {
-          "text": "me redirecione para o atendimento ao cliente por favor"
+          "text": "me redirecione para o atendimento por favor"
         }
       ],
       "repeatCount": 1,
@@ -85,7 +85,7 @@
     {
       "parts": [
         {
-          "text": "me redirecione para um representante"
+          "text": "me redirecione para um vendedor"
         }
       ],
       "repeatCount": 1,
@@ -139,7 +139,7 @@
     {
       "parts": [
         {
-          "text": "representante ao vivo por favor"
+          "text": "vendedor ao vivo por favor"
         }
       ],
       "repeatCount": 1,
@@ -157,7 +157,7 @@
     {
       "parts": [
         {
-          "text": "agente ao vivo"
+          "text": "alguém ao vivo"
         }
       ],
       "repeatCount": 1,
@@ -238,7 +238,7 @@
     {
       "parts": [
         {
-          "text": "agente"
+          "text": "meina do caixa"
         }
       ],
       "repeatCount": 1,

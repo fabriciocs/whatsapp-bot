@@ -8,7 +8,51 @@
         "required": true,
         "entityType": "@vehicle_model",
         "fillBehavior": {
-          "initialPromptFulfillment": {}
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Would you like the Nissan Versa or the Mitsubishi Mirage?"
+                  ]
+                },
+                "languageCode": "en"
+              },
+              {
+                "text": {
+                  "text": [
+                    "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "I'm sorry, I didn't get that. Nissan Versa or the Mitsubishi Mirage?"
+                      ]
+                    },
+                    "languageCode": "en"
+                  },
+                  {
+                    "text": {
+                      "text": [
+                        "Desculpe, não entendi. Nissan Versa or the Mitsubishi Mirage?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              }
+            }
+          ]
         },
         "advancedSettings": {
           "dtmfSettings": {
@@ -18,26 +62,7 @@
       }
     ]
   },
-  "entryFulfillment": {
-    "messages": [
-      {
-        "text": {
-          "text": [
-            "Would you like the Nissan Versa or the Mitsubishi Mirage?"
-          ]
-        },
-        "languageCode": "en"
-      },
-      {
-        "text": {
-          "text": [
-            "Você gostaria do Nissan Versa ou do Mitsubishi Mirage?"
-          ]
-        },
-        "languageCode": "pt-br"
-      }
-    ]
-  },
+  "entryFulfillment": {},
   "transitionRoutes": [
     {
       "intent": "car_rental.luxury_option",
@@ -104,7 +129,7 @@
           {
             "text": {
               "text": [
-                "O Mitsubishi Mirage é a opção mais barata por US$ 50,33 por dia. Deseja prosseguir com esta opção?"
+                "O Mitsubishi Mirage é a opção mais barata por R$ 50,33 por dia. Deseja prosseguir com esta opção?"
               ]
             },
             "languageCode": "pt-br"

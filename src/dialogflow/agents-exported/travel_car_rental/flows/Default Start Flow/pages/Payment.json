@@ -135,7 +135,7 @@
                   {
                     "text": {
                       "text": [
-                        "Me desculpe, eu perdi isso. O que é o número da rua de cobrança e o nome da rua?"
+                        "Me desculpe, não entendi. O que é o nome da rua e número da casa do endereço de cobrança?"
                       ]
                     },
                     "languageCode": "pt-br"
@@ -193,7 +193,7 @@
                   {
                     "text": {
                       "text": [
-                        "Me desculpe, eu perdi isso. O que é CEP de cobrança?"
+                        "Pode repetir. Qual é CEP de cobrança?"
                       ]
                     },
                     "languageCode": "pt-br"

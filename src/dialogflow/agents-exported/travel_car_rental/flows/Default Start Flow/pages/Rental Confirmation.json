@@ -7,7 +7,7 @@
       {
         "text": {
           "text": [
-            "You will be picking the $session.params.vehicle_model up in $session.params.pickup_location, $session.params.pickup_date_time and dropping it off, $session.params.drop_off_date_time. \nThe total for this trip will be $175.38."
+            "You will be picking the $session.params.vehicle_model up in $session.params.pickup_location, $session.params.pickup_date_time and dropping it off, $session.params.drop_off_location, $session.params.drop_off_date_time. \nThe total for this trip will be $175.38. Can I confirm?"
           ]
         },
         "languageCode": "en"
@@ -15,7 +15,7 @@
       {
         "text": {
           "text": [
-            "Você pegará o $session.params.vehicle_model em $session.params.pickup_location, $session.params.pickup_date_time e o deixará em $session.params.drop_off_date_time.\nO total para esta viagem será de $ 175,38."
+            "Você pegará o $session.params.vehicle_model em $session.params.pickup_location, $sys.func.FORMAT_DATE($session.params.pickup_date_time, \"dd/MM/yyyy HH:mm\") e o deixará em $session.params.drop_off_location, $sys.func.FORMAT_DATE($session.params.drop_off_date_time, \"dd/MM/yyyy HH:mm\").\nO total para esta viagem será de $ 175,38. Posso confirmar?"
           ]
         },
         "languageCode": "pt-br"
@@ -24,7 +24,32 @@
   },
   "transitionRoutes": [
     {
-      "condition": "true",
+      "intent": "small_talk.confirmation.no",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, if you want to try again, just call me."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Ok, se quiser tentar novamente, basta me chamar."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "5f36a04f-0000-210f-859a-f403043d09f0"
+    },
+    {
+      "intent": "small_talk.confirmation.yes",
       "triggerFulfillment": {
         "messages": [
           {
@@ -46,7 +71,7 @@
         ]
       },
       "targetPage": "End Session",
-      "name": "5f36a041-0000-210f-859a-f403043d09f0"
+      "name": "5f36a04e-0000-210f-859a-f403043d09f0"
     }
   ]
 }

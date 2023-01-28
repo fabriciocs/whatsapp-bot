@@ -1,0 +1,24 @@
+{
+  "name": "c5c1d85b-1783-4917-a72b-a7009f8ea38c",
+  "displayName": "Mostrar Dividas",
+  "form": {},
+  "entryFulfillment": {
+    "messages": [
+      {
+        "text": {
+          "text": [
+            "Aguarde enquanto verifico suas informações"
+          ]
+        },
+        "languageCode": "pt-br"
+      }
+    ]
+  },
+  "transitionRoutes": [
+    {
+      "condition": "true",
+      "triggerFulfillment": {},
+      "targetPage": "End Session"
+    }
+  ]
+}

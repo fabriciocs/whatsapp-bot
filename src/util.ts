@@ -1,7 +1,7 @@
 
 export const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
 export const baseName = 'bot-4customers';
-export const botname = '*Fourzinho*: ';
+export const botname = '*Fourzinho*';
 
 
 export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', 'IA ', '*IA* ', '*bimbim* ', 'bimbim ', 'chico '];

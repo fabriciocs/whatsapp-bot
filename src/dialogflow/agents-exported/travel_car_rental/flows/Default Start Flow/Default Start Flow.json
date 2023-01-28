@@ -18,7 +18,7 @@
           {
             "text": {
               "text": [
-                "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+                "Oi! Eu sou a Inteligência de aluguel de carros. Como posso ajudar?"
               ]
             },
             "languageCode": "pt-br"
@@ -51,7 +51,7 @@
           {
             "text": {
               "text": [
-                "Você é bem vindo!",
+                "De nada!",
                 "Sem problemas!",
                 "Que bom que pude ajudar!",
                 "A qualquer momento."
@@ -117,17 +117,10 @@
             "text": {
               "text": [
                 "Eu não entendi. Pode repetir?",
-                "Eu perdi o que você disse. O que é que foi isso?",
-                "Desculpe, você poderia dizer isso de novo?",
-                "Desculpe, você pode dizer isso de novo?",
-                "Você pode dizer isso de novo?",
-                "Desculpe, não entendi. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Você pode reformular?",
-                "Desculpe, o que foi isso?",
-                "Mais uma vez?",
-                "O que é que foi isso?",
-                "Dizer isso mais uma vez?",
-                "Eu não entendi. Você pode repetir?",
-                "Eu perdi isso, dizer isso de novo?"
+                "Desculpe, você poderia dizer de novo?",
+                "Desculpe, você pode dizer de novo?",
+                "Você pode dizer de novo?",
+                "Desculpe, não entendi. Posso ajudá-lo a alugar um carro. Você pode reformular?"
               ]
             },
             "languageCode": "pt-br"
@@ -163,17 +156,10 @@
             "text": {
               "text": [
                 "Eu não entendi. Pode repetir?",
-                "Eu perdi o que você disse. O que é que foi isso?",
-                "Desculpe, você poderia dizer isso de novo?",
-                "Desculpe, você pode dizer isso de novo?",
-                "Você pode dizer isso de novo?",
-                "Desculpe, não entendi. Você pode reformular?",
-                "Desculpe, o que foi isso?",
-                "Mais uma vez?",
-                "O que é que foi isso?",
-                "Dizer isso mais uma vez?",
-                "Eu não entendi. Você pode repetir?",
-                "Eu perdi isso, dizer isso de novo?"
+                "Desculpe, você poderia dizer de novo?",
+                "Desculpe, você pode dizer de novo?",
+                "Você pode dizer de novo?",
+                "Desculpe, não entendi. Posso ajudá-lo a alugar um carro. Você pode reformular?"
               ]
             },
             "languageCode": "pt-br"
@@ -198,7 +184,7 @@
           {
             "text": {
               "text": [
-                "Oi! Sou o Agente Virtual de Aluguel de Carros. Posso ajudar com o aluguel de um carro, procurando opções de veículos de luxo ou econômicos em sua área de coleta e comparando os custos de aluguel. Para começar, diga alugar um carro"
+                "Oi! Eu sou a Inteligência de aluguel de carros, posso ajudar procurando opções de veículos de luxo ou econômicos em sua área de coleta e comparando os custos de aluguel. Para começar, diga alugar um carro"
               ]
             },
             "languageCode": "pt-br"
@@ -222,7 +208,7 @@
           {
             "text": {
               "text": [
-                "Lamento, posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudar hoje?"
+                "Lamento, posso ajudá-lo a iniciar um aluguel de carro. Como posso ajudar hoje?"
               ]
             },
             "languageCode": "pt-br"

@@ -40,7 +40,7 @@ export default class AgentTranslationRemove {
         }
         return results;
     }
-    async intentsAsList() {
+    async removeEnIntentFiles() {
         const intentsFolder = resolve(this.basePath, this.agentFolderName, 'intents');
         const files = await this.walk(intentsFolder);
         let list = [];
@@ -80,14 +80,14 @@ export default class AgentTranslationRemove {
     }
 
     async removeAgent() {
-        await this.intentsAsList();
-        await this.translateFlows();
-        await this.translatePages();
-        await this.translateTestCases();
-        await this.translateTransitionRouteGroup();
+        await this.removeEnIntentFiles();
+        await this.removeEnDataFromFlows();
+        await this.removeEnFromPages();
+        await this.removeEnConversationsFromTestCases();
+        await this.removeEnFromTransitionRouteGroups();
     }
 
-    async translateFlows() {
+    async removeEnDataFromFlows() {
         const [files] = await this.flowsAsList();
 
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
@@ -106,7 +106,7 @@ export default class AgentTranslationRemove {
             await writeFile(`${filePath}`, JSON.stringify(flow, null, 2));
         }
     }
-    async translateTestCases() {
+    async removeEnConversationsFromTestCases() {
         const [files] = await this.testCasesAsList();
         const idx = { t: 0, responses: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
@@ -120,7 +120,7 @@ export default class AgentTranslationRemove {
         }
     }
 
-    async translatePages() {
+    async removeEnFromPages() {
         const [files] = await this.pagesAsList();
         const idx = { entry: 0, event: 0, form: 0, transition: 0, reprompt: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
@@ -157,7 +157,7 @@ export default class AgentTranslationRemove {
             await writeFile(`${filePath}`, JSON.stringify(page, null, 2));
         }
     }
-    async translateTransitionRouteGroup() {
+    async removeEnFromTransitionRouteGroups() {
         const [files] = await this.transitionRouteGroupsAsList();
         const idx = { transition: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {

@@ -1,27 +1,11 @@
 {
   "defaultLanguageCode": "pt-br",
   "timeZone": "America/Buenos_Aires",
-  "enableLogging": true,
   "projectNumber": 350781892345,
-  "speechToTextSettings": {
-    "enableSpeechAdaptation": true
-  },
+  "enableLogging": true,
   "startFlow": "Default Start Flow",
-  "enableSpellCorrection": true,
   "advancedSettings": {
     "enabled": true,
-    "audioExportGcsDestination": {
-    
-    },
-    "speechSettings": {
-      "endpointerSensitivity": 50,
-      "noSpeechTimeout": {
-        "seconds": 5
-      }
-    },
-    "playbackInterruptionSettings": {
-    
-    },
     "loggingSettings": {
       "enableInteractionLogging": true
     }

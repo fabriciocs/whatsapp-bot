@@ -15,7 +15,7 @@
       {
         "text": {
           "text": [
-            "Então para confirmar:\n\nVocê vai retirar o veículo em\n $session.params.pickup_location\n $session.params.pickup_date_time e deixando-o\n em $session.params.drop_off_location\n $session.params.drop_off_date_time\n\nIsso soa certo?"
+            "Então para confirmar:\n\nVocê vai retirar o veículo em $session.params.pickup_location na data $session.params.pickup_date_time\ne entregará em $session.params.drop_off_location na data $session.params.drop_off_date_time\n\nIsso está certo?"
           ]
         },
         "languageCode": "pt-br"

@@ -15,7 +15,7 @@
       {
         "text": {
           "text": [
-            "Então para confirmar:\n\nVocê pegará o veículo em $session.params.pickup_location, $session.params.pickup_date_time e o deixará no mesmo local, $session.params.drop_off_date_time\n\nIsso soa certo?"
+            "Então para confirmar:\n\nVocê pegará o o veículo em $session.params.pickup_location, $sys.func.FORMAT_DATE($session.params.pickup_date_time, \"dd/MM/yyyy HH:mm\") e o deixará em $session.params.drop_off_location, $sys.func.FORMAT_DATE($session.params.drop_off_date_time, \"dd/MM/yyyy HH:mm\").\n\nIsso está certo?"
           ]
         },
         "languageCode": "pt-br"

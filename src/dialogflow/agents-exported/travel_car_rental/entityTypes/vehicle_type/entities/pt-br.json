@@ -1,0 +1,44 @@
+{
+  "entities": [
+    {
+      "value": "luxury_vehicle",
+      "synonyms": [
+        "SUV",
+        "veículo utilitário esportivo",
+        "carro da cidade",
+        "luxo",
+        "veículo de luxo",
+        "chique",
+        "Luxo",
+        "lucro",
+        "caminhão",
+        "um grande",
+        "grande",
+        "primeira classe",
+        "high-end",
+        "caro",
+        "primeira classe"
+      ],
+      "languageCode": "pt-br"
+    },
+    {
+      "value": "economy_vehicle",
+      "synonyms": [
+        "então",
+        "economia",
+        "veículo econômico",
+        "economia",
+        "barato",
+        "baixo custo",
+        "eco",
+        "menor",
+        "mais barato",
+        "um pequeno",
+        "pequeno",
+        "barato",
+        "o barato"
+      ],
+      "languageCode": "pt-br"
+    }
+  ]
+}

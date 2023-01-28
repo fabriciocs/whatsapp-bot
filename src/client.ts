@@ -188,7 +188,9 @@ const createPost = async (msg: Msg, prompt?: string[]) => {
     });
 }
 const forzinhoTranslationAgent = new AgentTranslation('bimbim');
-const moveisEstrela = new AgentTranslationRemove('moveis_estrela');
+const moveisEstrelaRm = new AgentTranslationRemove('moveis_estrela');
+const moveisEstrelaTr = new AgentTranslation('moveis_estrela');
+
 const getAction = (key: string) => {
     return appData.actions[key];
 }
@@ -476,7 +478,8 @@ const run = async () => {
         trat: async (msg: Msg, [id, ...prompt]: string[]) => await new AgentTranslation().translateTestCases(),
         '4i': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateAgent(),
         '4ta': async (msg: Msg, [id, ...prompt]: string[]) => await new AgentTranslation(id).translateAgent(),
-        '4mer': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrela.removeAgent(),
+        '4mer': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrelaRm.removeAgent(),
+        '4met': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrelaTr.translateEntities(),
         '4t': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
         'quit': async (msg: Msg) => await quit(),
     };
@@ -485,15 +488,15 @@ const run = async () => {
     appData.processMessage = async (receivedMsg: Msg) => {
         if (receivedMsg.fromMe) {
             if (canExecuteCommand(receivedMsg)) {
-                await runCommand(receivedMsg);
+                return await runCommand(receivedMsg);
             }
-        } else {
-            await runConfig(receivedMsg);
         }
+        return await runConfig(receivedMsg);
+
     }
 };
 
-const initConsoleClient = async () => {
+const initConsoleClient = async (fromMe = false) => {
 
 
     appData.consoleClient = readline.createInterface({
@@ -502,16 +505,16 @@ const initConsoleClient = async () => {
         prompt: `${baseName} > `,
         terminal: true
     });
+    appData.consoleClient.write('Bem vindo ao console do bot\n\n');
     appData.consoleClient.prompt();
 
     appData.consoleClient.on('line', async (line) => {
-        const receivedMsg = new ConsoleMsg(line);
+        const receivedMsg = new ConsoleMsg(line, fromMe);
         await appData.processMessage(receivedMsg);
         appData.consoleClient.prompt();
     });
     appData.consoleClient.on('close', async () => {
-        const receivedMsg = new ConsoleMsg('exit');
-        await receivedMsg.sendMessage('exit');
+        console.info('\nAté mais!\n');
     });
     appData.consoleClient.on('error', async (err) => {
         console.error(err);
@@ -519,7 +522,16 @@ const initConsoleClient = async () => {
 }
 (async () => {
     await run();
-    // await initConsoleClient();
-    await initWhatsappClient(appData);
+    const exectParam = process.argv[2];
+    const runner = {
+        'console': async () => await initConsoleClient(true),
+        'whats': async () => await initWhatsappClient(appData),
+        'both': async () => {
+            await initConsoleClient();
+            await initWhatsappClient(appData);
+        }
+    };
+    await runner[exectParam]?.();
+
 })();
 

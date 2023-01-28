@@ -3,7 +3,7 @@
     {
       "parts": [
         {
-          "text": "Quero verificar o estado da minha reclamação",
+          "text": "Quero verificar o estado da minha consulta",
           "auto": true
         }
       ],
@@ -23,7 +23,7 @@
     {
       "parts": [
         {
-          "text": "Quero comprar um Honda Civic. Você pode ajudar?",
+          "text": "Odiei esse atendimento",
           "auto": true
         }
       ],
@@ -33,7 +33,7 @@
     {
       "parts": [
         {
-          "text": "eu gostaria de comprar um carro",
+          "text": "Que coisa chata",
           "auto": true
         }
       ],
@@ -43,7 +43,7 @@
     {
       "parts": [
         {
-          "text": "Eu gostaria de pedir um café e um croissant, por favor",
+          "text": "Que coisa esquisita é essa",
           "auto": true
         }
       ],
@@ -63,7 +63,7 @@
     {
       "parts": [
         {
-          "text": "Eu quero reservar um voo",
+          "text": "Eu odeio esses trem",
           "auto": true
         }
       ],

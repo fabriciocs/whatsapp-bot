@@ -40,13 +40,7 @@ export default class AgentTranslation {
         }
         return results;
     }
-    async listPhrases() {
-        const intentsFile = resolve(this.basePath, this.agentFolderName, 'intents/car_rental.compare_cost_luxury/trainingPhrases/en.json');
-
-        const fileTexts = await this.getTrainingPhrasesFromFile(intentsFile);
-        const response = await createTrainingPhrases(fileTexts);
-        console.log(response);
-    }
+    
     async intentsAsList() {
         const intentsFolder = resolve(this.basePath, this.agentFolderName, 'intents');
         const files = await this.walk(intentsFolder);
@@ -345,6 +339,7 @@ export default class AgentTranslation {
         await this.translateIntents();
         await this.translateFlows();
         await this.translatePages();
+        await this.translateEntities();
         await this.translateTestCases();
         await this.translateTransitionRouteGroup();
 
@@ -352,25 +347,25 @@ export default class AgentTranslation {
 
 
     async translateEntities() {
-        const [originalList, originalTranslatedList, originalFiles] = await this.entitiesAsList();
+        const [list, translated, files] = await this.entitiesAsList();
         let idx = 0;
-        for (let fileIndex = 0; fileIndex < originalFiles.length; fileIndex++) {
-            const filePath = originalFiles[fileIndex];
+        for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+            const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const intent = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IIntent;
-            for (let i = 0; i < intent.trainingPhrases?.length; i++) {
-                const parts = intent.trainingPhrases[i]?.parts;
-                intent.trainingPhrases[i]['languageCode'] = 'pt-br';
+            const entityType = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IEntityType;
+            for (let i = 0; i < entityType.entities?.length; i++) {
+                const parts = entityType.entities[i]?.synonyms;
+                entityType.entities[i]['languageCode'] = 'pt-br';
                 for (let j = 0; j < parts?.length; j++) {
-                    const text = originalTranslatedList[idx];
+                    const text = translated[idx];
                     if (text) {
-                        parts[j].text = text;
+                        parts[j] = text;
                         idx++;
                     }
                 }
             }
             console.log(`Writing ${filePath}`);
-            await writeFile(`${dirname(filePath)}/pt-br.json`, JSON.stringify(intent, null, 2));
+            await writeFile(`${dirname(filePath)}/pt-br.json`, JSON.stringify(entityType, null, 2));
         }
     }
 

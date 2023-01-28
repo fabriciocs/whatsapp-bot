@@ -1,0 +1,27 @@
+{
+  "entities": [ {
+    "value": "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}",
+    "synonyms": [ "\\d{3}\\.?\\d{3}\\.?\\d{3}\\-?\\d{2}" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "\\d{11}",
+    "synonyms": [ "\\d{11}" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "(zero|um|dois|três|quatro|cinco|seis|sete|oito|nove)",
+    "synonyms": [ "(zero|um|dois|três|quatro|cinco|seis|sete|oito|nove)" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?",
+    "synonyms": [ "\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?\\d\\D*?" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)",
+    "synonyms": [ "(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)(zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove)" ],
+    "languageCode": "pt-br"
+  }, {
+    "value": "((zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove).*?){11}",
+    "synonyms": [ "((zero|um|dois|tr[eê]s|quatro|cinco|seis|sete|oito|nove).*?){11}" ],
+    "languageCode": "pt-br"
+  } ]
+}

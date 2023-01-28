@@ -1,0 +1,158 @@
+{
+  "name": "718b7db3-f5e0-46f7-ae30-114d304dafdb",
+  "displayName": "Dados Pessoais",
+  "form": {
+    "parameters": [
+      {
+        "displayName": "person_name",
+        "required": true,
+        "entityType": "@sys.person",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Pode me informar seu nome?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "Desculpe, não entendi. Pode repetir seu nome?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      },
+      {
+        "displayName": "person_cpf",
+        "required": true,
+        "entityType": "@document-cpf",
+        "fillBehavior": {
+          "initialPromptFulfillment": {
+            "messages": [
+              {
+                "text": {
+                  "text": [
+                    "Qual seu CPF por favor?"
+                  ]
+                },
+                "languageCode": "pt-br"
+              }
+            ]
+          },
+          "repromptEventHandlers": [
+            {
+              "event": "sys.no-match-default",
+              "triggerFulfillment": {
+                "messages": [
+                  {
+                    "text": {
+                      "text": [
+                        "Algo deu errado, digite seu CPF por favor?"
+                      ]
+                    },
+                    "languageCode": "pt-br"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "advancedSettings": {
+          "dtmfSettings": {
+            "useSystemEntityRule": false
+          }
+        }
+      }
+    ]
+  },
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "condition": "$page.params.status = \"FINAL\"",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, vou verificar para  $session.params.person_name e $session.params.person_cpf."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Mostrar Dividas"
+    },
+    {
+      "intent": "moveis_estrela.consultar_dividas",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Certo! Vou verificar, só um instante."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      }
+    },
+    {
+      "condition": "$session.params.person_cpf != null and$session.params.person_name != null",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Ok, vou verificar para  $session.params.person_name e$session.params.person_cpf."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Mostrar Dividas"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "targetPage": "Current Page",
+      "event": "sys.no-match-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Desculpe, preciso do nome e cpf."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      }
+    }
+  ]
+}

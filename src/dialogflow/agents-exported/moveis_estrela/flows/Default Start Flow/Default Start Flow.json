@@ -10,20 +10,19 @@
           {
             "text": {
               "text": [
-                "Oi! Eu sou o agente virtual de aluguel de carros. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudá-lo hoje?"
+                "Oi! Eu sou o agente de atendimento da Móveis Estrela. Posso ajudá-lo com informações, atendimento, vendas ou direcioná-lo para um vendedor. Como posso ajudá-lo hoje?"
               ]
             },
             "languageCode": "pt-br"
           }
         ]
       },
-      "name": "a1280672-a978-4d7b-9b86-791ee8007dee"
+      "name": "a2aff388-aea8-45ee-9b8b-8bbf0ac491d2"
     },
     {
-      "intent": "car_rental.reservation_create",
+      "intent": "moveis_estrela.consultar_dividas",
       "triggerFulfillment": {},
-      "targetPage": "Pickup Location",
-      "name": "5f36a039-0000-210f-859a-f403043d09f0"
+      "targetPage": "Dados Pessoais"
     },
     {
       "intent": "small_thank.thanks",
@@ -32,17 +31,15 @@
           {
             "text": {
               "text": [
-                "Você é bem vindo!",
+                "De nada!",
                 "Sem problemas!",
-                "Que bom que pude ajudar!",
-                "A qualquer momento."
+                "Que bom que pude ajudar!"
               ]
             },
             "languageCode": "pt-br"
           }
         ]
-      },
-      "name": "5f36a03a-0000-210f-859a-f403043d09f0"
+      }
     },
     {
       "intent": "small_talk.agent_redirect",
@@ -51,15 +48,14 @@
           {
             "text": {
               "text": [
-                "Um momento enquanto eu conecto você."
+                "Um momento enquanto eu te direciono para um de nossos vendedores."
               ]
             },
             "languageCode": "pt-br"
           }
         ]
       },
-      "targetPage": "Contact Agent",
-      "name": "5f36a03b-0000-210f-859a-f403043d09f0"
+      "targetPage": "Falar com Vendedor"
     }
   ],
   "eventHandlers": [
@@ -71,24 +67,16 @@
             "text": {
               "text": [
                 "Eu não entendi. Pode repetir?",
-                "Eu perdi o que você disse. O que é que foi isso?",
                 "Desculpe, você poderia dizer isso de novo?",
                 "Desculpe, você pode dizer isso de novo?",
-                "Você pode dizer isso de novo?",
-                "Desculpe, não entendi. Posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Você pode reformular?",
-                "Desculpe, o que foi isso?",
-                "Mais uma vez?",
-                "O que é que foi isso?",
-                "Dizer isso mais uma vez?",
-                "Eu não entendi. Você pode repetir?",
-                "Eu perdi isso, dizer isso de novo?"
+                "Eu não entendi. Você pode repetir?"
               ]
             },
             "languageCode": "pt-br"
           }
         ]
       },
-      "name": "5f36a035-0000-210f-859a-f403043d09f0"
+      "name": "30892515-08d9-4f4e-a324-cddcb8ec56fe"
     },
     {
       "event": "sys.no-input-default",
@@ -98,57 +86,16 @@
             "text": {
               "text": [
                 "Eu não entendi. Pode repetir?",
-                "Eu perdi o que você disse. O que é que foi isso?",
                 "Desculpe, você poderia dizer isso de novo?",
                 "Desculpe, você pode dizer isso de novo?",
-                "Você pode dizer isso de novo?",
-                "Desculpe, não entendi. Você pode reformular?",
-                "Desculpe, o que foi isso?",
-                "Mais uma vez?",
-                "O que é que foi isso?",
-                "Dizer isso mais uma vez?",
-                "Eu não entendi. Você pode repetir?",
-                "Eu perdi isso, dizer isso de novo?"
+                "Eu não entendi. Você pode repetir?"
               ]
             },
             "languageCode": "pt-br"
           }
         ]
       },
-      "name": "5f36a036-0000-210f-859a-f403043d09f0"
-    },
-    {
-      "targetPage": "Pickup Location",
-      "event": "No-input Options",
-      "triggerFulfillment": {
-        "messages": [
-          {
-            "text": {
-              "text": [
-                "Oi! Sou o Agente Virtual de Aluguel de Carros. Posso ajudar com o aluguel de um carro, procurando opções de veículos de luxo ou econômicos em sua área de coleta e comparando os custos de aluguel. Para começar, diga alugar um carro"
-              ]
-            },
-            "languageCode": "pt-br"
-          }
-        ]
-      },
-      "name": "5f36a037-0000-210f-859a-f403043d09f0"
-    },
-    {
-      "event": "sys.no-match-1",
-      "triggerFulfillment": {
-        "messages": [
-          {
-            "text": {
-              "text": [
-                "Lamento, posso ajudá-lo a iniciar uma nova reserva de aluguel de carro. Como posso ajudar hoje?"
-              ]
-            },
-            "languageCode": "pt-br"
-          }
-        ]
-      },
-      "name": "81eef2d3-aaf6-490c-aec2-7b25cc628863"
+      "name": "d04d3995-bd21-4ac2-bdf5-643ae9c34daa"
     }
   ],
   "nluSettings": {
