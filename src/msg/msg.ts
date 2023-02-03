@@ -138,7 +138,7 @@ export class MsgAdapter extends Msg {
         return this;
     }
     constructor(private msg: { body: string, from: string, to: string, fromMe: boolean, type: string, reply: (content: string) => Promise<void>, getChat: () => Promise<{ sendMessage: (content: string) => Promise<void> }> }) {
-        super(msg.body, msg.from, msg.to, msg.fromMe, msg.type as unknown as MsgTypes);
+        super(msg.body, msg.from, msg.to, msg.fromMe, MsgTypes[msg.type as keyof typeof MsgTypes]);
     }
 
 }

@@ -1,6 +1,5 @@
 
-import { AgentsClient } from '@google-cloud/dialogflow-cx';
-import { google } from '@google-cloud/dialogflow-cx/build/protos/protos';
+import { AgentsClient, protos } from '@google-cloud/dialogflow-cx';
 import { readFile, writeFile, readdir, stat } from 'fs/promises';
 import { resolve, dirname } from 'path';
 import { createTrainingPhrases } from '../ai';
@@ -116,7 +115,7 @@ export default class AgentTranslation {
 
     }
 
-    async getTexts(test: google.cloud.dialogflow.cx.v3.ITestCase) {
+    async getTexts(test: protos.google.cloud.dialogflow.cx.v3.ITestCase) {
         const list = test.testCaseConversationTurns?.reduce(([texts, responses], { userInput, virtualAgentOutput }) => {
             const inputText = userInput?.input?.text?.text;
             if (inputText) {
@@ -134,7 +133,7 @@ export default class AgentTranslation {
 
     async getTestFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const test = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITestCase;
+        const test = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.ITestCase;
         return test;
     }
     async pagesAsList() {
@@ -207,7 +206,7 @@ export default class AgentTranslation {
     }
     async getTrainingPhrasesFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const intent = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IIntent;
+        const intent = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IIntent;
         const list = intent.trainingPhrases.reduce((acc, { parts }) => {
             return acc.concat(parts?.map(({ text }) => text));
         }, [] as string[]);
@@ -217,7 +216,7 @@ export default class AgentTranslation {
     
     async getEntitiesSynonyms (filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const entityType = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IEntityType;
+        const entityType = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IEntityType;
         const list = entityType.entities.reduce((acc, { synonyms }) => acc.concat(synonyms), [] as string[]);
         return list;
     }
@@ -225,7 +224,7 @@ export default class AgentTranslation {
 
     async getTriggerFulfillment(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const flow = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IFlow;
+        const flow = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IFlow;
         const list = flow.transitionRoutes?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => acc.push(...text?.text));
             return acc;
@@ -233,7 +232,7 @@ export default class AgentTranslation {
         return list;
     }
 
-    async getPageTransitionTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
+    async getPageTransitionTriggerFulfillment(page: protos.google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.transitionRoutes?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => {
                 if (text?.text?.length) {
@@ -245,7 +244,7 @@ export default class AgentTranslation {
         return list;
     }
 
-    async getTransitionRouteGroupsFulfillment(transitionRouteGroup: google.cloud.dialogflow.cx.v3.ITransitionRouteGroup) {
+    async getTransitionRouteGroupsFulfillment(transitionRouteGroup: protos.google.cloud.dialogflow.cx.v3.ITransitionRouteGroup) {
         const list = transitionRouteGroup.transitionRoutes?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => {
                 if (text?.text?.length) {
@@ -257,7 +256,7 @@ export default class AgentTranslation {
         return list;
     }
 
-    async getPageEventsTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
+    async getPageEventsTriggerFulfillment(page: protos.google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.eventHandlers?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => {
                 if (text?.text?.length) {
@@ -269,7 +268,7 @@ export default class AgentTranslation {
         return list;
     }
 
-    async getPageEntryTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
+    async getPageEntryTriggerFulfillment(page: protos.google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.entryFulfillment?.messages?.reduce((acc, { text }) => {
             if (text?.text?.length) {
                 acc.push(...text?.text);
@@ -281,16 +280,16 @@ export default class AgentTranslation {
 
     private async getPageFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const page = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IPage;
+        const page = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IPage;
         return page;
     }
     private async getTransitionRouteGroupsFromFile(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const page = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
+        const page = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
         return page;
     }
 
-    async getPageFormTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
+    async getPageFormTriggerFulfillment(page: protos.google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.form?.parameters?.map(p => p.fillBehavior?.initialPromptFulfillment?.messages?.reduce((acc, { text }) => {
             if (text?.text?.length) {
                 acc.push(...text?.text);
@@ -306,7 +305,7 @@ export default class AgentTranslation {
     }
 
 
-    async getPageFormRepromptTriggerFulfillment(page: google.cloud.dialogflow.cx.v3.IPage) {
+    async getPageFormRepromptTriggerFulfillment(page: protos.google.cloud.dialogflow.cx.v3.IPage) {
         const list = page.form?.parameters?.map(p => p.fillBehavior?.repromptEventHandlers?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => {
                 if (text?.text?.length) {
@@ -327,7 +326,7 @@ export default class AgentTranslation {
 
     async getEventsTriggerFulfillment(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
-        const flow = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IFlow;
+        const flow = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IFlow;
         const list = flow.eventHandlers?.reduce((acc, { triggerFulfillment }) => {
             triggerFulfillment?.messages?.forEach(({ text }) => acc.push(...text.text));
             return acc;
@@ -352,7 +351,7 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const entityType = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IEntityType;
+            const entityType = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IEntityType;
             for (let i = 0; i < entityType.entities?.length; i++) {
                 const parts = entityType.entities[i]?.synonyms;
                 entityType.entities[i]['languageCode'] = 'pt-br';
@@ -375,7 +374,7 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < originalFiles.length; fileIndex++) {
             const filePath = originalFiles[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const intent = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IIntent;
+            const intent = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IIntent;
             for (let i = 0; i < intent.trainingPhrases?.length; i++) {
                 const parts = intent.trainingPhrases[i]?.parts;
                 intent.trainingPhrases[i]['languageCode'] = 'pt-br';
@@ -397,7 +396,7 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const flow = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IFlow;
+            const flow = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IFlow;
             for (let i = 0; i < flow.transitionRoutes.length; i++) {
                 const triggerFulfillment = flow.transitionRoutes[i].triggerFulfillment;
                 const size = triggerFulfillment?.messages?.length;
@@ -434,10 +433,10 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const testCase = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITestCase;
+            const testCase = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.ITestCase;
             const size = testCase.testCaseConversationTurns.length;
             for (let i = 0; i < size; i++) {
-                const conversationTurn = JSON.parse(JSON.stringify(testCase.testCaseConversationTurns[i])) as google.cloud.dialogflow.cx.v3.IConversationTurn;
+                const conversationTurn = JSON.parse(JSON.stringify(testCase.testCaseConversationTurns[i])) as protos.google.cloud.dialogflow.cx.v3.IConversationTurn;
                 conversationTurn.userInput.input['languageCode'] = 'pt-br';
                 if (conversationTurn?.userInput?.input?.text?.text) {
                     conversationTurn.userInput.input.text = { text: translatedList[idx.t] };
@@ -465,7 +464,7 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const page = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.IPage;
+            const page = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IPage;
             for (let i = 0; i < page.transitionRoutes.length; i++) {
                 const triggerFulfillment = page.transitionRoutes[i].triggerFulfillment;
                 const size = triggerFulfillment?.messages?.length;
@@ -544,7 +543,7 @@ export default class AgentTranslation {
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');
-            const transitionRouteGroup = JSON.parse(jsonContent) as google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
+            const transitionRouteGroup = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.ITransitionRouteGroup;
             for (let i = 0; i < transitionRouteGroup.transitionRoutes.length; i++) {
                 const triggerFulfillment = transitionRouteGroup.transitionRoutes[i].triggerFulfillment;
                 const size = triggerFulfillment?.messages?.length;

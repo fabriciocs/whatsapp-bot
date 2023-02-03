@@ -77,7 +77,7 @@ export type PostResponse = {
 export default class Wordpress {
     private wpApi: any;
 
-    constructor(private currie: CurrierModel, private wordpressUrl: string = process.env.WP_SITE_URL,  username: string = process.env.WP_USERNAME, password: string = process.env.WP_PASSWORD) {
+    constructor(private currie: CurrierModel, private wordpressUrl: string = process.env.WP_SITE_URL, username: string = process.env.WP_USERNAME, password: string = process.env.WP_PASSWORD) {
         this.wpApi = new WPAPI({
             endpoint: this.wordpressUrl,
             username,
@@ -92,7 +92,7 @@ export default class Wordpress {
         return await this.wpApi.posts().get();
     }
 
-    
+
     public async getPages(): Promise<any[]> {
         return await this.wpApi.pages().get();
     }

@@ -1,0 +1,77 @@
+{
+  "name": "0cea4bee-dd8d-455b-aa42-cddf4be62845",
+  "displayName": "Luxury Options",
+  "form": {
+    "parameters": [ {
+      "displayName": "vehicle_model",
+      "required": true,
+      "entityType": "@vehicle_model",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+    "messages": [ {
+      "text": {
+        "text": [ "Would you like our Chevy Tahoe or Dodge Charger luxury option?" ]
+      },
+      "languageCode": "en"
+    } ]
+  },
+  "transitionRoutes": [ {
+    "intent": "car_rental.economy_option",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Economy options are generally cheaper. Let's look at those." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Economy Options",
+    "name": "f7a1c9b2-dfe0-4c54-954a-781d2d5c5f2d"
+  }, {
+    "intent": "car_rental.compare_cost_luxury",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The Chevy Tahoe is our least expensive luxury option at $65.53 per day.  Would you like to add this option?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "89386aca-b9d6-4619-9ed5-0d87bc042887"
+  }, {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "vehicle_model",
+        "value": "Chevrolet Tahoe"
+      } ]
+    },
+    "targetPage": "Confirm Chevy Tahoe",
+    "name": "18cb7bf8-db98-496a-8252-82949557b2a8"
+  }, {
+    "condition": "$session.params.vehicle_model = \"Chevrolet Tahoe\"",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Confirm Chevy Tahoe",
+    "name": "8888fee6-cdca-459c-b4e1-6e4b8ceb4c5a"
+  }, {
+    "condition": "$session.params.vehicle_model = \"Dodge Charger\"",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Confirm Dodge Charger",
+    "name": "c4902278-67f2-4ed0-9fb1-592980881119"
+  } ]
+}

@@ -1,0 +1,629 @@
+{
+  "name": "38b15996-92fc-4b42-bbd4-41742a394cb0",
+  "displayName": "Happy path - Different drop off",
+  "testCaseConversationTurns": [ {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Hi there, can you help me rent a car?"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "car_rental.reservation_create"
+      },
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Where would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Can I drop it off in a different location?"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "car_rental.return_different_location"
+      },
+      "currentPage": {
+        "name": "Pickup Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Sure! You can drop it off at a different location." ]
+      }, {
+        "text": [ "Where would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Ok great. Tucson please"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Tucson"
+      },
+      "currentPage": {
+        "name": "Confirm Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Is your drop off location different from your pickup location?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "pickup_location": "Tucson"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Drop Off Location",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Where will you be returning the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Phoenix"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_location": "Phoenix",
+        "pickup_location": "Tucson"
+      },
+      "currentPage": {
+        "name": "Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to pick up the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "tomorrow at 10 am"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson"
+      },
+      "currentPage": {
+        "name": "Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What date and time would you like to drop off the vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "sunday at noon"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson"
+      },
+      "currentPage": {
+        "name": "Confirm Rental Duration (return location differs)",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "So to confirm:\n\nYou will be picking the vehicle up in \n Tucson \n 2020-11-20 10:00:00 and dropping it off \n in Phoenix \n 2020-11-22 12:00:00\n\nDoes that sound right?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yep"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Vehicle Disambiguation ",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Great! Now let's choose a vehicle." ]
+      }, {
+        "text": [ "Would you like an economy or luxury vehicle?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "luxury"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Luxury Options",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Would you like our Chevy Tahoe or Dodge Charger luxury option?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "lets do the charger"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Confirm Dodge Charger",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "The Dodge Charger is $67.23 per day. It fits 4 people and comes with unlimited mileage included.\nWould you like to proceed to payment?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "yes"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "triggeredIntent": {
+        "name": "small_talk.confirmation.yes"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What card type will you be using?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "AMEX"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_type": "AMEX",
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Please enter the card number." ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "1234123412341234"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "card_number": "1234123412341234",
+        "card_type": "AMEX",
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the name on the card?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Client Name"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Client Name",
+        "card_number": "1234123412341234",
+        "card_type": "AMEX",
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing street address?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "1600 Amphitheatre Parkway"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Client Name",
+        "billing_street_address": "1600 Amphitheatre Parkway",
+        "card_number": "1234123412341234",
+        "card_type": "AMEX",
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "Payment",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "What is the billing ZIP code?" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "94043"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "sessionParameters": {
+        "billing_name": "Client Name",
+        "billing_street_address": "1600 Amphitheatre Parkway",
+        "billing_zip_code": "94043",
+        "card_number": "1234123412341234",
+        "card_type": "AMEX",
+        "drop_off_date_time": {
+          "day": 22,
+          "hours": 12,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "drop_off_location": "Phoenix",
+        "pickup_date_time": {
+          "day": 20,
+          "hours": 10,
+          "minutes": 0,
+          "month": 11,
+          "nanos": 0,
+          "seconds": 0,
+          "year": 2020
+        },
+        "pickup_location": "Tucson",
+        "vehicle_model": "Dodge Charger",
+        "vehicle_type": "luxury_vehicle"
+      },
+      "currentPage": {
+        "name": "End Session",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "You will be picking the Dodge Charger up in Tucson, 2020-11-20 10:00:00 and dropping it off, 2020-11-22 12:00:00. \nThe total for this trip will be $175.38." ]
+      }, {
+        "text": [ "Thank you for renting with us and have a wonderful day!" ]
+      } ]
+    }
+  }, {
+    "userInput": {
+      "isWebhookEnabled": true,
+      "input": {
+        "text": {
+          "text": "Thanks!"
+        },
+        "languageCode": "en"
+      }
+    },
+    "virtualAgentOutput": {
+      "triggeredIntent": {
+        "name": "small_thank.thanks"
+      },
+      "currentPage": {
+        "name": "Start Page",
+        "flow": "Default Start Flow"
+      },
+      "textResponses": [ {
+        "text": [ "Glad I could help!" ]
+      } ]
+    }
+  } ],
+  "creationTime": {
+    "seconds": 1605806617,
+    "nanos": 442000000
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "what about cars, can i resrve something now?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "do you have any ",
+      "auto": true
+    }, {
+      "text": "trucks",
+      "parameterId": "vehicle_type",
+      "auto": true
+    }, {
+      "text": " a can reserve",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "help me find a ",
+      "auto": true
+    }, {
+      "text": "cheap"
+    }, {
+      "text": " ride for my trip",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to retn an ",
+      "auto": true
+    }, {
+      "text": "suv",
+      "parameterId": "vehicle_type",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to reserve a van for later "
+    }, {
+      "text": "today",
+      "parameterId": "pickup_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "rent a van"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "im driving cross country and need to rent a van"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need help booking an "
+    }, {
+      "text": "SUV",
+      "parameterId": "vehicle_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to rent an "
+    }, {
+      "text": "SUV",
+      "parameterId": "vehicle_type"
+    }, {
+      "text": " in "
+    }, {
+      "text": "San Diego",
+      "parameterId": "pickup_location"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to rent a "
+    }, {
+      "text": "truck",
+      "parameterId": "vehicle_type"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to rent a "
+    }, {
+      "text": "truck",
+      "parameterId": "vehicle_type"
+    }, {
+      "text": " for "
+    }, {
+      "text": "sunday",
+      "parameterId": "pickup_date_time"
+    }, {
+      "text": ", can you help me?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i get a car for next week?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i get a car for the weekend"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hi, im traveling to "
+    }, {
+      "text": "LA",
+      "parameterId": "pickup_location"
+    }, {
+      "text": " for the weekend and i need to rent a car while i'm down there"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hi im trying to rent a car for "
+    }, {
+      "text": "tomorrow",
+      "parameterId": "pickup_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "rent car"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need help with a car rental please"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hi, can you help me reserve a car?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "reserve a car"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to reserve a car on "
+    }, {
+      "text": "friday",
+      "parameterId": "pickup_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "car rental"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i need to rent a car "
+    }, {
+      "text": "next thursday",
+      "parameterId": "pickup_date_time"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i book a car rental"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "rent a car please"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hi i'd like to rent a car"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

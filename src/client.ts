@@ -11,7 +11,7 @@ import dbConfig from './db-config';
 import { loadPersonAndCar } from './leia';
 
 import { Database } from 'firebase-admin/database';
-import OpenAIManager, { withConfig, writeAText, writeInstructions } from './ai';
+import OpenAIManager, { giveMeImage, withConfig, writeAText, writeInstructions } from './ai';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
 import Commands from './commands';
@@ -29,9 +29,10 @@ import { readToMe } from './speech-to-text';
 import { baseName, botname, ChatConfigType, commandMarkers, keyReplacer } from './util';
 import Wikipedia from './wiki';
 import Wordpress from './wordpress';
-import { initWhatsappClient } from './whatsapp-client';
+import { initWhatsappClient } from './client-whatsjs';
 import { Client } from 'whatsapp-web.js';
 import AgentTranslationRemove from './dialogflow/agent-translation-remove';
+import * as admin from 'firebase-admin';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -49,7 +50,7 @@ const appData: {
     commandConfigsManager?: CommandConfigsManager;
     logger?: Log;
     fullBaseName?: string;
-
+    whatsappRef?: admin.database.Reference;
     client?: Client;
 } = {
 };
@@ -390,6 +391,17 @@ const quit = async () => {
     appData.consoleClient.close();
     process.exit(0);
 }
+// }
+
+// const desenha = async (msg: Msg, prompt: string) => {
+//     if (!prompt) {
+//         return  await appData.ioChannel.sendAnswer({msg, content: 'informe o que deseja desenhar'});
+//     }
+//         const url = await giveMeImage(prompt);
+//         const image = await MessageMedia.fromUrl(url)
+//         return await chat.sendMessage(image, { sendMediaAsDocument: true, caption: prompt });
+//     }
+// }
 const run = async () => {
     const { admin, app } = await dbConfig()
     db = admin.database();
@@ -398,6 +410,7 @@ const run = async () => {
     appData.commands = new Commands(db.ref(`${fullBaseName}/commands`));
     appData.contexts = new Contexts(db.ref(`${fullBaseName}/contexts`));
     appData.msgs = new MessagesManager(db.ref(`${fullBaseName}/messages`));
+    appData.whatsappRef = db.ref(`${fullBaseName}/whatsapp/update`);
     appData.sessionManager = new SessionsManager();
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
     appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
@@ -490,11 +503,15 @@ const run = async () => {
             if (canExecuteCommand(receivedMsg)) {
                 return await runCommand(receivedMsg);
             }
+        } else {
+
+            return await runConfig(receivedMsg);
         }
-        return await runConfig(receivedMsg);
 
     }
 };
+
+
 
 const initConsoleClient = async (fromMe = false) => {
 
