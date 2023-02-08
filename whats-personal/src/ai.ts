@@ -1,17 +1,14 @@
 import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateImageRequestSizeEnum, OpenAIApi } from 'openai';
+import * as functions from 'firebase-functions';
+import axios from 'axios';
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-const clientAi = new OpenAIApi(configuration);
-export default class OpenAIManager {
-    public getClient(): OpenAIApi {
-        return clientAi;
-    }
-}
 const imageSize: CreateImageRequestSizeEnum = '256x256';
+const clientAi = () => new OpenAIApi(new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+}));
 
 const params: Partial<CreateCompletionRequest> = {
+    model: "text-davinci-003",
     prompt: "",
     temperature: 1,
     best_of: 1,
@@ -116,55 +113,67 @@ const withConfig = async (prompt: string, key: string) => {
     return await writeAText({ ...config, prompt: `${config.prompt} ${prompt}` });
 }
 const doIt = async (config: Partial<CreateCompletionRequest>) => {
+
     try {
         const requestConfig = { ...params, ...config } as CreateCompletionRequest
-        const { data } = await clientAi.createCompletion(requestConfig);
-        return data;
+        const api = clientAi();
+        const result = await api.createCompletion(requestConfig);
+        functions.logger.info({ result: result?.data?.choices[0]?.text, config: requestConfig });
+        return result.data;
     } catch (e) {
-        console.log(e)
+        if (axios.isAxiosError(e)) {
+            functions.logger.error(e.response?.data);
+        } else {
+            functions.logger.error(e);
+        }
     }
     return null;
-}
+};
 const completion = async (config: CreateCompletionRequest) => {
-    const { data } = await clientAi.createCompletion(config);
-    return data;
+    const api = new OpenAIApi(new Configuration({
+        apiKey: process.env.OPENAI_API_KEY
+    }))
+    try {
+        const { data } = await api.createCompletion(config);
+        return data;
+    } catch (e) {
+        functions.logger.error({ error: e });
+    }
+    return null;
 };
 const editIt = async (config: Partial<CreateEditRequest>) => {
-    try {
-        const requestConfig = { ...params, ...config } as CreateEditRequest
-        const { data } = await clientAi.createEdit(requestConfig);
-        return data;
-    } catch (e) {
-        console.log(e)
-    }
-    return null;
+
+    const requestConfig = { ...params, ...config } as CreateEditRequest
+    const { data } = await clientAi().createEdit(requestConfig);
+    return data;
+
 }
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
-    return await doIt({ ...config, "model": "text-davinci-003" })
+    return await doIt(config);
 };
 
 const editingText = async (config: Partial<CreateEditRequest>) => {
-    return await editIt({ ...config, "model": "text-davinci-003" })
+    return await editIt(config)
 };
 const writeInstructions = async (prompt: any) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, top_p: 0, presence_penalty: 2 });
 const giveMeImage = async (prompt: string, size: CreateImageRequestSizeEnum = imageSize) => {
-    const response = await clientAi.createImage({
+    const response = await clientAi().createImage({
         prompt,
         n: 1,
         size,
     });
-    console.log(JSON.stringify({ response: response.data.data[0], prompt }, null, 4));
+    console.log({ response: response.data, prompt });
     return response.data.data[0].url;
 };
 const createVariation = async (f: File) => {
-    const response = await clientAi.createImageVariation(f, 1, imageSize);
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
+    const response = await clientAi().createImageVariation(f, 1, imageSize);
+    console.log({ response: response.data });
     return response.data.data[0].url;
 };
 
 const editImage = async (image: File, mask: File, prompt: string) => {
-    const response = await clientAi.createImageEdit(image, mask, prompt, 1, imageSize);
-    console.log(JSON.stringify({ response: response, prompt }, null, 4));
+    const response = await clientAi().createImageEdit(image, mask, prompt, 1, imageSize);
+    console.log({ response: response.data });
     return response.data.data[0].url;
 }
 const translateTrainingPhrases = async (trainingPhrases: string) => {
@@ -183,7 +192,7 @@ const translateTrainingPhrases = async (trainingPhrases: string) => {
 }
 const createTrainingPhrases = async (trainingPhrases: string[]) => {
     const countResponse = trainingPhrases.length;
-    //`Write ${countResponse} training phrases in pt-br:\n${JSON.stringify(trainingPhrases.map(a=> a.trim()))}\n["`,
+    //`Write ${countResponse} training phrases in pt-br:\n${trainingPhrases.map(a=> a}\n["`,
     //const prompt = `create an correponding array of sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`;
     const prompt = `create a corresponding list with ${countResponse} sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`
     const response = await completion({
@@ -220,6 +229,7 @@ export {
     writeInstructions,
     editingText,
     translateTrainingPhrases,
-    createTrainingPhrases
+    createTrainingPhrases,
+    completion
 };
 
