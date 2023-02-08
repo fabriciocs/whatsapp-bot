@@ -1,18 +1,18 @@
 
 import axios from "axios";
 import * as functions from "firebase-functions";
-export const reply = async (message: string, id: string) => {
+export const reply = async (to: string, content: string, id: string) => {
     const data = {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",
-        "to": "5564992026971",
+        "to": to,
         "context": {
             "message_id": id
         },
         "type": "text",
         "text": {
             "preview_url": false,
-            "body": message
+            "body": content
         }
     };
 
@@ -22,5 +22,13 @@ export const reply = async (message: string, id: string) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${FACEBOOK_TOKEN}`
     };
-    return axios.post(url, data, { headers });
+    try {
+        await axios.post(url, data, { headers });
+    } catch (e) {
+        if (axios.isAxiosError(e)) {
+            functions.logger.error(e.response?.data);
+        } else {
+            functions.logger.error(e);
+        }
+    }
 }

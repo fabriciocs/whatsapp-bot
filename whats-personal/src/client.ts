@@ -5,7 +5,7 @@ import ChatConfigsManager from './chat-configs-manager';
 import { Intent } from './dialogflow/intent';
 import IoChannel from './io-channel';
 import { Msg } from './msg/msg';
-import { baseName, botname, ChatConfigType, commandMarkers, keyReplacer } from './util';
+import { botname, ChatConfigType, commandMarkers, keyReplacer } from './util';
 
 
 const appData: {
@@ -87,7 +87,7 @@ const unbindSessionConfig = async (msg: Msg) => {
 const isNotString = (msg: Msg) => typeof msg?.body !== "string";
 const getConfig = async (msg: Msg) => {
     if (isNotString(msg)) return;
-    const config = await appData.chatConfigsManager?.getByNumberOrSession(msg.from, msg.id);
+    const config = await appData.chatConfigsManager?.getBySessionOrNumber(msg.id, msg.from);
     if (!config) return;
 
     if (config.isAutomatic
@@ -182,13 +182,11 @@ const runCommand = async (msg: Msg) => {
     }
 }
 const run = async () => {
-    const fullBaseName = `${baseName}/${process.env.ME}`;
     const db = functions.app.admin.database();
     const adminsObj = (await db.ref('whatsapp').child('admins').get())?.val();
-    functions.logger.info('adminsObj', { adminsObj });
     const admins = Object.keys(adminsObj);
-    functions.logger.info('admins', { admins });
-    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
+    functions.logger.debug('admins', { admins });
+    appData.chatConfigsManager = new ChatConfigsManager(db.ref(`whatsapp/chatConfigs`));
     appData.ioChannel = new IoChannel();
 
 
@@ -205,7 +203,18 @@ const run = async () => {
 
         'err': async (msg: Msg) => await appData.ioChannel?.sendAnswer({ msg, content: `Comando *${msg?.body.split(' ')?.[1]}* não encontrado` }),
         'agente': async (msg: Msg, prompt: string[]) => await bindSessionConfig(msg, prompt, botname),
+
         '-agente': async (msg: Msg, prompt: string[]) => await unbindSessionConfig(msg),
+        'agente-from': async (msg: Msg, [from, ...prompt]: string[]) => {
+            msg.from = from;
+            functions.logger.info('agente-from', { from, prompt, id: msg.id, msgFrom: msg.from });
+            return await bindSessionConfig(msg, prompt, botname)
+        },
+        '-agente-from': async (msg: Msg, [from, ...prompt]: string[]) => {
+            msg.from = from;
+            functions.logger.info('agente-from', { from, prompt, id: msg.id, msgFrom: msg.from });
+            return await unbindSessionConfig(msg)
+        },
         b: async (msg: Msg, prompt: string[]) => await intentChat(msg, prompt),
     };
 

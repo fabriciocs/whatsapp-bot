@@ -8,15 +8,19 @@ const changeRef = '{id}/entry/{entry}/changes/{change}';
 const messageRef = '/value/messages';
 
 export const whatsappMessage = functions
-     .database
+    .runWith({
+        timeoutSeconds: 540,
+        memory: '2GB'
+    })
+    .database
     .ref(`${oficialRef}${changeRef}${messageRef}`)
     .onCreate(async (snapshot, context) => {
-        functions.logger.info(context.params.id, 'snapshot', {
+        functions.logger.debug(context.params.id, 'snapshot', {
             snapshot: snapshot.ref.toJSON()
         });
         const original = snapshot.val() as any;
         const message = original[0];
-        functions.logger.info(context.params.id, 'message', {
+        functions.logger.debug(context.params.id, 'message', {
             receivedMessage: message,
             params: context.params
         });
@@ -29,26 +33,28 @@ export const whatsappMessage = functions
                 functions.logger.info(context.params.id, 'metadata', {
                     metadata
                 });
-                return await appData?.processMessage!(new WhatsappMessageAdapter({
+                const adaptedMsg = new WhatsappMessageAdapter({
                     from: message.from,
                     body: message.text.body,
                     fromMe: false,
                     to: metadata?.display_phone_number,
                     type: MsgTypes.TEXT,
                     reply: async (body: string) => {
-                        await reply(body, message.id);
+                        await reply(message.from, body, message.id);
                     },
                     getChat: async () => {
                         return {
                             sendMessage: async (body: string) => {
-                                await reply(body, message.id);
+                                await reply(message.from, body, message.id);
                             }
                         }
                     }
-                }));
+                });
+                return await appData?.processMessage!(adaptedMsg);
             } catch (e) {
                 functions.logger.error(context.params.id, 'error', {
-                    error: e
+                    error: e,
+                    context
                 });
             }
 
