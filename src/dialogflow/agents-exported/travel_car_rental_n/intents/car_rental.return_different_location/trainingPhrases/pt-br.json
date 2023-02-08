@@ -112,12 +112,12 @@
     "languageCode": "pt-br"
   }, {
     "parts": [ {
-      "text": "Eu preciso trazê-lo de volta para um"
+      "text": "Eu preciso trazê-lo de volta para"
     }, {
       "text": "Fort Worth",
       "parameterId": "drop_off_location"
     }, {
-      "text": " localização é possível?"
+      "text": " é possível?"
     } ],
     "repeatCount": 1,
     "languageCode": "pt-br"
