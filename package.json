@@ -11,7 +11,8 @@
     "start:build": "yarn build && node ./dist/client.js",
     "build": "yarn clean &&  yarn tsc --build",
     "clean": "yarn shx rm -rf ./dist",
-    "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts"
+    "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts",
+    "monc": "yarn ts-node-dev --inspect --respawn ./src/client.ts"
   },
   "author": "",
   "license": "ISC",

@@ -2,11 +2,10 @@
 import { AgentsClient, protos } from '@google-cloud/dialogflow-cx';
 import { readFile, writeFile, readdir, stat } from 'fs/promises';
 import { resolve, dirname } from 'path';
-import { createTrainingPhrases } from '../ai';
 import GoogleTranslate from '../translate/translate';
 
 export default class AgentTranslation {
-     constructor(
+    constructor(
         private agentFolderName = 'travel_car_rental',
         private projectId = process.env.AGENT_PROJECT!,
         private agentId = process.env.AGENT_ID!,
@@ -39,22 +38,22 @@ export default class AgentTranslation {
         }
         return results;
     }
-    
+
     async intentsAsList() {
         const intentsFolder = resolve(this.basePath, this.agentFolderName, 'intents');
-        const files = await this.walk(intentsFolder);
-        let list = [];
+        const files = await this.walk(intentsFolder, '.json');
+        let list = [] as string[][];
         let translatedList = [];
-        for (const file of files) {
+        for (const file of files.filter(f => f.includes('pt-br.json'))) {
             const fileTexts = await this.getTrainingPhrasesFromFile(file);
-            list = list.concat(fileTexts);
-            translatedList = translatedList.concat(await new GoogleTranslate().translateText(fileTexts));
+            list.push(fileTexts);
+            // translatedList = translatedList.concat(await new GoogleTranslate().translateText(fileTexts));
         }
         return [list, translatedList, files];
     }
 
 
-    
+
     async entitiesAsList() {
         const intentsFolder = resolve(this.basePath, this.agentFolderName, 'entityTypes');
         const files = await this.walk(intentsFolder);
@@ -208,13 +207,13 @@ export default class AgentTranslation {
         const jsonContent = await readFile(filePath, 'utf-8');
         const intent = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IIntent;
         const list = intent.trainingPhrases.reduce((acc, { parts }) => {
-            return acc.concat(parts?.map(({ text }) => text));
+            return acc.concat(parts?.reduce((p, { text, parameterId }) => p.concat([parameterId ? `<${parameterId}>${text}</${parameterId}>` : text]), [] as string[]) || []);
         }, [] as string[]);
         return list;
     }
 
-    
-    async getEntitiesSynonyms (filePath: string) {
+
+    async getEntitiesSynonyms(filePath: string) {
         const jsonContent = await readFile(filePath, 'utf-8');
         const entityType = JSON.parse(jsonContent) as protos.google.cloud.dialogflow.cx.v3.IEntityType;
         const list = entityType.entities.reduce((acc, { synonyms }) => acc.concat(synonyms), [] as string[]);
@@ -539,7 +538,7 @@ export default class AgentTranslation {
     }
     async translateTransitionRouteGroup() {
         const [transitionList, translatedTransitionList, files] = await this.transitionRouteGroupsAsList();
-        const idx = {  transition: 0 };
+        const idx = { transition: 0 };
         for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
             const filePath = files[fileIndex];
             const jsonContent = await readFile(filePath, 'utf-8');

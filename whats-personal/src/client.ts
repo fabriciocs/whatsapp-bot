@@ -5,6 +5,7 @@ import ChatConfigsManager from './chat-configs-manager';
 import { Intent } from './dialogflow/intent';
 import IoChannel from './io-channel';
 import { Msg } from './msg/msg';
+import { loadSecrets, Secrets } from './secrets';
 import { botname, ChatConfigType, commandMarkers, keyReplacer } from './util';
 
 
@@ -13,7 +14,9 @@ const appData: {
     actions?: Record<string, any>,
     ioChannel?: IoChannel;
     chatConfigsManager?: ChatConfigsManager;
-} = {};
+    secrets?: Secrets
+} = {
+};
 
 
 
@@ -183,16 +186,13 @@ const runCommand = async (msg: Msg) => {
 }
 const run = async () => {
     const db = functions.app.admin.database();
-    const adminsObj = (await db.ref('whatsapp').child('admins').get())?.val();
-    const admins = Object.keys(adminsObj);
-    functions.logger.debug('admins', { admins });
+    appData.secrets = loadSecrets(process.env.INTEGRATION!)
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`whatsapp/chatConfigs`));
     appData.ioChannel = new IoChannel();
 
-
     appData.actions = {
         '-': async (msg: Msg, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
-
+        'clean-db': async (msg: Msg, prompt: string[]) => await db.refFromURL('https://bot-4customers-default-rtdb.firebaseio.com/bot-4customers').set(null),
         'vereador': async (msg: Msg, prompt: string[], splitFor = '') => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', '*Pré atendimento inteligente*'),
         'suporte-n1': async (msg: Msg, prompt: string[], splitFor = '') => await createATextForConfig(msg, prompt?.concat(['?'])?.join(' ')?.trim(), 'suporte-ti', '*Suporte N1*'),
         '💖': async (msg: Msg, prompt: string[], splitFor = '') => await createATextForConfig(msg, prompt?.join(' '), 'amor', '*bimbim*'),
@@ -221,6 +221,7 @@ const run = async () => {
 
     appData.processMessage = async (receivedMsg: Msg) => {
         try {
+            const admins = appData.secrets?.phoneNumbers.admins;
             if (admins?.includes(receivedMsg.from)) {
                 if (canExecuteCommand(receivedMsg)) {
                     return await runCommand(receivedMsg);

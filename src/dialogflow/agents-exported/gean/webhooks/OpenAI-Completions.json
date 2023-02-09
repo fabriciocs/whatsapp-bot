@@ -1,0 +1,17 @@
+{
+  "name": "3b804ec4-9f16-483a-97fc-6a177344f4f9",
+  "displayName": "OpenAI-Completions",
+  "genericWebService": {
+    "uri": "https://api.openai.com/v1/completions",
+    "requestHeaders": [ {
+      "key": "Authorization",
+      "value": "Bearer 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"
+    }, {
+      "key": "Content-Type",
+      "value": "application/json"
+    } ]
+  },
+  "timeout": {
+    "seconds": 5
+  }
+}

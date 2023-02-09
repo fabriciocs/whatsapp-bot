@@ -1,10 +1,11 @@
 import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateImageRequestSizeEnum, OpenAIApi } from 'openai';
 import * as functions from 'firebase-functions';
 import axios from 'axios';
+import { loadSecrets } from './secrets';
 
 const imageSize: CreateImageRequestSizeEnum = '256x256';
 const clientAi = () => new OpenAIApi(new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: loadSecrets(process.env.INTEGRATION!).openai.apiKey
 }));
 
 const params: Partial<CreateCompletionRequest> = {
@@ -98,12 +99,11 @@ const defaultConfig: any = {
     },
     "suporte-ti": {
         ...params,
-        prompt: `🤖 é um chatbot de Suporte de TI para uma prefeitura, com soluções claras de problemas técnicos do dia-a-dia, muito útil para os funcionários da prefeitura operarem seus computadores com sistema operacional Windows e um sistema na rede interna.\nV: Oi?\n🤖: Olá, sou chatbot de Suporte de TI, como posso ajudar?\nV: obrigado?\n🤖: Por nada, se tiver novas dúvidas é só dizer.\nV: Tchau?\n🤖: Até mais, se tiver novas dúvidas é só dizer.\nV: Quantos libras há em um quilograma?\n🤖: Tem 2.2046 e você pode fazer essa pergunta diretamente no Google, para isso, faça:\n1 - abra o navegador Google Chrome;\n2 - clique na barra de endereços e digite *https://google.com.br*;\n3 - aperte *ENTER* e aguarde a página carregar;\n4 - clique na caixa de pesquisa e digite: *converta 1 libra para quilogramas*;\n5 - aperte "*ENTER*" e veja o resultado na sua tela;\nSe tiver novas dúvidas é só dizer.\nV: O que significa HTML?\n🤖: HTML (HyperText Markup Language) é uma linguagem de marcação utilizada para criar páginas web. Para saber mais você pode acessar o curso da W3C em *https://www.w3schools.com/html*\nSe tiver novas dúvidas é só dizer.\nV: Quando o primeiro avião voou?\n🤖: 17 de dezembro de 1903, um marco para a aviação. Se você deseja assuntos desse aspecto, posso te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Qual é o significado da vida?\n🤖: A vida significa várias coisas, todas elas baseadas no processo de vivência individual, o que nos torna únicos não apenas no corpo, mas na alma, na mente e no coração. Nesse caso é melhor eu te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Que horas são?\n🤖: É hora de resolvermos seu problema, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV:`,
+        prompt: `🤖 é um chatbot de Suporte de TI para funcionários de prefeitura, com soluções de problemas técnicos do dia-a-dia, indicando como solucionar problemas técnicos de computadores.\nV: Oi?\n🤖: Olá, sou Agente de Suporte de TI, como posso ajudar?\nV: obrigado?\n🤖: Por nada, se tiver novas dúvidas é só dizer.\nV: Tchau?\n🤖: Até mais, já ficarei ansioso para te ajudar novamente.\nV: Quantos libras há em um quilograma?\n🤖: Matemática é bom hein, você pode fazer essa pergunta diretamente no Google, para isso, basta seguir os passos:\n1 - abra o navegador Google Chrome;\n2 - clique na barra de endereços e digite *https://google.com.br*;\n3 - aperte *ENTER* e aguarde a página carregar;\n4 - clique na caixa de pesquisa e digite: *converta 1 libra para quilogramas*;\n5 - aperte "*ENTER*" e veja o resultado na sua tela;\nSe tiver novas dúvidas é só dizer.\nV: O que significa HTML?\n🤖: HTML (HyperText Markup Language) é uma linguagem de marcação utilizada para criar páginas web. Para saber mais você pode acessar o curso da W3C em *https://www.w3schools.com/html*.\nComo posso continuar ajudando?\nV: Quando o primeiro avião voou?\n🤖: Embora eu tenha bastante conhecimento histórico, aqui vamos focar em atender suas demandas de tecnologia, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV: Qual é o significado da vida?\n🤖: A vida significa várias coisas, embora eu tenha bastante conhecimento filosófico, aqui vou focar em atender suas demandas de tecnologia, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV: Que horas são?\n🤖: Embora eu tenha bastante conhecimento, aqui vou focar em atender suas demandas de tecnologia, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV: O que é um computador?\n🤖: Um computador é um dispositivo eletrônico que recebe dados, processa, armazena informações e emite resultados. Se tiver novas dúvidas é só dizer.\nV:`,
         max_tokens: 500,
-        temperature: 0.3,
+        temperature: 0.6,
         frequency_penalty: 0,
-        presence_penalty: 0.6,
-
+        presence_penalty: 0,
         stop: ["\nV:"]
     } as Partial<CreateCompletionRequest>
 };
@@ -131,7 +131,7 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
 };
 const completion = async (config: CreateCompletionRequest) => {
     const api = new OpenAIApi(new Configuration({
-        apiKey: process.env.OPENAI_API_KEY
+        apiKey: loadSecrets(process.env.INTEGRATION!).openai.apiKey
     }))
     try {
         const { data } = await api.createCompletion(config);
@@ -155,7 +155,7 @@ const writeAText = async (config: Partial<CreateCompletionRequest>) => {
 const editingText = async (config: Partial<CreateEditRequest>) => {
     return await editIt(config)
 };
-const writeInstructions = async (prompt: any) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, top_p: 0, presence_penalty: 2 });
+const writeInstructions = async (prompt: any) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, presence_penalty: 2 });
 const giveMeImage = async (prompt: string, size: CreateImageRequestSizeEnum = imageSize) => {
     const response = await clientAi().createImage({
         prompt,
@@ -182,7 +182,6 @@ const translateTrainingPhrases = async (trainingPhrases: string) => {
         prompt: `create an correponding list of sentences in portuguese:\n${trainingPhrases}\n["`,
         temperature: 1,
         max_tokens: 700,
-        top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
         stop: '"]',
@@ -200,7 +199,6 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
         prompt,
         temperature: 0,
         max_tokens: 2000,
-        top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0
     });
@@ -213,7 +211,6 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
 //         prompt: `${configPrompt} ${prompt}`,
 //         temperature: 0.9,
 //         max_tokens: 500,
-//         top_p: 1,
 //         frequency_penalty: 0,
 //         presence_penalty: 0.6,
 //         stop: [" V:", " 🤖:"],

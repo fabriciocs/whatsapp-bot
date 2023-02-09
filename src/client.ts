@@ -4,7 +4,7 @@ dotEnvConfig({ path: resolve('.env') });
 
 import { Entry, Log, Logging } from "@google-cloud/logging";
 
-import * as readline from 'readline/promises';
+import * as readline from 'readline';
 
 
 import dbConfig from './db-config';

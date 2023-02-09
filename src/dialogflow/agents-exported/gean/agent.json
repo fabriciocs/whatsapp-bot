@@ -1,0 +1,35 @@
+{
+  "defaultLanguageCode": "pt-br",
+  "timeZone": "America/Buenos_Aires",
+  "enableLogging": true,
+  "projectNumber": 350781892345,
+  "speechToTextSettings": {
+  
+  },
+  "startFlow": "Default Start Flow",
+  "enableStackdriverLogging": true,
+  "advancedSettings": {
+    "audioExportGcsDestination": {
+    
+    },
+    "speechSettings": {
+      "endpointerSensitivity": 90,
+      "noSpeechTimeout": {
+        "seconds": 5
+      }
+    },
+    "playbackInterruptionSettings": {
+    
+    },
+    "loggingSettings": {
+      "enableStackdriverLogging": true,
+      "enableInteractionLogging": true
+    }
+  },
+  "speakerIdSettings": {
+  
+  },
+  "bigqueryExportSettings": {
+  
+  }
+}
