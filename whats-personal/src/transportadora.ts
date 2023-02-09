@@ -20,16 +20,6 @@ export interface Transportadora {
     imagem: string;
     listaDeProprietarios: Proprietario[];
 }
-
-/**
- * crie a classe de proprietario
- * entity Proprietario {
-nome String required,
-cpf String required,
-telefone String required,
-email String required
-}
- */
 export interface Proprietario {
     nome: string;
     cpf: string;

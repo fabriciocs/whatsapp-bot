@@ -4,55 +4,7 @@ import { MsgTypes } from './msg/msg';
 import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
 import { reply } from './reply';
 const whatsMessageRef = 'whatsapp/oficial/{id}/entry/{entry}/changes/{change}/value/messages';
-const textMessageRef = 'textToCommand/{id}/messages';
-
-export const textToCommand = functions
-    .runWith({
-        secrets: ["INTEGRATION"]
-    })
-    .database
-    .ref(textMessageRef)
-    .onCreate(async (snapshot, context) => {
-        const message = snapshot.val() as any;
-        functions.logger.debug(context.params.id, 'message', {
-            receivedMessage: message,
-            context
-        });
-        if (message?.text) {
-            try {
-                const appData = await client.run();
-                const adaptedMsg = new WhatsappMessageAdapter({
-                    from: message.from,
-                    body: message.text,
-                    fromMe: false,
-                    to: message.to,
-                    type: MsgTypes.TEXT,
-                    reply: async (body: string) => {
-                        await reply(message.from, body, message.id);
-                    },
-                    getChat: async () => {
-                        return {
-                            sendMessage: async (body: string) => {
-                                await reply(message.from, body, message.id);
-                            }
-                        }
-                    }
-                });
-                return await appData?.processMessage!(adaptedMsg);
-            } catch (e) {
-                const {
-                    stack,
-                    message,
-                    name,
-                    ...error
-                } = e as Error;
-                functions.logger.error(context.params.id, 'error', name, message ?? 'no message', {
-                    stack,
-                    error
-                });
-            }
-        }
-    });
+//const textMessageRef = 'textToCommand/{id}/messages';
 
 export const whatsappMessage = functions
     .runWith({
@@ -65,8 +17,7 @@ export const whatsappMessage = functions
         const message = original[0];
         functions.logger.debug(context.params.id, 'message', {
             receivedMessage: message,
-            context,
-            original
+            context
         });
         if (message?.text?.body) {
             try {
