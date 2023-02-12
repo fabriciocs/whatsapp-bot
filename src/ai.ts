@@ -126,7 +126,7 @@ const doIt = async (config: Partial<CreateCompletionRequest>) => {
         console.log(e)
     }
     return null;
-}
+};
 const completion = async (config: CreateCompletionRequest) => {
     const { data } = await clientAi.createCompletion(config);
     return data;
@@ -199,8 +199,32 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
     });
     return `["${response?.choices?.[0]?.text}`;
 }
+type CreateModelTrainingPhrasesParams = {
+    name: string;
+    explainPrompt: string;
+    requestPhrases: string;
+}
+const phrasesGenerationConfig  = {
+    model: "text-davinci-003",
+    temperature: 0.5,
+    max_tokens: 2000,
+    frequency_penalty: 0,
+    presence_penalty: 0
+};
 
-const simpleChat = async (configPrompt:string, prompt: string) => {
+const createModelTrainingPhrases = async (instruct) => {
+    const promptPrases = `instruct="${instruct}";
+    IA, Human e Hub são agentes de inteligência de comunicação.
+    Human: é uma pessoa que tem a intenção de utilizar IA com a instrução: {instruct}.
+    IA: é um  chatbot que está sendo usado receber as mensagens de Human e aplicar a instrução recebida.
+    Hub: é um agente que identifica qual a intenção da mensagem de Human e sinaliza quais os parâmetros devem ser passados para IA.
+    
+    Escreva 15 frases que indicam a intenção de Human. Não escreva explicações, apenas retorne as frases, entre aspas e separadas por vírgula:`;
+    const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
+    return phrasesResponse;
+
+}
+const simpleChat = async (configPrompt: string, prompt: string) => {
     const { data } = await clientAi.createCompletion({
         model: "text-davinci-003",
         prompt: `${configPrompt} ${prompt}`,
@@ -222,6 +246,7 @@ export {
     writeInstructions,
     editingText,
     translateTrainingPhrases,
-    createTrainingPhrases
+    createTrainingPhrases,
+    createModelTrainingPhrases
 };
 

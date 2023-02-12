@@ -11,8 +11,7 @@
     "start:build": "yarn build && node ./dist/client.js",
     "build": "yarn clean &&  yarn tsc --build",
     "clean": "yarn shx rm -rf ./dist",
-    "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts",
-    "monc": "yarn ts-node-dev --inspect --respawn ./src/client.ts"
+    "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +19,8 @@
     "4code4devs": "https://github.com/fcs-lab/4code4devs.git#main",
     "@aws-sdk/client-s3": "^3.201.0",
     "@google-cloud/dialogflow-cx": "^3.1.2",
-    "@google-cloud/language": "^5.1.0",
+    "@google-cloud/documentai": "^6.3.0",
+    "@google-cloud/language": "^5.2.0",
     "@google-cloud/logging": "^10.3.3",
     "@google-cloud/speech": "^5.2.0",
     "@google-cloud/text-to-speech": "^4.0.3",
@@ -32,10 +32,10 @@
     "firebase-admin": "^11.5.0",
     "firebase-functions": "^4.2.0",
     "openai": "^3.1.0",
-    "puppeteer": "^19.4.1",
+    "puppeteer": "^19.6.3",
     "qrcode": "^1.5.1",
     "sinesp-api": "^3.0.0",
-    "whatsapp-web.js": "^1.19.2",
+    "whatsapp-web.js": "github:tofers/whatsapp-web.js#fix-queryWidExists",
     "wikijs": "^6.4.0",
     "wpapi": "^1.2.2"
   },

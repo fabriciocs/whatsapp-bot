@@ -1,6 +1,8 @@
-import { config as dotEnvConfig } from 'dotenv';
+import dotenv from 'dotenv';
 import { resolve } from 'path';
-dotEnvConfig({ path: resolve('.env') });
+dotenv.config({
+    path: resolve(__dirname, '../.env'),
+});
 
 import { Entry, Log, Logging } from "@google-cloud/logging";
 
@@ -23,7 +25,7 @@ import { Intent } from './dialogflow/intent';
 import IoChannel, { SendAnswerParams } from './io-channel';
 import MessagesManager from './messages-manager';
 import ConsoleMsg from './msg/console-msg';
-import { Msg } from './msg/msg';
+import { Msg, MsgTypes } from './msg/msg';
 import SessionsManager from './sessions-manager';
 import { readToMe } from './speech-to-text';
 import { baseName, botname, ChatConfigType, commandMarkers, keyReplacer } from './util';
@@ -33,6 +35,7 @@ import { initWhatsappClient } from './client-whatsjs';
 import { Client } from 'whatsapp-web.js';
 import AgentTranslationRemove from './dialogflow/agent-translation-remove';
 import * as admin from 'firebase-admin';
+import { v1beta2, protos } from '@google-cloud/language';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -162,8 +165,9 @@ const om = async (msg: Msg, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await createAudioDirectly(msg, language, answer);
 }
-const onlySay = async (params: SendAnswerParams) => {
-    return await appData.ioChannel.sendAnswer({ ...params, onlyText: false });
+const onlySay = async ({ msg, ...params }: SendAnswerParams) => {
+    msg.type = MsgTypes.AUDIO;
+    return await appData.ioChannel.sendAnswer({ ...params, msg, onlyText: false });
 }
 const voice = async (msg: Msg, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
@@ -341,7 +345,7 @@ const runCommand = async (msg: Msg) => {
         };
 
         await command(msg, params);
-        await appData.ioChannel.sendReply({ msg, content: 'Executado com sucesso' });
+        // await appData.ioChannel.sendReply({ msg, content: 'Executado com sucesso' });
     } catch (error) {
         appData.logger.error(getEntry(error));
         await appData.ioChannel.sendReply({ msg, content: 'Executado com falha' });
@@ -391,17 +395,30 @@ const quit = async () => {
     appData.consoleClient.close();
     process.exit(0);
 }
-// }
+const buildAIDocument = async (msg: Msg, prompt: string[]) => {
+    //analize as entidades do documento
+    const service = new v1beta2.LanguageServiceClient();
+    const request: protos.google.cloud.language.v1beta2.IAnalyzeEntitiesRequest = {
+        document: {
+            content: prompt.join(' '),
+            type: 'PLAIN_TEXT'
+        },
+        encodingType: 'UTF8'
+    };
+    const [result] = await service.analyzeEntities(request);
+    const entities = result.entities;
+    const entityMap = entities.reduce((acc, entity) => {
+        acc[entity.name] = entity.type;
+        return acc;
+    }, {} as Record<string, any>);
+   
+    console.log({
+        entityMap,
+    })
+    await appData.ioChannel.sendReply({ msg, content: JSON.stringify({ entityMap }, null, 4) });
+}
 
-// const desenha = async (msg: Msg, prompt: string) => {
-//     if (!prompt) {
-//         return  await appData.ioChannel.sendAnswer({msg, content: 'informe o que deseja desenhar'});
-//     }
-//         const url = await giveMeImage(prompt);
-//         const image = await MessageMedia.fromUrl(url)
-//         return await chat.sendMessage(image, { sendMediaAsDocument: true, caption: prompt });
-//     }
-// }
+
 const run = async () => {
     const { admin, app } = await dbConfig()
     db = admin.database();
@@ -495,6 +512,7 @@ const run = async () => {
         '4met': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrelaTr.translateEntities(),
         '4t': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
         'quit': async (msg: Msg) => await quit(),
+        'document': async (msg: Msg, prompt: string[]) => await buildAIDocument(msg, prompt),
     };
 
 
@@ -549,6 +567,6 @@ const initConsoleClient = async (fromMe = false) => {
         }
     };
     await runner[exectParam]?.();
-
+   
 })();
 

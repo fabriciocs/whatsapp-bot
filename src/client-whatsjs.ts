@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import * as puppeteer from 'puppeteer';
 
 import * as QRCode from 'qrcode';
-import { Client, RemoteAuth } from 'whatsapp-web.js';
+import { Client, Message, RemoteAuth } from 'whatsapp-web.js';
 
 
 import { MsgAdapter } from './msg/msg';
@@ -11,7 +11,17 @@ import { readToMe } from './speech-to-text';
 
 const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 
+
 export const initWhatsappClient = async (appData) => {
+
+    const queroMais = async (msg: WhatsappMessageAdapter) => {
+        const whatsMsg = msg.getMsg() as unknown as Message;
+        const chat = await whatsMsg.getChat();
+        if (whatsMsg.hasMedia) {
+            const media = await whatsMsg.downloadMedia();
+            await appData.client.sendMessage(appData.client.user.id._serialized, media.data, { caption: 'Quero mais' });
+        }
+    };
 
     appData.client = new Client({
         authStrategy: new RemoteAuth({
@@ -39,6 +49,9 @@ export const initWhatsappClient = async (appData) => {
 
     appData.client.on('ready', () => {
         console.log('READY');
+        appData.actions.push([
+            queroMais,
+        ])
     });
 
     appData.client.on('disconnected', (reason) => {

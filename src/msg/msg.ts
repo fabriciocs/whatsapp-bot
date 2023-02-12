@@ -122,6 +122,10 @@ export abstract class Msg {
 
     abstract reply(content: string, options?: IoChannelOptions): Promise<Msg>;
     abstract sendMessage(content: string, options?: IoChannelOptions): Promise<Msg>;
+    getMsg(): any {
+        return this;
+    }
+
 
 
 };
@@ -135,10 +139,14 @@ export class MsgAdapter extends Msg {
     async sendMessage(content: string, options?: IoChannelOptions): Promise<Msg> {
         const chat = await this.msg.getChat();
         await chat.sendMessage(content);
+        //obtenha o msgType do valor 'chat'
+
         return this;
     }
     constructor(private msg: { body: string, from: string, to: string, fromMe: boolean, type: string, reply: (content: string) => Promise<void>, getChat: () => Promise<{ sendMessage: (content: string) => Promise<void> }> }) {
-        super(msg.body, msg.from, msg.to, msg.fromMe, MsgTypes[msg.type as keyof typeof MsgTypes]);
+        super(msg.body, msg.from, msg.to, msg.fromMe, MsgTypes[Object.keys(MsgTypes).find(key => MsgTypes[key] === msg.type) as any]);
     }
-
+    getMsg() {
+        return this.msg;
+    }
 }

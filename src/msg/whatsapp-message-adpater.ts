@@ -6,6 +6,7 @@ export default class WhatsappMessageAdapter extends MsgAdapter {
     constructor(private whatsMsg: Message) {
         super(whatsMsg as any);
     }
+
     async reply(content: string, options?: IoChannelOptions): Promise<Msg> {
         if (this.isAudio) {
             const audio = new MessageMedia('audio/ogg', content);

@@ -1144,6 +1144,13 @@
   dependencies:
     google-gax "^3.5.2"
 
+"@google-cloud/documentai@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/documentai/-/documentai-6.3.0.tgz#f15a1319be90180a233086e19047afffa275ecdb"
+  integrity sha512-hRBPTVsZPEmt8iBPLXI2JHqe6g54Da+5C3ull+ib2AkNvtdzAF+Xj+zhmfk9Lh1TixDAINwzN7kFyPLRuyrCyA==
+  dependencies:
+    google-gax "^3.5.2"
+
 "@google-cloud/firestore@^6.4.0":
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/@google-cloud/firestore/-/firestore-6.4.1.tgz#3cd32ffb10a563a9c3c91236b51e49e4cd088393"
@@ -1154,10 +1161,10 @@
     google-gax "^3.5.1"
     protobufjs "^7.0.0"
 
-"@google-cloud/language@^5.1.0":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-5.1.2.tgz#948e93709ea9a92735efe19492cde34d7a73e0b5"
-  integrity sha512-6qhVul6depYBTcnn9y+GXCL7UUBWQV0lKnWovjKK3ZLGWazU5y+3RoKUVtCT6hjCqguEKs5ksvqlEJMiy4lySw==
+"@google-cloud/language@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/language/-/language-5.2.0.tgz#d8eea71a9c9045299c34e4e20bf7846267d319b3"
+  integrity sha512-aNb6sl76VL6/xNI4q98DhfcyTBOUyq8UkuoyotnAbUlFv2IhziuwBeGePK5b0BIDQeu7aMAdlmcqNNDIAxmPcw==
   dependencies:
     google-gax "^3.5.2"
 
@@ -2614,6 +2621,11 @@ devtools-protocol@0.0.1068969:
   version "0.0.1068969"
   resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1068969.tgz#8b9a4bc48aed1453bed08d62b07481f9abf4d6d8"
   integrity sha512-ATFTrPbY1dKYhPPvpjtwWKSK2mIwGmRwX54UASn9THEuIZCe2n9k3vVuMmt6jWeL+e5QaaguEv/pMyR+JQB7VQ==
+
+devtools-protocol@0.0.1082910:
+  version "0.0.1082910"
+  resolved "https://registry.yarnpkg.com/devtools-protocol/-/devtools-protocol-0.0.1082910.tgz#d79490dc66ef23eb17a24423c9ce5ce661714a91"
+  integrity sha512-RqoZ2GmqaNxyx+99L/RemY5CkwG9D0WEfOKxekwCRXOGrDCep62ngezEJUVMq6rISYQ+085fJnWDQqGHlxVNww==
 
 diff@^4.0.1:
   version "4.0.2"
@@ -4189,10 +4201,17 @@ minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.0.1, minimatch@^5.1.0:
+minimatch@^5.0.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.2.tgz#0939d7d6f0898acbd1508abe534d1929368a8fff"
   integrity sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==
+  dependencies:
+    brace-expansion "^2.0.1"
+
+minimatch@^5.1.0:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
+  integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
   dependencies:
     brace-expansion "^2.0.1"
 
@@ -4265,10 +4284,17 @@ node-emoji@1.11.0:
   dependencies:
     lodash "^4.17.21"
 
-node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.5, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+node-fetch@^2.6.5:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
+  integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
   dependencies:
     whatwg-url "^5.0.0"
 
@@ -4699,14 +4725,14 @@ puppeteer-core@19.4.1:
     unbzip2-stream "1.4.3"
     ws "8.11.0"
 
-puppeteer-core@19.5.1:
-  version "19.5.1"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.5.1.tgz#6bcca3bcb12382c30ce9b3964bade2abcde4f78d"
-  integrity sha512-+ai/wdeAulICv1a7Gs3W+WKb+CCqsNRM1n5IdR3w+KVGg/wcqE9VPgp6fXsjA16XAA+4kWofYxN6xLl1S0OKpg==
+puppeteer-core@19.6.3:
+  version "19.6.3"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-19.6.3.tgz#e3334fbb4ccb2c1ca6f4597e2f082de5a80599da"
+  integrity sha512-8MbhioSlkDaHkmolpQf9Z7ui7jplFfOFTnN8d5kPsCazRRTNIH6/bVxPskn0v5Gh9oqOBlknw0eHH0/OBQAxpQ==
   dependencies:
     cross-fetch "3.1.5"
     debug "4.3.4"
-    devtools-protocol "0.0.1068969"
+    devtools-protocol "0.0.1082910"
     extract-zip "2.0.1"
     https-proxy-agent "5.0.1"
     proxy-from-env "1.1.0"
@@ -4726,16 +4752,16 @@ puppeteer@19.4.1, puppeteer@^13.0.0:
     proxy-from-env "1.1.0"
     puppeteer-core "19.4.1"
 
-puppeteer@^19.4.1:
-  version "19.5.1"
-  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.5.1.tgz#25a159e0ffc86a31ebac9333b7435cc11c4d844f"
-  integrity sha512-8097xQkzbeA7jw4ubXvz7R5Lmt5Tpj9RzbetP/W1BGiHoIwgoniFwl6gpoWtGsLfI8m69YCLnxzWCW5XBMtz1g==
+puppeteer@^19.6.3:
+  version "19.6.3"
+  resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-19.6.3.tgz#4edc7ea87f7e7e7b2885395326a6c9e5a222a10b"
+  integrity sha512-K03xTtGDwS6cBXX/EoqoZxglCUKcX2SLIl92fMnGMRjYpPGXoAV2yKEh3QXmXzKqfZXd8TxjjFww+tEttWv8kw==
   dependencies:
     cosmiconfig "8.0.0"
     https-proxy-agent "5.0.1"
     progress "2.0.3"
     proxy-from-env "1.1.0"
-    puppeteer-core "19.5.1"
+    puppeteer-core "19.6.3"
 
 qrcode@^1.5.1:
   version "1.5.1"
@@ -5698,10 +5724,9 @@ websocket-extensions@>=0.1.1:
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
-whatsapp-web.js@^1.19.2:
-  version "1.19.2"
-  resolved "https://registry.yarnpkg.com/whatsapp-web.js/-/whatsapp-web.js-1.19.2.tgz#91fca99ea0e78f17a223aafff2edcffea5049560"
-  integrity sha512-ibEKy0KJsmH1rH9DKXfWk9vCnP/Dw/nZF9Ax3M7LCYtumSC+fiXMRF3BMVu7E75NRdv1pzjw4v05/Oq9aYY6aA==
+"whatsapp-web.js@github:tofers/whatsapp-web.js#fix-queryWidExists":
+  version "1.19.3"
+  resolved "https://codeload.github.com/tofers/whatsapp-web.js/tar.gz/d4c04f705277dd98979609868a7605ac46c2f8c1"
   dependencies:
     "@pedroslopez/moduleraid" "^5.0.2"
     fluent-ffmpeg "^2.1.2"
