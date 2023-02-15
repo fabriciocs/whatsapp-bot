@@ -1,0 +1,11 @@
+[
+
+1. "Como usar o Solr?", 
+2. "Como posso configurar o Solr?", 
+3. "Quais são as vantagens do Solr?", 
+4. "Quais são os recursos do Solr?", 
+5. "Qual é a diferença entre o Solr e o Elasticsearch?"
+
+"Como posso usar o Solr?", "Como faço para indexar meus dados no Solr?", "Como posso configurar o Solr?", "Qual a melhor maneira de usar o Solr?", "Como posso acessar os dados indexados no Solr?", "Como posso gerenciar minhas consultas no Solr?", "Como faço para fazer uma busca no Solr?", "Como posso usar a pesquisa avançada no Solr?", "Como o Solr trata os resultados da consulta?", "Como posso melhorar os resultados da minha busca no Solr?", "Como posso personalizar os resultados da minha busca no Solr?", "Como faço para criar um novo índice no Solr?", "Como faço para indexar meus dados em tempo real no Solr?", "Como faço para gerenciar os dados indexados no Solr?", "Como posso usar o Solr para criar novos recursos?"
+
+"Pesquise por 'restaurantes japoneses'", "Encontre 'lojas de roupas'", "Busque 'bares em São Paulo'", "Localize 'praias em Florianópolis'", "Encontre 'bibliotecas na cidade de São Paulo'", "Pesquise 'cinemas em Curitiba'", "Busque 'hotéis em Porto Alegre'", "Localize 'teatros em Belo Horizonte'", "Encontre 'parques em Brasília'", "Pesquise 'livrarias em Goiânia'", "Busque 'museus em Manaus'", "Localize 'galerias de arte em Recife'", "Encontre 'restaurantes em Salvador'", "Pesquise 'lojas de móveis em Belém'", "Busque 'bares em Fortaleza'"]

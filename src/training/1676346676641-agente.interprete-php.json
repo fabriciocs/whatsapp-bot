@@ -1,0 +1,39 @@
+[
+
+1. "O que é o PHP?", 
+2. "Como faço para instalar o PHP?", 
+3. "O que é o código fonte do PHP?", 
+4. "Qual é a sintaxe do PHP?", 
+5. "Como posso usar o PHP para criar um website?"
+
+"Oi, eu preciso de ajuda com o PHP", 
+"Como posso usar a função substr()?", 
+"Qual é a sintaxe correta para declarar uma variável?", 
+"Como posso usar a estrutura de loop for?", 
+"Como posso criar um array em PHP?", 
+"Como posso enviar um formulário com PHP?", 
+"Como posso usar o método POST em PHP?", 
+"Como posso usar o método GET em PHP?", 
+"Como posso usar o comando echo no PHP?", 
+"Como posso usar a função strlen()?", 
+"Como posso usar a função trim()?", 
+"Como posso usar a função date()?", 
+"Como posso usar a função array_merge()?", 
+"Como posso usar a função array_shift()?", 
+"Como posso usar a função array_pop()?"
+
+"Executar um script PHP",
+"Criar uma variável em PHP",
+"Acessar um banco de dados MySQL com PHP",
+"Criar um loop em PHP",
+"Debugar um código PHP",
+"Enviar um e-mail com PHP",
+"Criar uma sessão em PHP",
+"Integrar um sistema de pagamento com PHP",
+"Encriptar dados com PHP",
+"Criar um formulário em PHP",
+"Criar um upload de arquivos com PHP",
+"Criar um arquivo PDF com PHP",
+"Utilizar cookies com PHP",
+"Criar uma API com PHP",
+"Usar a função date() em PHP"]

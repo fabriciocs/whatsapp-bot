@@ -3,7 +3,7 @@ import { Message } from 'whatsapp-web.js';
 import { tryIt, waitFor } from './util';
 
 const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: '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',
 });
 const clientAi = new OpenAIApi(configuration);
 export default class OpenAIManager {
@@ -204,7 +204,7 @@ type CreateModelTrainingPhrasesParams = {
     explainPrompt: string;
     requestPhrases: string;
 }
-const phrasesGenerationConfig  = {
+const phrasesGenerationConfig = {
     model: "text-davinci-003",
     temperature: 0.5,
     max_tokens: 2000,
@@ -212,17 +212,19 @@ const phrasesGenerationConfig  = {
     presence_penalty: 0
 };
 
+const createModelTrainingPhrasesToAgente = async (agente) => {
+    const promptPrases = `Escreva 5 exemplos de frases de treinamento do Dialogflow-cx para "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
+    const promptUsingPhrases = `Escreva 15 mensagem humanas para um chatbot de "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesUsinResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptUsingPhrases });
+    const promptRealPhrases = `Escreva 15 exemplos de utilização no mundo real de um chatbot que atua como "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesRealResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptRealPhrases });
+    return `${phrasesResponse}${phrasesUsinResponse}${phrasesRealResponse}`;
+}
 const createModelTrainingPhrases = async (instruct) => {
-    const promptPrases = `instruct="${instruct}";
-    IA, Human e Hub são agentes de inteligência de comunicação.
-    Human: é uma pessoa que tem a intenção de utilizar IA com a instrução: {instruct}.
-    IA: é um  chatbot que está sendo usado receber as mensagens de Human e aplicar a instrução recebida.
-    Hub: é um agente que identifica qual a intenção da mensagem de Human e sinaliza quais os parâmetros devem ser passados para IA.
-    
-    Escreva 15 frases que indicam a intenção de Human. Não escreva explicações, apenas retorne as frases, entre aspas e separadas por vírgula:`;
+    const promptPrases = `Escreva 15 sentenças que completem a instrução "${instruct}". Não escreva explicações, apenas retorne as frases, entre aspas e separadas por vírgula:`;
     const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
     return phrasesResponse;
-
 }
 const simpleChat = async (configPrompt: string, prompt: string) => {
     const { data } = await clientAi.createCompletion({
@@ -247,6 +249,7 @@ export {
     editingText,
     translateTrainingPhrases,
     createTrainingPhrases,
-    createModelTrainingPhrases
+    createModelTrainingPhrases,
+    createModelTrainingPhrasesToAgente
 };
 

@@ -1,34 +1,50 @@
-import { createModelTrainingPhrases } from './ai';
-import { writeFileSync } from 'fs';
+import dotenv from 'dotenv';
 import { resolve } from 'path';
+dotenv.config({
+    path: resolve(__dirname, '../.env'),
+});
+
+import { createModelTrainingPhrases, createModelTrainingPhrasesToAgente } from './ai';
+import { writeFileSync } from 'fs';
+import { Axios } from 'axios';
 
 const models = require('./models.json');
 const agentNameFormatted = (agentName) => {
     const agentNameLowerCase = agentName.toLowerCase();
     const agentNameWithoutAccent = agentNameLowerCase.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     const agentNameWithoutSpaces = agentNameWithoutAccent.replace(/ /g, '-');
-    
-    const agentNameFormatted = `agente.${agentNameWithoutSpaces}`;
+    const agentNameWithoutSlashes = agentNameWithoutSpaces.replace(/\//g, '-');
+
+    const agentNameFormatted = `agente.${agentNameWithoutSlashes}`;
     return agentNameFormatted;
 };
 (async () => {
     const phrases = [];
+    const hash = new Date().getTime();
     for (let i = 0; i < models.length; i++) {
         try {
             const model = models[i];
             const name = Object.keys(model)[0];
             const intents = model[name];
-            const modelPhrases = await createModelTrainingPhrases(intents);
-            phrases.push(modelPhrases);
-            const text = JSON.stringify(modelPhrases, null, 2);
+            const modelPhrases = await createModelTrainingPhrasesToAgente(name);
+            //remove o último ponto final da frase utilizando regex
+            const modelPhrasesFormatted = modelPhrases.replace(/\.$/, '');
+            const text = `[${modelPhrasesFormatted}]`;
+            phrases.push(text);
             console.log(text);
-            writeFileSync(resolve(`./training-${agentNameFormatted(name)}.json`), text);
+            const path = resolve(`./src/training/${hash}-${agentNameFormatted(name)}.json`);
+            writeFileSync(path, text);
         } catch (e) {
-            console.log(e);
+            if (e.response) {
+                console.log(e.response.data);
+            } else if (e.message) {
+                console.log(e.message);
+            } else {
+                console.log(e);
+            }
         }
-
     }
-    writeFileSync(resolve('./training.json'), JSON.stringify(phrases, null, 2));
+    writeFileSync(resolve(`./src/training/${hash}.json`),phrases.join(''));
 })();
 
 
