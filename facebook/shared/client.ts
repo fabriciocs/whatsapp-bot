@@ -1,5 +1,6 @@
 
 import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
 import { withConfig, writeAText } from './ai';
 import ChatConfigsManager from './chat-configs-manager';
 import { Intent } from './dialogflow/intent';
@@ -185,7 +186,8 @@ const runCommand = async (msg: Msg) => {
     }
 }
 const run = async () => {
-    const db = functions.app.admin.database();
+
+    const db = admin.initializeApp().database();
     appData.secrets = loadSecrets(process.env.INTEGRATION!)
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`whatsapp/chatConfigs`));
     appData.ioChannel = new IoChannel();

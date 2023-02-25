@@ -1,14 +1,24 @@
 {
   "functions": [
     {
-      "source": "whats-personal",
+      "source": "facebook/receiver",
+      "codebase": "facebook-receiver",
       "ignore": [
         "node_modules",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log"
-      ],
-      "codebase": "default"
+      ]
+    },
+    {
+      "source": "facebook/proccessor",
+      "codebase": "facebook-proccessor",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
     }
   ],
   "emulators": {

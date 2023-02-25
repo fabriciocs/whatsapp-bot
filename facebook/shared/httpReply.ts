@@ -2,7 +2,7 @@
 import axios from "axios";
 import * as functions from "firebase-functions";
 import { loadSecrets } from "./secrets";
-export const reply = async (to: string, content: string, id: string) => {
+export const httpReply = async (to: string, content: string, id: string) => {
     const data = {
         "messaging_product": "whatsapp",
         "recipient_type": "individual",

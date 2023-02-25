@@ -1,12 +1,12 @@
 {
-  "name": "functions",
+  "name": "receiver",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
     "serve": "yarn --ignore-engines build && firebase emulators:start",
     "shell": "yarn --ignore-engines build && firebase functions:shell",
     "start": "yarn --ignore-engines shell",
-    "deploy": "yarn --ignore-engines build && firebase deploy --only functions:whatsappMessage",
+    "deploy": "yarn --ignore-engines build && firebase deploy --only functions:facebookReceiver",
     "logs": "firebase functions:log",
     "mon": "yarn --ignore-engines ts-node-dev --inspect --respawn ./src/index.ts"
   },

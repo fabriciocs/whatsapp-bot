@@ -49,9 +49,7 @@ export const initWhatsappClient = async (appData) => {
 
     appData.client.on('ready', () => {
         console.log('READY');
-        appData.actions.push([
-            queroMais,
-        ])
+        appData.actions['quero+'] = queroMais;
     });
 
     appData.client.on('disconnected', (reason) => {

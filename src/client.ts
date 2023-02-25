@@ -411,7 +411,7 @@ const buildAIDocument = async (msg: Msg, prompt: string[]) => {
         acc[entity.name] = entity.type;
         return acc;
     }, {} as Record<string, any>);
-   
+
     console.log({
         entityMap,
     })
@@ -557,16 +557,6 @@ const initConsoleClient = async (fromMe = false) => {
 }
 (async () => {
     await run();
-    const exectParam = process.argv[2];
-    const runner = {
-        'console': async () => await initConsoleClient(true),
-        'whats': async () => await initWhatsappClient(appData),
-        'both': async () => {
-            await initConsoleClient();
-            await initWhatsappClient(appData);
-        }
-    };
-    await runner[exectParam]?.();
-   
+    await initWhatsappClient(appData);
 })();
 

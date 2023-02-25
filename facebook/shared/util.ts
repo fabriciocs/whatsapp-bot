@@ -12,11 +12,11 @@ export type ChatConfigType = {
     isUnique: () => boolean;
     prefix: string;
 };
-export const chunked = (arr: any[], size: number) => {
-    const chunked_arr = [];
+export const chunked = <T>(arr: T[], size: number) => {
+    const chunked_arr = [] as T[];
     let index = 0;
     while (index < arr.length) {
-        chunked_arr.push(arr.slice(index, size + index));
+        chunked_arr.push(...arr.slice(index, size + index));
         index += size;
     }
     return chunked_arr;
@@ -34,7 +34,7 @@ export const prepareText = (text: string) => text?.replace(/\n/g, ' ').replace(/
 
 export const sumArrayItem = (from: number[], to: number[]) => {
     const size = Math.max(from.length, to.length);
-    const result = [];
+    const result = [] as number[];
     for (let i = 0; i < size; i++) {
         result.push((from[i] || 0) + (to[i] || 0));
     }

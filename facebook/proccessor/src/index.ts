@@ -1,12 +1,10 @@
 import * as functions from 'firebase-functions';
-import client from './client';
-import { MsgTypes } from './msg/msg';
-import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
-import { reply } from './reply';
+import client from '../../shared/client';
+import { MsgTypes } from '../../shared/msg/msg';
+import WhatsappMessageAdapter from '../../shared/msg/whatsapp-message-adpater';
+import { httpReply } from '../../shared/httpReply';
 const whatsMessageRef = 'whatsapp/oficial/{id}/entry/{entry}/changes/{change}/value/messages';
-//const textMessageRef = 'textToCommand/{id}/messages';
-
-export const whatsappMessage = functions
+export const proccessor = functions
     .runWith({
         secrets: ["INTEGRATION"]
     })
@@ -24,7 +22,7 @@ export const whatsappMessage = functions
                 const appData = await client.run();
                 const metadataRef = (await snapshot.ref.parent?.child('metadata').get());
                 const metadata = metadataRef?.val();
-                functions.logger.info(context.params.id, 'metadata', {
+                functions.logger.debug(context.params.id, 'metadata', {
                     metadata
                 });
                 const adaptedMsg = new WhatsappMessageAdapter({
@@ -33,16 +31,12 @@ export const whatsappMessage = functions
                     fromMe: false,
                     to: metadata?.display_phone_number,
                     type: MsgTypes.TEXT,
-                    reply: async (body: string) => {
-                        await reply(message.from, body, message.id);
-                    },
-                    getChat: async () => {
-                        return {
-                            sendMessage: async (body: string) => {
-                                await reply(message.from, body, message.id);
-                            }
+                    reply: async (body: string) => await httpReply(message.from, body, message.id),
+                    getChat: async () => ({
+                        sendMessage: async (body: string) => {
+                            await httpReply(message.from, body, message.id);
                         }
-                    }
+                    })
                 });
                 return await appData?.processMessage!(adaptedMsg);
             } catch (e) {
