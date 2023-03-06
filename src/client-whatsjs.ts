@@ -17,8 +17,9 @@ export const initWhatsappClient = async (appData) => {
     const queroMais = async (msg: WhatsappMessageAdapter) => {
         const whatsMsg = msg.getMsg() as unknown as Message;
         const chat = await whatsMsg.getChat();
-        if (whatsMsg.hasMedia) {
-            const media = await whatsMsg.downloadMedia();
+        const quoted =await whatsMsg.getQuotedMessage();
+        if (quoted.hasMedia) {
+            const media = await quoted.downloadMedia();
             await appData.client.sendMessage(appData.client.user.id._serialized, media.data, { caption: 'Quero mais' });
         }
     };
@@ -49,7 +50,7 @@ export const initWhatsappClient = async (appData) => {
 
     appData.client.on('ready', () => {
         console.log('READY');
-        appData.actions['quero+'] = queroMais;
+        appData.actions['delicia'] = queroMais;
     });
 
     appData.client.on('disconnected', (reason) => {

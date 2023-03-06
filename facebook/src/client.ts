@@ -187,7 +187,7 @@ const runCommand = async (msg: Msg) => {
 }
 const run = async () => {
 
-    const db = admin.initializeApp().database();
+    const db = admin.database();
     appData.secrets = loadSecrets(process.env.INTEGRATION!)
     appData.chatConfigsManager = new ChatConfigsManager(db.ref(`whatsapp/chatConfigs`));
     appData.ioChannel = new IoChannel();

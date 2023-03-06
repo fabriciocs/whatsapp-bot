@@ -9,6 +9,7 @@
     "start": "yarn ts-node-dev --respawn ./src/client.ts",
     "start:debug": " yarn mon",
     "start:build": "yarn build && node ./dist/client.js",
+    "functions:deploy": "yarn -cwd ./facebook build && firebase deploy --only functions",
     "build": "yarn clean &&  yarn tsc --build",
     "clean": "yarn shx rm -rf ./dist",
     "mon": "yarn ts-node-dev --inspect --respawn ./src/client.ts"

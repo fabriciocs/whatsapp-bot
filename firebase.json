@@ -1,18 +1,8 @@
 {
   "functions": [
     {
-      "source": "facebook/receiver",
-      "codebase": "facebook-receiver",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log"
-      ]
-    },
-    {
-      "source": "facebook/proccessor",
-      "codebase": "facebook-proccessor",
+      "source": "facebook",
+      "codebase": "default",
       "ignore": [
         "node_modules",
         ".git",

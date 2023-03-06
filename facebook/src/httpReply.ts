@@ -24,6 +24,7 @@ export const httpReply = async (to: string, content: string, id: string) => {
         'Authorization': `Bearer ${token}`
     };
     try {
+        functions.logger.debug('httpReply', { url, data, headers  });
         await axios.post(url!, data, { headers });
     } catch (e) {
         if (axios.isAxiosError(e)) {
@@ -31,6 +32,7 @@ export const httpReply = async (to: string, content: string, id: string) => {
         } else {
             functions.logger.error(e);
         }
+        functions.logger.error(data);
     }
 }
 
