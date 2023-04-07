@@ -2,12 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../bot-4customers"
-		},
-		{
-			"path": "../ebooks"
 		}
 	],
 	"settings": {}

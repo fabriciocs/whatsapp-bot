@@ -7,8 +7,10 @@ export default class SessionsManager implements Store {
   constructor(private storage = admin.storage().bucket(process.env.BUCKET_SESSIONS_URL)) {
   }
   async sessionExists(options: { session: string; }): Promise<boolean> {
-    const { id } = this.getZipDestination(options);
+    const { id, destination } = this.getZipDestination(options);
     const [exists] = await this.storage.file(id).exists();
+    //if destination file exists, return true
+    
     return exists;
   }
 

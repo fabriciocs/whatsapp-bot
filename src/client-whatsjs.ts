@@ -34,6 +34,7 @@ export const initWhatsappClient = async (appData) => {
     });
 
 
+    appData.actions['delicia'] = queroMais;
 
     appData.client.on('loading_screen', (percent, message, ...rest) => {
         console.log('LOADING SCREEN', percent, message, rest);
@@ -50,7 +51,6 @@ export const initWhatsappClient = async (appData) => {
 
     appData.client.on('ready', () => {
         console.log('READY');
-        appData.actions['delicia'] = queroMais;
     });
 
     appData.client.on('disconnected', (reason) => {
