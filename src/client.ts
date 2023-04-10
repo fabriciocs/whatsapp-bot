@@ -36,26 +36,12 @@ import { Client } from 'whatsapp-web.js';
 import AgentTranslationRemove from './dialogflow/agent-translation-remove';
 import * as admin from 'firebase-admin';
 import { v1beta2, protos } from '@google-cloud/language';
+import { AppData } from './app-data';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
 
-const appData: {
-    processMessage?: (receivedMsg: Msg) => Promise<void>;
-    actions?: Record<string, any>,
-    consoleClient?: readline.Interface;
-    ioChannel?: IoChannel;
-    commands?: Commands,
-    contexts?: Contexts,
-    msgs?: MessagesManager,
-    sessionManager?: SessionsManager;
-    chatConfigsManager?: ChatConfigsManager;
-    commandConfigsManager?: CommandConfigsManager;
-    logger?: Log;
-    fullBaseName?: string;
-    whatsappRef?: admin.database.Reference;
-    client?: Client;
-} = {
+const appData: AppData = {
 };
 
 

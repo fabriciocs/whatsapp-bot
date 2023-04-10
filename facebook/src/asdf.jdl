@@ -1,0 +1,55 @@
+// Gestão de Segurança
+Entity Profile {
+    profileID INT NOT NULL,
+    userID INT NOT NULL, 
+    empresaID INT NOT NULL, 
+    nivelAcesso INT NOT NULL, 
+    PRIMARY KEY (profileID)
+}
+
+// Cadastro de Empresas Hierárquico
+Entity Empresa {
+    empresaID INT NOT NULL,
+    nomeEmpresa VARCHAR(50) NOT NULL,
+    PRIMARY KEY (empresaID)
+}
+
+// Cadastro de Pessoas
+Entity Pessoa {
+    pessoaID INT NOT NULL,
+    rg INT NOT NULL, 
+    cpf NUMERIC(11) NOT NULL, 
+    cnh INT NOT NULL, 
+    passaporte INT NOT NULL, 
+    PRIMARY KEY (pessoaID),
+    FOREIGN KEY (rg, cpf) REFERENCES DocumentoPessoal(rg, cpf)
+}
+
+// Cadastro de Veículos com todos os documentos
+Entity Veiculo {
+    veiculoID INT NOT NULL,
+    rtrnc INT NOT NULL, 
+    model INT NOT NULL,
+    placa VARCHAR(8) NOT NULL, 
+    PRIMARY KEY (veiculoID)
+}
+
+// Gestão Financeira baseada em controles de custos, gerenciais e contábeis 
+Entity Financeiro {
+    financeiroID INT NOT NULL,
+    areaGerencia VARCHAR(50) NOT NULL,
+    areaContabil VARCHAR(50) NOT NULL,
+    custo DECIMAL NOT NULL,
+    PRIMARY KEY (financeiroID)
+}
+
+// Gestão de Funcionários por departamento
+Entity Funcionario {
+    funcionarioID INT NOT NULL,
+    departamento VARCHAR(50) NOT NULL,
+    nomeFuncionario VARCHAR(50) NOT NULL,
+    cargo VARCHAR(50) NOT NULL,
+    salario DECIMAL NOT NULL,
+    PRIMARY KEY (funcionarioID)
+}
+

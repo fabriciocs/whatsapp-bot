@@ -36,7 +36,7 @@
     "puppeteer": "^19.8.5",
     "qrcode": "^1.5.1",
     "sinesp-api": "^3.0.0",
-    "whatsapp-web.js": "github:tofers/whatsapp-web.js#fix-queryWidExists",
+    "whatsapp-web.js": "^1.19.5",
     "wikijs": "^6.4.0",
     "wpapi": "^1.2.2"
   },

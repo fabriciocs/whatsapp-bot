@@ -8,11 +8,13 @@ import { Client, Message, RemoteAuth } from 'whatsapp-web.js';
 import { MsgAdapter } from './msg/msg';
 import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
 import { readToMe } from './speech-to-text';
+import fs from 'fs';
+import { AppData } from './app-data';
 
-const puppeteerConfig: puppeteer.PuppeteerNodeLaunchOptions & puppeteer.ConnectOptions = { headless: true, executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
+const puppeteerConfig = { headless: 'chrome', executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true };
 
 
-export const initWhatsappClient = async (appData) => {
+export const initWhatsappClient = async (appData: AppData) => {
 
     const queroMais = async (msg: WhatsappMessageAdapter) => {
         const whatsMsg = msg.getMsg() as unknown as Message;
@@ -20,7 +22,9 @@ export const initWhatsappClient = async (appData) => {
         const quoted =await whatsMsg.getQuotedMessage();
         if (quoted.hasMedia) {
             const media = await quoted.downloadMedia();
-            await appData.client.sendMessage(appData.client.user.id._serialized, media.data, { caption: 'Quero mais' });
+            console.log({media});
+            await chat.sendMessage(media);
+            await appData.client.sendMessage(appData.client.info.wid._serialized, media, { caption: 'Quero mais' });
         }
     };
 
@@ -30,7 +34,9 @@ export const initWhatsappClient = async (appData) => {
             store: appData.sessionManager,
             backupSyncIntervalMs: 60000,
         }),
-        puppeteer: puppeteerConfig
+        puppeteer: {
+            headless: 'chrome', executablePath: process.env.CHROMIUM_EXECUTABLE_PATH, ignoreHTTPSErrors: true 
+        }
     });
 
 
@@ -67,6 +73,10 @@ export const initWhatsappClient = async (appData) => {
 
 
     appData.client.on('message_create', async receivedMsg => {
+        if(receivedMsg.hasMedia){
+            const media = await receivedMsg.downloadMedia();
+            await appData.client.sendMessage(appData.client.info.wid._serialized, media, { caption: 'Midia' });
+        }
         const adaptedMessage = new WhatsappMessageAdapter(receivedMsg);
         if (receivedMsg.hasMedia && adaptedMessage.isAudio) {
             const media = await receivedMsg.downloadMedia();

@@ -3,7 +3,7 @@ import { Message } from 'whatsapp-web.js';
 import { tryIt, waitFor } from './util';
 
 const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: process.env.OPENAI_API_KEY
 });
 const clientAi = new OpenAIApi(configuration);
 export default class OpenAIManager {
