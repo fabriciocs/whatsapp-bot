@@ -1,7 +1,6 @@
 {
   "functions": [
     {
-      "source": "facebook",
       "codebase": "default",
       "ignore": [
         "node_modules",
