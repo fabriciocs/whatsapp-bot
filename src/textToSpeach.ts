@@ -1,6 +1,7 @@
 
 import textToSpeech from '@google-cloud/text-to-speech';
 import { google } from '@google-cloud/text-to-speech/build/protos/protos';
+import fs from 'fs';
 
 const defaultVoice: google.cloud.texttospeech.v1.IVoiceSelectionParams = { languageCode: 'pt-BR', name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' };
 const client = new textToSpeech.TextToSpeechClient();
@@ -25,7 +26,7 @@ const tellMe = async (content: string, language) => {
     input: { text },
     voice,
     audioConfig: {
-      audioEncoding: "MP3",
+      audioEncoding: "OGG_OPUS",
       "effectsProfileId": [
         "telephony-class-application"
       ],
@@ -34,7 +35,11 @@ const tellMe = async (content: string, language) => {
     }
   };
   const [response] = await client.synthesizeSpeech(request);
-  return Buffer.from(response.audioContent).toString('base64');
+  //create temp file path
+  const now = new Date();
+  const tempFilePath = `/tmp/output-${now.getTime()}.ogg`;
+  fs.writeFileSync(tempFilePath, response.audioContent, 'binary');
+  return tempFilePath;
 }
 
 export {

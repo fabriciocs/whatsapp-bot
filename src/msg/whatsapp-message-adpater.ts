@@ -19,8 +19,8 @@ export default class WhatsappMessageAdapter extends MsgAdapter {
     async sendMessage(content: string, options?: IoChannelOptions): Promise<Msg> {
         const chat = await this.whatsMsg.getChat();
         if (this.isAudio) {
-            const audio = new MessageMedia('audio/ogg', content);
-            await chat.sendMessage(audio);
+            const audio = MessageMedia.fromFilePath(content);
+            await chat.sendMessage(audio, { sendAudioAsVoice: true });
         } else {
             await super.sendMessage(content, options);
         }
