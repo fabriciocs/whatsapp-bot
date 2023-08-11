@@ -1,5 +1,5 @@
 import { Msg } from "./msg/msg";
-import { tellMe } from "./textToSpeach";
+import { tellMe, tellMeString } from "./textToSpeach";
 
 
 export type IoChannelOptions = {
@@ -32,7 +32,8 @@ export default class IoChannel {
     private async extractAnswer({ msg, content, options, onlyText = false }: SendAnswerParams) {
         let answer;
         if (!onlyText && msg.isAudio) {
-            answer = await tellMe(content, options.languageCode);
+            console.log({ 'isAudio': content });
+            answer = await tellMeString(content, options.languageCode);
         } else {
             answer = content;
         }

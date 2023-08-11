@@ -2,13 +2,10 @@
 import { IntentsClient, SessionsClient, protos } from '@google-cloud/dialogflow-cx';
 
 
-import { Entry, Log, Logging } from "@google-cloud/logging";
-
 export class Intent {
 
-    public static LOGGING = new Logging();
     async getIntent({ id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = process.env.AGENT_LANGUAGE_CODE }) {
-        const logger = Intent.LOGGING.log('getIntent');
+       
 
         const sessionClient = new SessionsClient({
             apiEndpoint: process.env.AGENT_ENDPOINT,
@@ -40,12 +37,12 @@ export class Intent {
         // Send request and log result
         const [{ queryResult: result }] = await sessionClient.detectIntent(request);
 
-        await logger.info(new Entry(null, {
+        console.info({
             text: result.text,
             transcript: result.transcript ?? 'No transcript matched.',
             Intent: result.intent?.displayName ?? 'No intent matched.',
             currentPage: result.currentPage?.displayName ?? 'No page matched.',
-        }));
+        });
 
         return result.responseMessages?.map(message => message?.text?.text?.join(' ').trim()).filter(Boolean) ?? [];
     }

@@ -18,16 +18,18 @@ export const processor = functions
     .onCreate(async (snapshot: any, context: any) => {
         const original = snapshot.val() as any;
         const message = original[0];
-        functions.logger.debug(context.params.id, 'message', {
-            receivedMessage: message,
-            context
+        const logger = functions.logger;
+
+        logger.debug('message', {
+            message,
+            params: context.params
         });
         if (message?.text?.body) {
             try {
-                const appData = await client.run();
+    
                 const metadataRef = (await snapshot.ref.parent?.child('metadata').get());
                 const metadata = metadataRef?.val();
-                functions.logger.debug(context.params.id, 'metadata', {
+                logger.debug('metadata', {
                     metadata
                 });
                 const adaptedMsg = new WhatsappMessageAdapter({

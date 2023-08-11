@@ -165,7 +165,7 @@ const createVariation = async (f: File) => {
 };
 
 const editImage = async (image: File, mask: File, msg: Message, prompt: string) => {
-    const response = await clientAi.createImageEdit(image, mask, prompt, 1, imageSize);
+    const response = await clientAi.createImageEdit(image, prompt, mask, 1, imageSize);
     console.log(JSON.stringify({ response: response, prompt }, null, 4));
     return response.data.data[0].url;
 }
@@ -226,18 +226,26 @@ const createModelTrainingPhrases = async (instruct) => {
     const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
     return phrasesResponse;
 }
-const simpleChat = async (configPrompt: string, prompt: string) => {
-    const { data } = await clientAi.createCompletion({
-        model: "text-davinci-003",
-        prompt: `${configPrompt} ${prompt}`,
-        temperature: 0.9,
-        max_tokens: 500,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0.6,
-        stop: [" V:", " 🤖:"],
-    });
-    return data?.choices?.[0]?.text
+// Set up OpenAI API client
+
+
+
+const simpleChat = async (message: string, conversation = []) => {
+    conversation.push({ role: 'user', content: message });
+
+    try {
+        const { data: response } = await clientAi.createChatCompletion({
+            model: 'gpt-3.5-turbo',
+            messages: conversation
+        });
+
+        conversation.push({ role: 'assistant', content: response.choices[0].message.content });
+        return response.choices[0].message.content;
+    } catch (error) {
+        console.error('Failed to send message:', error);
+        return 'Sorry, an error occurred.';
+    }
+
 }
 export {
     writeAText,
@@ -250,6 +258,7 @@ export {
     translateTrainingPhrases,
     createTrainingPhrases,
     createModelTrainingPhrases,
-    createModelTrainingPhrasesToAgente
+    createModelTrainingPhrasesToAgente,
+    simpleChat
 };
 

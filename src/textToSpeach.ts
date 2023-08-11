@@ -1,7 +1,6 @@
 
 import textToSpeech from '@google-cloud/text-to-speech';
 import { google } from '@google-cloud/text-to-speech/build/protos/protos';
-import fs from 'fs';
 
 const defaultVoice: google.cloud.texttospeech.v1.IVoiceSelectionParams = { languageCode: 'pt-BR', name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' };
 const client = new textToSpeech.TextToSpeechClient();
@@ -16,6 +15,27 @@ const getVoice = async (language): Promise<google.cloud.texttospeech.v1.IVoiceSe
   const voice = voices.find(v => v.ssmlGender === 'MALE');
   const { languageCodes, ...selectedVoice } = (voice || voices[0]);
   return { ...selectedVoice, languageCode };
+}
+
+const tellMeString = async (content: string, language) => {
+  const text = content?.substring(0, 5000);
+  console.log({ content, text });
+  const voice = await getVoice(language);
+  const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
+    input: { text },
+    voice,
+    audioConfig: {
+      audioEncoding: "OGG_OPUS",
+      "effectsProfileId": [
+        "telephony-class-application"
+      ],
+      "pitch": 4.55,
+      "speakingRate": 1
+    }
+  };
+  const [response] = await client.synthesizeSpeech(request);
+  
+  return Buffer.from(response.audioContent).toString('base64');
 }
 
 const tellMe = async (content: string, language) => {
@@ -35,13 +55,10 @@ const tellMe = async (content: string, language) => {
     }
   };
   const [response] = await client.synthesizeSpeech(request);
-  //create temp file path
-  const now = new Date();
-  const tempFilePath = `/tmp/output-${now.getTime()}.ogg`;
-  fs.writeFileSync(tempFilePath, response.audioContent, 'binary');
-  return tempFilePath;
+  
+  return Buffer.from(response.audioContent);
 }
-
 export {
+  tellMeString,
   tellMe
-}
+};

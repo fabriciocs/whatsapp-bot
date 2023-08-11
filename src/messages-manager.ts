@@ -1,6 +1,6 @@
 
 import * as admin from 'firebase-admin';
-import { Message } from 'whatsapp-web.js';
+import { Msg } from './msg/msg';
 import { keyReplacer } from './util';
 export default class MessagesManager {
 
@@ -22,11 +22,16 @@ export default class MessagesManager {
     return await msg.val();
   }
 
-  async saveMessage(msg: Message): Promise<void> {
-    await this.msgsRef.push().set({ ...msg, fromParsed: keyReplacer(msg.from)});
+  async saveMessage(msg: Msg): Promise<void> {
+    await this.msgsRef.push().set({ ...msg, fromParsed: keyReplacer(msg.from) });
   }
-  
-  async updateMessage(id: string, msg: Message): Promise<any> {
+
+
+  async save(msg: any): Promise<void> {
+    await this.msgsRef.push().set(msg);
+  }
+
+  async updateMessage(id: string, msg: Msg): Promise<any> {
     const updated = await this.msgsRef.child(id).update(msg);
     return updated;
   }

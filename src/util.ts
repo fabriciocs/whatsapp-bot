@@ -1,6 +1,6 @@
 
 export const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
-export const baseName = 'bot-4customers';
+export const baseName = 'rodoclube-datahub';
 export const botname = '*Fourzinho*';
 
 
@@ -39,4 +39,24 @@ export const sumArrayItem = (from: number[], to: number[]) => {
         result.push((from[i] || 0) + (to[i] || 0));
     }
     return result;
+}
+export const fetchData = async (url, authorization) => {
+    const reqOptions = { headers: { accept: 'image/* video/* text/* audio/*', Authorization: authorization } };
+    const response = await fetch(url, reqOptions);
+    const mime = response.headers.get('Content-Type');
+    const size = response.headers.get('Content-Length');
+
+    const contentDisposition = response.headers.get('Content-Disposition');
+    const name = contentDisposition ? contentDisposition.match(/((?<=filename=")(.*)(?="))/) : null;
+
+    let data = '';
+
+    const bArray = new Uint8Array(await response.arrayBuffer());
+    bArray.forEach((b) => {
+        data += String.fromCharCode(b);
+    });
+    data = btoa(data);
+
+
+    return { data, mime, name, size };
 }

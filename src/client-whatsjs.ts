@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import * as puppeteer from 'puppeteer';
 
 import * as QRCode from 'qrcode';
-import { Client, LocalAuth, Message, RemoteAuth } from 'whatsapp-web.js';
+import { Client, LocalAuth, Message, MessageMedia, RemoteAuth } from 'whatsapp-web.js';
 
 
 import { MsgAdapter } from './msg/msg';
@@ -10,6 +10,7 @@ import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
 import { readToMe } from './speech-to-text';
 import fs from 'fs';
 import { AppData } from './app-data';
+import { giveMeImage, simpleChat } from './ai';
 
 
 
@@ -20,11 +21,40 @@ export const initWhatsappClient = async (appData: AppData) => {
         const whatsMsg = msg.getMsg() as unknown as Message;
         const chat = await whatsMsg.getChat();
         const quoted = await whatsMsg.getQuotedMessage();
-        if (quoted.hasMedia) {
+        const adaptedMessage = new WhatsappMessageAdapter(quoted);
+        if (quoted.hasMedia && adaptedMessage.isAudio) {
             const media = await quoted.downloadMedia();
             console.log({ media });
             await chat.sendMessage(media);
             await appData.client.sendMessage(appData.client.info.wid._serialized, media, { caption: 'Quero mais' });
+        }
+    };
+
+
+    const desenha = async (msg: WhatsappMessageAdapter, prompt: []) => {
+
+        const instruction = await simpleChat(`Analise o texto e responda apenas com a instrução para o Dall-e 2:"""${prompt?.join(' ')}"""`);
+        const url = await giveMeImage(instruction, '512x512');
+        if (url) {
+            const whatsMsg = msg.getMsg() as unknown as Message;
+            const chat = await whatsMsg.getChat();
+            const media = await MessageMedia.fromUrl(url);
+            await chat.sendMessage(media, {
+                caption: instruction
+            });
+        } else {
+            await msg.reply('Não consegui criar a imagem');
+        }
+
+    }
+    const transcreve = async (msg: WhatsappMessageAdapter) => {
+        const whatsMsg = msg.getMsg() as unknown as Message;
+        const chat = await whatsMsg.getChat();
+        const quoted = await whatsMsg.getQuotedMessage();
+        const adaptedMessage = new WhatsappMessageAdapter(quoted);
+        if (quoted.hasMedia && adaptedMessage.isAudio) {
+            const media = await quoted.downloadMedia();
+            await chat.sendMessage(await readToMe(media.data));
         }
     };
 
@@ -37,6 +67,8 @@ export const initWhatsappClient = async (appData: AppData) => {
 
 
     appData.actions['delicia'] = queroMais;
+    appData.actions['transcreve'] = transcreve;
+    appData.actions['desenha'] = desenha;
 
     appData.client.on('loading_screen', (percent, message, ...rest) => {
         console.log('LOADING SCREEN', percent, message, rest);
@@ -77,6 +109,7 @@ export const initWhatsappClient = async (appData: AppData) => {
         //         console.error(e);
         //     }
         // }
+
         const adaptedMessage = new WhatsappMessageAdapter(receivedMsg);
         if (receivedMsg.hasMedia && adaptedMessage.isAudio) {
             const media = await receivedMsg.downloadMedia();

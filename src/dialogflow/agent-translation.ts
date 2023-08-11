@@ -6,7 +6,7 @@ import GoogleTranslate from '../translate/translate';
 
 export default class AgentTranslation {
     constructor(
-        private agentFolderName = 'travel_car_rental',
+        private agentFolderName = 'healthcare',
         private projectId = process.env.AGENT_PROJECT!,
         private agentId = process.env.AGENT_ID!,
         private agentLocation = process.env.AGENT_LOCATION!,
