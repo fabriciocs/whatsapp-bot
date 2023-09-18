@@ -1,5 +1,5 @@
 
-export const keyReplacer = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
+export const keyReplacer = (key = "") => key.replace(/[@\.\#\$\/\]\[]/g, '_');
 export const baseName = 'rodoclube-datahub';
 export const botname = '*Fourzinho*';
 

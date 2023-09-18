@@ -1,8 +1,6 @@
 import dotenv from 'dotenv';
 import { resolve } from 'path';
-dotenv.config({
-    path: resolve(__dirname, '../.env'),
-});
+dotenv.config();
 
 
 import * as readline from 'readline';
@@ -12,7 +10,7 @@ import dbConfig from './db-config';
 
 import { Database } from 'firebase-admin/database';
 import { writeFile, readFile, readdir } from 'fs/promises';
-import OpenAIManager, { giveMeImage, simpleChat, writeAText } from './ai';
+import OpenAIManager, { giveMeImage, simpleChat, withConfig, writeAText } from './ai';
 import { AppData } from './app-data';
 import Commands from './commands';
 import Contexts from './context';
@@ -28,6 +26,7 @@ import { MessageMedia } from 'whatsapp-web.js';
 import Wordpress from './wordpress';
 import CurrierModel from './currier';
 import Wikipedia from './wiki';
+import { protos, v1beta2 } from '@google-cloud/language';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -83,19 +82,19 @@ const createATextDirectly = async (msg: Msg, prompt: string) => {
 // };
 
 
-// const createATextForConfig = async (msg: Msg, prompt: any, config: string, splitFor: string = null, isAudio = false) => {
-//     const result = await withConfig(prompt, config);
-//     const answer = result?.choices?.[0]?.text?.trim();
-//     if (answer) {
-//         if (msg.isAudio) {
-//             splitFor = ' ';
-//         }
-//         const response = splitFor ? answer.replace('🤖', splitFor) : answer;
-//         await appData.ioChannel.sendAnswer({ msg, content: response });
-//     } else {
-//         await appData.ioChannel.sendAnswer({ msg, content: "Não consegui uma resposta adequada!" });
-//     }
-// };
+const createATextForConfig = async (msg: Msg, prompt: any, config: string, splitFor: string = null, isAudio = false) => {
+    const result = await withConfig(prompt, config);
+    const answer = result?.choices?.[0]?.text?.trim();
+    if (answer) {
+        if (msg.isAudio) {
+            splitFor = ' ';
+        }
+        const response = splitFor ? answer.replace('🤖', splitFor) : answer;
+        await appData.ioChannel.sendAnswer({ msg, content: response });
+    } else {
+        await appData.ioChannel.sendAnswer({ msg, content: "Não consegui uma resposta adequada!" });
+    }
+};
 
 
 const responseWithTextDirectly = async (prompt: string) => {
@@ -371,29 +370,28 @@ const jsonToText = (err: Record<string, any>) => JSON.stringify(err, null, 4);
 //     appData.consoleClient.close();
 //     process.exit(0);
 // }
-// const buildAIDocument = async (msg: Msg, prompt: string[]) => {
-//     //analize as entidades do documento
-//     const service = new v1beta2.LanguageServiceClient();
-//     const request: protos.google.cloud.language.v1beta2.IAnalyzeEntitiesRequest = {
-//         document: {
-//             content: prompt.join(' '),
-//             type: 'PLAIN_TEXT'
-//         },
-//         encodingType: 'UTF8'
-//     };
-//     const [result] = await service.analyzeEntities(request);
-//     const entities = result.entities;
-//     const entityMap = entities.reduce((acc, entity) => {
-//         acc[entity.name] = entity.type;
-//         return acc;
-//     }, {} as Record<string, any>);
+const buildAIDocument = async (msg: Msg, prompt: string[]) => {
+    //analize as entidades do documento
+    const service = new v1beta2.LanguageServiceClient();
+    const request: protos.google.cloud.language.v1beta2.IAnalyzeEntitiesRequest = {
+        document: {
+            content: prompt.join(' '),
+            type: 'PLAIN_TEXT'
+        },
+        encodingType: 'UTF8'
+    };
+    const [result] = await service.analyzeEntities(request);
+    const entities = result.entities;
+    const entityMap = entities.reduce((acc, entity) => {
+        acc[entity.name] = entity.type;
+        return acc;
+    }, {} as Record<string, any>);
 
-//     console.log({
-//         entityMap,
-//     })
-//     await appData.ioChannel.sendReply({ msg, content: JSON.stringify({ entityMap }, null, 4) });
-// }
-
+    console.log({
+        entityMap,
+    })
+    await appData.ioChannel.sendReply({ msg, content: JSON.stringify({ entityMap }, null, 4) });
+}
 const run = async () => {
     const { admin, app } = await dbConfig()
     db = admin.database();
@@ -409,11 +407,14 @@ const run = async () => {
     appData.ioChannel = new IoChannel();
     // appData.mediaManager = new MediaManager();
 
-
+    // appData.logger = new Logger(dbh.ref(`${fullBaseName}/logs`));
+    const escreve = async (msg: Msg, prompt: string[]) => {
+        await createATextDirectly(msg, prompt?.join(' '));
+    }
     appData.actions = {
         'todo': async (msg: Msg, prompt: string[]) => await createATextDirectly(msg, `Analise o texto e reponda com um TODO list:"""${prompt?.join(' ')}"""`),
-        // escreve,
-        // '✏': escreve,
+        escreve,
+        '✏': escreve,
         // 'chassi': async (msg: Msg, [placa,]: string[]) => await searchByLicensePlate(msg, placa),
         // 'elon_musk': async (msg: Msg, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
         // 'key': async (msg: Msg, prompt: string[]) => await appData.ioChannel.sendAnswer({ msg, content: await curie.keyPoints(prompt?.join(' ')) }),
@@ -421,7 +422,7 @@ const run = async () => {
         // 'wiki': async (msg: Msg, prompt: string[]) => await appData.ioChannel.sendAnswer({ msg, content: await wikipedia.sumary(prompt?.join(',')) }),
         // 'demostenes': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
         // 'maru': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'candidato-c', splitFor),
-        // 'deivid': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', '*Pré atendimento inteligente*'),
+        'deivid': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', '*Pré atendimento inteligente*'),
         // 'suporte-n1': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.concat(['?'])?.join(' ')?.trim(), 'suporte-ti', '*Suporte N1*'),
         // 'juarez': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'vereador-c', splitFor),
         // 'sextou': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'sextou', splitFor),
@@ -445,13 +446,13 @@ const run = async () => {
         // 'goel': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // 'wellen-beu': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // '🛋': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
-        // 'pre-venda': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
+        'pre-venda': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
         // 'gean': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
         // 'carla': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'moveis-estrela', splitFor),
         // 'wdany': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'constelacao-familiar', splitFor),
         // 'sandro': async (msg: Msg, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
         // 'poliana': async (msg: Msg, prompt: string[]) => await createATextDirectly(msg, prompt?.join(' ')),
-        // 'diga': om,
+        'diga': om,
         // desenha: async (msg: Msg, prompt: string[]) => await giveMeImage(prepareText(imagePrompt), '1024x1024');
         om,
         '🔈': voice,
@@ -488,7 +489,7 @@ const run = async () => {
         // '4met': async (msg: Msg, [id, ...prompt]: string[]) => await moveisEstrelaTr.translateEntities(),
         // '4t': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
         // 'quit': async (msg: Msg) => await quit(),
-        // 'document': async (msg: Msg, prompt: string[]) => await buildAIDocument(msg, prompt),
+        'document': async (msg: Msg, prompt: string[]) => await buildAIDocument(msg, prompt),
     };
 
 

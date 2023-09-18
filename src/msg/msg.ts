@@ -44,6 +44,11 @@ export const SongTypes = [
     MsgTypes.VOICE,
 ];
 
+export const DocumentTypes = [
+    MsgTypes.DOCUMENT,
+    MsgTypes.IMAGE
+]
+
 
 export abstract class Msg {
 
@@ -89,6 +94,10 @@ export abstract class Msg {
     }
     get isAudio(): boolean {
         return SongTypes.includes(this._type);
+    }
+
+    get isDocument(): boolean {
+        return DocumentTypes.includes(this._type);
     }
 
 

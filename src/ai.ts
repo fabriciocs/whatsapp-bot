@@ -231,7 +231,7 @@ const createModelTrainingPhrases = async (instruct) => {
 
 
 const simpleChat = async (message: string, conversation = []) => {
-    conversation.push({ role: 'user', content: message });
+    conversation.push({ role: 'system', content: message });
 
     try {
         const { data: response } = await clientAi.createChatCompletion({

@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "../luau.tech/ueg-bot"
+		},
+		{
+			"path": "../luau.tech/weber"
+		},
+		{
+			"path": "../luau.tech/co2"
+		},
+		{
+			"path": "../luau.tech/luau.tech.bot"
+		},
+		{
+			"path": "../luau.tech/rntrc-loading"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
