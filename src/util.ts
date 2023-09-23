@@ -1,5 +1,10 @@
 
 export const keyReplacer = (key = "") => key.replace(/[@\.\#\$\/\]\[]/g, '_');
+
+export const normalizeFilepath = (filePath = "") => {
+    return filePath.replace(/[^a-zA-Z0-9_\-]/g, '_').trim();
+
+}
 export const baseName = 'rodoclube-datahub';
 export const botname = '*Fourzinho*';
 
