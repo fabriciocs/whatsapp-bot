@@ -43,7 +43,6 @@ build/Release
 
 # Dependency directories
 node_modules/
-!node_modules/whatsapp-web.js/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -172,3 +171,4 @@ imageBackup/cnh/e84c5d0a.jpg
 
 messages/
 .wwebjs_cache/
+!node_modules/whatsapp-web.js/src/Client.js
