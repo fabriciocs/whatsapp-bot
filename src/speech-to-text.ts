@@ -15,6 +15,10 @@ export const readToMe = async (base64Content: string, languageCode = 'pt-BR') =>
         audio: { content: base64Content }, config
     });
     const transcription = response?.results?.map(result => result?.alternatives?.[0]?.transcript)?.join('\n') ?? '';
+    if (!transcription) {
+        const { results } = response;
+        console.log({ response: { ...response, res: results?.map(r => ({ ...r}))} })
+    }
     return transcription;
 };
 

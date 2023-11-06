@@ -1,27 +1,27 @@
-import { Configuration, CreateCompletionRequest, CreateEditRequest, CreateImageRequestSizeEnum, CreateSearchRequest, OpenAIApi } from 'openai';
+import { OpenAI } from 'openai';
+import { ImageGenerateParams } from 'openai/resources';
 import { Message } from 'whatsapp-web.js';
-import { tryIt, waitFor } from './util';
 
-const configuration = new Configuration({
+const configuration = {
     apiKey: process.env.OPENAI_API_KEY
-});
-const clientAi = new OpenAIApi(configuration);
+};
+const clientAi = new OpenAI(configuration);
 export default class OpenAIManager {
-    public getClient(): OpenAIApi {
+    public getClient(): OpenAI {
         return clientAi;
     }
 }
-const imageSize: CreateImageRequestSizeEnum = '256x256';
+const imageSize: "256x256" | "512x512" | "1024x1024" = '256x256';
 
-const params: Partial<CreateCompletionRequest> = {
-    prompt: "",
+const params: Partial<OpenAI.Chat.ChatCompletionCreateParams> = {
     temperature: 1,
-    best_of: 1,
     max_tokens: 1500,
     frequency_penalty: 0,
     presence_penalty: 0,
     stop: ["\nVocê:"]
 }
+type CreateCompletionRequest = OpenAI.Chat.ChatCompletionCreateParamsNonStreaming & { prompt: string };
+
 const defaultConfig = {
     'sextou': {
         ...params,
@@ -120,55 +120,44 @@ const withConfig = async (prompt: string, key: string) => {
 const doIt = async (config: Partial<CreateCompletionRequest>) => {
     try {
         const requestConfig = { ...params, ...config } as CreateCompletionRequest
-        const { data } = await clientAi.createCompletion(requestConfig);
-        return data;
+        const { response } = await clientAi.chat.completions.create(requestConfig).withResponse();
+        return await response.json();
     } catch (e) {
         console.log(e)
     }
     return null;
 };
-const completion = async (config: CreateCompletionRequest) => {
-    const { data } = await clientAi.createCompletion(config);
-    return data;
+const completion = async (config: Partial<CreateCompletionRequest>) => {
+    const { response } = await clientAi.chat.completions.create({ ...config } as CreateCompletionRequest).withResponse();
+    return await response.json();
 };
-const editIt = async (config: Partial<CreateEditRequest>) => {
-    try {
-        const requestConfig = { ...params, ...config } as CreateEditRequest
-        const { data } = await clientAi.createEdit(requestConfig);
-        return data;
-    } catch (e) {
-        console.log(e)
-    }
-    return null;
-}
+// const editIt = async (config: Partial<CreateEditRequest>) => {
+//     try {
+//         const requestConfig = { ...params, ...config } as CreateEditRequest
+//         const { data } = await clientAi.(requestConfig);
+//         return data;
+//     } catch (e) {
+//         console.log(e)
+//     }
+//     return null;
+// }
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
     return await doIt({ ...config, "model": "text-davinci-003" })
 };
 
-const editingText = async (config: Partial<CreateEditRequest>) => {
-    return await editIt({ ...config, "model": "text-davinci-003" })
-};
-const writeInstructions = async (prompt) => await writeAText({ prompt: prompt, temperature: 0, max_tokens: prompt.length + 100, frequency_penalty: 0, top_p: 0, presence_penalty: 2 });
-const giveMeImage = async (prompt: string, size: CreateImageRequestSizeEnum = imageSize) => {
-    const response = await clientAi.createImage({
+// const editingText = async (config: Partial<CreateEditRequest>) => {
+//     return await editIt({ ...config, "model": "text-davinci-003" })
+// };
+const writeInstructions = async (prompt) => await simpleChat(prompt);
+const giveMeImage = async (prompt: string, size: "256x256" | "512x512" | "1024x1024" = "256x256") => {
+    const { data } = await clientAi.images.generate({
         prompt,
         n: 1,
         size,
-    });
-    console.log(JSON.stringify({ response: response.data.data[0], prompt }, null, 4));
-    return response.data.data[0].url;
+    }).withResponse();
+    console.log({ url: data.data[0].url });
+    return data.data[0].url;
 };
-const createVariation = async (f: File) => {
-    const response = await clientAi.createImageVariation(f, 1, imageSize);
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
-    return response.data.data[0].url;
-};
-
-const editImage = async (image: File, mask: File, msg: Message, prompt: string) => {
-    const response = await clientAi.createImageEdit(image, prompt, mask, 1, imageSize);
-    console.log(JSON.stringify({ response: response, prompt }, null, 4));
-    return response.data.data[0].url;
-}
 const translateTrainingPhrases = async (trainingPhrases: string) => {
     const response = await doIt({
         model: "text-davinci-003",
@@ -179,7 +168,7 @@ const translateTrainingPhrases = async (trainingPhrases: string) => {
         frequency_penalty: 0,
         presence_penalty: 0,
         stop: '"]',
-    });
+    })
 
     return `["${response?.choices?.[0]?.text}`;
 }
@@ -188,14 +177,9 @@ const createTrainingPhrases = async (trainingPhrases: string[]) => {
     //`Write ${countResponse} training phrases in pt-br:\n${JSON.stringify(trainingPhrases.map(a=> a.trim()))}\n["`,
     //const prompt = `create an correponding array of sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`;
     const prompt = `create a corresponding list with ${countResponse} sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`
-    const response = await completion({
-        model: "text-davinci-003",
+    const response = await doIt({
         prompt,
-        temperature: 0,
-        max_tokens: 2000,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0
+        temperature: 0
     });
     return `["${response?.choices?.[0]?.text}`;
 }
@@ -204,7 +188,7 @@ type CreateModelTrainingPhrasesParams = {
     explainPrompt: string;
     requestPhrases: string;
 }
-const phrasesGenerationConfig = {
+const phrasesGenerationConfig: Partial<CreateCompletionRequest> = {
     model: "text-davinci-003",
     temperature: 0.5,
     max_tokens: 2000,
@@ -231,13 +215,17 @@ const createModelTrainingPhrases = async (instruct) => {
 
 
 const simpleChat = async (message: string, conversation = []) => {
-    conversation.push({ role: 'system', content: message });
+    if (conversation.length === 0) {
+        conversation.push({ role: 'system', content: message });
+    } else {
+        conversation.push({ role: 'user', content: message });
+    }
 
     try {
-        const { data: response } = await clientAi.createChatCompletion({
+        const { data: response } = await clientAi.chat.completions.create({
             model: 'gpt-3.5-turbo',
             messages: conversation
-        });
+        }).withResponse();
 
         conversation.push({ role: 'assistant', content: response.choices[0].message.content });
         return response.choices[0].message.content;
@@ -248,17 +236,8 @@ const simpleChat = async (message: string, conversation = []) => {
 
 }
 export {
-    writeAText,
-    withConfig,
-    giveMeImage,
-    createVariation,
-    editImage,
-    writeInstructions,
-    editingText,
-    translateTrainingPhrases,
-    createTrainingPhrases,
     createModelTrainingPhrases,
-    createModelTrainingPhrasesToAgente,
-    simpleChat
+    createModelTrainingPhrasesToAgente, createTrainingPhrases,
+    giveMeImage, simpleChat, translateTrainingPhrases, withConfig, writeAText, writeInstructions
 };
 

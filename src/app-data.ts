@@ -18,12 +18,35 @@ import SessionsManager from './sessions-manager';
 import MediaManager from "./media-manager";
 
 export class AppData {
+    isAlivio?: (msg: Msg) => Promise<boolean>;
+    is?: (command: string, msg: Msg) => Promise<boolean>;
     processMessage?: (receivedMsg: Msg) => Promise<void>;
     actions?: Record<string, any>;
+    actionsByEmoji?: Record<string, string[]>;
     consoleClient?: readline.Interface;
     ioChannel?: IoChannel;
     commands?: Commands;
     contexts?: Contexts;
     client?: Client;
+
+
+}
+
+export class AppDataUtils {
+    static bindAction(appData: AppData, action: string, func: any, ...emoji: string[]) {
+        if (!appData.actions) appData.actions = {};
+        appData.actions[action] = func;
+        if (emoji?.length) {
+            if (!appData.actionsByEmoji) {
+                appData.actionsByEmoji = {};
+            }
+            if (!appData.actionsByEmoji[action]) {
+                appData.actionsByEmoji[action] = []
+            }
+            appData.actionsByEmoji[action].push(...emoji);
+        }
+
+
+    }
 
 }

@@ -27,6 +27,7 @@ import Wordpress from './wordpress';
 import CurrierModel from './currier';
 import Wikipedia from './wiki';
 import { protos, v1beta2 } from '@google-cloud/language';
+import { geradorCpf, loadPersonAndCar } from './leia';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -110,21 +111,21 @@ const createAudioDirectly = async (msg: Msg, languageCode: string, prompt: strin
 
 
 
-// const fakePersonAndCar = async (msg: Msg) => {
-//     const { pessoa, carro } = await loadPersonAndCar();
-//     const pessoaMessage = Object.keys(pessoa).reduce((acc, key) => {
-//         acc.push(`${key}: *${pessoa[key]}*`);
-//         return acc;
-//     }, []).join('\n');
+const fakePersonAndCar = async (msg: Msg) => {
+    const { pessoa, carro } = await loadPersonAndCar();
+    const pessoaMessage = Object.keys(pessoa).reduce((acc, key) => {
+        acc.push(`${key}: *${pessoa[key]}*`);
+        return acc;
+    }, []).join('\n');
 
-//     const carroMessage = Object.keys(carro).reduce((acc, key) => {
-//         acc.push(`${key}: *${carro[key]}*`);
-//         return acc;
-//     }, []).join('\n');
-//     const content = `*Pessoa:*\n${pessoaMessage}\n\n*Carro:*\n${carroMessage}`;
-//     await appData.ioChannel.sendAnswer({ msg, content });
+    const carroMessage = Object.keys(carro).reduce((acc, key) => {
+        acc.push(`${key}: *${carro[key]}*`);
+        return acc;
+    }, []).join('\n');
+    const content = `*Pessoa:*\n${pessoaMessage}\n\n*Carro:*\n${carroMessage}`;
+    await appData.ioChannel.sendAnswer({ msg, content });
 
-// }
+}
 
 const extractLanguageAndAnswer = ([first, ...prompt]: string[]) => {
     const language = first?.includes?.('::') ? first.replace('::', '') : null;
@@ -275,14 +276,19 @@ const isCommand = (msg: Msg) => {
 //     }
 //     return;
 // }
-// const isCode = (msg: Msg) => {
-//     if (isNotString(msg)) return false;
-//     return msg.body.startsWith(codeMarker);
-// }
-const canExecuteCommand = (msg: Msg) => {
+const isCode = (msg: Msg) => {
+    if (isNotString(msg)) return false;
+    return msg.body.startsWith(codeMarker);
+}
+const canExecuteCommand = async (msg: Msg) => {
+    // return false;
     if (isNotString(msg)) return false;
     if (isCommand(msg)) {
         return isAuthorized(msg);
+    }
+
+    if (await appData.isAlivio(msg)) {
+        return true;
     }
     // if (isLicensePlate(msg)) {
     //     return licensePlateSearch.includes(msg.from) || !!msg.fromMe;
@@ -293,11 +299,14 @@ const canExecuteCommand = (msg: Msg) => {
 
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
 
-const extractExecutionInfo = (msg: Msg, config?: ChatConfigType): executionType => {
+const extractExecutionInfo = async (msg: Msg, config?: ChatConfigType): Promise<executionType> => {
     if (isCommand(msg) || config?.isAutomatic) {
         const buildBody = `${config?.isAutomatic ? 'auto ' : ''}${config?.isUnique?.() ? `${config?.commands?.[0]} ` : ''}${msg?.body}`;
         const [, text, ...params] = buildBody.split(/\s/).filter(Boolean);
         return [text, params];
+    }
+    if (await appData.isAlivio(msg)) {
+        return ['.alivio', []];
     }
     // if (isLicensePlate(msg)) {
     //     return ['placa', [msg?.body?.toUpperCase(), true]];
@@ -313,7 +322,8 @@ const isAuthorized = (msg: Msg) => !!msg.fromMe || !!external.includes(msg.from)
 
 const runCommand = async (msg: Msg) => {
     try {
-        const [text, params] = extractExecutionInfo(msg, null);
+        const [text, params] = await extractExecutionInfo(msg, null);
+        console.log(`${msg.from}: ${text} ${params?.length ?? 0}`);
         let command = getAction(text?.toLowerCase?.());
         if (!command) {
             command = getAction('err');
@@ -401,7 +411,6 @@ const run = async () => {
     appData.contexts = new Contexts(db.ref(`${fullBaseName}/contexts`));
     // appData.msgs = new MessagesManager(db.ref(`${fullBaseName}/messages`));
     // appData.whatsappRef = db.ref(`${fullBaseName}/whatsapp/update`);
-    // appData.sessionManager = new SessionsManager();
     // appData.chatConfigsManager = new ChatConfigsManager(db.ref(`${fullBaseName}/chatConfigs`));
     // appData.commandConfigsManager = new CommandConfigsManager(db.ref(`${fullBaseName}/commandConfigs`));
     appData.ioChannel = new IoChannel();
@@ -440,7 +449,7 @@ const run = async () => {
         // 'renato': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // 'dinho': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // '🚚': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
-        // '🚜': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
+        // '🚜': async (msg: Msg,Fq prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // 'boso': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // 'agro': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
         // 'goel': async (msg: Msg, prompt: string[], splitFor = null) => await createATextForConfig(msg, prompt?.join(' '), 'bolsonarista', splitFor),
@@ -490,12 +499,14 @@ const run = async () => {
         // '4t': async (msg: Msg, [id, ...prompt]: string[]) => await forzinhoTranslationAgent.translateTransitionRouteGroup(),
         // 'quit': async (msg: Msg) => await quit(),
         'document': async (msg: Msg, prompt: string[]) => await buildAIDocument(msg, prompt),
+        'cpf': async (msg: Msg, prompt: string[]) => await msg.reply(await geradorCpf())
     };
 
 
     appData.processMessage = async (receivedMsg: Msg) => {
 
-        if (canExecuteCommand(receivedMsg)) {
+        if (await canExecuteCommand(receivedMsg)) {
+
             return await runCommand(receivedMsg);
         }
 
@@ -548,6 +559,7 @@ const initConsoleClient = async (fromMe = false) => {
         prompt: `${baseName} > `,
         terminal: true
     });
+    // All the files with blue arrow are the build files of my Portfolio Web Application, while the Copyable 
     appData.consoleClient.write('Bem vindo ao console do bot\n\n');
     appData.consoleClient.prompt();
 

@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "./whatsapp-client"
+		},
+		{
+			"path": "../sirax-ws-client"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../jobs-demos/screenshot"
+		}
+	],
+	"settings": {
+		"files.autoSave": "onFocusChange"
+	}
+}

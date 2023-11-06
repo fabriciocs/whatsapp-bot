@@ -145,7 +145,7 @@ export class MsgAdapter extends Msg {
         await this.msg.reply(content);
         return this;
     }
-    async sendMessage(content: string, options?: IoChannelOptions): Promise<Msg> {
+    async  sendMessage(content: string, options?: IoChannelOptions): Promise<Msg> {
         const chat = await this.msg.getChat();
         await chat.sendMessage(content);
         //obtenha o msgType do valor 'chat'
@@ -155,7 +155,7 @@ export class MsgAdapter extends Msg {
     constructor(private msg: { body: string, from: string, to: string, fromMe: boolean, type: string, reply: (content: string) => Promise<void>, getChat: () => Promise<{ sendMessage: (content: string) => Promise<void> }> }) {
         super(msg.body, msg.from, msg.to, msg.fromMe, MsgTypes[Object.keys(MsgTypes).find(key => MsgTypes[key] === msg.type) as any]);
     }
-    getMsg() {
-        return this.msg;
+    getMsg<T>() {
+        return this.msg as T;
     }
 }

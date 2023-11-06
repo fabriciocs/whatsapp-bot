@@ -8,7 +8,9 @@ export const normalizeFilepath = (filePath = "") => {
 export const baseName = 'rodoclube-datahub';
 export const botname = '*Fourzinho*';
 
-
+export const toDataUrl = (mimeType, buffer) => {
+    return `data:${mimeType};base64,${buffer.toString("base64")}`
+}
 export const commandMarkers = ['🤖 ', '@ ', 'elon ', 'robo ', 'bee ', 'bee-bot ', '-- ', '.. ', 'IA ', '*IA* ', '*bimbim* ', 'bimbim ', 'chico '];
 export type ChatConfigType = {
     commands: string[];

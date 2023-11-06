@@ -1,12 +1,17 @@
 {
   "functions": [
     {
+      "source": "facebook",
       "codebase": "default",
       "ignore": [
         "node_modules",
         ".git",
         "firebase-debug.log",
-        "firebase-debug.*.log"
+        "firebase-debug.*.log",
+        "src"
+      ],
+      "predeploy": [
+        "yarn --cwd \"$RESOURCE_DIR\" build"
       ]
     }
   ],
@@ -21,5 +26,15 @@
       "enabled": true
     },
     "singleProjectMode": true
+  },
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }
