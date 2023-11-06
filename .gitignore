@@ -172,3 +172,10 @@ imageBackup/cnh/e84c5d0a.jpg
 messages/
 .wwebjs_cache/
 !node_modules/whatsapp-web.js/src/Client.js
+textaudio/
+media/
+.env
+.secret.local.json
+**/*/RemoteAuth-*.zip
+secret.json
+
