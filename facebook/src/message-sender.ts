@@ -1,9 +1,11 @@
 
 import axios from "axios";
+import * as admin from "firebase-admin";
 import * as functions from "firebase-functions";
+import { WhatsappResponse } from "./dto/whatsapp-response";
 
 export class MessageSender {
-    constructor(private estacao: any, private msg: string, private contatos: any) { 
+    constructor(private estacao: any, private msg: string, private contatos: any) {
         functions.logger.debug(`message-sender`, {
             message: 'New message sender',
             json_payload: {
@@ -14,9 +16,11 @@ export class MessageSender {
     async send() {
         const promises = this.contatos.map(async (contato: any) => {
             const { nome, numero } = contato;
-            await this.httpSend(numero, nome, this.msg);
+            const sendTime = admin.firestore.Timestamp.now();
+            const response = await this.httpSend(numero, nome, this.msg);
+            return { ...contato, sendTime, response: response as WhatsappResponse };
         });
-        await Promise.all(promises);
+        return await Promise.all(promises);
     }
     async httpSend(toNumber: string, toName: string, msg: string) {
 
@@ -34,14 +38,18 @@ export class MessageSender {
                 message: 'response',
                 json_payload: responseData
             });
+            return responseData;
+
         } catch (e) {
             if (axios.isAxiosError(e)) {
                 functions.logger.error(e.response?.data);
+                return e.response?.data;
             } else {
                 functions.logger.error('httpSend', {
                     message: 'httpSend error',
                     json_payload: e
                 });
+                return e;
             }
         }
     }

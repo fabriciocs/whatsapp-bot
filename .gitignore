@@ -179,3 +179,5 @@ media/
 **/*/RemoteAuth-*.zip
 secret.json
 
+.secret.local.json
+src/.env
