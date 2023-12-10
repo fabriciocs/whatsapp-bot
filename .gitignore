@@ -116,7 +116,6 @@ media/
 .secret.local.json
 **/*/RemoteAuth-*.zip
 secret.json
-
 .secret.local.json
 src/.env
 *.ogg
