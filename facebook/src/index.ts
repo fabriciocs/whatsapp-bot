@@ -2,14 +2,32 @@ import * as admin from 'firebase-admin';
 import { DocumentReference } from 'firebase-admin/firestore';
 import * as functions from 'firebase-functions';
 import Message from './dto/message';
-import { MessageSender } from './message-sender';
+import { WhatsappMetaMessageSender } from './message-sender';
 import { loadSecrets } from './secrets';
 
 admin.initializeApp(functions.config().firebase);
 
 const whatsMessageRef = 'whatsapp/{id}/entry/{entry}/changes/{change}/value';
 const disparoRef = '/contrato/{contratoUuid}/disparos/{uuid}'
-const contatoRef = '/contrato/{contratoUuid}/contato/{uuid}'
+
+type xContato = {
+    nome: string,
+    numero: string,
+    sms: string,
+    email: string
+}
+
+
+const filterContatosByCanTriggerMsg = async (contratoRef?: admin.firestore.DocumentReference, contatosFullList?: xContato[]): Promise<xContato[]> => {
+    if (!contratoRef || !contatosFullList) {
+        return [];
+    }
+    return await Promise.all(contatosFullList?.filter(async ({ numero }) => {
+        const phoneNumberStatusRef = await contratoRef?.collection('phoneNumberStatus').doc(numero).get();
+        const { canTriggerMsg = false } = phoneNumberStatusRef?.data() ?? {};
+        return canTriggerMsg;
+    }) ?? []);
+}
 const phoneNumberBrasilianNormalizer = (phoneNumber: string) => {
     if (!phoneNumber) {
         return phoneNumber;
@@ -33,85 +51,21 @@ const phoneNumberBrasilianNormalizer = (phoneNumber: string) => {
 
 };
 
-type nomeNumero = {
-    nome: string,
-    numero: string
-}
-
-
-const filterContatosByCanTriggerMsg = async (contratoRef?: admin.firestore.DocumentReference, contatosFullList?: nomeNumero[]): Promise<nomeNumero[]> => {
-    if (!contratoRef || !contatosFullList) {
-        return [];
-    }
-    return await Promise.all(contatosFullList?.filter(async ({ numero }) => {
-        const phoneNumberStatusRef = await contratoRef?.collection('phoneNumberStatus').doc(numero).get();
-        const { canTriggerMsg } = phoneNumberStatusRef?.data() ?? {};
-        return canTriggerMsg;
-    }) ?? []);
-}
-
-const contatosToPhoneNumber = async (contatos: DocumentReference[]) => {
+const contatosToTriggering = async (contatos: DocumentReference[]) => {
     const promises = contatos.map(async (contatoRef) => {
         const contatoSnap = await contatoRef.get();
-        const { nome, phoneNumber } = contatoSnap.data() ?? {};
+        const { nome, phoneNumber, smsNumber, email } = contatoSnap.data() ?? {};
+        const numero = phoneNumber?.normalized ?? phoneNumberBrasilianNormalizer(phoneNumber?.phoneNumber)
+        const sms = smsNumber ?? numero?.replace(/(55\d{2})(\d{8})/, `$19$2`)
         return {
             nome,
-            numero: phoneNumber?.normalized ?? phoneNumberBrasilianNormalizer(phoneNumber?.phoneNumber)
-        } as nomeNumero;
+            numero,
+            sms,
+            email
+        } as xContato;
     });
     return await Promise.all(promises);
 };
-export const normalizeContact = functions.runWith({
-    timeoutSeconds: 540,
-    memory: '2GB'
-}).firestore.document(contatoRef).onWrite(async (changes, context) => {
-    const logger = functions.logger;
-    try {
-        const contactSnap = changes.after;
-        const contact = contactSnap?.data();
-        const oldContactSnap = changes.before;
-        const oldContact = oldContactSnap?.data();
-        if (!contactSnap.exists) {
-            logger.debug('contato', {
-                message: 'contato deleted',
-                json_payload: contactSnap.data()
-            });
-            return null;
-        }
-
-        if (oldContact?.phoneNumber?.normalized === contact?.phoneNumber?.normalized && !!contact?.phoneNumber?.normalized) {
-            return;
-        }
-        if (!contact?.phoneNumber?.phoneNumber) {
-            return;
-        }
-        const normalized = phoneNumberBrasilianNormalizer(contact.phoneNumber.phoneNumber);
-        if (normalized === contact?.phoneNumber?.normalized) {
-            return;
-        }
-        const contractRef = contactSnap.ref.parent.parent;
-        const phoneNumberStatusRef = await contractRef?.collection('phoneNumberStatus').doc(normalized).get();
-        if (!phoneNumberStatusRef?.exists) {
-            await phoneNumberStatusRef?.ref.set({
-                contato: contactSnap.ref,
-                canTriggerMsg: true
-            });
-        }
-
-
-        return contactSnap.ref.set({
-            phoneNumber: { normalized }
-        }, { merge: true });
-    } catch (e) {
-        logger.error('normalizeContact', {
-            message: 'normalizeContact error',
-            json_payload: e
-        });
-    }
-    return;
-
-});
-
 
 export const runTriggering = functions.runWith({
     timeoutSeconds: 540,
@@ -121,13 +75,13 @@ export const runTriggering = functions.runWith({
     const { contratoUuid, uuid } = context.params;
     logger.debug({
         message: 'disparo debug',
-        json_payload: { contratoUuid, uuid }
+        contratoUuid, uuid
     });
     const disparoSnap = changes.after;
     if (!disparoSnap.exists) {
         logger.debug({
             message: 'disparo deleted',
-            json_payload: disparoSnap.data()
+            data: disparoSnap.data()
         });
         return null;
     }
@@ -135,7 +89,7 @@ export const runTriggering = functions.runWith({
     if (!disparo) {
         logger.error({
             message: 'disparo error, no data',
-            json_payload: disparo
+            disparo
         });
         return null;
     }
@@ -143,7 +97,7 @@ export const runTriggering = functions.runWith({
     if (!shouldTrigger) {
         logger.debug({
             message: 'disparo not pending',
-            json_payload: disparo
+            disparo
         });
         return null;
     }
@@ -152,24 +106,60 @@ export const runTriggering = functions.runWith({
     const estacoesRef = disparo.estacao as DocumentReference[];
 
     if (!campanhaRef || !contatosRef || !estacoesRef) {
-        logger.error({
-            message: 'without info error',
-            json_payload: disparo
-        });
+        logger.error('without info error',
+            disparo);
         return null;
     }
 
 
     const campanhaSnap = await campanhaRef.get();
     const campanha = campanhaSnap.data();
-    const contatosFullList = await contatosToPhoneNumber(contatosRef);
+    const contatosFullList = await contatosToTriggering(contatosRef);
     const contatos = await filterContatosByCanTriggerMsg(disparoSnap?.ref?.parent?.parent ?? undefined, contatosFullList ?? []);
+
     if (contatos?.length > 0) {
         let status = 'completed'
         try {
-            logger.debug('contatos', {
-                contatos: contatos.length
+            const contatosWithMail = contatos.filter(c => !!c.email);
+
+
+            logger.debug({
+                contatos: contatos.length,
+                contatosWithMail: contatosWithMail.length
             });
+            try {
+                const { emailMessage = null } = campanha ?? {};
+                const { subject, text, html } = emailMessage ?? {};
+                logger.debug({
+                    message: 'Send Mail',
+                    emailMessage
+                });
+                if (subject && (text || html)) {
+                    const firestoreDb = admin.firestore();
+
+                    const mails = contatosWithMail.map(c => ({
+                        to: c.email,
+                        message: {
+                            subject,
+                            text,
+                            html
+                        }
+                    }));
+                    const dbBatch = firestoreDb.batch();
+                    try {
+                        await Promise.all(mails.map(async mail => {
+                            dbBatch.set(await firestoreDb.collection('email').doc(), mail);
+                        }));
+                    } catch (e) {
+                        logger.error('send email error',e);
+                    }
+                    await dbBatch.commit();
+                }
+            } catch (e) {
+                logger.error('send email error',
+                    e
+                );
+            }
             const qttByEstacao = Math.ceil(contatos.length / estacoesRef.length);
             await Promise.all(estacoesRef.map(async (estacaoSnap, index) => {
                 try {
@@ -179,56 +169,24 @@ export const runTriggering = functions.runWith({
                     const end = start + qttByEstacao;
                     const estacaoContatos = contatos.slice(start, end);
 
-                    const msgSender = new MessageSender(estacao, campanha?.message, estacaoContatos);
+                    const msgSender = new WhatsappMetaMessageSender(estacao, campanha?.whatsappMetaMessage, estacaoContatos);
                     try {
-                        const result = await msgSender.send();
-                        const resultMessages = await Promise.all(result.map(async ({ nome, numero, sendTime, response }: any) => {
-                            const { messages } = response;
-                            const message = messages[0];
-                            const { id } = message;
-                            return {
-                                from: {
-                                    name: estacao?.name,
-                                    phone: {
-                                        phoneNumber: estacao?.numero
-                                    }
-                                },
-                                to: {
-                                    name: nome,
-                                    phone: {
-                                        phoneNumber: numero
-                                    }
-                                },
-                                content: campanha?.message,
-                                controlCode: id,
-                                response,
-                                when: sendTime,
-                            } as Message;
-                        }));
+                        const resultMessages = await msgSender.send();
                         await estacaoSnap.update({
                             messages: admin.firestore.FieldValue.arrayUnion(...resultMessages)
                         });
 
                     } catch (e) {
-                        logger.error('msgSender result', {
-                            message: 'msgSender result error',
-                            json_payload: e
-                        });
+                        logger.error('msgSender result error', e);
                     }
                 } catch (e) {
-                    logger.error('msgSender', {
-                        message: 'msgSender error',
-                        json_payload: e
-                    });
+                    logger.error('WhatsappMetaMessageSendererror', e);
                 }
                 return estacaoSnap;
             }));
 
         } catch (e) {
-            logger.error('triggering error', {
-                message: 'triggering error',
-                json_payload: e
-            });
+            logger.error('triggering error', e);
 
             status = 'failed'
         }
@@ -248,18 +206,33 @@ export const processor = functions
     .database
     .ref(whatsMessageRef)
     .onCreate(async (snapshot: any, context: any) => {
-        const { messages, metadata } = snapshot.val() as any;
-        const message = messages[0];
+        const snapVal = snapshot.val() as any;
+        const { messages, metadata } = snapVal;
+
+        const message = messages?.[0];
         const logger = functions.logger;
+
         const docDb = admin.firestore();
+        const realtimeDb = admin.database();
 
         try {
+            if (!message) {
+                logger.debug({
+                    message: "no message",
+                    messages,
+                    metadata
+
+                })
+                return null;
+            }
+            await realtimeDb.ref("messages").child('whatsapp').child(message.from).push(snapVal);
 
         } catch (e) {
-            logger.error('fail to save msg to firestore', e)
+            logger.error('error', e);
         }
+
         if (!message?.text?.body) {
-            logger.debug('message', {
+            logger.debug({
                 message
             });
             return null;
@@ -270,24 +243,24 @@ export const processor = functions
             if (!metadata?.phone_number_id) return null;
             const { docs: estacaoDocs } = await docDb.collectionGroup('estacoes').where('status', '==', 'Ativo').where('waPhoneNumberId', '==', metadata?.phone_number_id).limit(1).get();
             if (!estacaoDocs.length) return null;
-            const [estacaoSnap] = estacaoDocs ?? [];
+            const [estacaoSnap = null] = estacaoDocs ?? [];
             const estacao = estacaoSnap?.data();
             if (!estacao) {
-                logger.debug('estacao não encontrada', {
+                logger.debug({
                     message: 'estacao não encontrada',
-                    json_payload: metadata
+                    metadata
                 });
                 return null;
             }
-            const contractRef = estacaoSnap.ref.parent.parent;
+            const contractRef = estacaoSnap?.ref.parent.parent;
             const queryContatoSnap = await contractRef?.collection('contato').where('status', '==', 'Ativo').where('phoneNumber.normalized', '==', message?.profile?.wa_id).limit(1).get();
             const [contatoSnap] = queryContatoSnap?.docs ?? [];
             const contato = contatoSnap?.data();
 
             if (!contato) {
-                logger.debug('contato não encontrado', {
+                logger.debug({
                     message: 'contato não encontrado',
-                    json_payload: message.from
+                    from: message.from
                 });
                 const newContact = {
                     nome: message?.profile?.name,
@@ -318,7 +291,7 @@ export const processor = functions
                 controlCode: message.id,
                 when: message.timestamp,
             } as Message
-            await estacaoSnap.ref.update({
+            await estacaoSnap?.ref.update({
                 messages: admin.firestore.FieldValue.arrayUnion(receivedMessage)
             });
         } catch (e) {
@@ -328,9 +301,13 @@ export const processor = functions
                 name,
                 ...error
             } = e as Error;
-            functions.logger.error(context.params.id, 'error', name, message ?? 'no message', {
-                stack,
-                error
+            functions.logger.error(message, {
+                
+                    id: context.params.id,
+                    name,
+                    stack,
+                    error
+                
             });
         }
 
@@ -352,34 +329,13 @@ const actions: any = {
         }
     },
     'POST': async (request: functions.https.Request, response: functions.Response<any>) => {
-        functions.logger.debug('msg received', {
+        functions.logger.debug({
             message: 'msg received',
-            json_payload: request.body
+            body: request.body
         });
-        const { object, entry } = request.body;
         const realtimeDb = admin.database();
-        const pushed = await realtimeDb.ref("whatsapp").push(request.body);
-        try {
-            await Promise.all(entry?.map(async (entryItem: any) => {
-                await Promise.all(entryItem?.changes?.map(async (change: any) => {
-                    const { field, value } = change;
-                    try {
-                        await realtimeDb.ref("messages").child('whatsapp').child(object).child(field).child(pushed.key!).set(value);
-                    } catch (e) {
-                        functions.logger.error('error', {
-                            message: 'error',
-                            json_payload: e
-                        });
-                    }
-                }));
-            }
-            ));
-        } catch (e) {
-            functions.logger.error('error', {
-                message: 'error',
-                json_payload: e
-            });
-        }
+        await realtimeDb.ref("whatsapp").push(request.body);
+
         response.sendStatus(200);
     }
 };

@@ -73,7 +73,11 @@ export type PostResponse = {
 
 
 
-
+export type WpApiAuth = {
+    wordpressUrl: string,
+    username: string,
+    password: string
+};
 export default class Wordpress {
     private wpApi: WPAPI;
 
@@ -88,7 +92,13 @@ export default class Wordpress {
     public get Api() {
         return this.wpApi;
     }
-    public async getPosts(): Promise<PostResponse[]> {
+    public async getPosts(auth: Partial<WpApiAuth> = null): Promise<PostResponse[]> {
+        if (auth) {
+            return await new WPAPI({
+                endpoint: this.wordpressUrl,
+                ...auth
+            }).posts().get();
+        }
         return await this.wpApi.posts().get();
     }
 

@@ -137,6 +137,12 @@ const extractPostParams = (requestText: string) => {
     const [, , title, , content] = groups?.next()?.value;
     return { title, content };
 }
+
+const extractParams = (requestText: string) => {
+    const groups = requestText.matchAll(/([a-zA-Z0-9]+?:.*?\/>)+/gm);
+    const [, , title, , content] = groups?.next()?.value;
+    return { title, content };
+}
 const om = async (msg: Msg, prompt: string[]) => {
     const { language, answer } = extractLanguageAndAnswer(prompt);
     return await createAudioDirectly(msg, language, answer);
@@ -154,6 +160,23 @@ const voice = async (msg: Msg, prompt: string[]) => {
 const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
 const createPost = async (msg: Msg, prompt?: string[]) => {
+    return await sweetTry(msg, async () => {
+        const wordpress = new Wordpress(curie);
+        const { title, content } = extractPostParams(prompt?.join(' '));
+        const response = await wordpress.createAiPost({
+            title,
+            prompt: content,
+            status: 'publish',
+        });
+        if (!response) {
+            return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
+        }
+        await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
+    });
+}
+
+
+const listPosts = async (msg: Msg, prompt?: string[]) => {
     return await sweetTry(msg, async () => {
         const wordpress = new Wordpress(curie);
         const { title, content } = extractPostParams(prompt?.join(' '));

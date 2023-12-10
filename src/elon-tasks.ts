@@ -1,10 +1,9 @@
 
 import * as admin from 'firebase-admin';
-import { CreateClassificationRequest, CreateCompletionRequest, CreateEditRequest, CreateImageRequest, CreateSearchRequest } from 'openai';
 
-export type ElonTaskConfig =  CreateCompletionRequest & CreateEditRequest & CreateImageRequest & CreateSearchRequest  & CreateClassificationRequest;
+
+
 export type ElonTask = {
-    config: ElonTaskConfig;
     name: string;
     steps: string[];
 };

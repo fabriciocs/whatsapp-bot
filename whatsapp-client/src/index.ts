@@ -16,6 +16,7 @@ async function authenticate([estacaoPath]: string[]) {
         const estacaoManager = new EstacaoWhatsClientManager(new EstacaoManager(doc.ref));
         await estacaoManager.authenticate();
         
+        
         console.log('start', {
             message: 'start'
         });

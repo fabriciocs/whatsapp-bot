@@ -1,7 +1,8 @@
 
-import { DocumentReference, FieldValue, Filter, Timestamp } from '@google-cloud/firestore';
+import { DocumentReference, FieldValue, Filter, Timestamp, Firestore } from '@google-cloud/firestore';
 import { Contrato } from './contratos';
 import { HeatingStage } from './heating-stage';
+import { Chat, GroupChat } from 'whatsapp-web.js';
 export class Estacao {
     descricao?: string;
     numero?: string;
@@ -55,6 +56,8 @@ export default class EstacaoManager {
         await qrCode?.set({ base64: qrcode });
         await this.ref.update({ qrcode: qrCode });
     }
+
+    
     async deleteQrcode() {
         const estacao = await this.data();
         const qrCode = estacao?.qrcode;
@@ -69,8 +72,8 @@ export default class EstacaoManager {
         await this.deleteQrcode();
     }
     async ready() {
-
         await this.ref.update({ hasSession: true });
+        
     }
     async authenticate() {
         await this.ref.update({ authenticated: true });
@@ -80,7 +83,13 @@ export default class EstacaoManager {
     async disconnect() {
         await this.ref.update({ online: false, authenticated: false });
     }
-
+    async setGroups(db: any, groupsChatList: GroupChat[]) {
+        await Promise.all(groupsChatList.map(async(groupChat)=> {
+            db.collection('grupos').doc(groupChat.id._serialized).set({
+                groupName:groupChat.name, GroupDescription:groupChat.description, GroupOwner: this.ref
+            })
+        }))
+    }
 
     onInit(contrato: DocumentReference<Contrato>, func: (estacaoRef: DocumentReference<Estacao>) => Promise<void>) {
         try {

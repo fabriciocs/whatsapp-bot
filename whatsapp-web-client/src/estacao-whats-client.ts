@@ -34,6 +34,7 @@ export class EstacaoWhatsClientManager {
             takeoverTimeoutMs: 30000,
             qrMaxRetries: 10,
             puppeteer: {
+                headless: 'chrome',
                 args: [
                     '--no-sandbox',
                     '--disable-setuid-sandbox'

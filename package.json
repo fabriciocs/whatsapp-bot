@@ -37,7 +37,7 @@
     "qrcode": "^1.5.1",
     "sinesp-api": "^3.0.0",
     "whatsapp": "^0.0.5-Alpha",
-    "whatsapp-web.js": "1.22.2-alpha.4",
+    "whatsapp-web.js": "^1.23.0",
     "wikijs": "^6.4.0",
     "wpapi": "^1.2.2"
   },

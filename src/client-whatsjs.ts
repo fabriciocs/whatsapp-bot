@@ -599,7 +599,7 @@ export const initWhatsappClient = async (appData: AppData) => {
     appData.actions['.*'] = allmsg;
     appData.client = new Client({
         authStrategy: new LocalAuth(),
-        puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
+        puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: false }
     })
         .on('authenticated', () => {
             console.log('AUTHENTICATED');
@@ -620,52 +620,52 @@ export const initWhatsappClient = async (appData: AppData) => {
                 console.log('\n\n\n');
             });
         })
-        .on('message_reaction', async (reaction) => {
-            console.log(JSON.stringify(reaction, null, 2))
-            if (!reaction.reaction) return;
-            if (reaction.id.fromMe) {
-                const msgId = reaction.msgId;
-                let msg = null;
-                try {
-                    msg = await appData.client.getMessageById(msgId._serialized);
-                } catch(e) {
-                    console.error(e);
-                }
-                if(!msg){
-                    console.log('no msg', {msgId, msg});
-                    return;
-                }
+        // .on('message_reaction', async (reaction) => {
+        //     console.log(JSON.stringify(reaction, null, 2))
+        //     if (!reaction.reaction) return;
+        //     if (reaction.id.fromMe) {
+        //         const msgId = reaction.msgId;
+        //         let msg = null;
+        //         try {
+        //             msg = await appData.client.getMessageById(msgId._serialized);
+        //         } catch(e) {
+        //             console.error(e);
+        //         }
+        //         if(!msg){
+        //             console.log('no msg', {msgId, msg});
+        //             return;
+        //         }
 
-                const emoji = reaction.reaction;
-                const labels = EmojiManager.emojiLabels[emoji];
-                const abeKeys = Object.keys(appData.actionsByEmoji);
-                if (!abeKeys?.length) {
-                    console.log('no actions by emoji', { emoji, labels, abeKeys });
-                    return;
-                };
+        //         const emoji = reaction.reaction;
+        //         const labels = EmojiManager.emojiLabels[emoji];
+        //         const abeKeys = Object.keys(appData.actionsByEmoji);
+        //         if (!abeKeys?.length) {
+        //             console.log('no actions by emoji', { emoji, labels, abeKeys });
+        //             return;
+        //         };
 
-                const action = abeKeys.find((act) => appData.actionsByEmoji[act]?.includes?.(emoji)) ?? '';
-                if (!action) {
-                    console.log('no action', { emoji, labels, abeKeys, action });
-                    return;
-                };
-                const command = appData.actions[action];
-                if (!command) {
-                    console.log('no command', { emoji, labels, abeKeys, action, command });
-                    return;
-                };
-                let limit = 1;
-                if (action.includes('+')) {
-                    if (labels[0] === '1234') {
-                        limit = Infinity;
-                    } else {
-                        limit = +labels[0]
-                    }
-                }
-                console.log({ emoji, labels, abeKeys, action, command, limit });
-                await command(new WhatsappMessageAdapter(msg), false, limit);
-            }
-        })
+        //         const action = abeKeys.find((act) => appData.actionsByEmoji[act]?.includes?.(emoji)) ?? '';
+        //         if (!action) {
+        //             console.log('no action', { emoji, labels, abeKeys, action });
+        //             return;
+        //         };
+        //         const command = appData.actions[action];
+        //         if (!command) {
+        //             console.log('no command', { emoji, labels, abeKeys, action, command });
+        //             return;
+        //         };
+        //         let limit = 1;
+        //         if (action.includes('+')) {
+        //             if (labels[0] === '1234') {
+        //                 limit = Infinity;
+        //             } else {
+        //                 limit = +labels[0]
+        //             }
+        //         }
+        //         console.log({ emoji, labels, abeKeys, action, command, limit });
+        //         await command(new WhatsappMessageAdapter(msg), false, limit);
+        //     }
+        // })
         .on('message_create', async (receivedMsg) => {
 
             try {
