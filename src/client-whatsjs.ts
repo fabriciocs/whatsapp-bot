@@ -135,7 +135,7 @@ export const initWhatsappClient = async (appData: AppData) => {
         const chat = await msg.getMsg()?.getChat();
 
         const conversationId = chat?.id?._serialized;
-        return Object.keys(appData?.conversations?.[conversationId]??{})?.[0] ?? null;
+        return Object.keys(appData?.conversations?.[conversationId] ?? {})?.[0] ?? null;
     };
 
 
@@ -444,10 +444,10 @@ export const initWhatsappClient = async (appData: AppData) => {
             return;
         }
         appData.lockConversation[conversationId] = true;
-        try{
-        const resp = await create_direct_answer(agentName, msg, params)
-        await msg.getMsg<Message>().reply(resp);
-        }finally{
+        try {
+            const resp = await create_direct_answer(agentName, msg, params)
+            await msg.getMsg<Message>().reply(resp);
+        } finally {
             delete appData.lockConversation[conversationId];
         }
     };
@@ -653,7 +653,7 @@ export const initWhatsappClient = async (appData: AppData) => {
     appData.actions['.*'] = allmsg;
     appData.client = new Client({
         authStrategy: new LocalAuth(),
-        puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'], headless: false }
+        puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] }
     })
         .on('authenticated', () => {
             console.log('AUTHENTICATED');
@@ -667,12 +667,9 @@ export const initWhatsappClient = async (appData: AppData) => {
         .on('disconnected', (reason) => {
             console.log('Client was logged out', reason);
         })
-        .on('qr', (qr) => {
-            QRCode.toString(qr, { type: 'terminal', small: true }, function (err: any, url: any) {
-                console.log('\n\n\n');
-                console.log(url);
-                console.log('\n\n\n');
-            });
+        .on('qr', async(qr) => {
+            const qrCodeString = await QRCode.toString(qr, { type: 'terminal', small: true });
+            console.log(qrCodeString);
         })
         // .on('message_reaction', async (reaction) => {
         //     console.log(JSON.stringify(reaction, null, 2))
