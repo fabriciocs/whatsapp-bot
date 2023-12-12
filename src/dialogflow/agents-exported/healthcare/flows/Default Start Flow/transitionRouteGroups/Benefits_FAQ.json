@@ -1,0 +1,306 @@
+{
+  "name": "3443aa04-897f-491a-8590-e1a35939badc",
+  "displayName": "Benefits_FAQ",
+  "transitionRoutes": [
+    {
+      "intent": "healthcare.faq_deductible",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A deductible is the amount of money you need to pay before your health insurance will start to pay a portion of the cost of your care. A deductible is different from the monthly premium you pay via payroll deduction for your overall insurance.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Uma franquia é a quantia de dinheiro que você precisa pagar antes que seu seguro de saúde comece a pagar uma parte do custo de seu tratamento. Uma franquia é diferente do prêmio mensal que você paga por meio de desconto em folha de pagamento para seu seguro geral.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "8089af87-4ee4-4ad1-af40-75f9abcaf2d9"
+    },
+    {
+      "intent": "healthcare.faq_coinsurance",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Co-insurance is the percentage of the billed charges you are responsible for paying once you’ve met your upfront deductible.\n\nFor example: If a doctor's visit costs $100 and your plan has a 20% co-insurance after deductible, you would pay $20 for that visit to the provider. \n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "O cosseguro é a porcentagem das cobranças cobradas que você é responsável por pagar depois de cumprir sua franquia inicial.\n\nPor exemplo: se a visita de um médico custa $ 100 e seu plano tem um co-seguro de 20% após a franquia, você pagaria $ 20 por essa visita ao provedor.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "f1398596-0e00-4be4-9bf7-8cd9ba2b71f0"
+    },
+    {
+      "intent": "healthcare.faq_out_of_pocket_maximums",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "An out of pocket max is the maximum amount you will pay for covered services in a given year. After you reach the maximum you will no longer have co-insurance or a co-pay when you get care.\nPlease note that your plan has a different out of pocket max for in network and out of network care.\n\nFor example: If your in network out of pocket maximum is $2500, you won't pay anything when you see an in-network provider \n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um valor máximo do bolso é o valor máximo que você pagará pelos serviços cobertos em um determinado ano. Depois de atingir o máximo, você não terá mais co-seguro ou co-pagamento quando for atendido.\nPor favor, note que o seu plano tem um valor máximo diferente para atendimento na rede e fora da rede.\n\nPor exemplo: se o valor máximo do seu bolso dentro da rede for $ 2.500, você não pagará nada quando encontrar um provedor dentro da rede\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "8a258fd6-5881-4f64-a6a4-5f75a5fdbdbc"
+    },
+    {
+      "intent": "healthcare.faq_covered_service",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A covered service is the type of care that is covered under your plan. Some types of care may not be a covered service and therefore the plan doesn’t reimburse anything regardless of whether it's in network or out of network.\n\nFor example: A covered service does not mean free, it means your benefits including your deductible and/or co-pay apply when seeking that service. Different plans may choose to cover different services such as fertility.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um serviço coberto é o tipo de cuidado coberto pelo seu plano. Alguns tipos de atendimento podem não ser um serviço coberto e, portanto, o plano não reembolsa nada, independentemente de ser em rede ou fora de rede.\n\nPor exemplo: Um serviço coberto não significa gratuito, significa que seus benefícios, incluindo sua franquia e/ou copagamento, se aplicam ao procurar esse serviço. Diferentes planos podem optar por cobrir diferentes serviços, como fertilidade.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "01952d00-e392-419c-95f8-1792f8869d60"
+    },
+    {
+      "intent": "healthcare.faq_copay",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A co-pay is the fixed dollar amount for each doctor visit that you pay.\n\nFor example: If your plan has a $30 co-pay for specialist visits, you pay flat $30 to the provider regardless of the how much they bill for your visit. \n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um co-pagamento é o valor fixo em dólares para cada consulta médica que você paga.\n\nPor exemplo: se o seu plano tiver um copagamento de US$ 30 para consultas com especialistas, você pagará US$ 30 fixos ao provedor, independentemente de quanto eles cobrem por sua visita.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "6cc03b17-12ed-438d-bf14-ec3e43ebe4f8"
+    },
+    {
+      "intent": "healthcare.faq_network",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Network providers have signed a contract with us to offer high quality services at a lower price. When you see these in network providers, savings are passed along to you since you pay less out of pocket.\n\nFor example: If an in network provider charges $100 for an office visit, a provider not contracted with your plan is likely to charge the plan significantly more.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Os provedores de rede assinaram um contrato conosco para oferecer serviços de alta qualidade a um preço mais baixo. Quando você vê isso nos provedores da rede, a economia é repassada para você, pois você paga menos do próprio bolso.\n\nPor exemplo: se um provedor da rede cobra $ 100 por uma visita ao escritório, um provedor não contratado com seu plano provavelmente cobrará do plano significativamente mais.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "5d4619ea-3a28-4f52-b763-4896490c395d"
+    },
+    {
+      "intent": "healthcare.faq_hsa",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Health Savings Accounts (or HSAs) can be opened by employees who have a high-deductible health plan. You can put money in a HSA up to a set annual limit which is then treated as tax advantaged.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Contas de poupança de saúde (ou HSAs) podem ser abertas por funcionários que possuem um plano de saúde de alta franquia. Você pode colocar dinheiro em um HSA até um limite anual definido, que é então tratado como um benefício fiscal.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "ad4f6d15-dd3c-4911-a628-d7ebf5ec76c8"
+    },
+    {
+      "intent": "healthcare.faq_hdhp",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A high deductible health plan (or HDHP) has a higher annual deductible than traditional health plans.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um plano de saúde com franquia alta (ou HDHP) tem uma franquia anual mais alta do que os planos de saúde tradicionais.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "720b38d6-27fd-4f83-8de4-8b9e63a34f48"
+    },
+    {
+      "intent": "healthcare.faq_premium",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A premium is the amount that you pay for your health insurance plan. It's paid by you, your employer, or shared. It is generally deducted from your paycheck.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um prêmio é o valor que você paga pelo seu plano de seguro de saúde. É pago por você, seu empregador ou compartilhado. Geralmente é descontado do seu salário.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "859c3f51-f246-40d6-a03f-cd9fe5412d10"
+    },
+    {
+      "intent": "healthcare.faq_formulary",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A list of prescription drugs covered by your health plan, often structured in tiers which means you pay less for lower-cost generics and more for more expensive brand-name or specialty drugs.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Uma lista de medicamentos prescritos cobertos pelo seu plano de saúde, geralmente estruturados em níveis, o que significa que você paga menos por genéricos de baixo custo e mais por medicamentos de marca ou especiais mais caros.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "2998c18e-b5a4-4d6a-af5e-cf4ee2efc623"
+    },
+    {
+      "intent": "healthcare.faq_coordination",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Sometimes two insurance plans work together to pay claims for the same person. That process is called coordination of benefits.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Às vezes, dois planos de seguro trabalham juntos para pagar sinistros da mesma pessoa. Esse processo é chamado de coordenação de benefícios.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "49a3d4b5-de8c-43d3-8d68-ca401d684a6e"
+    },
+    {
+      "intent": "healthcare.faq_fsa",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "A Flexible Spending Arrangement (FSA) allows employees to be reimbrused for medical expenses, usually funded through voluntary salary reduction agreements with your employer. No employment or federal income taxes are deducted from your contribution.\n\nI can further help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Um Arranjo de Gastos Flexíveis (FSA) permite que os funcionários sejam reembolsados por despesas médicas, geralmente financiadas por meio de acordos voluntários de redução de salário com seu empregador. Nenhum emprego ou imposto de renda federal é deduzido de sua contribuição.\n\nPosso ajudar ainda mais a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Current Page",
+      "name": "1ec78a88-8b2e-4699-adaa-eac335b80bd1"
+    }
+  ]
+}

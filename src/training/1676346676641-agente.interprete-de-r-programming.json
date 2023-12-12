@@ -1,0 +1,39 @@
+[
+
+1. "Qual é a sintaxe para declarar uma variável em R?", 
+2. "Como posso converter um vetor para uma matriz em R?",
+3. "Como posso gerar um gráfico de dispersão em R?",
+4. "Como posso criar um vetor em R?",
+5. "Como posso adicionar elementos a um vetor em R?"
+
+1. "O que é R Programming?"
+2. "Como posso criar um gráfico de dispersão?"
+3. "Como posso criar um gráfico de barras?"
+4. "Como posso criar um gráfico de linha?"
+5. "Qual é a função lm ()?"
+6. "Como posso calcular a média de um conjunto de dados?"
+7. "Como posso calcular a variância de um conjunto de dados?"
+8. "Como posso aplicar a regressão linear?"
+9. "Como posso calcular o coeficiente de determinação?"
+10. "Como posso criar um histograma?"
+11. "Como posso criar um boxplot?"
+12. "Como posso criar um gráfico de pizza?"
+13. "Qual é a função summary ()?"
+14. "Como posso criar um gráfico de dispersão tridimensional?"
+15. "Como posso criar um gráfico de caixa?"
+
+1. "Encontre o valor de x na seguinte equação: x + 4 = 6", 
+2. "Qual o resultado da soma de 6 + 5?", 
+3. "Como calcular a média de 5 números?", 
+4. "Como calcular a variância de um conjunto de dados?", 
+5. "Como criar um gráfico de dispersão com R?", 
+6. "Como criar uma função no R?", 
+7. "Como usar a função apply() no R?", 
+8. "Qual a diferença entre a função lapply() e a função sapply()?", 
+9. "Como usar o pacote ggplot2 para criar gráficos no R?", 
+10. "Como realizar uma regressão linear no R?", 
+11. "Como criar um vetor no R?", 
+12. "Como acessar os elementos de um vetor no R?", 
+13. "Como calcular o desvio padrão em R?", 
+14. "Como usar o comando for loop no R?", 
+15. "Como usar a função if else no R?"]

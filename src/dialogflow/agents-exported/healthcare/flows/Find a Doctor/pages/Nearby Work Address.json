@@ -1,0 +1,127 @@
+{
+  "name": "c27848be-cdf8-43b8-bf8a-68f274daccec",
+  "displayName": "Nearby Work Address",
+  "form": {
+    "parameters": [ {
+      "displayName": "work_address",
+      "required": true,
+      "entityType": "@sys.address",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "Okay. Please tell me the zip code or address where you would like to search." ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "This zip code seems invalid. Please share a valid zip code or address." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "371810a9-26c0-4e91-9973-e30fd18062a1"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I did not understand that. Please provide me with a valid zip code or address where you would like to search for a doctor." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "513cf676-ea09-4e63-a4ab-7a9c1848e6ee"
+        }, {
+          "targetPage": "Live Agent",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "9b7a9653-e1f4-4978-bba9-25403dc94b90"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that.This zip code seems invalid. Please share a valid zip code or address.Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "7a0a254e-1bd0-44fc-9500-e2920bff4991"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "09f85c50-d648-4376-b6f2-bc0ec0afe6e0"
+  }, {
+    "condition": "$page.params.status = FINAL",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Would you like me to find a doctor around $session.params.work_address ?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Address Confirmation",
+    "name": "9bfe9db0-3726-437e-9e71-ced506571482"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "857dceb8-336b-4954-88e3-814302c0dc84"
+  } ]
+}

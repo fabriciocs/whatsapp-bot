@@ -1,0 +1,3106 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "cost of ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I need to know my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How close am I to meeting my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Have I met my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " for ",
+      "auto": true
+    }, {
+      "text": "this year",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is cost of ",
+      "auto": true
+    }, {
+      "text": "employee only deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Take me through ",
+      "auto": true
+    }, {
+      "text": "all of these",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me through "
+    }, {
+      "text": "everyone of those",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hope",
+      "auto": true
+    }, {
+      "text": " you dont mind telling me ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "speak to me about ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "yes i would like to know ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "why dont you tell me ",
+      "auto": true
+    }, {
+      "text": "each one",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "inform me ",
+      "auto": true
+    }, {
+      "text": "each one of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "inform ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "inform ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "inform me on ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Inform me about "
+    }, {
+      "text": "everyone of them",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me about ",
+      "auto": true
+    }, {
+      "text": "each of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Say ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " to me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", please.",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to know ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me about ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "all of them",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    }, {
+      "text": " please",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "please tell ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "benefits of ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " the ",
+      "auto": true
+    }, {
+      "text": "four",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what are ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " of the advantage",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    }, {
+      "text": " features",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "4",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "four",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " the advantages",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me ",
+      "auto": true
+    }, {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " the benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "all",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " the benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you tell me the "
+    }, {
+      "text": "four benefits",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know ",
+      "auto": true
+    }, {
+      "text": "all the four benefits",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " will cost me how much?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What is the cost for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help me with the cost for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much does ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to pay for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to know about my ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "family Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please inform me the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help me with the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you inform me the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", please help me with the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " Treatment",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", tell me the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", how much do I pay?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", what is the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " will cost me how much?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What is the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help me with the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much does single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "and how much do I pay for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " costs ?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please inform me the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help me with the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you inform me the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", please help me with the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", tell me the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", how much do I pay?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " will cost me how much?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help me with the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much does Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "and how much do I pay for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can I find information on my individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my individual ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Cost for "
+    }, {
+      "text": "out of pocket max of my wife",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for "
+    }, {
+      "text": "out of pocket max of my spouse",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", tell me the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "and how much do I pay for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " costs ?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me the cost for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me the cost for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I have to pay for ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will ",
+      "auto": true
+    }, {
+      "text": "family deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " Treatment",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I have to pay for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", what is the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me the cost for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to pay for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I have to pay for single person ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " costs ?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me the cost for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to pay for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I have to pay for Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will Individual ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " cost me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i find information on my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me about my ",
+      "auto": true
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me about my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "pocket max",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my "
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "Deductibles",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "coinsurances",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-insurance",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co insurance",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "out of pocket max",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "deductibles",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "deductible",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what's my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my "
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "out of packet maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "show ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "show ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "please help me out with my ",
+      "auto": true
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to know about my individual "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my individual "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know about my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "co insurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "i want to know about my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what data is available on my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "details on my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " information",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "explain me about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "hey bot can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "give me information about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you help me know about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "let me know about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "brief me about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "information about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell me something about my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "Deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "yes i want to know about my ",
+      "auto": true
+    }, {
+      "text": "deductibles",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Hi, what are my "
+    }, {
+      "text": "out of packet maximum",
+      "parameterId": "benefits"
+    }, {
+      "text": " benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my "
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my  "
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my "
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my  "
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's my "
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my  "
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's my ",
+      "auto": true
+    }, {
+      "text": "out of pocket maximum",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's my ",
+      "auto": true
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I don't know what's my ",
+      "auto": true
+    }, {
+      "text": "coinsurance",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please help me find out my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell me about my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my ",
+      "auto": true
+    }, {
+      "text": "covered service",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can i get my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and "
+    }, {
+      "text": "out of packet max",
+      "parameterId": "benefits"
+    }, {
+      "text": " details?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what are my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits"
+    }, {
+      "text": " benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what are my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    }, {
+      "text": " benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I want to know about my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my  "
+    }, {
+      "text": "out of pocket maximums",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can I get my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my  "
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " details"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Okay i want to know about my ",
+      "auto": true
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Yes I want to know about my ",
+      "auto": true
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " Benefit",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Yes I want to know about my ",
+      "auto": true
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " Benefit",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": ", my "
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits",
+      "auto": true
+    }, {
+      "text": " and my "
+    }, {
+      "text": "out of pocket max",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my "
+    }, {
+      "text": "co-insurance",
+      "parameterId": "benefits"
+    }, {
+      "text": ", "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    }, {
+      "text": " and "
+    }, {
+      "text": "covered services",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    }, {
+      "text": " amount"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-insurance",
+      "parameterId": "benefits"
+    }, {
+      "text": ", "
+    }, {
+      "text": "deductible",
+      "parameterId": "benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

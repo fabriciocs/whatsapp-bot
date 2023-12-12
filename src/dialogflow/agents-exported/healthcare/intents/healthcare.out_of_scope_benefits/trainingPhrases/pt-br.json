@@ -1,0 +1,1009 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Por favor informe",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode informar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", por favor ajude",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "Tratamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", quanto eu pago?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", Qual o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " vai custar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " quantos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai"
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits"
+        },
+        {
+          "text": " custo"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 5,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu preciso pagar por",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho que pagar por",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, diga o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " custos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode dizer",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu preciso pagar",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu tenho que pagar"
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor informe",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode informar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", por favor ajude",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "Tratamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", quanto eu pago?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": ", Qual o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " vai custar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " quantos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 7,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu preciso pagar por",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho que pagar por",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, diga o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        },
+        {
+          "text": " custos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode dizer",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " o custo para",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 7,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu preciso pagar",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu tenho que pagar",
+          "auto": true
+        },
+        {
+          "text": "co-pagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " sobre meu",
+          "auto": true
+        },
+        {
+          "text": "copagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "copagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "copagamento",
+          "parameterId": "out-of-scope-benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para"
+        },
+        {
+          "text": "hsa",
+          "parameterId": "out-of-scope-benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

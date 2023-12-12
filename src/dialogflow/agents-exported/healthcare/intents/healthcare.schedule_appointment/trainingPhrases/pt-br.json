@@ -1,0 +1,521 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Posso providenciar"
+        },
+        {
+          "text": "essa noite",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": " um compromisso matinal para"
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso arranjar um"
+        },
+        {
+          "text": "manhã",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": " compromisso"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso agendar meu"
+        },
+        {
+          "text": "manhã",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": " compromisso"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso arranjar um"
+        },
+        {
+          "text": "manhã",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": " compromisso"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso reservar um"
+        },
+        {
+          "text": "manhã",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": " compromisso"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Em",
+          "auto": true
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": ", eles terão disponibilidade?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eles têm"
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time"
+        },
+        {
+          "text": " disponibilidade?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Em",
+          "auto": true
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": ", eles têm disponibilidade?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eles têm a disponibilidade em"
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "está disponível em",
+          "auto": true
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles estão disponíveis em",
+          "auto": true
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Existe disponibilidade em"
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso agendar um horário"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": " no"
+        },
+        {
+          "text": "noite",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso agendar um horário",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": " no",
+          "auto": true
+        },
+        {
+          "text": "tarde",
+          "parameterId": "appointment_time_period",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso agendar um horário",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": " no",
+          "auto": true
+        },
+        {
+          "text": "tarde",
+          "parameterId": "appointment_time_period",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso agendar um horário"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": " no"
+        },
+        {
+          "text": "manhã",
+          "parameterId": "appointment_time_period"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles têm disponibilidade",
+          "auto": true
+        },
+        {
+          "text": "dia depois de Amanhã",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles tem disponibilidade",
+          "auto": true
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles tem disponibilidade",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles seriam livres",
+          "auto": true
+        },
+        {
+          "text": "dia depois de Amanhã",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles seriam livres",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eles seriam livres",
+          "auto": true
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "appointment_date_time",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "verifique a disponibilidade em"
+        },
+        {
+          "text": "terça",
+          "parameterId": "appointment_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eles têm disponibilidade em"
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como faço para agendar um horário?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como faço para agendar um horário? Eles têm disponibilidade em"
+        },
+        {
+          "text": "Terça-feira",
+          "parameterId": "appointment_date_time"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

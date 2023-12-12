@@ -1,0 +1,9 @@
+{
+  "name": "87d45905-395b-4f4e-be7d-a63ac208442d",
+  "displayName": "healthcare.more_info",
+  "parameters": [ {
+    "id": "unit-currency",
+    "entityType": "@sys.unit-currency"
+  } ],
+  "priority": 500000
+}

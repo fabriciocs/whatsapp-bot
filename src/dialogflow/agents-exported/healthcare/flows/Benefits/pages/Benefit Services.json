@@ -1,0 +1,404 @@
+{
+  "name": "9191be73-65eb-471b-b119-96e42cf62678",
+  "displayName": "Benefit Services",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "advancedSettings": {
+            "playbackInterruptionSettings": {
+              "allowPlaybackInterruption": true
+            }
+          }
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "healthcare.list_benefits_services",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "863e64de-d8ab-4c25-aa57-507ee331408d"
+  }, {
+    "intent": "healthcare.more_info",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand. I can transfer you to a live agent who can assist.\n\nIn addition, if you’d like to see progress toward your deductible or any other details we’ve discussed today, you can go to your benefits dashboard online.\n\nWould you still like to transfer your call to live agent? " ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "55487b0b-f1af-4a55-9532-44fc7407059e"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "574b24f8-08e6-428f-a4af-4490fff4c0bf"
+  }, {
+    "intent": "healthcare.out_of_scope_questions",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I’m sorry I can’t answer this particular question. Would you like me to transfer you to someone who can help?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "f12b7d3b-8d96-4e61-98e8-c9392466f989"
+  }, {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services.\n" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": null
+      } ]
+    },
+    "name": "583d9315-32e8-47d4-843d-d8dd11cfa487"
+  }, {
+    "intent": "healthcare.annual_physical",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Yes, preventive care is part of your benefit package and is covered at 100% even before you hit your deductible. An example of preventative care is an annual physical or a mammogram.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "912fca67-2ec9-4a9f-afa8-1e08ebe1708b"
+  }, {
+    "intent": "healthcare.prior_authorization",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A live agent can help you understand prior authorization requirements. I’ll transfer you now." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "cbfa61d2-f650-4c4b-8e81-6cdbae0fbfb9"
+  }, {
+    "intent": "healthcare.find_doctor",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "e69c62eb-5d1c-43a5-9044-68959693b7df"
+  }, {
+    "intent": "healthcare.end_session",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "2ef9ee37-2244-4a29-b57f-280d30431cf8"
+  }, {
+    "intent": "healthcare.out_of_scope_benefits",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I can help you answer your questions about your deductible, co-insurance, out of pocket maximums, covered services, your healthcare claims, and finding a doctor. \n\nFor further assistance should I transfer you to a customer service representative?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "c256ec0d-f01a-44f3-84fd-a7dee1c3a141"
+  }, {
+    "intent": "healthcare.costs_of_coverage_category",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "81f2a715-c5dd-456c-92c4-01d735fbf2da"
+  }, {
+    "intent": "healthcare.initialize_doctor",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "type_of_doctor",
+        "value": null
+      } ]
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "53a19ace-71fd-4b4c-98ee-3abf382828f1"
+  }, {
+    "intent": "healthcare.initialize_benefits",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. " ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "3ab7956c-9730-49b0-8879-f58c4f8eb309"
+  }, {
+    "intent": "healthcare.initialize_claims",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Claim Status",
+    "name": "e0f8c118-d1dd-4aba-ab9c-cc877f080f47"
+  }, {
+    "intent": "healthcare.network_doctor",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Unfortunately, we cannot make that exception. Can I help you look up other in-network provider options in your area?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Network Doctor Confirmation",
+    "name": "7fca5efb-d428-456e-a3a9-da27d95f89fc"
+  }, {
+    "condition": "$session.params.benefits = \"deductible\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "dbfa4985-ea70-47d7-bd77-3a2087f3fde4"
+  }, {
+    "condition": "$session.params.benefits = \"co-insurance\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "03a270bb-799f-4caf-b720-8ee9927f4856"
+  }, {
+    "condition": "$session.params.benefits = \"out of pocket maximums\" OR $session.params.benefits = \"out of pocket maximum\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYour out of pocket maximum is $3000 in network and $4500 out of network.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "f0547994-2eae-4d07-ad9c-9313254acea5"
+  }, {
+    "condition": "$session.params.benefits = \"covered services\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYou are covered at 100%(non-deductible and co-pay) for preventive services.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "6a85f8f7-99af-4a7a-a8e3-bfb98c303aca"
+  }, {
+    "condition": "$session.params.benefits = \"family deductible\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYour in network family deductible is $2,800 and your out of network family deductible is $5,600.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "361c8265-928b-47a3-ab11-49b62ba56d91"
+  }, {
+    "condition": "$session.params.benefits = \"family out of pocket maximums\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYour in network family out of pocket maximum is $5,200 and out of network family out of pocket maximum is $10,400.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "97c2c654-f4ae-46d0-9c4e-d96b1cb26878"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ],
+      "advancedSettings": {
+        "playbackInterruptionSettings": {
+          "allowPlaybackInterruption": true
+        }
+      }
+    },
+    "targetPage": "End Session",
+    "name": "63e3b096-5748-42b1-aaca-d925d7c63ddb"
+  }, {
+    "condition": "$session.params.dtmf = 5",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Thank you for your patience. We are transferring your call. Have a great day." ]
+        },
+        "languageCode": "en"
+      } ],
+      "advancedSettings": {
+        "playbackInterruptionSettings": {
+          "allowPlaybackInterruption": true
+        }
+      }
+    },
+    "targetPage": "End Session",
+    "name": "3caf27ef-9b05-4850-be0c-92e7f0c03b85"
+  }, {
+    "condition": "$session.params.benefits = \"all\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nYour out of pocket max is $3000 in network and $4500 out of network.\n\nYou are also covered at 100% (no deductible or co-pay) for preventative services.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "7e3ebec6-20b0-460c-92f2-c08561770a4f"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can help answer your questions about your medical benefits. You can also ask me about benefits terminology." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "2437cd76-70a1-4593-a4af-ff4b2378c059"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sorry I did not understand that, I can help you with your queries on medical benefits." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "6c8b3b03-d3ce-456f-a8c7-ff7fbad8f8d1"
+  }, {
+    "targetPage": "End Session",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "4f69e366-022d-4084-b3d4-8a2893ccd1f5"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that. I can help answer your questions about your medical benefits. You can also ask me about benefits terminology. Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "101640a7-8ccb-4c9a-bf86-e80878893342"
+  } ],
+  "transitionRouteGroups": [ "Benefits_FAQ" ]
+}

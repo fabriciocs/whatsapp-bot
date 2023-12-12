@@ -1,0 +1,102 @@
+{
+  "name": "0dda0dce-83e4-49c6-9e0e-841362d33eb0",
+  "displayName": "Network Doctor Confirmation",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "a3862f07-174e-4da1-a63b-a4435e05d37b"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Do you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Benefit Services",
+    "name": "bf26129d-66d4-41be-85aa-2dfbf9bc84ee"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "4db9f082-77d7-4c4b-8c30-940ad94b3e61"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I am here to help you find a in-network provider in your area. Do you need assistance with that?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "1f536a42-7ec1-4bf8-b9d8-10c17964d567"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can't answer that but I can assist you to find a nearby doctor. Do you wish to schedule an appointment with a nearby doctor?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "fa854a94-f994-4ff7-a88e-e849c69ccf15"
+  }, {
+    "targetPage": "End Session",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "a8afb6c9-c1d2-47d6-883b-156068474a81"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that. I am here to help you find a in-network provider in your area. Do you need assistance with that? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "fd002ef1-9da4-4c6e-a922-cc08ca181333"
+  } ]
+}

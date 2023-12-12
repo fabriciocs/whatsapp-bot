@@ -1,0 +1,375 @@
+{
+  "name": "cef32d3b-614a-477b-acf6-b9879aa62479",
+  "displayName": "Costs of Coverage Category",
+  "form": {
+  
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "condition": "$session.params.costs_of_coverage_category = \"preventive physical\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you are covered at 100% (no deductible or co-pay) for a yearly preventative physical and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "a4c23846-cdb2-4242-95f3-6092cf346c8e"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"primary care\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10%, after your plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "5140a2ca-665a-461f-9f0c-6cd0115748a4"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"specialist\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10%, after your plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "3a5811cc-294a-484f-bb23-27706cd8c678"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"virtual care\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you are covered at 100%, after the plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "cced26eb-9d23-4891-a328-b8383aa07815"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"walk in clinic\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you are covered at 100%, after the plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "2f193899-dfbf-478c-91df-2d72bfba20f7"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"heal\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you are covered at 100%, after the plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "cec63e92-c644-42ad-bef4-19e837867ef0"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"urgent care\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10%, after the plan deductible is met and for your out of network provider you pay 10%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "d8a629e4-34c2-4d31-b098-5a02e0d281f9"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"emergency\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider for an emergency room visit you pay 10%, after the plan deductible is met and for your out of network provider you pay 10%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "a7286a58-e96e-4cde-9cb9-8a05faca80c0"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"in-patient hospital visit\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10%, after the plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "c9f72611-2095-448c-9e8d-346756d8c259"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"out-patient hospital visit\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10%, after the plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "9625a32d-0086-455e-9178-4e0eb24ca43a"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"prescription drugs\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, this is offered by our speciality pharmacy CVS Caremark, for your in network provider, after your deductible is met, you pay : RETAIL/MAIL - 10% generics, 20% preferred brands, 30% non-preferred brands. For your out of network provider you pay 50%, after the deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "9b9933ef-5ac6-4b4e-9c05-08da3787d140"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"specialty drugs\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, this is offered by our speciality pharmacy CVS Caremark, for your in network provider, after your deductible is met, you pay you pay 30%, up to $180 max per prescription. For your out of network provider you pay 50%, after the deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "97e992b3-7953-49fe-938a-b11b4560cdee"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"fertility\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, for your in network provider, you pay 10% for 3 fertility \"\"smart cycle\"\" bundles with Progyny, after your deductible is met. For your out of network provider, after your deductible is met, you have the Progyny start cycle coverage. I can transfer you to Progyny's patient care advocate team if you'd like. \n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "4f110540-2d8f-4d9e-b472-c7051859f585"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"alternative medicine\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "This is not a covered service under your plan.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "1b08cc42-1df8-485d-b587-0b3c41f8bbf5"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"acupuncture\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "94713807-f4db-4ee8-a8f2-f967282f8155"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"rehabilitative therapy\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "52c377a1-6a89-4a5d-8d85-12834177c625"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"chiropractic services\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "033749a7-566a-4dd6-ab5c-08ad4460abe5"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"durable medical equipment\\, prosthetics and orthotics\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "94bae6c0-a1d1-4a8f-8542-ff15d1225f9b"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"mental health services\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met. You also have access to mental health services via our partner Lyra.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "191a3fb8-6cce-4e2b-8edc-d5a8ed29d4e8"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"diagnostic imaging\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met and for your out of network provider you pay 10% after the plan deductible is met. You also have access to mental health services via our partner Lyra. \n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "6c950225-5f04-4ed9-9417-e8770eb05d13"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"dental\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you have coverage through Delta Dental, I can transfer you now to an agent who can assist.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "408b3649-612c-437c-adcb-e7b47a062240"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = \"vision\"",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Actual charges may vary among providers, but for your in network provider you have VSP coverage, I can transfer you now to an agent who can assist.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ],
+      "setParameterActions": [ {
+        "parameter": "costs_of_coverage_category",
+        "value": null
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "fecb2ce1-b0c5-4bbe-bff6-b3c553f3b736"
+  }, {
+    "condition": "$session.params.costs_of_coverage_category = null",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sorry I cannot answer that question. \n\nIs there anything else I can help you with?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "b6936761-932c-42ae-9065-44721d9ecea5"
+  } ]
+}

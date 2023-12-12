@@ -1,6 +1,7 @@
 
 import * as admin from 'firebase-admin';
 import { Command } from './commands';
+import { keyReplacer } from './util';
 export type ContextStep = {
     command: string;
     step: string;
@@ -16,8 +17,6 @@ export type Context = {
     status: 'pending' | 'completed';
     log?: string[];
 };
-
-const prepareId = (key = "") => key.replace(/[\.\#\$\/\]\[]/g, '_');
 
 export default class Contexts {
 
@@ -42,23 +41,23 @@ export default class Contexts {
     }
 
     async addContext(context: Context): Promise<void> {
-        await this.contextsDbRef.child(prepareId(context.id)).set(context);
+        await this.contextsDbRef.child(keyReplacer(context.id)).set(context);
     }
 
-    async getContext(id: string): Promise<Context> {3
-        const context = await this.contextsDbRef.child(prepareId(id)).once('value');
+    async getContext(id: string): Promise<Context> {
+        const context = await this.contextsDbRef.child(keyReplacer(id)).once('value');
         return await context.val();
     }
     async removeContext(id: string): Promise<Context> {
-        await this.contextsDbRef.child(prepareId(id)).set({ status: 'completed' });
+        await this.contextsDbRef.child(keyReplacer(id)).set({ status: 'completed' });
         return await this.getContext(id);
     }
     async updateContext(id: string, context: Partial<Context>): Promise<Context> {
-        await this.contextsDbRef.child(prepareId(id)).update(context);
+        await this.contextsDbRef.child(keyReplacer(id)).update(context);
         return await this.getContext(id);
     }
     async addLog(plainId: string, log: string): Promise<Context> {
-        const id = prepareId(plainId);
+        const id = keyReplacer(plainId);
         const context = await this.getContext(id);
         const logs = context?.log || [];
         logs.push(log);

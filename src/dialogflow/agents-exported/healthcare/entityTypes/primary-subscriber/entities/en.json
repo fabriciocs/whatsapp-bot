@@ -1,0 +1,15 @@
+{
+  "entities": [ {
+    "value": "self",
+    "synonyms": [ "self", "me", "myself", "I am" ],
+    "languageCode": "en"
+  }, {
+    "value": "spouse",
+    "synonyms": [ "spouse", "husband", "wife", "partner" ],
+    "languageCode": "en"
+  }, {
+    "value": "dependent",
+    "synonyms": [ "dependent", "mom", "mother", "dad", "father" ],
+    "languageCode": "en"
+  } ]
+}

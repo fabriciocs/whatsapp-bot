@@ -1,32 +1,37 @@
 
 import * as admin from 'firebase-admin';
-import { Message } from 'whatsapp-web.js';
+import { Msg } from './msg/msg';
+import { keyReplacer } from './util';
 export default class MessagesManager {
 
   constructor(private msgsRef: admin.database.Reference) {
   }
 
-  async getMsgs(): Promise<any[]> {
-    const snapshot = await this.msgsRef.once('value');
-    const msgs = snapshot.val();
-    return msgs;
+  async getMsgs(size = 10): Promise<any[]> {
+    const snapshot = await this.msgsRef.limitToFirst(size).once('value');
+    return await snapshot.val();
   }
 
   async filterByFrom(from: string, size: number = 10): Promise<any> {
-    const snapshot = await this.msgsRef.orderByChild('timestamp').equalTo(from).limitToFirst(size).once('value');
-    const msgs = snapshot.val();
-    return msgs;
+    if (!from) return;
+    const snapshot = await this.msgsRef.orderByChild('fromParsed').equalTo(keyReplacer(from)).limitToFirst(size).once('value');
+    return await snapshot.val();
   }
   async getMessage(id: string): Promise<any> {
     const msg = await this.msgsRef.child(id).once('value');
     return await msg.val();
   }
 
-  async saveMessage(msg: Message): Promise<any> {
-    const saved = await this.msgsRef.push().set(msg);
-    return saved;
+  async saveMessage(msg: Msg): Promise<void> {
+    await this.msgsRef.push().set({ ...msg, fromParsed: keyReplacer(msg.from) });
   }
-  async updateMessage(id: string, msg: Message): Promise<any> {
+
+
+  async save(msg: any): Promise<void> {
+    await this.msgsRef.push().set(msg);
+  }
+
+  async updateMessage(id: string, msg: Msg): Promise<any> {
     const updated = await this.msgsRef.child(id).update(msg);
     return updated;
   }

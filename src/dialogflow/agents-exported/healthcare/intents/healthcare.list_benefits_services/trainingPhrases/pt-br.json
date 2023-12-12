@@ -1,0 +1,4245 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "custo de",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso saber o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quão perto estou de encontrar meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu conheci meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " para",
+          "auto": true
+        },
+        {
+          "text": "este ano",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo de",
+          "auto": true
+        },
+        {
+          "text": "empregado apenas dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Leve-me através",
+          "auto": true
+        },
+        {
+          "text": "todos esses",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Diga-me através"
+        },
+        {
+          "text": "todos aqueles",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "esperança",
+          "auto": true
+        },
+        {
+          "text": " você não se importa em me dizer",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "fale comigo sobre",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "sim eu gostaria de saber",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por que você não me diz",
+          "auto": true
+        },
+        {
+          "text": "cada um",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "me informe",
+          "auto": true
+        },
+        {
+          "text": "cada um deles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informar",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informar",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Informe-me sobre"
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Fale-me sobre",
+          "auto": true
+        },
+        {
+          "text": "cada um deles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Dizer",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " para mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Diga-me",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", por favor.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu quero saber",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Fale-me sobre",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "todos eles",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Contar",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        },
+        {
+          "text": " por favor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor diga",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Benefícios de",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " a",
+          "auto": true
+        },
+        {
+          "text": "quatro",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que são",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " da vantagem",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        },
+        {
+          "text": " recursos",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "4",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "quatro",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu quero saber",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " as vantagens",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me",
+          "auto": true
+        },
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Os benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "todos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Os benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me dizer o"
+        },
+        {
+          "text": "quatro benefícios",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu quero saber",
+          "auto": true
+        },
+        {
+          "text": "todos os quatro benefícios",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " vai me custar quanto?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o custo para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar com o custo para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, diga o custo para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu preciso pagar",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, informe-me o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajude-me com o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me informar o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", por favor me ajude com o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Tratamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", diga-me o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", quanto eu pago?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", Qual o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " vai me custar quanto?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto custa uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custou-me",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar com o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto custa uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Informe o custo para pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago por pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Diga-me o custo para uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto custa uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, informe-me o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajude-me com o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me informar o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", por favor me ajude com o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", diga-me o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", quanto eu pago?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " vai me custar quanto?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar com o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para Pessoa Física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto custa Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, informe o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago por Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso encontrar informações sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dar-me informações sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre minha pessoa",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o meu indivíduo",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Custo para"
+        },
+        {
+          "text": "fora do bolso máximo da minha esposa",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor, diga o custo para"
+        },
+        {
+          "text": "fora do bolso máximo do meu cônjuge",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", diga-me o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e quanto eu pago",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custos?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Diga-me o custo para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me dizer o custo para",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto eu tenho que pagar",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto vai",
+          "auto": true
+        },
+        {
+          "text": "franquia familiar",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custou-me",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Tratamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Tenho que pagar por Pessoa Física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto preciso gastar para Pessoa Física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para pessoa física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", Qual o custo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me dizer o custo para uma pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto devo pagar por pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto tenho que pagar por pessoa solteira",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Diga-me o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me dizer o custo para Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto devo pagar por Pessoa Física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto tenho que pagar por Pessoa Física",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quanto vai Individual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " custou-me",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso encontrar informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conte-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conte-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conte-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "bolso máximo",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu"
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquias",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "cosseguros",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co seguro",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "franquias",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu"
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do pacote máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "exposição",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "exposição",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor me ajude com o meu",
+          "auto": true
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero saber sobre minha pessoa"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu indivíduo"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "co seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais dados estão disponíveis no meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explique-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dê-me informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode me ajudar a saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixe-me saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informe-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me algo sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu",
+          "auto": true
+        },
+        {
+          "text": "Franquia",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "sim, eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "franquias",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Oi, quais são os meus"
+        },
+        {
+          "text": "fora do pacote máximo",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " benefícios"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha"
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha"
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não sei qual é o meu"
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não sei qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não sei qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não sei qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu não sei qual é o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por favor me ajude a descobrir o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Conte-me sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu",
+          "auto": true
+        },
+        {
+          "text": "serviço coberto",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso pegar meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e"
+        },
+        {
+          "text": "fora do máximo de pacotes",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " detalhes?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais são meus",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais são meus",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "máximos fora do bolso",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " benefícios"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso pegar meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " detalhes"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ok, eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sim, eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Beneficiar",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sim, eu quero saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " Beneficiar",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": ", minha"
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits",
+          "auto": true
+        },
+        {
+          "text": " e meu"
+        },
+        {
+          "text": "fora do bolso máximo",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha"
+        },
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits"
+        },
+        {
+          "text": ","
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " e"
+        },
+        {
+          "text": "serviços cobertos",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que e meu"
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        },
+        {
+          "text": " montante"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "co-seguro",
+          "parameterId": "benefits"
+        },
+        {
+          "text": ","
+        },
+        {
+          "text": "dedutível",
+          "parameterId": "benefits"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

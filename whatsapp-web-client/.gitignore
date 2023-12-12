@@ -1,0 +1,15 @@
+# Compiled JavaScript files
+lib/**/*.js
+lib/**/*.js.map
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+node_modules/
+index (cópia 1).ts
+whatsapp-client.ts
+.wwebjs_auth/
+.wwebjs_cache/
+Default/
+.env

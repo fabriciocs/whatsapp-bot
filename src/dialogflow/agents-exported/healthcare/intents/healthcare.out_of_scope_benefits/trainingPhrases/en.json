@@ -1,0 +1,742 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "Please inform ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you inform ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", please help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "Treatment",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", how much do I pay?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", what is the cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " will cost ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " how much?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will "
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits"
+    }, {
+      "text": " cost "
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 5,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What is the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I need to pay for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I have to pay for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much does ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "and how much do I pay for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " costs ?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to pay for ",
+      "auto": true
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I have to pay for "
+    }, {
+      "text": "co-payment",
+      "parameterId": "out-of-scope-benefits"
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please inform ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "can you inform ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", please help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " ",
+      "auto": true
+    }, {
+      "text": "Treatment",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", how much do I pay?",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": ", what is the cost",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " will cost ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " how much?",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much will ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " cost ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 7,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "What is the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you help ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " with the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I need to pay for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do I have to pay for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much does ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " cost",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Please tell the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "and how much do I pay for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    }, {
+      "text": " costs ?",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " the cost for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 7,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to pay for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I have to pay for ",
+      "auto": true
+    }, {
+      "text": "co-pay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 3,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "tell ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " about my ",
+      "auto": true
+    }, {
+      "text": "copay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "what is my ",
+      "auto": true
+    }, {
+      "text": "copay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "my ",
+      "auto": true
+    }, {
+      "text": "copay",
+      "parameterId": "out-of-scope-benefits",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "How much do I need to spend for "
+    }, {
+      "text": "hsa",
+      "parameterId": "out-of-scope-benefits"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

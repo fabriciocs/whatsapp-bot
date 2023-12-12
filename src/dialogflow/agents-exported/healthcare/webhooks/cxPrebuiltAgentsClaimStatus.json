@@ -1,0 +1,10 @@
+{
+  "name": "782a2c9b-5e35-45f5-a3d2-3fe00c9bfccd",
+  "displayName": "cxPrebuiltAgentsClaimStatus",
+  "genericWebService": {
+    "uri": "https://us-west2-custom-ccai-deliverables-dev.cloudfunctions.net/cxPrebuiltAgentsClaimStatus "
+  },
+  "timeout": {
+    "seconds": 5
+  }
+}

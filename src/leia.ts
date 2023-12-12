@@ -78,6 +78,13 @@ const loadPersonAndCar = async () => {
     const carro = await code4devs.lib.gerar.veiculo({ query: { pontuacao: "N" } }) as any;
     return { pessoa, carro };
 }
+const geradorCpf = async () => {
+    const pessoas = await code4devs.lib.gerar.pessoa({ query: { txt_qtde: 30 } }) as any[];
+    console.log(pessoas);
+    return pessoas.map(p=> p.cpf).join('\n');
+
+}
+
 
 
 const fillRandomData = async () => {
@@ -143,5 +150,5 @@ const sendResponse = async (client: Client, msg: Message, leiaId = leiaCttId) =>
     }
 }
 
-export { startChat, sendResponse, loadPersonAndCar };
+export { startChat, sendResponse, loadPersonAndCar, geradorCpf };
 

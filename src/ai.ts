@@ -1,27 +1,29 @@
-import { Configuration, CreateCompletionRequest, OpenAIApi } from 'openai';
+import { ChatGoogleVertexAI } from "langchain/chat_models/googlevertexai";
+import { AIMessage, HumanMessage, SystemMessage } from "langchain/schema";
 import { Message } from 'whatsapp-web.js';
+import { OpenAI } from 'openai';
+import { ImageGenerateParams } from 'openai/resources';
 
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-const clientAi = new OpenAIApi(configuration);
+const configuration = {
+    apiKey: process.env.OPENAI_API_KEY
+};
+const clientAi = new OpenAI(configuration);
 export default class OpenAIManager {
-    public getClient(): OpenAIApi {
+    public getClient(): OpenAI {
         return clientAi;
     }
 }
-const imageSize = '256x256';
+const imageSize: "256x256" | "512x512" | "1024x1024" = '256x256';
 
-const params: Partial<CreateCompletionRequest> = {
-    prompt: "",
+const params: Partial<OpenAI.Chat.ChatCompletionCreateParams> = {
     temperature: 1,
-    best_of: 1,
-    top_p: 1,
-    max_tokens: 2000,
+    max_tokens: 1500,
     frequency_penalty: 0,
-    presence_penalty: 0.6,
+    presence_penalty: 0,
     stop: ["\nVocê:"]
 }
+type CreateCompletionRequest = OpenAI.Chat.ChatCompletionCreateParamsNonStreaming & { prompt: string };
+
 const defaultConfig = {
     'sextou': {
         ...params,
@@ -84,7 +86,6 @@ const defaultConfig = {
         max_tokens: 1200,
         frequency_penalty: 0,
         presence_penalty: 0.6,
-
     },
     "candidato-c": {
         ...params,
@@ -101,7 +102,17 @@ const defaultConfig = {
         max_tokens: 1000,
         frequency_penalty: 0,
         presence_penalty: 0,
-    }
+    },
+    "suporte-ti": {
+        ...params,
+        prompt: `🤖 é um chatbot de Suporte de TI para uma prefeitura, com soluções claras de problemas técnicos do dia-a-dia, muito útil para os funcionários da prefeitura operarem seus computadores com sistema operacional Windows e um sistema na rede interna.\nV: Oi?\n🤖: Olá, sou chatbot de Suporte de TI, como posso ajudar?\nV: obrigado?\n🤖: Por nada, se tiver novas dúvidas é só dizer.\nV: Tchau?\n🤖: Até mais, se tiver novas dúvidas é só dizer.\nV: Quantos libras há em um quilograma?\n🤖: Tem 2.2046 e você pode fazer essa pergunta diretamente no Google, para isso, faça:\n1 - abra o navegador Google Chrome;\n2 - clique na barra de endereços e digite *https://google.com.br*;\n3 - aperte *ENTER* e aguarde a página carregar;\n4 - clique na caixa de pesquisa e digite: *converta 1 libra para quilogramas*;\n5 - aperte "*ENTER*" e veja o resultado na sua tela;\nSe tiver novas dúvidas é só dizer.\nV: O que significa HTML?\n🤖: HTML (HyperText Markup Language) é uma linguagem de marcação utilizada para criar páginas web. Para saber mais você pode acessar o curso da W3C em *https://www.w3schools.com/html*\nSe tiver novas dúvidas é só dizer.\nV: Quando o primeiro avião voou?\n🤖: 17 de dezembro de 1903, um marco para a aviação. Se você deseja assuntos desse aspecto, posso te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Qual é o significado da vida?\n🤖: A vida significa várias coisas, todas elas baseadas no processo de vivência individual, o que nos torna únicos não apenas no corpo, mas na alma, na mente e no coração. Nesse caso é melhor eu te direcionar para um suporte especializado.\nSe tiver novas dúvidas é só dizer.\nV: Que horas são?\n🤖: É hora de resolvermos seu problema, basta dizer a sua dúvida e caso eu não saiba posso te direcionar para um suporte especializado.\nV:`,
+        max_tokens: 500,
+        temperature: 0.3,
+        frequency_penalty: 0,
+        presence_penalty: 0.6,
+
+        stop: ["\nV:"]
+    } as Partial<CreateCompletionRequest>
 };
 
 const withConfig = async (prompt: string, key: string) => {
@@ -111,43 +122,127 @@ const withConfig = async (prompt: string, key: string) => {
 const doIt = async (config: Partial<CreateCompletionRequest>) => {
     try {
         const requestConfig = { ...params, ...config } as CreateCompletionRequest
-        const { data } = await clientAi.createCompletion(requestConfig);
-        return data;
+        const { response } = await clientAi.chat.completions.create(requestConfig).withResponse();
+        return await response.json();
     } catch (e) {
         console.log(e)
     }
     return null;
-}
-
+};
+const completion = async (config: Partial<CreateCompletionRequest>) => {
+    const { response } = await clientAi.chat.completions.create({ ...config } as CreateCompletionRequest).withResponse();
+    return await response.json();
+};
+// const editIt = async (config: Partial<CreateEditRequest>) => {
+//     try {
+//         const requestConfig = { ...params, ...config } as CreateEditRequest
+//         const { data } = await clientAi.(requestConfig);
+//         return data;
+//     } catch (e) {
+//         console.log(e)
+//     }
+//     return null;
+// }
 const writeAText = async (config: Partial<CreateCompletionRequest>) => {
     return await doIt({ ...config, "model": "text-davinci-003" })
 };
-const giveMeImage = async (msg: Message, prompt: string) => {
-    const response = await clientAi.createImage({
+
+// const editingText = async (config: Partial<CreateEditRequest>) => {
+//     return await editIt({ ...config, "model": "text-davinci-003" })
+// };
+const writeInstructions = async (prompt) => await simpleChat('Atue como um designer especialista em artes digitais', prompt);
+const giveMeImage = async (prompt: string, size: "256x256" | "512x512" | "1024x1024" = "256x256") => {
+    const { data } = await clientAi.images.generate({
         prompt,
         n: 1,
-        size: imageSize,
+        size,
+    }).withResponse();
+    console.log({ url: data.data[0].url });
+    return data.data[0].url;
+};
+const translateTrainingPhrases = async (trainingPhrases: string) => {
+    const response = await doIt({
+        model: "text-davinci-003",
+        prompt: `create an correponding list of sentences in portuguese:\n${trainingPhrases}\n["`,
+        temperature: 1,
+        max_tokens: 700,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+        stop: '"]',
+    })
+
+    return `["${response?.choices?.[0]?.text}`;
+}
+const createTrainingPhrases = async (trainingPhrases: string[]) => {
+    const countResponse = trainingPhrases.length;
+    //`Write ${countResponse} training phrases in pt-br:\n${JSON.stringify(trainingPhrases.map(a=> a.trim()))}\n["`,
+    //const prompt = `create an correponding array of sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`;
+    const prompt = `create a corresponding list with ${countResponse} sentences in portuguese:\n${trainingPhrases.join("\n")}\n\n["`
+    const response = await doIt({
+        prompt,
+        temperature: 0
     });
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
-    return response.data.data[0].url;
+    return `["${response?.choices?.[0]?.text}`;
+}
+type CreateModelTrainingPhrasesParams = {
+    name: string;
+    explainPrompt: string;
+    requestPhrases: string;
+}
+const phrasesGenerationConfig: Partial<CreateCompletionRequest> = {
+    model: "text-davinci-003",
+    temperature: 0.5,
+    max_tokens: 2000,
+    frequency_penalty: 0,
+    presence_penalty: 0
 };
 
-const createVariation = async (f: File) => {
-    const response = await clientAi.createImageVariation(f, 1, imageSize);
-    console.log(JSON.stringify({ response: response.data, prompt }, null, 4));
-    return response.data.data[0].url;
-};
+const createModelTrainingPhrasesToAgente = async (agente) => {
+    const promptPrases = `Escreva 5 exemplos de frases de treinamento do Dialogflow-cx para "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
+    const promptUsingPhrases = `Escreva 15 mensagem humanas para um chatbot de "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesUsinResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptUsingPhrases });
+    const promptRealPhrases = `Escreva 15 exemplos de utilização no mundo real de um chatbot que atua como "${agente}", não escreva explicações, nem índices, apenas a lista de frases entre aspas e separadas por vírgula.`;
+    const { choices: [{ text: phrasesRealResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptRealPhrases });
+    return `${phrasesResponse}${phrasesUsinResponse}${phrasesRealResponse}`;
+}
+const createModelTrainingPhrases = async (instruct) => {
+    const promptPrases = `Escreva 15 sentenças que completem a instrução "${instruct}". Não escreva explicações, apenas retorne as frases, entre aspas e separadas por vírgula:`;
+    const { choices: [{ text: phrasesResponse }] } = await completion({ ...phrasesGenerationConfig, prompt: promptPrases });
+    return phrasesResponse;
+}
+// Set up OpenAI API client
 
-const editImage = async (image: File, mask: File, msg: Message, prompt: string) => {
-    const response = await clientAi.createImageEdit(image, mask, prompt, 1, imageSize);
-    console.log(JSON.stringify({ response: response, prompt }, null, 4));
-    return response.data.data[0].url;
+
+
+const simpleChat = async (system: string, message: string, conversation = [], exemplos = []) => {
+    const tempConversations = [];
+    try {
+        if (conversation.length === 0) {
+            tempConversations.push(new SystemMessage(system));
+        }
+        tempConversations.push(new HumanMessage(message));
+
+
+        const model = new ChatGoogleVertexAI({
+            temperature: 0.7
+        });
+
+        // You can also use the model as part of a chain
+        const res = await model.invoke([...conversation, ...tempConversations]);
+        conversation.push(...tempConversations);
+        conversation.push(res);
+        return res.content;
+    } catch (error) {
+        console.error('Failed to send message:', error);
+        return 'Sorry, an error occurred.';
+    }
+
 }
 export {
-    writeAText,
-    withConfig,
-    giveMeImage,
-    createVariation,
-    editImage
+    createModelTrainingPhrases,
+    createModelTrainingPhrasesToAgente, createTrainingPhrases,
+    giveMeImage, simpleChat, translateTrainingPhrases, withConfig, writeAText, writeInstructions
 };
 

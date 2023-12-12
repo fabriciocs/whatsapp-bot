@@ -1,0 +1,1034 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Pode",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " ver minhas reivindicações anteriores?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Pode",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " ver minhas outras reivindicações?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quanto faz",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa pagar? quanto faz",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa pagar",
+          "auto": true
+        },
+        {
+          "text": "fora do bolso",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "O que significa minha explicação da declaração de benefícios?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não sei o que essa afirmação significa. Você pode ajudar?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não acho que tem o direito",
+          "auto": true
+        },
+        {
+          "text": "serviço",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " tem a conta certa",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Meu EOB está errado",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Meu EOB não é",
+          "auto": true
+        },
+        {
+          "text": "correto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Meu EOB parece muito alto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha fatura esta errada",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha conta não é",
+          "auto": true
+        },
+        {
+          "text": "correto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Minha conta parece muito alta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha reclamação está errada",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha reivindicação não é",
+          "auto": true
+        },
+        {
+          "text": "correto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Minha reivindicação parece muito alta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não tenho muita certeza sobre esse valor. Parece muito alto.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não muito afirmativo sobre esse valor. Parece estar no lado mais alto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Esta é a quantidade certa? Parece muito alto",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A quantia parece errada.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A quantidade parece errada",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Umm, esse valor parece estar um pouco mais alto.",
+          "auto": true
+        },
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não tenho certeza se isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ummm, esse valor não parece certo. É isto",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        },
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não tenho muita certeza",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "De acordo com",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ", esse valor é maior.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso é para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " tenho algumas dúvidas sobre esse valor.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " tenho algumas dúvidas sobre esse valor.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não tenho certeza sobre esse valor.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A quantia parece incorreta.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " acho que não foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " acho que o valor é um pouco maior.",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A quantia parece um pouco alta.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A quantia não parece certa,",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " não pense que isso foi",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso saber sobre minhas outras reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com entender o status do meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Alguma atualização sobre o status de minhas outras reivindicações?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E as minhas outras reivindicações?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " curioso, sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " gostaria de saber o status do meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você também pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com o status do meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " entenda meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " quero saber sobre minhas outras reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Umm",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " gostaria de ver meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " entender o status do meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Qual é o status do meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com algumas informações sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " gostaria de saber sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode dizer",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " com algumas informações sobre o meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " gostaria de ver meu outro",
+          "auto": true
+        },
+        {
+          "text": "reivindicações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tenho mais reclamações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "mas há mais de uma reivindicação"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "temos algumas reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho duas reivindicações para perguntar sobre"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "há mais de um"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu tenho mais de um"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho mais de uma reivindicação"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso perguntar sobre duas reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso perguntar sobre outras reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E se eu tiver mais reivindicações?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Por que apenas uma reivindicação?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Sobre quantas reivindicações posso perguntar?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu tenho várias reivindicações"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Há mais de uma reivindicação"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

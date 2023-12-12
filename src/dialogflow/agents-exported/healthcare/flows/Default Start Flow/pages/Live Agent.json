@@ -1,0 +1,157 @@
+{
+  "name": "ddece8f0-69c7-48dc-a08a-25dd2685a944",
+  "displayName": "Live Agent",
+  "form": {},
+  "entryFulfillment": {},
+  "transitionRoutes": [
+    {
+      "intent": "small_talk.confirmation.yes",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I understand, I will transfer your call to a customer service representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "End Session",
+      "name": "e6681e65-0eda-4a42-9ebb-7695ecb51939"
+    },
+    {
+      "intent": "small_talk.confirmation.no",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "targetPage": "Previous Page",
+      "name": "996f17dd-feaf-47d5-a6a3-b1c27cacbc64"
+    }
+  ],
+  "eventHandlers": [
+    {
+      "event": "sys.no-match-1",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I cannot answer that. Would you like me to transfer your call to someone who can help?"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpas, não posso responder a isso. Quer que eu transfira sua ligação para alguém que possa ajudar?"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "80d38c64-e93f-493b-81c5-fd43b1f4cc60"
+    },
+    {
+      "event": "sys.no-match-2",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Sorry, I did not understand that. Do you want me to transfer your call to someone who can help"
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, eu não entendi isso. Você quer que eu transfira sua chamada para alguém que possa ajudar"
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "1d3a31b4-095c-47e5-983a-5535b4c12a76"
+    },
+    {
+      "targetPage": "End Session",
+      "event": "sys.no-match-3",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpe, um representante de atendimento ao cliente poderá ajudá-lo melhor. Deixe-me transferir sua ligação. Obrigado pela sua paciência."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "92eab70d-2934-45ef-9d51-36d46565299f"
+    },
+    {
+      "event": "sys.no-input-default",
+      "triggerFulfillment": {
+        "messages": [
+          {
+            "text": {
+              "text": [
+                "Apologies, I was not able to understand that. Would you like me to transfer your call to someone who can help? Press 0 to re-direct your call to a customer care representative."
+              ]
+            },
+            "languageCode": "en"
+          },
+          {
+            "text": {
+              "text": [
+                "Desculpas, não consegui entender isso. Quer que eu transfira sua ligação para alguém que possa ajudar? Pressione 0 para redirecionar sua chamada para um representante de atendimento ao cliente."
+              ]
+            },
+            "languageCode": "pt-br"
+          }
+        ]
+      },
+      "name": "a2a62768-d0bd-4c63-8163-93174ebd41f1"
+    }
+  ]
+}

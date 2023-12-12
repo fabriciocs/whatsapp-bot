@@ -1,0 +1,9 @@
+{
+  "name": "6837332f-db79-4bd1-a4b5-39db8e775106",
+  "displayName": "healthcare.out_of_scope_benefits",
+  "parameters": [ {
+    "id": "out-of-scope-benefits",
+    "entityType": "@out-of-scope-benefits"
+  } ],
+  "priority": 500000
+}

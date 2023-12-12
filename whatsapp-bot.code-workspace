@@ -1,7 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".",
+			"name": "bot"
+		},
+		{
+			"path": "./whatsapp-web-client",
+			"name": "web-client"
 		}
 	],
 	"settings": {}

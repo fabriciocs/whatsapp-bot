@@ -1,0 +1,10 @@
+{
+  "name": "2544cdb4-03e9-4770-a73d-86c064d17077",
+  "displayName": "Continuity",
+  "genericWebService": {
+    "uri": "https://us-central1-custom-ccai-deliverables-dev.cloudfunctions.net/MPDESContinuity "
+  },
+  "timeout": {
+    "seconds": 5
+  }
+}

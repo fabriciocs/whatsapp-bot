@@ -1,0 +1,9 @@
+{
+  "name": "2a050b2a-7cb7-43cd-aff0-50a6427d866b",
+  "displayName": "healthcare.find_doctor",
+  "parameters": [ {
+    "id": "type_of_doctor",
+    "entityType": "@coverage-category"
+  } ],
+  "priority": 500000
+}

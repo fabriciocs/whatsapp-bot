@@ -1,0 +1,9 @@
+{
+  "name": "ce9ca7bc-a896-44d1-be32-700badddb079",
+  "displayName": "healthcare.costs_of_coverage_category",
+  "parameters": [ {
+    "id": "costs_of_coverage_category",
+    "entityType": "@coverage-category"
+  } ],
+  "priority": 500000
+}

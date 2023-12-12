@@ -1,0 +1,144 @@
+
+{
+    "response": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-yMAneCIiiKX8PLWgFLT7ax2z/user-m7NqIxX13baz0eIcziSfuUCG/img-bVQtX7XdbGIYwBoPPntq0A3l.png?st=2023-09-09T17%3A42%3A41Z&se=2023-09-09T19%3A42%3A41Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-09-09T03%3A52%3A32Z&ske=2023-09-10T03%3A52%3A32Z&sks=b&skv=2021-08-06&sig=GqGTW8hX105SVxnGqjUXx9pdBGNtIIVdFRe51C5jobw%3D"
+    },
+    "prompt": "Create an image representing the power and intensity of love, with a spiritual, amazing, simple, and evergreen aesthetic."
+}
+{
+    "response": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-yMAneCIiiKX8PLWgFLT7ax2z/user-m7NqIxX13baz0eIcziSfuUCG/img-bDQbca7ovxWOJuVlaH6K7lfu.png?st=2023-09-09T17%3A46%3A23Z&se=2023-09-09T19%3A46%3A23Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-09-09T00%3A12%3A28Z&ske=2023-09-10T00%3A12%3A28Z&sks=b&skv=2021-08-06&sig=sxqEx9OYiHj%2BA5o53wOrNode9k0mP98yYtFkLE5HRiI%3D"
+    },
+    "prompt": "Crie uma imagem que represente o poder e a intensidade do amor como uma arte digital espiritual, maravilhosa, simples e eterna."
+}
+{
+  isAudio: 'um texto emocionante, falando sobre como é duro o dilema de um homem ferido e medroso. O sorriso mais lindo do mundo está brilhando de novo, mas o motivo é que eu fui embora.'
+}
+{
+  content: 'um texto emocionante, falando sobre como é duro o dilema de um homem ferido e medroso. O sorriso mais lindo do mundo está brilhando de novo, mas o motivo é que eu fui embora.',
+  text: 'um texto emocionante, falando sobre como é duro o dilema de um homem ferido e medroso. O sorriso mais lindo do mundo está brilhando de novo, mas o motivo é que eu fui embora.'
+}
+{
+    "response": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-yMAneCIiiKX8PLWgFLT7ax2z/user-m7NqIxX13baz0eIcziSfuUCG/img-ERc1ShmGm74WuR9yrw51Rp7J.png?st=2023-09-09T17%3A49%3A53Z&se=2023-09-09T19%3A49%3A53Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-09-09T18%3A24%3A14Z&ske=2023-09-10T18%3A24%3A14Z&sks=b&skv=2021-08-06&sig=ZE93DoT9XoE%2B0L0arY8BqBFMsZFCGdp2dXk3IyTtSLs%3D"
+    },
+    "prompt": "Crie uma arte digital impressionista representando a intensidade de um amor que ainda não nasceu, mas já provoca contrações só de imaginar o impacto positivo."
+}
+{
+  isAudio: 'Na imensidão obscura de seus medos e angústias, encontrava-se um homem ferido, perdido em um dilema que lhe consumia sua valentia. As cicatrizes físicas que adornavam seu corpo eram, em comparação com as feridas emocionais que escondia, apenas meras marcas passageiras. Seu sorriso outrora brilhante e radiante havia se eclipsado, perdido num céu nublado de tristeza e receio.\n' +
+    '\n' +
+    'Por muito tempo, ele havia se deixado levar pelos traumas do passado, preso no eterno ciclo de uma dor causada por relações que não foram gentis com seu coração. Cada novo amanhecer erguia muralhas ao redor de sua alma tão machucada, tornando-o um prisioneiro de suas próprias inseguranças.\n' +
+    '\n' +
+    'Então, um raio de luz rompeu a escuridão que habitava em seu íntimo. Um encontro inesperado, uma conexão profunda com alguém que enxergou através de suas barreiras e tocou sua essência. O sorriso mais lindo do mundo despertou lentamente, como uma flor que desabrocha sob a delicada carícia do sol. Não era um sorriso forçado ou fingido, mas sim um genuíno reflexo de um ser humano redescobrindo a esperança.\n' +
+    '\n' +
+    'No entanto, paradoxalmente, o motivo desse sorriso resplandecente era sua própria partida. Ele se afastou, temeroso de que, ao permitir que alguém se aproximasse, suas feridas mais profundas pudessem ser reabertas. O medo de ser novamente quebrado e deixado em pedaços o assombrava, e ele preferiu se proteger, sacrificando a possibilidade de verdadeira felicidade.\n' +
+    '\n' +
+    'Sozinho, agora confrontado com sua escolha, ele percebeu que a bravura reside não em fugir da dor e da vulnerabilidade, mas em enfrentá-las de frente. A vida é uma constante balança de emoções, e esconder-se por trás das paredes nunca lhe permitiria encontrar a plenitude que almejava.\n' +
+    '\n' +
+    'Com a coragem que retoma o poder de sua própria vida, ele decide retornar. Empoderado por sua experiência, ele acolhe sua ferida e abraça sua história, permitindo-se amar e ser amado sem reservas. Ele entende que o verdadeiro triunfo não está em escapar do medo, mas sim em superá-lo, transformando-o em força e aceitação.\n' +
+    '\n' +
+    'E assim, o sorriso mais lindo do mundo volta a brilhar. Não por partida, mas por retorno. Não mais abafado pela dor e pelo temor, mas sim iluminado pelo poder de um coração curado e pelas infinitas possibilidades que se revelam quando se vive completamente.\n' +
+    '\n' +
+    'Que a história desse homem ferido, mas corajoso, possa inspirar a todos nós a abraçar nossos próprios dilemas, a enfrentar nossos medos e a acreditar no potencial de felicidade que está ao nosso alcance. Em cada cicatriz, há a promessa de uma jornada de autodescoberta e em cada partida pode haver um retorno em glória, levando consigo o sorriso mais lindo do mundo.'
+}
+{
+  content: 'Na imensidão obscura de seus medos e angústias, encontrava-se um homem ferido, perdido em um dilema que lhe consumia sua valentia. As cicatrizes físicas que adornavam seu corpo eram, em comparação com as feridas emocionais que escondia, apenas meras marcas passageiras. Seu sorriso outrora brilhante e radiante havia se eclipsado, perdido num céu nublado de tristeza e receio.\n' +
+    '\n' +
+    'Por muito tempo, ele havia se deixado levar pelos traumas do passado, preso no eterno ciclo de uma dor causada por relações que não foram gentis com seu coração. Cada novo amanhecer erguia muralhas ao redor de sua alma tão machucada, tornando-o um prisioneiro de suas próprias inseguranças.\n' +
+    '\n' +
+    'Então, um raio de luz rompeu a escuridão que habitava em seu íntimo. Um encontro inesperado, uma conexão profunda com alguém que enxergou através de suas barreiras e tocou sua essência. O sorriso mais lindo do mundo despertou lentamente, como uma flor que desabrocha sob a delicada carícia do sol. Não era um sorriso forçado ou fingido, mas sim um genuíno reflexo de um ser humano redescobrindo a esperança.\n' +
+    '\n' +
+    'No entanto, paradoxalmente, o motivo desse sorriso resplandecente era sua própria partida. Ele se afastou, temeroso de que, ao permitir que alguém se aproximasse, suas feridas mais profundas pudessem ser reabertas. O medo de ser novamente quebrado e deixado em pedaços o assombrava, e ele preferiu se proteger, sacrificando a possibilidade de verdadeira felicidade.\n' +
+    '\n' +
+    'Sozinho, agora confrontado com sua escolha, ele percebeu que a bravura reside não em fugir da dor e da vulnerabilidade, mas em enfrentá-las de frente. A vida é uma constante balança de emoções, e esconder-se por trás das paredes nunca lhe permitiria encontrar a plenitude que almejava.\n' +
+    '\n' +
+    'Com a coragem que retoma o poder de sua própria vida, ele decide retornar. Empoderado por sua experiência, ele acolhe sua ferida e abraça sua história, permitindo-se amar e ser amado sem reservas. Ele entende que o verdadeiro triunfo não está em escapar do medo, mas sim em superá-lo, transformando-o em força e aceitação.\n' +
+    '\n' +
+    'E assim, o sorriso mais lindo do mundo volta a brilhar. Não por partida, mas por retorno. Não mais abafado pela dor e pelo temor, mas sim iluminado pelo poder de um coração curado e pelas infinitas possibilidades que se revelam quando se vive completamente.\n' +
+    '\n' +
+    'Que a história desse homem ferido, mas corajoso, possa inspirar a todos nós a abraçar nossos próprios dilemas, a enfrentar nossos medos e a acreditar no potencial de felicidade que está ao nosso alcance. Em cada cicatriz, há a promessa de uma jornada de autodescoberta e em cada partida pode haver um retorno em glória, levando consigo o sorriso mais lindo do mundo.',
+  text: 'Na imensidão obscura de seus medos e angústias, encontrava-se um homem ferido, perdido em um dilema que lhe consumia sua valentia. As cicatrizes físicas que adornavam seu corpo eram, em comparação com as feridas emocionais que escondia, apenas meras marcas passageiras. Seu sorriso outrora brilhante e radiante havia se eclipsado, perdido num céu nublado de tristeza e receio.\n' +
+    '\n' +
+    'Por muito tempo, ele havia se deixado levar pelos traumas do passado, preso no eterno ciclo de uma dor causada por relações que não foram gentis com seu coração. Cada novo amanhecer erguia muralhas ao redor de sua alma tão machucada, tornando-o um prisioneiro de suas próprias inseguranças.\n' +
+    '\n' +
+    'Então, um raio de luz rompeu a escuridão que habitava em seu íntimo. Um encontro inesperado, uma conexão profunda com alguém que enxergou através de suas barreiras e tocou sua essência. O sorriso mais lindo do mundo despertou lentamente, como uma flor que desabrocha sob a delicada carícia do sol. Não era um sorriso forçado ou fingido, mas sim um genuíno reflexo de um ser humano redescobrindo a esperança.\n' +
+    '\n' +
+    'No entanto, paradoxalmente, o motivo desse sorriso resplandecente era sua própria partida. Ele se afastou, temeroso de que, ao permitir que alguém se aproximasse, suas feridas mais profundas pudessem ser reabertas. O medo de ser novamente quebrado e deixado em pedaços o assombrava, e ele preferiu se proteger, sacrificando a possibilidade de verdadeira felicidade.\n' +
+    '\n' +
+    'Sozinho, agora confrontado com sua escolha, ele percebeu que a bravura reside não em fugir da dor e da vulnerabilidade, mas em enfrentá-las de frente. A vida é uma constante balança de emoções, e esconder-se por trás das paredes nunca lhe permitiria encontrar a plenitude que almejava.\n' +
+    '\n' +
+    'Com a coragem que retoma o poder de sua própria vida, ele decide retornar. Empoderado por sua experiência, ele acolhe sua ferida e abraça sua história, permitindo-se amar e ser amado sem reservas. Ele entende que o verdadeiro triunfo não está em escapar do medo, mas sim em superá-lo, transformando-o em força e aceitação.\n' +
+    '\n' +
+    'E assim, o sorriso mais lindo do mundo volta a brilhar. Não por partida, mas por retorno. Não mais abafado pela dor e pelo temor, mas sim iluminado pelo poder de um coração curado e pelas infinitas possibilidades que se revelam quando se vive completamente.\n' +
+    '\n' +
+    'Que a história desse homem ferido, mas corajoso, possa inspirar a todos nós a abraçar nossos próprios dilemas, a enfrentar nossos medos e a acreditar no potencial de felicidade que está ao nosso alcance. Em cada cicatriz, há a promessa de uma jornada de autodescoberta e em cada partida pode haver um retorno em glória, levando consigo o sorriso mais lindo do mundo.'
+}
+{
+    "response": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-yMAneCIiiKX8PLWgFLT7ax2z/user-m7NqIxX13baz0eIcziSfuUCG/img-rW9j2j5cZK3zG4rABAZj7j6B.png?st=2023-09-09T17%3A50%3A37Z&se=2023-09-09T19%3A50%3A37Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-09-09T18%3A25%3A21Z&ske=2023-09-10T18%3A25%3A21Z&sks=b&skv=2021-08-06&sig=Bweqth2CApjbeMnG5z9nHfpjY92CYuslfHXSbOke4%2Bg%3D"
+    },
+    "prompt": "Gerar uma arte digital que represente a intensidade de um amor que ainda não nasceu, mas já provoca contrações só de imaginar o impacto positivo."
+}
+{
+  isAudio: 'No silêncio da noite, o coração acelera ao imaginar o amor que ainda não nasceu. É uma força inexplicável que provoca contrações na alma, assim como o bater das asas de uma borboleta libertadora. É como se já pudesse sentir o impacto positivo que esse amor trará.\n' +
+    '\n' +
+    'Nossos caminhos ainda não se cruzaram, mas eu sinto a energia pulsante do destino conspirando a nosso favor. É como se o universo sussurrasse em meus ouvidos a promessa de um amor que transcenderá todas as expectativas.\n' +
+    '\n' +
+    'Já existe uma conexão além das palavras, uma ligação que só o coração é capaz de compreender. Cada pensamento, cada sonho, cada desejo, todos são envolvidos por esse amor latente. É uma chama que não se apaga, que queima suavemente à espera do seu combustível: nós dois juntos, alimentando um ao outro.\n' +
+    '\n' +
+    'A intensidade desse amor se faz presente em cada respiração. É como se o ar que adentra meus pulmões carregasse a essência desse sentimento, fazendo meu peito arder em uma paixão avassaladora. Ainda que nossos corpos não tenham se tocado, já posso sentir a eletricidade em nossos olhares cruzados, onde o tempo parece estagnar e o mundo ao redor desaparecer.\n' +
+    '\n' +
+    'Imaginar esse amor é como flutuar em um oceano de emoções, mergulhando em águas profundas e desconhecidas. A cada pensamento, a cada fantasia, sinto-me transbordar de felicidade e plenitude. É como se o amor que ainda não nasceu se tornasse uma realidade palpável, capaz de transformar toda a existência.\n' +
+    '\n' +
+    'Seguimos separados, mas unidos por uma força que supera qualquer distância física. Esse amor que antecede a própria existência é um presente, um presente que aguardo com a expectativa de quem sabe que algo extraordinário está por vir.\n' +
+    '\n' +
+    'E quando finalmente nos encontrarmos, a explosão desse amor será como fogos de artifício iluminando o céu escuro. Será um encontro de almas entrelaçadas em uma dança cósmica e perfeita. Será o encontro de dois corações que esperaram, pacientemente, pelo momento certo. E, então, as contrações que sentimos agora se transformarão em batimentos acelerados e apaixonados.\n' +
+    '\n' +
+    'Esse amor ainda não nasceu, mas sua presença é tão forte que já transborda em cada palavra escrita e em cada pensamento dedicado a ele. É um amor que promete transformar vidas, curar feridas e criar um laço inquebrável.\n' +
+    '\n' +
+    'Guardo com fervor a certeza de que um futuro glorioso nos aguarda, onde seremos os protagonistas de uma história de amor única e intensa. E, até que esse amor se materialize, carrego em meu peito a esperança de que ele está cada vez mais próximo, provando que seu impacto positivo será tão grandioso que tudo se transformará em uma eterna felicidade compartilhada.'
+}
+{
+  content: 'No silêncio da noite, o coração acelera ao imaginar o amor que ainda não nasceu. É uma força inexplicável que provoca contrações na alma, assim como o bater das asas de uma borboleta libertadora. É como se já pudesse sentir o impacto positivo que esse amor trará.\n' +
+    '\n' +
+    'Nossos caminhos ainda não se cruzaram, mas eu sinto a energia pulsante do destino conspirando a nosso favor. É como se o universo sussurrasse em meus ouvidos a promessa de um amor que transcenderá todas as expectativas.\n' +
+    '\n' +
+    'Já existe uma conexão além das palavras, uma ligação que só o coração é capaz de compreender. Cada pensamento, cada sonho, cada desejo, todos são envolvidos por esse amor latente. É uma chama que não se apaga, que queima suavemente à espera do seu combustível: nós dois juntos, alimentando um ao outro.\n' +
+    '\n' +
+    'A intensidade desse amor se faz presente em cada respiração. É como se o ar que adentra meus pulmões carregasse a essência desse sentimento, fazendo meu peito arder em uma paixão avassaladora. Ainda que nossos corpos não tenham se tocado, já posso sentir a eletricidade em nossos olhares cruzados, onde o tempo parece estagnar e o mundo ao redor desaparecer.\n' +
+    '\n' +
+    'Imaginar esse amor é como flutuar em um oceano de emoções, mergulhando em águas profundas e desconhecidas. A cada pensamento, a cada fantasia, sinto-me transbordar de felicidade e plenitude. É como se o amor que ainda não nasceu se tornasse uma realidade palpável, capaz de transformar toda a existência.\n' +
+    '\n' +
+    'Seguimos separados, mas unidos por uma força que supera qualquer distância física. Esse amor que antecede a própria existência é um presente, um presente que aguardo com a expectativa de quem sabe que algo extraordinário está por vir.\n' +
+    '\n' +
+    'E quando finalmente nos encontrarmos, a explosão desse amor será como fogos de artifício iluminando o céu escuro. Será um encontro de almas entrelaçadas em uma dança cósmica e perfeita. Será o encontro de dois corações que esperaram, pacientemente, pelo momento certo. E, então, as contrações que sentimos agora se transformarão em batimentos acelerados e apaixonados.\n' +
+    '\n' +
+    'Esse amor ainda não nasceu, mas sua presença é tão forte que já transborda em cada palavra escrita e em cada pensamento dedicado a ele. É um amor que promete transformar vidas, curar feridas e criar um laço inquebrável.\n' +
+    '\n' +
+    'Guardo com fervor a certeza de que um futuro glorioso nos aguarda, onde seremos os protagonistas de uma história de amor única e intensa. E, até que esse amor se materialize, carrego em meu peito a esperança de que ele está cada vez mais próximo, provando que seu impacto positivo será tão grandioso que tudo se transformará em uma eterna felicidade compartilhada.',
+  text: 'No silêncio da noite, o coração acelera ao imaginar o amor que ainda não nasceu. É uma força inexplicável que provoca contrações na alma, assim como o bater das asas de uma borboleta libertadora. É como se já pudesse sentir o impacto positivo que esse amor trará.\n' +
+    '\n' +
+    'Nossos caminhos ainda não se cruzaram, mas eu sinto a energia pulsante do destino conspirando a nosso favor. É como se o universo sussurrasse em meus ouvidos a promessa de um amor que transcenderá todas as expectativas.\n' +
+    '\n' +
+    'Já existe uma conexão além das palavras, uma ligação que só o coração é capaz de compreender. Cada pensamento, cada sonho, cada desejo, todos são envolvidos por esse amor latente. É uma chama que não se apaga, que queima suavemente à espera do seu combustível: nós dois juntos, alimentando um ao outro.\n' +
+    '\n' +
+    'A intensidade desse amor se faz presente em cada respiração. É como se o ar que adentra meus pulmões carregasse a essência desse sentimento, fazendo meu peito arder em uma paixão avassaladora. Ainda que nossos corpos não tenham se tocado, já posso sentir a eletricidade em nossos olhares cruzados, onde o tempo parece estagnar e o mundo ao redor desaparecer.\n' +
+    '\n' +
+    'Imaginar esse amor é como flutuar em um oceano de emoções, mergulhando em águas profundas e desconhecidas. A cada pensamento, a cada fantasia, sinto-me transbordar de felicidade e plenitude. É como se o amor que ainda não nasceu se tornasse uma realidade palpável, capaz de transformar toda a existência.\n' +
+    '\n' +
+    'Seguimos separados, mas unidos por uma força que supera qualquer distância física. Esse amor que antecede a própria existência é um presente, um presente que aguardo com a expectativa de quem sabe que algo extraordinário está por vir.\n' +
+    '\n' +
+    'E quando finalmente nos encontrarmos, a explosão desse amor será como fogos de artifício iluminando o céu escuro. Será um encontro de almas entrelaçadas em uma dança cósmica e perfeita. Será o encontro de dois corações que esperaram, pacientemente, pelo momento certo. E, então, as contrações que sentimos agora se transformarão em batimentos acelerados e apaixonados.\n' +
+    '\n' +
+    'Esse amor ainda não nasceu, mas sua presença é tão forte que já transborda em cada palavra escrita e em cada pensamento dedicado a ele. É um amor que promete transformar vidas, curar feridas e criar um laço inquebrável.\n' +
+    '\n' +
+    'Guardo com fervor a certeza de que um futuro glorioso nos aguarda, onde seremos os protagonistas de uma história de amor única e intensa. E, até que esse amor se materialize, carrego em meu peito a esperança de que ele está cada vez mais próximo, provando que seu impacto positivo será tão grandioso que tudo se transformará em uma eterna felicidade compartilhada.'
+}
+{
+    "response": {
+        "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-yMAneCIiiKX8PLWgFLT7ax2z/user-m7NqIxX13baz0eIcziSfuUCG/img-umzhMKqE3QNIgVyxjirKXgTj.png?st=2023-09-09T17%3A51%3A33Z&se=2023-09-09T19%3A51%3A33Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-09-09T18%3A20%3A30Z&ske=2023-09-10T18%3A20%3A30Z&sks=b&skv=2021-08-06&sig=/cpdCw3DpgiIGZ/SU7aRC7w/dXnxitZFZtzd0ZsNARs%3D"
+    },
+    "prompt": "Crie uma imagem que represente a intensidade de um amor ainda não nascido, mas que já cause contrações só de imaginar o impacto positivo."
+}
+[INFO] 15:53:37 Restarting: /home/fabricio/projects/whatsapp-bot/src/client.ts has been modified
+^A

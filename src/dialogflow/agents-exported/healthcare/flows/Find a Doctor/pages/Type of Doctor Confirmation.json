@@ -1,0 +1,113 @@
+{
+  "name": "212748ca-7c33-45d1-af3d-d5c4d29937b6",
+  "displayName": "Type of Doctor Confirmation",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Condition for Coverage Category",
+    "name": "29b4e270-abf4-4afc-a4af-5aa5a26b0842"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "type_of_doctor",
+        "value": null
+      } ]
+    },
+    "targetPage": "Type of Doctor",
+    "name": "67762c49-8f51-451f-ab52-8746991d3968"
+  }, {
+    "intent": "healthcare.find_doctor",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "To confirm, you would like to see a doctor for $session.params.type_of_doctor? " ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "f40fb3fb-1109-42de-9a02-c7e0168b83c0"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "7f9a88c8-fade-4dd0-bfa9-e5033886ea0e"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "To confirm, you want to see a doctor which falls under the coverage category of $session.params.type_of_doctor?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "734c7309-09a8-46aa-8e3f-b1bb4b7fca99"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. Do you want to schedule an appointment with a doctor under the coverage category of $session.params.type_of_doctor ?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "cff6ed34-b201-4abf-9e0b-c7c021cfa4ff"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "77c01996-0bb6-41de-a86b-486d163398af"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.To confirm, you want to see a doctor which falls under the coverage category of $session.params.type_of_doctor? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "6292feab-bd0a-4295-a884-a6597daa41d4"
+  } ]
+}

@@ -1,0 +1,110 @@
+{
+  "name": "473970d7-83f6-4dd5-9f0e-9d7130b531d0",
+  "displayName": "Other than Primary, Specialist and Mental",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Nearby Home Address",
+    "name": "f0c46a92-9250-41f4-9353-5534419a4725"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "Nearby Work Address",
+    "name": "1ca882aa-da9c-49c4-89c9-c3201fde4ce3"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "ff1be1c4-b829-481d-b430-148e1ad74ca2"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "ce00c4a4-2881-4d42-90c1-74bc3757b0dd"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Would you like to search for $session.params.type_of_doctor nearby?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "e6800f73-465d-409e-9614-161dba9844f9"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. Do you want to search for \n$session.params.type_of_doctor nearby?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "ec28de2f-d668-495d-8063-4d3aaaa298ea"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "12235366-36a0-4533-9bf6-917ba924b9b6"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.Would you like to search for $session.params.type_of_doctor nearby? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "6d1fbe0b-49e6-4730-b69f-993b67c5f22b"
+  } ]
+}

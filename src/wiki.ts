@@ -6,7 +6,7 @@ export default class Wikipedia {
         return await this.wiki.search(searchTerm);
     }
     public async sumary(searchTerm: string): Promise<string> {
-        const page = await this.wiki.find(searchTerm, pages => pages.find(async p => (await p.categories?.(true))?.includes('Desenvolvedores de software')));
+        const page = await this.wiki.find(searchTerm, pages => pages.find(async p => (await p.categories?.(true))));
         return await page.summary();
     }
 }

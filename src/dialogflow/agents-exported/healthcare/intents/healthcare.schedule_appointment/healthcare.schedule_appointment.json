@@ -1,0 +1,12 @@
+{
+  "name": "1c6f3740-aafc-4b59-864b-a344ef3f96da",
+  "displayName": "healthcare.schedule_appointment",
+  "parameters": [ {
+    "id": "appointment_date_time",
+    "entityType": "@sys.date-time"
+  }, {
+    "id": "appointment_time_period",
+    "entityType": "@sys.time-period"
+  } ],
+  "priority": 500000
+}

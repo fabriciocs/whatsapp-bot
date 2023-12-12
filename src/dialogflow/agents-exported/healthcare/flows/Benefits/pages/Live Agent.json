@@ -1,0 +1,81 @@
+{
+  "name": "4cbeb2e7-3547-44f7-af57-ea968dff2a81",
+  "displayName": "Live Agent",
+  "form": {
+  
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "235e988c-7088-4a6e-8a02-62a46ba6747e"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Do you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Previous Page",
+    "name": "35745712-4945-48f7-b668-1ee287b8c387"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I cannot answer that. Would you like me to transfer your call to someone who can help?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "553d8739-438f-4cda-8a12-edece4290230"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sorry, I did not understand that. Do you want me to transfer your call to someone who can help?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "5ceb85b3-71db-4304-a8e5-154add04da20"
+  }, {
+    "targetPage": "End Session",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "683f2d40-fd46-41dc-8cfe-4b6b7329deda"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that. Would you like me to transfer your call to someone who can help? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "4192025e-4276-4b2d-b910-59c0b5bb76eb"
+  } ]
+}
