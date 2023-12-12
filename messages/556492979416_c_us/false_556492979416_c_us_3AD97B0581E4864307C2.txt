@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+N:😄;Israel;Jr;;
+FN:Israel Jr 😄
+item1.TEL;waid=556492626476:+55 64 9262-6476
+item1.X-ABLabel:Celular
+END:VCARD
