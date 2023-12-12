@@ -8,26 +8,23 @@ import * as readline from 'readline';
 
 import dbConfig from './db-config';
 
+import { protos, v1beta2 } from '@google-cloud/language';
 import { Database } from 'firebase-admin/database';
-import { writeFile, readFile, readdir } from 'fs/promises';
-import OpenAIManager, { giveMeImage, simpleChat, withConfig, writeAText } from './ai';
+import { readFile, readdir, writeFile } from 'fs/promises';
+import { simpleChat, withConfig } from './ai';
 import { AppData } from './app-data';
+import { initWhatsappClient } from './client-whatsjs';
 import Commands from './commands';
 import Contexts from './context';
 import { Intent } from './dialogflow/intent';
 import IoChannel, { SendAnswerParams } from './io-channel';
+import { geradorCpf, loadPersonAndCar } from './leia';
 import ConsoleMsg from './msg/console-msg';
 import { Msg, MsgTypes } from './msg/msg';
 import { readToMe } from './speech-to-text';
 import { tellMe } from './textToSpeach';
 import { ChatConfigType, baseName, botname, commandMarkers } from './util';
-import { initWhatsappClient } from './client-whatsjs';
-import { MessageMedia } from 'whatsapp-web.js';
-import Wordpress from './wordpress';
-import CurrierModel from './currier';
 import Wikipedia from './wiki';
-import { protos, v1beta2 } from '@google-cloud/language';
-import { geradorCpf, loadPersonAndCar } from './leia';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
@@ -177,38 +174,38 @@ const voice = async (msg: Msg, prompt: string[]) => {
 }
 
 
-const curie = new CurrierModel(new OpenAIManager().getClient());
+// const curie = new CurrierModel(new OpenAIManager().getClient());
 const wikipedia = new Wikipedia();
 const createPost = async (msg: Msg, prompt?: string[]) => {
     return await sweetTry(msg, async () => {
-        const wordpress = new Wordpress(curie);
-        const { title, content } = extractPostParams(prompt?.join(' '));
-        const response = await wordpress.createAiPost({
-            title,
-            prompt: content,
-            status: 'publish',
-        });
-        if (!response) {
+        // const wordpress = new Wordpress(curie);
+        // const { title, content } = extractPostParams(prompt?.join(' '));
+        // const response = await wordpress.createAiPost({
+        //     title,
+        //     prompt: content,
+        //     status: 'publish',
+        // });
+        // if (!response) {
             return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
-        }
-        await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
+        // }
+        // await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
     });
 }
 
 
 const listPosts = async (msg: Msg, prompt?: string[]) => {
     return await sweetTry(msg, async () => {
-        const wordpress = new Wordpress(curie);
-        const { title, content } = extractPostParams(prompt?.join(' '));
-        const response = await wordpress.createAiPost({
-            title,
-            prompt: content,
-            status: 'publish',
-        });
-        if (!response) {
+        // const wordpress = new Wordpress(curie);
+        // const { title, content } = extractPostParams(prompt?.join(' '));
+        // const response = await wordpress.createAiPost({
+        //     title,
+        //     prompt: content,
+        //     status: 'publish',
+        // });
+        // if (!response) {
             return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
-        }
-        await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
+        // }
+        // await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
     });
 }
 // const forzinhoTranslationAgent = new AgentTranslation('bimbim');
@@ -532,8 +529,8 @@ const run = async () => {
         // '-agente': async (msg: Msg, prompt: string[]) => await unbindSessionConfig(msg),
         // 'admin-add': async (msg: Msg, prompt: string[]) => await addAdmin(msg),
         // 'admin-del': async (msg: Msg, prompt: string[]) => await delAdmin(msg),
-        'posts': async (msg: Msg, prompt: string[]) => console.info(await new Wordpress(curie).getPosts()),
-        'post': async (msg: Msg, prompt: string[]) => await createPost(msg, prompt),
+        // 'posts': async (msg: Msg, prompt: string[]) => console.info(await new Wordpress(curie).getPosts()),
+        // 'post': async (msg: Msg, prompt: string[]) => await createPost(msg, prompt),
         // ins: async (msg: Msg, prompt: string[]) => await createInstructionsDirectly(msg, prompt?.join(' ')),
         sheguinho: async (msg: Msg, prompt: string[]) => await intentChat(msg, prompt),
         // tcr: async (msg: Msg, prompt: string[]) => await intentChat(msg, prompt, process.env.TRAVEL_CAR_RENT_AGENT_ID),

@@ -4,10 +4,7 @@ import { Message } from 'whatsapp-web.js';
 import { OpenAI } from 'openai';
 import { ImageGenerateParams } from 'openai/resources';
 
-const configuration = {
-    apiKey: process.env.OPENAI_API_KEY
-};
-const clientAi = new OpenAI(configuration);
+const clientAi:OpenAI = null;
 export default class OpenAIManager {
     public getClient(): OpenAI {
         return clientAi;
