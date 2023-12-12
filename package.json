@@ -34,7 +34,7 @@
     "google-auth-library": "^9.4.1",
     "langchain": "^0.0.155",
     "openai": "^4.12.4",
-    "puppeteer": "^21.1.1",
+    "puppeteer": "^21.6.0",
     "qrcode": "^1.5.1",
     "sinesp-api": "^3.0.0",
     "whatsapp": "^0.0.5-Alpha",
