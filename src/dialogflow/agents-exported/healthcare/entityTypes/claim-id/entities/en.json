@@ -1,0 +1,39 @@
+{
+  "entities": [ {
+    "value": "P10101",
+    "synonyms": [ "P10101" ],
+    "languageCode": "en"
+  }, {
+    "value": "p10101",
+    "synonyms": [ "p10101" ],
+    "languageCode": "en"
+  }, {
+    "value": "P20202",
+    "synonyms": [ "P20202" ],
+    "languageCode": "en"
+  }, {
+    "value": "p20202",
+    "synonyms": [ "p20202" ],
+    "languageCode": "en"
+  }, {
+    "value": "P30303",
+    "synonyms": [ "P30303" ],
+    "languageCode": "en"
+  }, {
+    "value": "p30303",
+    "synonyms": [ "p30303" ],
+    "languageCode": "en"
+  }, {
+    "value": "P40404",
+    "synonyms": [ "P40404" ],
+    "languageCode": "en"
+  }, {
+    "value": "p40404",
+    "synonyms": [ "p40404" ],
+    "languageCode": "en"
+  }, {
+    "value": "[A-Z|a-z][\\d]{5}",
+    "synonyms": [ "[A-Z|a-z][\\d]{5}" ],
+    "languageCode": "en"
+  } ]
+}

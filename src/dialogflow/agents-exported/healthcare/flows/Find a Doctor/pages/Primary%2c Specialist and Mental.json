@@ -1,0 +1,144 @@
+{
+  "name": "c0d7238f-4ae6-448d-894d-6d7b4e0b3667",
+  "displayName": "Primary, Specialist and Mental",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Would you like to talk to someone now, or would you like to schedule for a later date and time?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "ed579ebc-9e9a-4237-b385-5fc914d91f6e"
+  }, {
+    "intent": "healthcare.free_at_specific_time",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Great, I’ll connect you to someone who can help you get that scheduled.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "cff83cfd-7e96-42d4-b7c2-adbfcbaf6de9"
+  }, {
+    "intent": "healthcare.free_now",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Great, you can visit livehealthonline.com/google to set up an account and you’ll be connected with a provider. This process typically takes less than 10 minutes. I can also transfer you to an agent who can assist.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "f7a84988-fd54-4d20-b99f-1899f797e85a"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "25383e19-5841-4f0d-8467-1e8ce9ea0d7a"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I am transferring you to a customer care representative to assist you with appointment scheduling. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "d40609ab-daf6-4f55-b182-f26878529316"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "4f19ab22-05c3-49f0-8be0-8c7c23f8feee"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Please provide a valid date and time. You can say December 22 at 7 pm." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "2911123f-d356-4b83-b346-4dcd889d97a8"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. Can you help me with a valid date and time. You can say November 2, between 3-5pm." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "6a1305a5-dc2c-4085-b833-1b025e976792"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "ce593f8c-d978-4939-a37b-49ad5395fee4"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.Please provide a valid date and time. You can say December 22 at 7 pm.Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "9738f563-7685-4471-a53d-68009b56b65e"
+  } ]
+}

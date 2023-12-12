@@ -1,0 +1,91 @@
+{
+  "entities": [ {
+    "value": "preventive physical",
+    "synonyms": [ "Preventive Physical", "annual physical", "annual wellness exam", "yearly check up", "annual well woman exam", "regular health check", "regular health checkup", "regular healthcheckup", "annual wellness", "annual well woman", "physical" ],
+    "languageCode": "en"
+  }, {
+    "value": "primary care",
+    "synonyms": [ "Doctor Office Visits", "non specialist visit", "non specialist visits", "primary care visit", "PCP visit", "family medicine visit", "internal medicine visit", "physician visit", "provider visit", "ambulatory care", "primary care", "physician", "non specialist", "PCP", "family medicine", "internal medicine" ],
+    "languageCode": "en"
+  }, {
+    "value": "virtual care",
+    "synonyms": [ "Virtual Care", "telemedicine", "virtual visit", "telemed visit", "remote visit", "telemed", "Tele med" ],
+    "languageCode": "en"
+  }, {
+    "value": "walk in clinic",
+    "synonyms": [ "Walk in Clinic ", "Retail clinic", "MinuteClinic", "Care Clinic" ],
+    "languageCode": "en"
+  }, {
+    "value": "heal",
+    "synonyms": [ "Heal", "House call", "home visit", "hospice" ],
+    "languageCode": "en"
+  }, {
+    "value": "urgent care",
+    "synonyms": [ "Urgent Care", "urgent care clinic", " walk-in" ],
+    "languageCode": "en"
+  }, {
+    "value": "emergency",
+    "synonyms": [ "Emergency", "ED", "ER", "Emergency Room", "Emergency department", "Emergency medicine" ],
+    "languageCode": "en"
+  }, {
+    "value": "in-patient hospital visit",
+    "synonyms": [ "In-Patient Hospital Visit", "hospital stay", "hospitalization", "inpatient", "in-patient", "inpatient visit" ],
+    "languageCode": "en"
+  }, {
+    "value": "out-patient hospital visit",
+    "synonyms": [ "Out-Patient Hospital Visit", "outpatient", "out-patient" ],
+    "languageCode": "en"
+  }, {
+    "value": "prescription drugs",
+    "synonyms": [ "Prescription Drugs", "prescription", "drug", "normal drug", "medication", "prescriptions", "drugs", "normal drugs", "medications", "formulary", "generic" ],
+    "languageCode": "en"
+  }, {
+    "value": "specialty drugs",
+    "synonyms": [ "Specialty Drugs", "Injectable drugs", "infusion", "Speciality Drugs" ],
+    "languageCode": "en"
+  }, {
+    "value": "fertility",
+    "synonyms": [ "Fertility", "infertility", "egg freezing", "IVF", "fertility preservation", "fertility consult", "fertility consultation" ],
+    "languageCode": "en"
+  }, {
+    "value": "alternative medicine",
+    "synonyms": [ "Alternative medicine ", "chinese medicine", "eastern medicine", "complementary medicine", "integrative medicine" ],
+    "languageCode": "en"
+  }, {
+    "value": "acupuncture",
+    "synonyms": [ "Acupuncture ", "Traditional Chinese medicine " ],
+    "languageCode": "en"
+  }, {
+    "value": "rehabilitative therapy",
+    "synonyms": [ "Rehabilitative Therapy", "Physical Therapy", "PT", "Speech Therapy", "ST", "Occupational Therapy", "OT", "Cardiac rehabilitation", "pulmonary rehabilitation" ],
+    "languageCode": "en"
+  }, {
+    "value": "chiropractic services",
+    "synonyms": [ "Chiropractic services ", "Chiropractor", "back adjustment", "back pain", "neck pain" ],
+    "languageCode": "en"
+  }, {
+    "value": "durable medical equipment, prosthetics and orthotics",
+    "synonyms": [ "Durable Medical Equipment", " prosthetics", "orthotics", "crutches", "wheelchair", "cane", "CPAP", "hospital bed", "pressure mattress", "lift bed", "bili lights", "scooter", "bath chair", "commode", "prosthesis", "blanket", "walker", "medical equipment", "durable equipment" ],
+    "languageCode": "en"
+  }, {
+    "value": "mental health services",
+    "synonyms": [ "Mental Health Services", "therapist", "counselor", "psychologist", "psychiatrist", "CBT", "mental health", "mental health service", "mental" ],
+    "languageCode": "en"
+  }, {
+    "value": "diagnostic imaging",
+    "synonyms": [ "Diagnostic imaging ", "X-ray", "CT scan", "cat scan", "MRI", "xray", "x ray" ],
+    "languageCode": "en"
+  }, {
+    "value": "dental",
+    "synonyms": [ "Dental ", "cleaning", "yearly cleaning", "teeth", "dentist", "Jaw Problems" ],
+    "languageCode": "en"
+  }, {
+    "value": "vision",
+    "synonyms": [ "Vision ", "contacts", "glasses", "eye exam", "Eye Anatomy and Function", "Eye and Vision Tests for Children and Teens", "Eye Care Specialists", "Eye Injuries", "eye", "eyes" ],
+    "languageCode": "en"
+  }, {
+    "value": "specialist",
+    "synonyms": [ "specialist", "Acupuncturist", "General practitioner", "Optometrist", "Orthodontist", "Respiratory therapist", "Speech-language pathologist", "Arm Injuries", "Arthritis", "Acne", "Acute Kidney Injury", "Agitation and Dementia", "AIDS", "Blisters", "Blood Transfusion", "Boils", "Bowel Disease", "Brain and Nervous System", "Breathing Problems", "Broken Collarbone", "Bronchitis", "Chickenpox", "Childhood Cardiac", "Cancer", "Cardiac Arrest", "Cardiomyopathy", "Bones", "Muscles", "Diabetes", "Dialysis", "Dyslexia", "Ear Infections", "Eating Disorders", "Elbow Injuries", "Kidney", "Endometriosis", "Esophageal", "Exposure Therapy", "Facial Injuries", "Feverfew for Migraines", "Fibromyalgia", "Finger", "Hand", "Wrist", "Spinal Injury", "Flu", "Folic Acid Deficiency Anemia", "Food Allergies", "Fractured Rib", "Gallstone Symptoms", "Gas", "Gastritis", "Gastroparesis", "Gender Dysphoria", "Transgender Issues", "General Anesthesia", "Genetics of Endocrine and Neuroendocrine Neoplasias", "Gerson Therapy", "Glaucoma", "Gonorrhea", "Groin Pain", "Hamstring Muscles", "Hantavirus", "Health Problems", "Hearing Loss", "Heart Attack", "Stroke", "Systolic Heart Failure", "Heatstroke", "Menstrual", "Periods", "Tendon Injury", "Hemodialysis", "Hemorrhoids", "Hepatitis", "Hidden Gluten", "Blood Pressure", "Blood Sugar Level", "Cholesterol", "Heart Failure", "Hip Bursitis", "Hip Fracture", "HIV", "Hormone Treatment", "Humor Therapy", "Hydrotherapy", "Hyperparathyroidism", "Hypoglycemia", "Low Blood Sugar", "Hypopharyngeal Cancer Treatment", "Hysterectomy", "Oophorectomy", "Iliotibial Band Syndrome", "Inflammatory Bowel", "Insomnia", "Insulin Resistance", "Intradiscal Electrothermal Therapy", "Intraocular Melanoma Treatment", "Intrauterine Fetal Blood Transfusion for Rh Disease", "Iron Deficiency Anemia", "Isolated Systolic", "High Blood Pressure", "Jaundice", "Hyperbilirubinemia", "Kidney Failure", "Kidney Transplant", "Knee Replacement", "Lactose Intolerance", "Knee Problems", "Laparoscopic Inguinal Hernia Repair", "Ovarian Diathermy", "Laparoscopic Surgery", "Laser Surgery", "Magnetic Field Therapy", "Malabsorption Syndrome", "Malaria", "Genital Problems", "Genital Injuries", "Massage Therapy", "Medical Abortion Care", "Urinary Symptoms", "Meniscus Tear", "Obsessive-Compulsive Disorder", "Obesity", "Radiation Treatment", "Vaginal Yeast Infections", "Pancreatic", "Male Breast Cancer Treatment", "Hernia", "Adolescent medicine specialist", "Allergist", "Anesthesiologist", "Cardiac electrophysiologist", "Cardiologist", "Cardiovascular surgeon", "Colon and rectal surgeon", "Critical care medicine specialist", "Dermatologist", "Developmental pediatrician", "Emergency medicine specialist", "Endocrinologist", "Family medicine physician", "Forensic pathologist", "Gastroenterologist", "Geriatric medicine specialist", "Gynecologist", "Gynecologic oncologist", "Hand surgeon", "Hematologist", "Hepatologist", "Hospitalist", "Hospice and palliative medicine specialist", "Hyperbaric physician", "Infectious disease specialist", "Internist", "Interventional cardiologist", "Medical examiner", "Medical geneticist", "Neonatologist", "Nephrologist", "Neurological surgeon", "Neurologist", "Nuclear medicine specialist", "Obstetrician", "Occupational medicine specialist", "Oncologist", "Ophthalmologist", "Oral surgeon", "Orthopedic surgeon", "Otolaryngologist", "Pain management specialist", "Pathologist", "Pediatrician", "Perinatologist", "Physiatrist", "Plastic surgeon", "Pulmonologist", "Radiation oncologist", "Radiologist", "Reproductive endocrinologist", "Rheumatologist", "Sleep disorders specialist", "Spinal cord injury specialist", "Sports medicine specialist", "Surgeon", "Thoracic surgeon", "Urologist", "Vascular surgeon", "special office visits", "gp", "obgyn", "ob/gyn", "drugs specialist" ],
+    "languageCode": "en"
+  } ]
+}

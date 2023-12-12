@@ -2,7 +2,7 @@
 import textToSpeech from '@google-cloud/text-to-speech';
 import { google } from '@google-cloud/text-to-speech/build/protos/protos';
 
-const defaultVoice: google.cloud.texttospeech.v1.IVoiceSelectionParams = { languageCode: 'pt-BR', name: 'pt-BR-Wavenet-B', ssmlGender: 'MALE' };
+const defaultVoice: google.cloud.texttospeech.v1.IVoiceSelectionParams = { languageCode: 'pt-BR', name: 'pt-BR-Standard-B', ssmlGender: 'MALE' };
 const client = new textToSpeech.TextToSpeechClient();
 const getLanguage = (languageCode: string) => languageCode != null ? languageCode : 'pt-BR';
 const getVoice = async (language): Promise<google.cloud.texttospeech.v1.IVoiceSelectionParams> => {
@@ -17,7 +17,7 @@ const getVoice = async (language): Promise<google.cloud.texttospeech.v1.IVoiceSe
   return { ...selectedVoice, languageCode };
 }
 
-const tellMe = async (content: string, language) => {
+const tellMeString = async (content: string, language) => {
   const text = content?.substring(0, 5000);
   console.log({ content, text });
   const voice = await getVoice(language);
@@ -25,7 +25,7 @@ const tellMe = async (content: string, language) => {
     input: { text },
     voice,
     audioConfig: {
-      audioEncoding: "MP3",
+      audioEncoding: "OGG_OPUS",
       "effectsProfileId": [
         "telephony-class-application"
       ],
@@ -34,9 +34,28 @@ const tellMe = async (content: string, language) => {
     }
   };
   const [response] = await client.synthesizeSpeech(request);
+  
   return Buffer.from(response.audioContent).toString('base64');
 }
 
-export {
-  tellMe
+const tellMe = async (content: string, language='') => {
+  const request: google.cloud.texttospeech.v1.ISynthesizeSpeechRequest = {
+    input: { ssml: content },
+    voice: defaultVoice,
+    audioConfig: {
+      audioEncoding: "OGG_OPUS",
+      "effectsProfileId": [
+        "telephony-class-application"
+      ],
+      "pitch": 4.55,
+      "speakingRate": 1
+    }
+  };
+  const [response] = await client.synthesizeSpeech(request);
+  
+  return Buffer.from(response.audioContent);
 }
+export {
+  tellMeString,
+  tellMe
+};

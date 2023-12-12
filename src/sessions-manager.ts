@@ -1,37 +1,44 @@
 
 import * as admin from 'firebase-admin';
-import { Message, Store } from 'whatsapp-web.js';
+import { resolve } from 'path';
+import { Store } from 'whatsapp-web.js';
+import fs from 'fs';
+
 export default class SessionsManager implements Store {
 
-  constructor(private sessionsRef: admin.database.Reference) {
+  constructor(private storage = admin.storage().bucket(process.env.BUCKET_SESSIONS_URL)) {
+  }
+  async sessionExists({ session }: { session: string; }): Promise<boolean> {
+    const [exists] = await this.storage.file(`${session}.zip`).exists();
+    return exists;
   }
 
-  private base64(session: string) {
-    return Buffer.from(session).toString('base64');
-  }
-  async sessionExists(option: { session: string; }): Promise<boolean> {
-    return !!(await this.extract(option));
-  }
-
-  async delete(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    await ref.remove();
+  async delete({ session }: { session: string; }) {
+    const id = `${session}.zip`;
+    const file = this.storage.file(id);
+    const [fileExists] = await file.exists();
+    if (fileExists) {
+      await file.delete();
+    }
   }
 
-  async save(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    await ref.set(true);
+  async save({ session }: { session: string; }) {
+    const id = `${session}.zip`;
+    const [response] = await this.storage.upload(id, {
+      destination: id
+    });
+    return id;
+
   };
 
-  async extract(options: { session: string; }) {
-    const ref = await this.extractRef(options);
-    const snapshot = await ref.once('value');
-    return await snapshot.val();
-  };
+  async extract({ session, path }: { session: string; path?: string; }) {
+    const file = this.storage.file(`${session}.zip`);
+    await file.download({
+      destination: path
+    });
 
-  async extractRef({ session }: { session: string; }) {
-    if (!session) throw new Error('No session found');
-    return await this.sessionsRef.child(this.base64(session));
   };
 
 }
+
+

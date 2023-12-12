@@ -1,0 +1,133 @@
+{
+  "name": "fc1f838b-bb5b-4884-a7c0-42f1f029dcb4",
+  "tags": [
+    "#LA"
+  ],
+  "displayName": "Happy Path - Out of scope benefits",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "i want to know about my copay"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_benefits"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Apologies, I can help you answer your questions about your deductible, co-insurance, out of pocket maximums, covered services, your healthcare claims, and finding a doctor. \n\nFor further assistance should I transfer you to a customer service representative?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "yes"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I understand, I will transfer your call to a customer service representative."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "quero saber sobre meu copay"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_benefits"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Desculpe, posso ajudá-lo a responder às suas perguntas sobre franquia, cosseguro, valores máximos do bolso, serviços cobertos, reivindicações de assistência médica e localização de um médico.\n\nPara obter mais assistência, devo transferi-lo para um representante de atendimento ao cliente?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "sim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "out-of-scope-benefits": "copay"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Eu entendo, vou transferir sua chamada para um representante de atendimento ao cliente."
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607078137,
+    "nanos": 864739000
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " tenho uma duvida, pode um fora de rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como pode",
+          "auto": true
+        },
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " saber se fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode confirmar se um fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode verificar se um fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " curioso, pode um fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " se o médico fora da rede puder ser coberto pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A cobertura dentro da rede pode ser oferecida a um usuário fora da rede?",
+          "auto": true
+        },
+        {
+          "text": "clínico geral",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É possível que um fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "O custo de um tratamento médico fora da rede será coberto como o da rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um médico fora da rede pode ser compensado por cobertura dentro da rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "O custo de um provedor fora da rede será coberto de forma semelhante ao médico da rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A cobertura dentro da rede pode ser estendida a um médico fora da rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "O documento de saída na rede pode ser coberto de maneira semelhante à da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um médico fora da rede será coberto como o da rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um profissional fora da rede pode ser coberto pela rede?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Será que um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " de fora da rede pode ser captado pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "faz um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " fora da rede ser ocupado pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um praticante fora da rede seria preenchido pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Será que um",
+          "auto": true
+        },
+        {
+          "text": "médicos",
+          "auto": true
+        },
+        {
+          "text": " fora da rede ser ocupado pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "poderia um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " fora da rede ser coberto pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor diga",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " se fora da rede",
+          "auto": true
+        },
+        {
+          "text": "especialista",
+          "auto": true
+        },
+        {
+          "text": " pode ser coberto em-",
+          "auto": true
+        },
+        {
+          "text": "rede",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "verifique se um médico fora da rede pode ser coberto por",
+          "auto": true
+        },
+        {
+          "text": "rede",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um médico fora da rede pode ser coberto pela rede interna?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Pode um fora da rede",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "auto": true
+        },
+        {
+          "text": " ser coberto na rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Um médico fora da rede pode ser coberto pela rede?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

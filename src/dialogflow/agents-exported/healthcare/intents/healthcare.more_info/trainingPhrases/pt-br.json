@@ -1,0 +1,443 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " olhar baixo para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " pode ver isso",
+          "auto": true
+        },
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " é bem menos. Você também tem mais descrição?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " é de alguma forma menor. Você realmente tem mais informações?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Com",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " é um pouco menos. Você ainda tem mais detalhes?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " é muito menos. Você tem detalhes mais precisos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " é um pouco menos. Você tem informações mais detalhadas?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " pareceria",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " ser menos. Você tem mais detalhes?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " parece que",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " ser menos. Você tem mais informação?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " parece menos. Você teria mais detalhes sobre",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " parece menos. Você tem mais detalhes?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 2.000",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " parece menos para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": ". Você tem mais informações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency",
+          "auto": true
+        },
+        {
+          "text": " parece errado, eu gastei mais",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1100",
+          "parameterId": "unit-currency"
+        },
+        {
+          "text": " está errado, há uma discrepância"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency"
+        },
+        {
+          "text": " parece incorreto"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Umm, isso parece inapropriado. já gastei mais",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Talvez haja alguma discrepância, certamente gastei mais",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu acho, eu gastei mais, pode haver algum",
+          "auto": true
+        },
+        {
+          "text": "discrepância",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Isso não parece certo para",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Há alguma disparidade no valor mostrado e no que gastei",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Este valor parece incorreto. eu sei que eu gastei mais",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sinto que há alguma discrepância no valor",
+          "auto": true
+        },
+        {
+          "text": "mostrou",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency"
+        },
+        {
+          "text": "fora de rede não parece certo, acho que já gastei mais"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency"
+        },
+        {
+          "text": " fora de rede me parece pouco, sei que já gastei mais que isso."
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "$ 1400",
+          "parameterId": "unit-currency"
+        },
+        {
+          "text": " fora de rede me parece pouco, sei que já gastei mais que isso. Você tem mais informações?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me contar mais?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você tem mais informações?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

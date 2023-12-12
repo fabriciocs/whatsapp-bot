@@ -1,3 +1,5 @@
+import { createTrainingPhrases } from "../ai";
+import { chunked } from "../util";
 
 const { Translate } = require('@google-cloud/translate').v2;
 
@@ -5,10 +7,22 @@ export default class GoogleTranslate {
     constructor() {
     }
 
-    async translateText(text, targetLanguage: string = 'pt-BR') {
+
+    async translateChuncked(text: string[], targetLanguage: string = 'pt-br', chunkSize = 128) {
         const translate = new Translate();
-        let [translations] = await translate.translate(text, targetLanguage);
-        translations = Array.isArray(translations) ? translations : [translations];
+        const chunks = chunked(text, chunkSize);
+        const translations = [];
+        for (const chunk of chunks) {
+            let [chunkTranslations] = await translate.translate(chunk, targetLanguage);
+            chunkTranslations = Array.isArray(chunkTranslations) ? chunkTranslations : [chunkTranslations];
+            translations.push(...chunkTranslations);
+        }
         return translations;
+    }
+
+
+
+    async translateText(text: string[], targetLanguage: string = 'pt-br') {
+        return await this.translateChuncked(text, targetLanguage);
     }
 }

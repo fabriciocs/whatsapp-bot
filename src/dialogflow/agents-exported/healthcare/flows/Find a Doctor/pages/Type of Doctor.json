@@ -1,0 +1,131 @@
+{
+  "name": "7342c63c-1c1f-4b9f-9845-618e770ac251",
+  "displayName": "Type of Doctor",
+  "form": {
+    "parameters": [ {
+      "displayName": "type_of_doctor",
+      "required": true,
+      "entityType": "@coverage-category",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+          "messages": [ {
+            "text": {
+              "text": [ "What type of doctor would you like to see?" ]
+            },
+            "languageCode": "en"
+          } ]
+        },
+        "repromptEventHandlers": [ {
+          "event": "sys.no-match-1",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "I am here to assist you to find a doctor. Do you wish to see a specialist, for example a dermatologist, cardiologist, or someone for rehabilitative therapy, chiropractic services, acupuncture, mental health services, urgent care or someone for your annual physical check-up?" ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "cb50d236-7c7d-480c-8e70-a197c8ebe4db"
+        }, {
+          "event": "sys.no-match-2",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, please let me know the type of doctor you want to see or I can transfer you to someone who can help." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "5d168e13-a5b1-4f2a-8577-20b2f6527087"
+        }, {
+          "targetPage": "Live Agent",
+          "event": "sys.no-match-3",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "e10e2fe7-853a-4648-8724-5b35852135fc"
+        }, {
+          "event": "sys.no-input-default",
+          "triggerFulfillment": {
+            "messages": [ {
+              "text": {
+                "text": [ "Apologies, I was not able to understand that.I am here to assist you to find a doctor. Do you wish to see a specialist, for example a dermatologist, cardiologist, or someone for rehabilitative therapy, chiropractic services, acupuncture, mental health services, urgent care or someone for your annual physical check-up? Press 0 to re-direct your call to a customer care representative." ]
+              },
+              "languageCode": "en"
+            } ]
+          },
+          "name": "9f0d1adc-8cd8-45b5-898e-b4c664ff6c03"
+        } ]
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "useSystemEntityRule": false
+        }
+      }
+    }, {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "condition": "$page.params.status = FINAL",
+    "triggerFulfillment": {
+      "conditionalCases": [ {
+        "cases": [ {
+          "condition": "$session.params.type_of_doctor = \"specialist\"",
+          "caseContent": [ {
+            "message": {
+              "text": {
+                "text": [ "To confirm, you would like to see a \t\t\tspecialist?" ]
+              },
+              "languageCode": "en"
+            }
+          } ]
+        }, {
+          "caseContent": [ {
+            "message": {
+              "text": {
+                "text": [ "To confirm, you would like to see a doctor for $session.params.type_of_doctor?" ]
+              },
+              "languageCode": "en"
+            }
+          } ]
+        } ]
+      } ]
+    },
+    "targetPage": "Type of Doctor Confirmation",
+    "name": "bb09951c-830b-4920-8ada-f14eb4d580b9"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "a606173c-3943-4885-9c34-1830cb5c4227"
+  } ]
+}

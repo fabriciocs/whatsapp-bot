@@ -1,0 +1,149 @@
+{
+  "name": "fd8fece5-9f0f-4836-8ce2-a18c80d6ce15",
+  "displayName": "Nearby Home Address",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+    "messages": [ {
+      "text": {
+        "text": [ "The nearest $session.params.type_of_doctor provider is at 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, United States. Would you like me to find another location?" ]
+      },
+      "languageCode": "en"
+    } ]
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A customer care representative will be better able to help you. Let me transfer your call." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "17e8bb0f-bf47-4e02-9d91-803cf88b090e"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "0090b86c-7cdd-4d12-b683-547d5d5800ec"
+  }, {
+    "intent": "healthcare.ask_open_timing",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "It is open between 9am-5pm Monday to Friday.\n\nI can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "581ccb67-3586-4638-9509-4197f1622e61"
+  }, {
+    "intent": "healthcare.schedule_appointment",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can transfer you to an agent who can assist with scheduling an appointment. \n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "f94ff825-7fb3-4971-8d87-84220df9218d"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "bd9278c5-1565-404b-bac8-d713edb59ed5"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "121ec7fe-4a27-45d2-a6c5-33be1b56a1d9"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The nearest $session.params.type_of_doctor specialty is at 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, United States. Would you like me to find another location?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "6502bb3d-eb63-4f89-88d8-8407a0f38f58"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. The nearest $session.params.type_of_doctor specialty is at 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, United States. Do you want to search for another location?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "f3e53d6c-5078-47d6-93b4-509ccae93d98"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "5c8bf1ce-7131-4138-ba48-a523fb93f8c9"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.The nearest $session.params.type_of_doctor specialty is at 580 N Rengstorff Ave Suite E, Mountain View, CA 94043, United States. Would you like me to find another location? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "9c58b9d8-dece-4688-b202-6d19a32bd2c2"
+  } ]
+}

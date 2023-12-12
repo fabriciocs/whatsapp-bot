@@ -1,11 +1,11 @@
 import { MessageMedia } from 'whatsapp-web.js';
 import WPAPI from 'wpapi';
-import { giveMeImage, writeAText, writeInstructions } from './ai';
+import { giveMeImage, simpleChat, writeAText, writeInstructions } from './ai';
 import CurrierModel from './currier';
 import { prepareText } from './util';
 
-const baseBlogPrompt = 'crie um post de blog comercial focado em grandes empresas e startups disruptivas baseado no texto:';
-const baseImagePrompt = 'crie uma intrução de design digital para a criação de uma imagem que ilustre o texto:';
+const baseBlogPrompt = 'Atue como especialista em Marketing Digital, com expertize em Marketing de Conteúdo e Blogs para Traders de mesa proprietária no Brasil, com idades em torno de 30 anos, formação em Economia/Finanças, e experiência de cerca de cinco anos. Operam principalmente em day trading e swing trading, especializados em ações, futuros e forex. Buscam conteúdo educativo, análises de mercado, ferramentas, networking e informações de conformidade. O objetivo do marketing digital é atrair, educar e apoiar esses traders em seu desenvolvimento profissional, crie um post para meu site:';
+const baseImagePrompt = 'Atue como Designer Digital, com expertize em Marketing de Conteúdo e Blogs para Traders de mesa proprietária no Brasil, com idades em torno de 30 anos, formação em Economia/Finanças, e experiência de cerca de cinco anos. Operam principalmente em day trading e swing trading, especializados em ações, futuros e forex. Buscam conteúdo educativo, análises de mercado, ferramentas, networking e informações de conformidade. O objetivo do marketing digital é atrair, educar e apoiar esses traders em seu desenvolvimento profissional, crie uma arte digital para o post a seguir:';
 const buildSubject = (subject: string) => `${baseBlogPrompt}\n\n"${subject}"`;
 const buildImageSubject = (prompt: string) => `${baseImagePrompt}\n\n"${prompt}"`;
 
@@ -73,11 +73,15 @@ export type PostResponse = {
 
 
 
-
+export type WpApiAuth = {
+    wordpressUrl: string,
+    username: string,
+    password: string
+};
 export default class Wordpress {
-    private wpApi: any;
+    private wpApi: WPAPI;
 
-    constructor(private currie: CurrierModel, private wordpressUrl: string = process.env.WP_SITE_URL,  username: string = process.env.WP_USERNAME, password: string = process.env.WP_PASSWORD) {
+    constructor(private currie: CurrierModel, private wordpressUrl: string = process.env.WP_SITE_URL, username: string = process.env.WP_USERNAME, password: string = process.env.WP_PASSWORD) {
         this.wpApi = new WPAPI({
             endpoint: this.wordpressUrl,
             username,
@@ -88,11 +92,17 @@ export default class Wordpress {
     public get Api() {
         return this.wpApi;
     }
-    public async getPosts(): Promise<PostResponse[]> {
+    public async getPosts(auth: Partial<WpApiAuth> = null): Promise<PostResponse[]> {
+        if (auth) {
+            return await new WPAPI({
+                endpoint: this.wordpressUrl,
+                ...auth
+            }).posts().get();
+        }
         return await this.wpApi.posts().get();
     }
 
-    
+
     public async getPages(): Promise<any[]> {
         return await this.wpApi.pages().get();
     }
@@ -123,16 +133,15 @@ export default class Wordpress {
     }
     public async createCategory(fullname: string, list: any[] = []) {
         const category = fullname?.replace(/[\n\.]/, '').trim();
-        const categoryExists = list.find((cat: any) => cat.name === category);
+        const categoryExists = list.find((cat: any) => `${cat.name}`.toUpperCase() === category.toUpperCase());
         if (categoryExists) return category;
         return await this.wpApi.categories().create({ name: category });
     }
 
     public async createAiPost({ prompt: ugly, title, status = 'publish' }: AiPost) {
         const prompt = prepareText(ugly)
-        const blogSubject = buildSubject(prompt)
-        const result = await writeAText({ stop: ['stop'], prompt: blogSubject });
-        const fullAnswer = result?.choices?.[0]?.text;
+        const result = await simpleChat(baseBlogPrompt, prompt);
+        const fullAnswer = result;
         if (fullAnswer) {
             const fullCategories = await this.createCategoriesFromContent(prompt);
 
@@ -140,8 +149,7 @@ export default class Wordpress {
             const postCreated = await this.createPost({ title, content: fullAnswer, status: status, categories });
             try {
                 const simpleImagePrompt = buildImageSubject(prompt);
-                const imagePromptResponse = await writeInstructions(simpleImagePrompt);
-                const imagePrompt = imagePromptResponse?.choices?.[0]?.text;
+                const imagePrompt = await writeInstructions(simpleImagePrompt);
                 const imageUrl = await giveMeImage(prepareText(imagePrompt), '1024x1024');
                 if (imageUrl) {
                     const { data } = await MessageMedia.fromUrl(imageUrl);

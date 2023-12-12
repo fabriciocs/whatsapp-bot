@@ -1,0 +1,27 @@
+{
+  "entities": [ {
+    "value": "copay",
+    "synonyms": [ "co-pay", "copay", "co pay", "fixed dollar amount", "copayment", "co-payment" ],
+    "languageCode": "en"
+  }, {
+    "value": "coordination of benefits",
+    "synonyms": [ "coordination of benefits", "co-ordination of benefits", "coordination of benefit", "co-ordination of benefit", "co-ordination" ],
+    "languageCode": "en"
+  }, {
+    "value": "formulary",
+    "synonyms": [ "formulary" ],
+    "languageCode": "en"
+  }, {
+    "value": "HSA",
+    "synonyms": [ "HSA", "Health Saving Account" ],
+    "languageCode": "en"
+  }, {
+    "value": "HDHP",
+    "synonyms": [ "HDHP", "High Deductible Health Plan", "high deductible", "deductble health plan" ],
+    "languageCode": "en"
+  }, {
+    "value": "premium",
+    "synonyms": [ "premium", "premium health plan" ],
+    "languageCode": "en"
+  } ]
+}

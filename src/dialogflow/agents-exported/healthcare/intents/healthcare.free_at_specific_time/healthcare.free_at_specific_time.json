@@ -1,0 +1,12 @@
+{
+  "name": "5f403081-bbc3-407b-9d38-32eac673b4c1",
+  "displayName": "healthcare.free_at_specific_time",
+  "parameters": [ {
+    "id": "specific_date_time",
+    "entityType": "@sys.date-time"
+  }, {
+    "id": "specific_time_period",
+    "entityType": "@sys.time-period"
+  } ],
+  "priority": 500000
+}

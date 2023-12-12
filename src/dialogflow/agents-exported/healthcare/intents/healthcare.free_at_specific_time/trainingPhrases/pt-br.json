@@ -1,0 +1,903 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " preferiria quartas-feiras",
+          "auto": true
+        },
+        {
+          "text": "às 6",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " para o médico",
+          "auto": true
+        },
+        {
+          "text": "visitar",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu gostaria de visitar o doc em"
+        },
+        {
+          "text": "15h amanhã",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agendar um aplicativo para",
+          "auto": true
+        },
+        {
+          "text": "hoje à noite às 8",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "reservar um aplicativo para"
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "specific_time_period"
+        },
+        {
+          "text": " tarde"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agendar para",
+          "auto": true
+        },
+        {
+          "text": "16:00 hoje",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Primeiro do próximo mês às"
+        },
+        {
+          "text": "17h",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " adivinhar,",
+          "auto": true
+        },
+        {
+          "text": "semana que vem",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "às 14h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Hoje",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " qualquer hora funciona",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dada uma escolha"
+        },
+        {
+          "text": "dia depois de Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ", a qualquer hora da noite"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha preferência é",
+          "auto": true
+        },
+        {
+          "text": "qua às 16h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "gostaria se fosse"
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "specific_date_time"
+        },
+        {
+          "text": " "
+        },
+        {
+          "text": "manhã",
+          "parameterId": "specific_time_period"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " preferiria se fosse",
+          "auto": true
+        },
+        {
+          "text": "amanhã por volta das 9h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ummm, de preferência"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "specific_date_time"
+        },
+        {
+          "text": " por aí"
+        },
+        {
+          "text": "17h",
+          "parameterId": "specific_time_period"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "vontade",
+          "auto": true
+        },
+        {
+          "text": "qua às 13h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " trabalhos?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "8h, próxima terça",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "no"
+        },
+        {
+          "text": "meio-dia",
+          "parameterId": "specific_time_period"
+        },
+        {
+          "text": " esta"
+        },
+        {
+          "text": "Segunda-feira",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "no"
+        },
+        {
+          "text": "19h",
+          "parameterId": "specific_time_period"
+        },
+        {
+          "text": " esta"
+        },
+        {
+          "text": "Sexta-feira",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "11/02/20 às 16h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "23 de dezembro às 14h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Seria ótimo se pudéssemos agendar",
+          "auto": true
+        },
+        {
+          "text": "às 14h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "quinta-feira",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Idealmente",
+          "auto": true
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " entre",
+          "auto": true
+        },
+        {
+          "text": "13h - 15h",
+          "parameterId": "specific_time_period",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " esteja vivo",
+          "auto": true
+        },
+        {
+          "text": "amanhã, 18h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " está bem",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " pensar,",
+          "auto": true
+        },
+        {
+          "text": "20h desta sexta-feira",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " funciona",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "disponível em",
+          "auto": true
+        },
+        {
+          "text": "26 de novembro às 14h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "acessível"
+        },
+        {
+          "text": "hoje entre 14h e 15h",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu estou livre"
+        },
+        {
+          "text": "amanhã",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " esteja disponível"
+        },
+        {
+          "text": "hoje depois das 16h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " esteja disponível",
+          "auto": true
+        },
+        {
+          "text": "hoje às 14h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "amanhã 2 a 3",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " estará disponível por volta",
+          "auto": true
+        },
+        {
+          "text": "18:00 hoje",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "amanhã entre as 12h00 e as 13h00",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "amanhã as 12h",
+          "parameterId": "specific_date_time",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou pronto no"
+        },
+        {
+          "text": "fim do dia",
+          "parameterId": "specific_time_period"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou preparado para"
+        },
+        {
+          "text": "hoje",
+          "parameterId": "specific_date_time"
+        },
+        {
+          "text": " eod."
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou preparado para eod",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou pronto para",
+          "auto": true
+        },
+        {
+          "text": "próxima segunda-feira",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Estou pronto para mais tarde",
+          "auto": true
+        },
+        {
+          "text": "hoje",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou preparado para",
+          "auto": true
+        },
+        {
+          "text": "próxima segunda-feira",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou preparado para"
+        },
+        {
+          "text": "semana que vem",
+          "parameterId": "specific_time_period"
+        },
+        {
+          "text": "."
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou preparado para",
+          "auto": true
+        },
+        {
+          "text": "amanhã de manhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou pronto para"
+        },
+        {
+          "text": "2 e 3 amanhã",
+          "parameterId": "specific_date_time"
+        },
+        {
+          "text": " no"
+        },
+        {
+          "text": "tarde",
+          "parameterId": "specific_time_period"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "estou pronto para",
+          "auto": true
+        },
+        {
+          "text": "2",
+          "auto": true
+        },
+        {
+          "text": " e",
+          "auto": true
+        },
+        {
+          "text": "3 amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " Estou pronto"
+        },
+        {
+          "text": "cerca de 2 e 3",
+          "parameterId": "specific_time_period"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " Eu estou livre",
+          "auto": true
+        },
+        {
+          "text": "entre 2 e 3",
+          "parameterId": "specific_time_period",
+          "auto": true
+        },
+        {
+          "text": " de manhã.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": " estou pronto por aí",
+          "auto": true
+        },
+        {
+          "text": "2",
+          "auto": true
+        },
+        {
+          "text": " e",
+          "auto": true
+        },
+        {
+          "text": "3",
+          "auto": true
+        },
+        {
+          "text": ".",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Entre 2 e 3",
+          "parameterId": "specific_time_period",
+          "auto": true
+        },
+        {
+          "text": ", Eu estou livre",
+          "auto": true
+        },
+        {
+          "text": "amanhã",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "entre 2 e 3",
+          "parameterId": "specific_time_period",
+          "auto": true
+        },
+        {
+          "text": ", Eu estou livre.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Amanhã",
+          "parameterId": "specific_date_time",
+          "auto": true
+        },
+        {
+          "text": ",",
+          "auto": true
+        },
+        {
+          "text": "entre 2 e 3",
+          "parameterId": "specific_time_period",
+          "auto": true
+        },
+        {
+          "text": ", Eu estou livre.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu estou livre"
+        },
+        {
+          "text": "amanhã entre 2 e 3",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu estou livre"
+        },
+        {
+          "text": "hoje a partir das 17h",
+          "parameterId": "specific_date_time"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

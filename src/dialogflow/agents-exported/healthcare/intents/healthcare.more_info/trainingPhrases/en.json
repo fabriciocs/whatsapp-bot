@@ -1,0 +1,321 @@
+{
+  "trainingPhrases": [ {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " look low to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I",
+      "auto": true
+    }, {
+      "text": " can see that ",
+      "auto": true
+    }, {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " is far less. Do you also have more description?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " is somehow less. Do you really have more info?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "With ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " is a little less. Do you even have more specifics?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " is much less. Do you have more precise details?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " is somewhat less. Do you have more detailed info?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " would appear to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to be less. Do you have any more details?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " seems to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": " to be less. Do you have more information?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "For ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " seems less. Will you have more details about ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": "?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "To ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ", ",
+      "auto": true
+    }, {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " seems less. Do you have more details?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$2000",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " seems less to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    }, {
+      "text": ". Do you have more info",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency",
+      "auto": true
+    }, {
+      "text": " seems wrong, I've spent more",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1100",
+      "parameterId": "unit-currency"
+    }, {
+      "text": " is wrong, there is a discrepancy"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency"
+    }, {
+      "text": " seems incorrect"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Umm, this seems inappropriate. I've spent more",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "There maybe some disrcrepency, I've surely spent more",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I guess, I've spent more, there may be some ",
+      "auto": true
+    }, {
+      "text": "discrepency",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "This does not look right to ",
+      "auto": true
+    }, {
+      "text": "me",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "There is some disparity in the value shown and what I've spent",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "This value does seems incorrect. I know I've spent more",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "I feel there is some discrepancy in the value ",
+      "auto": true
+    }, {
+      "text": "showed",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency"
+    }, {
+      "text": " out of network does not seem right, I think I've spent more"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency"
+    }, {
+      "text": " out of network looks low to me, I know I've spent more than that."
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "$1400",
+      "parameterId": "unit-currency"
+    }, {
+      "text": " out of network looks low to me, I know I've spent more than that.   Do you have more info?"
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Can you tell me more?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  }, {
+    "parts": [ {
+      "text": "Do you have more info?",
+      "auto": true
+    } ],
+    "repeatCount": 1,
+    "languageCode": "en"
+  } ]
+}

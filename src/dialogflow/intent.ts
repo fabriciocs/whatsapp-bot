@@ -1,22 +1,25 @@
 
-import { IntentsClient, SessionsClient } from '@google-cloud/dialogflow-cx';
+import { IntentsClient, SessionsClient, protos } from '@google-cloud/dialogflow-cx';
+
 
 export class Intent {
-    async getIntent(id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = process.env.AGENT_LANGUAGE_CODE) {
+
+    async getIntent({ id, text, isSound = false, projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID, languageCode = process.env.AGENT_LANGUAGE_CODE }) {
+       
 
         const sessionClient = new SessionsClient({
             apiEndpoint: process.env.AGENT_ENDPOINT,
         });
         const sessionPath = sessionClient.projectLocationAgentSessionPath(projectId, process.env.AGENT_LOCATION, agentId, id);
-        
-        const queryInput = {
+
+        const queryInput: protos.google.cloud.dialogflow.cx.v3.IQueryInput = {
             languageCode
         } as any;
         if (isSound) {
             queryInput.audio = {
                 audio: text,
                 config: {
-                    audioEncoding: 'AUDIO_ENCODING_OGG_OPUS',
+                    audioEncoding: protos.google.cloud.dialogflow.cx.v3.AudioEncoding.AUDIO_ENCODING_OGG_OPUS,
                     sampleRateHertz: 16000
                 }
             };
@@ -26,30 +29,22 @@ export class Intent {
             };
         }
 
-        const request = {
+        const request: protos.google.cloud.dialogflow.cx.v3.IDetectIntentRequest = {
             session: sessionPath,
             queryInput
         };
 
         // Send request and log result
-        const [response] = await sessionClient.detectIntent(request);
-        const responseMsgs = [];
-        console.log('Detected intent');
-        const result = response.queryResult;
-        console.log(`  text: ${result.text}`);
-        console.log(`  transcript: ${result.transcript}`);
-        responseMsgs.push(...result.responseMessages?.map(message => message?.text?.text?.join(' ')));
-        if (result.currentPage) {
-            console.log(`  currentPage: ${result.currentPage.displayName}`);
+        const [{ queryResult: result }] = await sessionClient.detectIntent(request);
 
-        }
-        if (result.intent) {
-            console.log(`  Intent: ${result.intent.displayName}`);
-        } else {
-            console.log(`  No intent matched.`);
-            return [];
-        }
-        return responseMsgs;
+        console.info({
+            text: result.text,
+            transcript: result.transcript ?? 'No transcript matched.',
+            Intent: result.intent?.displayName ?? 'No intent matched.',
+            currentPage: result.currentPage?.displayName ?? 'No page matched.',
+        });
+
+        return result.responseMessages?.map(message => message?.text?.text?.join(' ').trim()).filter(Boolean) ?? [];
     }
     async updateIntentParams(projectId = process.env.AGENT_PROJECT, agentId = process.env.AGENT_ID) {
 

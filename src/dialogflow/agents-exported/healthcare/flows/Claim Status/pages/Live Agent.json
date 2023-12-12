@@ -1,0 +1,174 @@
+{
+  "name": "70f971d6-0dfb-4765-8ae2-3c5888a5ff73",
+  "displayName": "Live Agent",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "intent": "healthcare.end_session",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I am transferring you to a customer care representative to help you with your claims questions. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "1458bbcb-3b7c-4a94-9409-c1530bc6385d"
+  }, {
+    "intent": "healthcare.initialize_benefits",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "benefits",
+        "value": ""
+      } ]
+    },
+    "targetFlow": "Benefits",
+    "name": "0cbb52c3-6b87-437f-ba44-6f1ab5f3413b"
+  }, {
+    "intent": "healthcare.list_benefits_services",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Benefits",
+    "name": "678fd031-cf11-44d7-9cef-4a65d0edd137"
+  }, {
+    "intent": "healthcare.initialize_doctor",
+    "triggerFulfillment": {
+      "setParameterActions": [ {
+        "parameter": "type_of_doctor",
+        "value": null
+      } ]
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "0a68d340-d866-45fd-bad7-3880b6c33222"
+  }, {
+    "intent": "healthcare.find_doctor",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "f2efd931-413f-4bfe-8139-a33cffe01528"
+  }, {
+    "intent": "healthcare.costs_of_coverage_category",
+    "triggerFulfillment": {
+    
+    },
+    "targetFlow": "Find a Doctor",
+    "name": "571aee01-f47b-49c4-aedd-af96ddbd2998"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "3924d232-d986-41e7-86d0-03162e90c97b"
+  }, {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I am here to answer your questions about your healthcare claims, understanding your benefits and finding a doctor. How may I help you today?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "23d23623-4e92-4a54-bf11-cc64061f9a00"
+  }, {
+    "intent": "healthcare.out_of_scope_claims",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can connect you to someone who can help you with that.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Current Page",
+    "name": "92d54869-4f1f-49f1-bb40-dc0a39de7556"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "End Session",
+    "name": "2725f3c7-91c9-4c9a-bb2f-5d79d7fa1e33"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "2eaafae2-8b16-4e29-918e-493e48e6f3ab"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. I can help answer your healthcare claim questions, understand your benefits, and assist you in finding a doctor. How may I help you today?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "8deefd00-a003-40ce-9f32-9c3b90e9fcc3"
+  }, {
+    "targetPage": "End Session",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "16a698c2-8660-43c5-b223-7ff6a33db7b0"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "ba782f24-13ef-4c86-9565-171796c3da5d"
+  } ],
+  "transitionRouteGroups": [ "Benefits_FAQ" ]
+}

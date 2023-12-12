@@ -1,0 +1,717 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Eu quero ver um médico para"
+        },
+        {
+          "text": "dental",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "consulte um provedor na rede",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ajude-me a encontrar um provedor na rede",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Localize um provedor na rede",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Acho que é hora de agendar uma visita de acompanhamento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Para estar seguro, acho que devo agendar uma consulta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu acho, eu deveria fazer o check-up",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu acho que é melhor eu visitar um médico",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "agende um pp com um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu tenho que ver um",
+          "auto": true
+        },
+        {
+          "text": "pcp",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso agendar um horário para",
+          "auto": true
+        },
+        {
+          "text": "pcp",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "preciso agendar um",
+          "auto": true
+        },
+        {
+          "text": "pcp",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        },
+        {
+          "text": " compromisso",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso de",
+          "auto": true
+        },
+        {
+          "text": "pcp",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Acho que não estou me sentindo bem, você pode me ajudar a encontrar um médico para"
+        },
+        {
+          "text": "cuidados primários",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajude-me a localizar um"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar a localizar um por perto"
+        },
+        {
+          "text": "cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar a encontrar um por perto",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajude-me a agendar uma consulta com um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me ajudar a encontrar um"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero conhecer um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quero marcar uma consulta com um",
+          "auto": true
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Quero agendar um horário com um"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quer conhecer um",
+          "auto": true
+        },
+        {
+          "text": "psiquiatra",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "me ajude a encontrar um"
+        },
+        {
+          "text": "infertilidade",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": " doutor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu gostaria de encontrar um médico para"
+        },
+        {
+          "text": "quiroprático",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu quero ver alguém para",
+          "auto": true
+        },
+        {
+          "text": "cuidados primários",
+          "parameterId": "type_of_doctor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "procurando por um"
+        },
+        {
+          "text": "cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "encontre-me um"
+        },
+        {
+          "text": "cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde posso encontrar um"
+        },
+        {
+          "text": "cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde posso encontrar um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Estou à procura de um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": " eu preciso"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "procurando por um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "verificar se há"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde posso encontrar um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "precisa ver"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "existe algum"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso encontrar um"
+        },
+        {
+          "text": "dermatologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde posso encontrar um"
+        },
+        {
+          "text": "Dermatologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "tem alguém"
+        },
+        {
+          "text": "cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde posso encontrar um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu preciso encontrar um"
+        },
+        {
+          "text": "Cardiologista",
+          "parameterId": "type_of_doctor"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde posso localizar um"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": " na minha área"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde eu encontraria um"
+        },
+        {
+          "text": "urologista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde eu poderia encontrar um"
+        },
+        {
+          "text": "terapeuta",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde eu encontraria um"
+        },
+        {
+          "text": "ginecologista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como eu poderia selecionar um"
+        },
+        {
+          "text": "dermatologista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde devo encontrar um"
+        },
+        {
+          "text": "dermatologista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde mais posso identificar um"
+        },
+        {
+          "text": "dentista",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde posso localizar um"
+        },
+        {
+          "text": "psiquiatra",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde posso descobrir um"
+        },
+        {
+          "text": "médico",
+          "parameterId": "type_of_doctor"
+        },
+        {
+          "text": "?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

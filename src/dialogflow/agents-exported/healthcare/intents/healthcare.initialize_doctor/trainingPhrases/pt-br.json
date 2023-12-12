@@ -1,0 +1,440 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Quero agendar uma consulta médica",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero visitar meu medico",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Desejo marcar uma consulta com o médico",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Estou com dor de cabeça, localize um médico próximo na minha área",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Encontre um médico próximo",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " sentir náuseas,",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " preciso ver um médico",
+          "auto": true
+        },
+        {
+          "text": "urgentemente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " quero ver um médico",
+          "auto": true
+        },
+        {
+          "text": "imediatamente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Encontre um profissional próximo",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu sou",
+          "auto": true
+        },
+        {
+          "text": " tendo alergia, encontre",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " um médico agora",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " identificar um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É urgente encontrar um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Encontre um médico",
+          "auto": true
+        },
+        {
+          "text": "imediatamente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " preciso de um médico",
+          "auto": true
+        },
+        {
+          "text": "urgentemente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ajuda",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " para obter um médico",
+          "auto": true
+        },
+        {
+          "text": "urgentemente",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde poderia",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " encontrar um profissional de saúde?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Onde pode",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " localizar um médico?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "onde pode",
+          "auto": true
+        },
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " encontre um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Ei, encontre um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor, encontre um documento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " gostaria de saber sobre um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "há um médico perto",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode se conectar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " para um médico"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conectar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " para um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " quero ver um doc",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " quer ver um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "achar",
+          "auto": true
+        },
+        {
+          "text": "documento",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Encontre um",
+          "auto": true
+        },
+        {
+          "text": "doutor",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

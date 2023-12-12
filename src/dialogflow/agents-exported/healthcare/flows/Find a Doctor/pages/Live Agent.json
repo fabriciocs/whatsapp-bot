@@ -1,0 +1,18 @@
+{
+  "name": "44cee65b-82db-4044-84cd-3eb07273bf31",
+  "displayName": "Live Agent",
+  "form": {
+  
+  },
+  "entryFulfillment": {
+  
+  },
+  "transitionRoutes": [ {
+    "condition": "true",
+    "triggerFulfillment": {
+    
+    },
+    "targetPage": "End Session",
+    "name": "b5a0ac1b-f89f-47f2-aa0e-202828c42f1c"
+  } ]
+}

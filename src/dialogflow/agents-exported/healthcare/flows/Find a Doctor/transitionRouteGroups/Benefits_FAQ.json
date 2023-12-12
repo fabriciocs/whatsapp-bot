@@ -1,0 +1,149 @@
+{
+  "name": "8fee5093-44d8-4429-8049-0e7dde7d25d8",
+  "displayName": "Benefits_FAQ",
+  "transitionRoutes": [ {
+    "intent": "healthcare.faq_deductible",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A deductible is the amount of money you need to pay before your health insurance will start to pay a portion of the cost of your care. A deductible is different from the monthly premium you pay via payroll deduction for your overall insurance.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "4ed3eb1c-a6d8-4b30-93f9-840b014352d2"
+  }, {
+    "intent": "healthcare.faq_coinsurance",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Co-insurance is the percentage of the billed charges you are responsible for paying once you’ve met your upfront deductible.\n\nFor example: If a doctor's visit costs $100 and your plan has a 20% co-insurance after deductible, you would pay $20 for that visit to the provider. \n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "0f1e3ffe-ca9f-4fde-b162-8fa8d6c065ae"
+  }, {
+    "intent": "healthcare.faq_out_of_pocket_maximums",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "An out of pocket max is the maximum amount you will pay for covered services in a given year. After you reach the maximum you will no longer have co-insurance or a co-pay when you get care.\nPlease note that your plan has a different out of pocket max for in network and out of network care.\n\nFor example: If your in network out of pocket maximum is $2500, you won't pay anything when you see an in-network provider.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "ed9cbc00-e285-46ea-9431-2eb7ad7b31e6"
+  }, {
+    "intent": "healthcare.faq_network",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Network providers have signed a contract with us to offer high quality services at a lower price. When you see these in network providers, savings are passed along to you since you pay less out of pocket.\n\nFor example: If an in network provider charges $100 for an office visit, a provider not contracted with your plan is likely to charge the plan significantly more.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "5659efd6-4ec1-4244-878f-743995fefa13"
+  }, {
+    "intent": "healthcare.faq_covered_service",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A covered service is the type of care that is covered under your plan. Some types of care may not be a covered service and therefore the plan doesn’t reimburse anything regardless of whether it's in network or out of network.\n\nFor example: A covered service does not mean free, it means your benefits including your deductible and/or co-pay apply when seeking that service. Different plans may choose to cover different services such as fertility.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "59795e13-0ae2-464f-a59b-2a9dea106c71"
+  }, {
+    "intent": "healthcare.faq_hsa",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Health Savings Accounts (or HSAs) can be opened by employees who have a high-deductible health plan. You can put money in a HSA up to a set annual limit which is then treated as tax advantaged.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "79bbfb8c-df9b-473d-ad1e-d78092d4e233"
+  }, {
+    "intent": "healthcare.faq_hdhp",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A high deductible health plan (or HDHP) has a higher annual deductible than traditional health plans.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "40b58104-4745-4fd8-8dc3-5882e3375c62"
+  }, {
+    "intent": "healthcare.faq_formulary",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A list of prescription drugs covered by your health plan, often structured in tiers which means you pay less for lower-cost generics and more for more expensive brand-name or specialty drugs.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "c0871d0a-e1e9-45d7-8cf1-c2a16d52b3a1"
+  }, {
+    "intent": "healthcare.faq_premium",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A premium is the amount that you pay for your health insurance plan. It's paid by you, your employer, or shared. It is generally deducted from your pay check.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "93736aa3-5710-4eab-8bda-da926dae3c73"
+  }, {
+    "intent": "healthcare.faq_copay",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A co-pay is the fixed dollar amount for each doctor visit that you pay.\n\nFor example: If your plan has a $30 co-pay for specialist visits, you pay flat $30 to the provider regardless of the how much they bill for your visit. \n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "f0dcad1e-d44a-44f2-999a-9f2825d7c6e2"
+  }, {
+    "intent": "healthcare.faq_coordination",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Sometimes two insurance plans work together to pay claims for the same person. That process is called coordination of benefits.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "4b4d89a4-4306-4050-a24c-3df2cb19c730"
+  }, {
+    "intent": "healthcare.faq_fsa",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A Flexible Spending Arrangement (FSA) allows employees to be reimbrused for medical expenses, usually funded through voluntary salary reduction agreements with your employer. No employment or federal income taxes are deducted from your contribution.\n\nDo you require more assistance?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "cd4e6278-93e7-45ed-8b10-6b1825edef2b"
+  } ]
+}

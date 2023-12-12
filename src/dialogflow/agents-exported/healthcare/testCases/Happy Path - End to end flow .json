@@ -1,0 +1,2755 @@
+{
+  "name": "2094f82a-af7a-4c66-926c-6290e810e3ab",
+  "tags": [
+    "#E2Eflow"
+  ],
+  "displayName": "Happy Path - End to end flow ",
+  "testCaseConversationTurns": [
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "hi"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Hi, I'm your virtual healthcare agent. I can help answer your healthcare claims questions, understand your benefits, and find a doctor. How can I assist you today?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"I want to schedule an appointment with a physician \""
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What is your member ID?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "8768768678"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "8768768678",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "What is your date of birth? You can say the date as October 22 ,1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Aug 8 1996"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Who is the primary subscriber?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "me"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for primary care?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"yea thats right"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the day and time you want to schedule an appointment.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"i will be available tomo at 3 o clock "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_at_specific_time"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great, I’ll connect you to someone who can help you get that scheduled.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Is my claim processed? "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"I have certain doubts about this amount. I don't think that was me "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I can connect you to someone who can help you with that.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"How close am I to meeting my deductible? "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"My co-insurance "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Can you share some information about my previous claims "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you understand your healthcare claims.\n\nPlease note, if this is a medical emergency, go to your local emergency room."
+            ]
+          },
+          {
+            "text": [
+              "I was able to locate your most recent claim with the date of service March 25, 2020 and total amount of $122.32.\n\nThe current status of the claim is processed.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"I feel nauseous, I need to see a doctor urgently"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor and answer your billing questions.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What type of doctor would you like to see?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"No i would like to see a doctor for mental health"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for mental health services?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"yes exactly"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the day and time you want to schedule an appointment.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"i am free now can i come? "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_now"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great, you can visit livehealthonline.com/google to set up an account and you’ll be connected with a provider. This process typically takes less than 10 minutes. I can also transfer you to an agent who can assist.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"how much is the cost for mental health services "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Actual charges may vary among providers, but for your in network provider you pay 10% after the plan deductible is met. You also have access to mental health services via our partner Lyra.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Nice How much do I have to spend before I have coverage "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"all the benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nYour annual individual in network deductible is $2000 and you have $1,200 remaining for the year.\nYour out of network deductible is $4000 and you have $1,400 remaining for the year.\n\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nYour out of pocket max is $3000 in network and $4500 out of network.\n\nYou are also covered at 100% (no deductible or co-pay) for preventative services.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"cost of vision treatment? "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor and answer your billing questions.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Actual charges may vary among providers, but for your in network provider you have VSP coverage, I can transfer you now to an agent who can assist.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Am I covered for this doctor's visit"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Is there a particular part of your benefits you’d like to hear about? You can ask me about your deductible, co-insurance, out of pocket maximums, and covered services. "
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"co insurance "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"what is coordinates of benefits"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_coordination"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sometimes two insurance plans work together to pay claims for the same person. That process is called coordination of benefits.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"how do i find a doctor for illness"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Sure, I can help you find a doctor and answer your billing questions.\n\nPlease note, if this is a medical emergency, go to your local emergency room.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "What type of doctor would you like to see?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"physician"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "To confirm, you would like to see a doctor for primary care?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"correct "
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "We can set you up with a virtual visit if you’d like to be seen today. \n\nYour plan includes access to virtual visits at no charge to you after you’ve met your deductible or for a flat $50 before that. \n\nYou can either meet the virtual provider now or schedule an appointment as per your convenience. Please specify the day and time you want to schedule an appointment.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"free tomo at 5pm"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_at_specific_time"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Great, I’ll connect you to someone who can help you get that scheduled.\n\nDo you have any other questions before I transfer you?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Cost of Agitation and Dementia"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Actual charges may vary among providers, but for your in network provider you pay 10%, after your plan deductible is met and for your out of network provider you pay 30%, after the plan deductible is met.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"co insuracne and out of pocket maxmimums"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "I am happy to help you understand your benefits.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Thank you. It appears you have an individual health plan. The benefits for you are as follows: \n"
+            ]
+          },
+          {
+            "text": [
+              "\nWhen you see a primary care, specialist, or urgent care provider you have 10% co-insurance in network and 30% co-insurance out of network.\n\nDo you require more assistance?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"no"
+          },
+          "languageCode": "en"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Okay, glad I could help. A transcript of our conversation will be stored in the messages section of your patient portal. Press 5 if you’re willing to fill out a survey on your experience today. Have a great day!"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Oi"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "triggeredIntent": {
+          "name": "Default Welcome Intent"
+        },
+        "currentPage": {
+          "name": "Default Landing",
+          "flow": "Default Start Flow"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Olá, sou o seu agente virtual de saúde. Posso ajudar a responder às suas perguntas sobre reivindicações de saúde, entender seus benefícios e encontrar um médico. Como posso ajudá-lo hoje?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Quero marcar uma consulta com um médico\""
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.find_doctor"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Qual é a sua identificação de membro?\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "8768768678"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "member_id": "8768768678",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Qual a sua data de nascimento? Você pode dizer a data como 22 de outubro de 1982."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "8 de agosto de 1996"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Member Details",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Quem é o assinante principal?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "mim"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para cuidados primários?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"sim está certo"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Podemos marcar uma visita virtual se você quiser ser atendido hoje.\n\nSeu plano inclui acesso a visitas virtuais sem nenhum custo para você depois que você cumprir sua franquia ou por $ 50 fixos antes disso.\n\nVocê pode conhecer o provedor virtual agora ou agendar um horário conforme sua conveniência. Por favor, especifique o dia e a hora que deseja agendar uma consulta.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"estarei disponível tomo às 3 horas"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_at_specific_time"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ótimo, vou conectar você a alguém que pode ajudá-lo a agendar isso.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Minha reclamação foi processada?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Tenho algumas dúvidas sobre esse valor. Acho que não fui eu"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.out_of_scope_claims"
+        },
+        "currentPage": {
+          "name": "Live Agent",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Posso conectá-lo a alguém que pode ajudá-lo com isso.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Quão perto estou de cumprir minha franquia?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSua franquia individual anual na rede é de $ 2.000 e você tem $ 1.200 restantes para o ano.\nSua franquia fora da rede é de $ 4.000 e você tem $ 1.400 restantes para o ano.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Meu co-seguro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Você pode compartilhar algumas informações sobre minhas reivindicações anteriores"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_claims"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Claim Status"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a entender suas reivindicações de saúde.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local."
+            ]
+          },
+          {
+            "text": [
+              "Consegui localizar sua reivindicação mais recente com data de serviço em 25 de março de 2020 e valor total de $ 122,32.\n\nO status atual da reclamação é processado.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Sinto náuseas, preciso de um médico com urgência"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico e responder às suas perguntas sobre cobrança.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Que tipo de médico você gostaria de ver?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Não, eu gostaria de ver um médico para saúde mental"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para serviços de saúde mental?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"sim, exatamente"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Podemos marcar uma visita virtual se você quiser ser atendido hoje.\n\nSeu plano inclui acesso a visitas virtuais sem nenhum custo para você depois que você cumprir sua franquia ou por $ 50 fixos antes disso.\n\nVocê pode conhecer o provedor virtual agora ou agendar um horário conforme sua conveniência. Por favor, especifique o dia e a hora que deseja agendar uma consulta.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"estou livre agora posso ir?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_now"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ótimo, você pode visitar livehealthonline.com/google para configurar uma conta e se conectar a um provedor. Esse processo geralmente leva menos de 10 minutos. Também posso transferi-lo para um agente que pode ajudar.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"quanto custa os serviços de saúde mental"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "mental health services"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "As cobranças reais podem variar entre os provedores, mas para o provedor da rede você paga 10% após o pagamento da franquia do plano. Você também tem acesso a serviços de saúde mental por meio de nossa parceira Lyra.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Legal Quanto tenho que gastar antes de ter cobertura"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Existe uma parte específica de seus benefícios que você gostaria de ouvir? Você pode me perguntar sobre sua franquia, co-seguro, valores máximos do bolso e serviços cobertos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"todos os benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nSua franquia individual anual na rede é de $ 2.000 e você tem $ 1.200 restantes para o ano.\nSua franquia fora da rede é de $ 4.000 e você tem $ 1.400 restantes para o ano.\n\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nSeu máximo de bolso é $ 3.000 na rede e $ 4.500 fora da rede.\n\nVocê também está coberto em 100% (sem franquia ou co-pagamento) para serviços preventivos.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"custo do tratamento da visão?"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico e responder às suas perguntas sobre cobrança.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "As cobranças reais podem variar entre os provedores, mas para o seu provedor de rede você tem cobertura VSP, posso transferi-lo agora para um agente que pode ajudar.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "Estou coberto para a visita deste médico"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_benefits"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Existe uma parte específica de seus benefícios que você gostaria de ouvir? Você pode me perguntar sobre sua franquia, co-seguro, valores máximos do bolso e serviços cobertos."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"co seguro"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"o que é coordenadas de benefícios"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.faq_coordination"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Às vezes, dois planos de seguro trabalham juntos para pagar sinistros da mesma pessoa. Esse processo é chamado de coordenação de benefícios.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"como faço para encontrar um médico para a doença"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.initialize_doctor"
+        },
+        "currentPage": {
+          "name": "Type of Doctor",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Claro, posso ajudá-lo a encontrar um médico e responder às suas perguntas sobre cobrança.\n\nObserve que, se for uma emergência médica, vá ao pronto-socorro local.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Que tipo de médico você gostaria de ver?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"médico"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "currentPage": {
+          "name": "Type of Doctor Confirmation",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Para confirmar, você gostaria de consultar um médico para cuidados primários?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"correto"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 3,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "small_talk.confirmation.yes"
+        },
+        "currentPage": {
+          "name": "Primary, Specialist and Mental",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Podemos marcar uma visita virtual se você quiser ser atendido hoje.\n\nSeu plano inclui acesso a visitas virtuais sem nenhum custo para você depois que você cumprir sua franquia ou por $ 50 fixos antes disso.\n\nVocê pode conhecer o provedor virtual agora ou agendar um horário conforme sua conveniência. Por favor, especifique o dia e a hora que deseja agendar uma consulta.\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"tomo grátis às 17h"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.free_at_specific_time"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ótimo, vou conectar você a alguém que pode ajudá-lo a agendar isso.\n\nVocê tem alguma outra pergunta antes de eu transferi-lo?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"Custo de agitação e demência"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          },
+          "type_of_doctor": "primary care"
+        },
+        "triggeredIntent": {
+          "name": "healthcare.costs_of_coverage_category"
+        },
+        "currentPage": {
+          "name": "Anything Else",
+          "flow": "Find a Doctor"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "As cobranças reais podem variar entre os provedores, mas para o provedor da rede você paga 10%, depois que a franquia do plano for atendida e para o provedor fora da rede, você paga 30%, depois que a franquia do plano for atendida.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"co seguro e fora do bolso máximos"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.list_benefits_services"
+        },
+        "currentPage": {
+          "name": "Benefit Services",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Fico feliz em ajudá-lo a entender seus benefícios.\n\n"
+            ]
+          },
+          {
+            "text": [
+              "Obrigada. Parece que você tem um plano de saúde individual. Os benefícios para você são os seguintes:\n"
+            ]
+          },
+          {
+            "text": [
+              "\nAo consultar um prestador de cuidados primários, um especialista ou um prestador de cuidados urgentes, tem 10% de co-seguro na rede e 30% de co-seguro fora da rede.\n\nVocê precisa de mais assistência?"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "userInput": {
+        "isWebhookEnabled": true,
+        "input": {
+          "text": {
+            "text": "\"não"
+          },
+          "languageCode": "pt-br"
+        }
+      },
+      "virtualAgentOutput": {
+        "sessionParameters": {
+          "benefits": "",
+          "date_of_birth": {
+            "day": 8,
+            "month": 8,
+            "year": 1996
+          },
+          "member_id": "8768768678",
+          "primary_subscriber": "self",
+          "specific_date_time": {
+            "day": 5,
+            "hours": 17,
+            "minutes": 0,
+            "month": 12,
+            "nanos": 0,
+            "seconds": 0,
+            "year": 2020
+          }
+        },
+        "triggeredIntent": {
+          "name": "healthcare.end_session"
+        },
+        "currentPage": {
+          "name": "End Session",
+          "flow": "Benefits"
+        },
+        "textResponses": [
+          {
+            "text": [
+              "Ok, fico feliz em poder ajudar. Uma transcrição de nossa conversa será armazenada na seção de mensagens do portal do paciente. Pressione 5 se estiver disposto a preencher uma pesquisa sobre sua experiência hoje. Tenha um ótimo dia!"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "creationTime": {
+    "seconds": 1607085495,
+    "nanos": 448751000
+  }
+}

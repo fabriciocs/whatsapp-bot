@@ -1,0 +1,39 @@
+[
+
+1. "Como uso o Terminal SQL?", 
+2. "O que é o Terminal SQL?", 
+3. "Como acesso o Terminal SQL?", 
+4. "Quais são os comandos básicos do Terminal SQL?", 
+5. "Como posso executar consultas no Terminal SQL?"
+
+"Oi!",
+"Como posso te ajudar?",
+"Quais comandos posso usar?",
+"Qual é o nome do meu banco de dados?",
+"Como faço para criar uma tabela?",
+"Como faço para inserir dados na tabela?",
+"Como faço para selecionar dados?",
+"Como faço para atualizar dados?",
+"Como faço para excluir dados?",
+"Qual é a sintaxe para criar uma consulta?",
+"Como faço para criar um índice?",
+"Como faço para excluir uma tabela?",
+"Como faço para criar um usuário?",
+"Como faço para gerenciar permissões?",
+"Como faço para criar um backup do banco de dados?"
+
+1. "Executar consulta de seleção de dados",
+2. "Atualizar tabela de dados",
+3. "Criar nova tabela de dados",
+4. "Apagar tabela de dados",
+5. "Inserir novos dados na tabela",
+6. "Alterar o nome de uma tabela",
+7. "Criar nova coluna na tabela",
+8. "Apagar coluna da tabela",
+9. "Alterar o tipo de dados de uma coluna",
+10. "Executar consulta de junção de tabelas",
+11. "Executar consulta de agregação",
+12. "Criar nova função de banco de dados",
+13. "Criar novo índice na tabela",
+14. "Criar nova visão",
+15. "Criar novo procedimento armazenado"]

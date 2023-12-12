@@ -1,0 +1,358 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "ei",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eiiiiiii",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "oiiiii",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "esta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "esta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "oiiii",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei",
+          "auto": true
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "lá",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como tá indo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que está acontecendo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como você está",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "e aí",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "boa noite"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "bom Dia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "boa tarde",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "boa noite",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como vão as coisas?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como é?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "7d4e0ac8-4aca-4f60-b966-8484dbac4902",
+      "parts": [
+        {
+          "text": "só vou dizer oi",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "80e74f9e-1a57-49cf-b60a-52797719d598",
+      "parts": [
+        {
+          "text": "até",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "9ae4a556-2858-4896-9ad9-1859519e1c90",
+      "parts": [
+        {
+          "text": "Olá Oi",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "284e3ef9-b6cf-48ec-a794-636ff275d835",
+      "parts": [
+        {
+          "text": "olá",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "bd0ec09f-198d-49d9-a6ed-f79d9135541a",
+      "parts": [
+        {
+          "text": "ei",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "f34851af-e12c-4273-897e-2783f00c77e8",
+      "parts": [
+        {
+          "text": "olá",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "8d845151-e2c5-479e-833e-997023bfbc92",
+      "parts": [
+        {
+          "text": "saudações",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "665355a4-546f-47be-9993-e184737fb51a",
+      "parts": [
+        {
+          "text": "Ei",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "c566d89f-f2db-411f-9790-b0f19922c997",
+      "parts": [
+        {
+          "text": "há quanto tempo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "e36a40b6-5b6b-42a1-85d7-99af298d00d8",
+      "parts": [
+        {
+          "text": "olá",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "cf8695d5-402d-42a9-8b11-3b191773e7da",
+      "parts": [
+        {
+          "text": "lindo dia não é",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "39ba4377-5a07-4b01-8625-a96d99539cc3",
+      "parts": [
+        {
+          "text": "eu te saúdo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "2208aad0-d178-413c-afb9-fc0408c265f8",
+      "parts": [
+        {
+          "text": "Olá de novo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "11f3e8b0-187f-4f09-b90d-c4141a60786c",
+      "parts": [
+        {
+          "text": "Oi",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "ccb6f9a2-b178-482e-a401-22d8339f3a6b",
+      "parts": [
+        {
+          "text": "olá",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "id": "81e2d352-1a5f-4236-8e6f-4914f12d172a",
+      "parts": [
+        {
+          "text": "bom dia"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

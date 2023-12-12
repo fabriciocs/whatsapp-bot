@@ -1,0 +1,486 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "posso encontrar informações sobre plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "não sei o que é hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é alto",
+          "auto": true
+        },
+        {
+          "text": "plano de saúde dedutível",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "faz",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        },
+        {
+          "text": " tem um maior anual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "auto": true
+        },
+        {
+          "text": " do que os planos de saúde tradicionais.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "faz alto",
+          "auto": true
+        },
+        {
+          "text": "plano de saúde dedutível",
+          "auto": true
+        },
+        {
+          "text": " tem um maior anual",
+          "auto": true
+        },
+        {
+          "text": "dedutível",
+          "auto": true
+        },
+        {
+          "text": " do que os planos de saúde tradicionais.",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual plano tem",
+          "auto": true
+        },
+        {
+          "text": "franquia alta",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de",
+          "auto": true
+        },
+        {
+          "text": "HDHP",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explicar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "explicar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "hdhp",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        },
+        {
+          "text": " informação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot você pode me ajudar a saber sobre hdhp"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "ei bot, você pode me ajudar a saber sobre o plano de saúde de alta franquia"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informação sobre",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informação sobre",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "apresentação",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixar"
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " conheça o hdhp"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "deixar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " saber sobre",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "apresentação",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " cerca de",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informação sobre",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " algo sobre",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " algo sobre",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é",
+          "auto": true
+        },
+        {
+          "text": "hdhp",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que é",
+          "auto": true
+        },
+        {
+          "text": "Plano de saúde de alta franquia",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

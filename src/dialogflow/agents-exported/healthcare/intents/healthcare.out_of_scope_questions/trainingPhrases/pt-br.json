@@ -1,0 +1,832 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "quero entender meu"
+        },
+        {
+          "text": "seguro de vida",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso"
+        },
+        {
+          "text": "reabastecer uma receita",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "devo renovar por"
+        },
+        {
+          "text": "plano de saude",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "me ajude a encontrar um por perto"
+        },
+        {
+          "text": "farmacia",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode confirmar se",
+          "auto": true
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " o seguro faz parte da minha cobertura de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como posso pagar pelo meu",
+          "auto": true
+        },
+        {
+          "text": "insulina",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Como posso pagar pelo meu",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero confirmar se",
+          "auto": true
+        },
+        {
+          "text": "olho",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " o seguro faz parte da minha cobertura de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " está incluído na cobertura de benefícios?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode confirmar se",
+          "auto": true
+        },
+        {
+          "text": "tábua",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " faz parte do meu plano de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero confirmar se",
+          "auto": true
+        },
+        {
+          "text": "olho",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " o seguro faz parte do meu plano de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " está coberto no meu plano de benefícios, certo?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode confirmar se",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " faz parte do meu plano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quero confirmar se",
+          "auto": true
+        },
+        {
+          "text": "dentes",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " seguro faz parte do meu plano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " está coberto no meu plano, certo?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "insulina",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " parte do meu plano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber se",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " está incluso no meu plano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "cardíaco",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " cirurgia coberta pela minha cobertura de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " parte da minha cobertura de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " seguro incluído no meu plano de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me dizer se",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " está coberto pelo meu plano de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Meu plano de benefícios cobre",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Estou coberto para",
+          "auto": true
+        },
+        {
+          "text": "medicamento",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " sob meus benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "dentes",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " seguro incluído no meu plano de benefícios",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " incluído no meu plano de benefícios?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É"
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " incluso no meu plano"
+        }
+      ],
+      "repeatCount": 3,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode me dizer se",
+          "auto": true
+        },
+        {
+          "text": "olho",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " o seguro é coberto pelo meu plano",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "meu plano cobre",
+          "auto": true
+        },
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Meu seguro cobre",
+          "auto": true
+        },
+        {
+          "text": "insulina",
+          "parameterId": "out_of_scope",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Estou coberto para",
+          "auto": true
+        },
+        {
+          "text": "quimioterapia",
+          "parameterId": "out_of_scope",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "parameterId": "out_of_scope",
+          "auto": true
+        },
+        {
+          "text": " incluso no plano?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "posso fazer perguntas sobre"
+        },
+        {
+          "text": "olho",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "diga-me se a cobertura do seguro"
+        },
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o seguro cobre"
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "olho",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dentes",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "me dê mais informações sobre"
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "quais informações você tem sobre"
+        },
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "conte-me mais sobre"
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "como posso verificar"
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Existe uma cobertura de seguro para o meu"
+        },
+        {
+          "text": "cardíaco",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " cirurgia?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "meus benefícios de saúde cobrem"
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "me ajude a saber sobre o meu"
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você cobre"
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu quero saber sobre o meu"
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você fornece respostas sobre"
+        },
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Posso fazer perguntas sobre o meu"
+        },
+        {
+          "text": "dental",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": ","
+        },
+        {
+          "text": "visão",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": ", ou"
+        },
+        {
+          "text": "fertilidade",
+          "parameterId": "out_of_scope"
+        },
+        {
+          "text": " seguro também?"
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

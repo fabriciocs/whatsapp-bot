@@ -1,0 +1,149 @@
+{
+  "name": "064b1872-33d2-4128-be92-9b5ef0ba1a36",
+  "displayName": "Nearby Doctor",
+  "form": {
+    "parameters": [ {
+      "displayName": "dtmf",
+      "entityType": "@dtmf",
+      "fillBehavior": {
+        "initialPromptFulfillment": {
+        
+        }
+      },
+      "advancedSettings": {
+        "dtmfSettings": {
+          "enabled": true,
+          "maxDigits": 1,
+          "useSystemEntityRule": false
+        }
+      }
+    } ]
+  },
+  "entryFulfillment": {
+    "messages": [ {
+      "text": {
+        "text": [ "The nearest $session.params.type_of_doctor provider is at 550 Cochituate Rd, Framingham, MA 01701, United States. Would you like me to find another location?" ]
+      },
+      "languageCode": "en"
+    } ]
+  },
+  "transitionRoutes": [ {
+    "intent": "small_talk.confirmation.yes",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "A customer care representative will assist you to find your nearest doctor. Transferring your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "33b0f0e3-d559-4e90-9a46-a243d59d7ce4"
+  }, {
+    "intent": "small_talk.confirmation.no",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "f6af4c40-6c00-4bcc-95c5-e1b61bf87f7d"
+  }, {
+    "intent": "healthcare.ask_open_timing",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "It is open between 9am-5pm Monday to Friday. \n\nI can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "e8c3f74f-9d52-4b56-a934-b9fc72980e3a"
+  }, {
+    "intent": "healthcare.schedule_appointment",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I can transfer you to an agent who can assist with scheduling an appointment.\n\nDo you have any other questions before I transfer you?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Anything Else",
+    "name": "aa03a26d-6e00-4cf5-90dc-6b2b31a661ce"
+  }, {
+    "intent": "healthcare.agent_transfer",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "7ce6a0d1-b531-4f81-a142-87b715bfbf63"
+  }, {
+    "condition": "$session.params.dtmf = 0",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "I understand, I will transfer your call to a customer service representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "targetPage": "Live Agent",
+    "name": "dc3b60be-9a89-4ef9-81b9-35e8a31e5d20"
+  } ],
+  "eventHandlers": [ {
+    "event": "sys.no-match-1",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "The nearest $session.params.type_of_doctor specialty is at 550 Cochituate Rd, Framingham, MA 01701, United States. Would you like me to find another location?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "f9c9cf71-4b49-4249-8ccd-23e0dab26fb9"
+  }, {
+    "event": "sys.no-match-2",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I did not understand that. The nearest $session.params.type_of_doctor specialty is at 550 Cochituate Rd, Framingham, MA 01701, United States\nUnited States. Do you want to search for another location?" ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "9e6fa0e5-c1f9-4e1e-a77b-0cf55fdf4365"
+  }, {
+    "targetPage": "Live Agent",
+    "event": "sys.no-match-3",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, a customer service representative will be better able to help you. Let me transfer your call. Thank you for your patience." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "575b3b9d-1e8b-408b-90b6-03f4a1ebadea"
+  }, {
+    "event": "sys.no-input-default",
+    "triggerFulfillment": {
+      "messages": [ {
+        "text": {
+          "text": [ "Apologies, I was not able to understand that.The nearest $session.params.type_of_doctor specialty is at 550 Cochituate Rd, Framingham, MA 01701, United States. Would you like me to find another location? Press 0 to re-direct your call to a customer care representative." ]
+        },
+        "languageCode": "en"
+      } ]
+    },
+    "name": "314a72cb-d8c0-4f08-b70e-e41609961c2f"
+  } ]
+}

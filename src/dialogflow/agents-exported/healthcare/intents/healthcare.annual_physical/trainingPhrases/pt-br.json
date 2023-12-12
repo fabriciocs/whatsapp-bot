@@ -1,0 +1,491 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "será útil se você puder dar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " ao saber do meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " quero que você dê",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " mais detalhes no meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "buscar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "o que você sabe sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "descrição no meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "informações sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "minha",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "detalhes",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "saiba mais informações no meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por que você não dá",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " mais informações no meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você tem algum detalhe sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "apresentação",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " em",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " precisa saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        },
+        {
+          "text": " ",
+          "auto": true
+        },
+        {
+          "text": "em formação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "dar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " informação sobre",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "eu",
+          "auto": true
+        },
+        {
+          "text": " precisa saber sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "que informação você pode dar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " no meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " mais sobre o meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "verifique meu",
+          "auto": true
+        },
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qual é o meu físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " sobre meu exame físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "físico anual",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E quanto ao meu exame físico anual?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "é meu exame físico anual",
+          "auto": true
+        },
+        {
+          "text": "abordado",
+          "auto": true
+        },
+        {
+          "text": " ?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Isso foi muito útil. Acho que é hora de fazer meu exame físico anual. É isto",
+          "auto": true
+        },
+        {
+          "text": "abordado"
+        },
+        {
+          "text": "?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}

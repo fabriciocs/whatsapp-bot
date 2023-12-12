@@ -1,0 +1,370 @@
+{
+  "trainingPhrases": [
+    {
+      "parts": [
+        {
+          "text": "Você pode verificar se",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É necessária autorização prévia?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " acho que não precisa de autorização prévia, né?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "é necessária autorização prévia, am",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " direita?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Então faz",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "A autorização prévia precisa ser feita ou não?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "você pode, por favor, deixar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " Saber se",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " confuso, faça",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode confirmar se",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu sou",
+          "auto": true
+        },
+        {
+          "text": " não tenho certeza se",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Você pode ajudar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " entender se",
+          "auto": true
+        },
+        {
+          "text": "EU",
+          "auto": true
+        },
+        {
+          "text": " precisa de uma autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "É absolutamente necessário fazer autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "por favor verifique se eu preciso",
+          "auto": true
+        },
+        {
+          "text": "aprovação",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu poderia obter aprovação para que isso aconteça também?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu precisaria de confirmação para prosseguir com isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "contar",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " se o pedido for",
+          "auto": true
+        },
+        {
+          "text": "mim",
+          "auto": true
+        },
+        {
+          "text": " feito antes para acessar",
+          "auto": true
+        },
+        {
+          "text": "autorização",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "qualquer solicitação deve ser feita antes no tempo",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso solicitar para planejar isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Eu precisaria de permissão explícita com antecedência para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "E eu preciso de permissão de acesso para planejar isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Tenho que confirmar em tempo hábil para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Devo obter permissões antes do tempo para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso de aprovação com antecedência para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso de autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    },
+    {
+      "parts": [
+        {
+          "text": "Preciso de autorização prévia para isso?",
+          "auto": true
+        }
+      ],
+      "repeatCount": 1,
+      "languageCode": "pt-br"
+    }
+  ]
+}
