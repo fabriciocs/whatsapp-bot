@@ -38,7 +38,7 @@ export class AppData {
     }>;
     conversations?: Record<string, Record<string, any[]>>;
     lockConversation?: Record<string, boolean>;
-    messageControl: Record<string, number>;
+    messageControl?: Record<string, number>;
 
 
 }

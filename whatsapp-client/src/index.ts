@@ -1,10 +1,8 @@
-import { QueryDocumentSnapshot } from '@google-cloud/firestore';
+import { QueryDocumentSnapshot, Filter } from '@google-cloud/firestore';
 import * as dotenv from 'dotenv';
 import * as admin from 'firebase-admin';
 import { EstacaoWhatsClientManager } from './estacao-whats-client';
 import EstacaoManager from './estacoes';
-
-import { Filter } from 'firebase-admin/firestore';
 import AppManager from './app-manager';
 
 dotenv.config();

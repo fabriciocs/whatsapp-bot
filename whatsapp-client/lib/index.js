@@ -35,11 +35,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const firestore_1 = require("@google-cloud/firestore");
 const dotenv = __importStar(require("dotenv"));
 const admin = __importStar(require("firebase-admin"));
 const estacao_whats_client_1 = require("./estacao-whats-client");
 const estacoes_1 = __importDefault(require("./estacoes"));
-const firestore_1 = require("firebase-admin/firestore");
 const app_manager_1 = __importDefault(require("./app-manager"));
 dotenv.config();
 admin.initializeApp();
@@ -53,8 +53,8 @@ const authenticate = (estacaoDoc) => __awaiter(void 0, void 0, void 0, function*
         console.error('start error', e);
     }
 });
-(() => {
+(() => __awaiter(void 0, void 0, void 0, function* () {
     const db = admin.firestore();
     db.settings({ ignoreUndefinedProperties: true });
     new app_manager_1.default(db).listenEstacoes(firestore_1.Filter.or(firestore_1.Filter.where('autoInit', '==', true), firestore_1.Filter.where('shouldInit', '==', true)), estacao => authenticate(estacao).catch(e => console.log(e)));
-})();
+}))();
