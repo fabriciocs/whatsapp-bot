@@ -338,6 +338,9 @@ export const initWhatsappClient = async (appData: AppData) => {
                 }
             }
         }
+        if(!text){
+            text = `Olá, ${agentName}`;
+        }
         return await chatResponse(appData.promptBase[agentName], instructions, text, appData.conversations[conversationId][agentName]);
 
     };
@@ -773,6 +776,7 @@ export const initWhatsappClient = async (appData: AppData) => {
         console.error(e);
     }
     console.log('AFTER INITIALIZING WHATSAPP CLIENT');
+    
 }
 async function chatResponse(prompt: string, instructions: string, text: string, conversation: any[]) {
 

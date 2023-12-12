@@ -4,9 +4,8 @@ import * as path from 'path';
 
 import * as admin from 'firebase-admin';
 import { readFile } from 'fs/promises';
-
 const getServiceAccountData = async () => {
-    const serviceAccount = await readFile(path.resolve(process.env.GOOGLE_APPLICATION_CREDENTIALS), 'utf8');
+    const serviceAccount = await readFile(path.resolve('./serviceaccount.json'), 'utf8');
     return JSON.parse(serviceAccount) as admin.ServiceAccount;
 }
 const dbConfig = async () => {
