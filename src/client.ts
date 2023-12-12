@@ -31,8 +31,28 @@ import { geradorCpf, loadPersonAndCar } from './leia';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
-
 const appData: AppData = {
+    lockConversation: {},
+    systemMessageDefault: 'Atue como um assistente pessoal',
+    conversations: {},
+    promptBase: {
+        'AlivioGPT': "Você é AlivioGPT, um especialista em apoio a superação de crises de ansiedade.",
+        'FabrícioSantosGPT': "Você é FabrícioSantosGPT, CTO experiente e fundador da Luau Tech com mais de 12 anos de experiência em soluções software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net, Java, Node, Flutter e ChatGPT. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em Arquitetura, Engenharia e Design de Software, além de Liderança, Gestão e Execução de soluções de software de grande porte, alta disponibilidade e escalabilidade. Gentil, prestativo e atencioso. Sua missão é conversar em um chat do whatsapp"
+    },
+    agentCommands: {
+        'AlivioGPT': '.alivio',
+        'FabrícioSantosGPT': '.eu'
+    },
+    agentExample: {
+        'AlivioGPT': {
+            input: 'Oi',
+            output: 'Olá, AlivioGPT, um especialista em apoio a superação de crises de ansiedade. Em que posso te auxiliar?'
+        },
+        'FabrícioSantosGPT': {
+            input: 'Oi',
+            output: 'Olá, em que posso te ajudar?'
+        }
+    }
 };
 
 
@@ -64,7 +84,7 @@ const sweetTry = async <T>(msg: Msg, func: () => Promise<T>): Promise<T | string
 
 
 const createATextDirectly = async (msg: Msg, prompt: string) => {
-    const answer = await simpleChat(prompt);
+    const answer = await simpleChat(appData.systemMessageDefault, prompt);
     if (answer) {
         await appData.ioChannel.sendAnswer({ msg, content: answer });
     } else {
@@ -100,7 +120,7 @@ const createATextForConfig = async (msg: Msg, prompt: any, config: string, split
 
 const responseWithTextDirectly = async (prompt: string) => {
     // const result = await writeAText({ stop: ['stop', '\n🤖'], prompt, max_tokens: prompt?.length + 495 });
-    const answer = await simpleChat(prompt);
+    const answer = await simpleChat(appData.systemMessageDefault, prompt);
     return answer;
 };
 
@@ -309,10 +329,8 @@ const canExecuteCommand = async (msg: Msg) => {
     if (isCommand(msg)) {
         return isAuthorized(msg);
     }
-
-    if (await appData.isAlivio(msg)) {
-        return true;
-    }
+    const agentName = await appData.getAgent(msg);
+    return !!agentName;
     // if (isLicensePlate(msg)) {
     //     return licensePlateSearch.includes(msg.from) || !!msg.fromMe;
     // }
@@ -323,14 +341,24 @@ const canExecuteCommand = async (msg: Msg) => {
 type executionType = [string, string[], any] | [string, string[]] | [string, any] | [string];
 
 const extractExecutionInfo = async (msg: Msg, config?: ChatConfigType): Promise<executionType> => {
+
+    const agentName = await appData.getAgent(msg);
+    if (!!agentName) {
+        const agentCommand = appData.agentCommands?.[agentName];
+        if (!!agentCommand) {
+            let params = msg?.body?.split(/\s/).filter(Boolean);
+            if (isCommand(msg)) {
+                params = params.slice(2);
+            }
+            return [agentCommand, params];
+        }
+    }
     if (isCommand(msg) || config?.isAutomatic) {
         const buildBody = `${config?.isAutomatic ? 'auto ' : ''}${config?.isUnique?.() ? `${config?.commands?.[0]} ` : ''}${msg?.body}`;
         const [, text, ...params] = buildBody.split(/\s/).filter(Boolean);
         return [text, params];
     }
-    if (await appData.isAlivio(msg)) {
-        return ['.alivio', []];
-    }
+
     // if (isLicensePlate(msg)) {
     //     return ['placa', [msg?.body?.toUpperCase(), true]];
     // }

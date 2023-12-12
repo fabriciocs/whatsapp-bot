@@ -140,8 +140,7 @@ export default class Wordpress {
 
     public async createAiPost({ prompt: ugly, title, status = 'publish' }: AiPost) {
         const prompt = prepareText(ugly)
-        const blogSubject = buildSubject(prompt)
-        const result = await simpleChat(blogSubject);
+        const result = await simpleChat(baseBlogPrompt, prompt);
         const fullAnswer = result;
         if (fullAnswer) {
             const fullCategories = await this.createCategoriesFromContent(prompt);

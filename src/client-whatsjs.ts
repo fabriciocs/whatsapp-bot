@@ -11,7 +11,7 @@ import { readToMe } from './speech-to-text';
 import fs from 'fs';
 import { AppData, AppDataUtils } from './app-data';
 import { giveMeImage, simpleChat } from './ai';
-import { keyReplacer, normalizeFilepath, toDataUrl } from './util';
+import { commandMarkers, keyReplacer, normalizeFilepath, toDataUrl } from './util';
 import { readDocument, whatIsIt } from './vision';
 import * as child_process from 'child_process';
 import {
@@ -21,6 +21,7 @@ import {
 } from "langchain/document_loaders/web/assemblyai";
 import EmojiManager from './emoji';
 import { tellMe, tellMeString } from './textToSpeach';
+import cluster from 'cluster';
 const addManagerToGroup = async (msg: WhatsappMessageAdapter, params: string[] = []) => {
     const chat = await msg.getMsg<Message>().getChat();
     if (!chat.isGroup) return;
@@ -128,11 +129,16 @@ const backupMsg = async (folderPath: string, bkpMsg: Message, skipIfExists = tru
 }
 
 export const initWhatsappClient = async (appData: AppData) => {
-    appData.isAlivio = async (msg: Msg) => {
-        if (msg.fromMe) return false;
-        const chat = await msg.getMsg().getChat();
-        return !!conversations[chat.id._serialized]
-    }
+    appData.getAgent = async (msg: Msg) => {
+        if (msg?.fromMe) return null;
+
+        const chat = await msg.getMsg()?.getChat();
+
+        const conversationId = chat?.id?._serialized;
+        return Object.keys(appData?.conversations?.[conversationId]??{})?.[0] ?? null;
+    };
+
+
     const queroMais = async (msg: WhatsappMessageAdapter) => {
         const whatsMsg = msg.getMsg() as unknown as Message;
         const chat = await whatsMsg.getChat();
@@ -282,51 +288,74 @@ export const initWhatsappClient = async (appData: AppData) => {
         } else {
             text = 'siga as instruções e responda'
         }
-        return await chatResponse(prompt, instructions, text);
+        return await chatResponse(prompt, instructions, text, []);
 
     };
-
-    const conversations: Record<string, any[]> = {};
-    const create_direct_answer = async (received: WhatsappMessageAdapter, params: string[] = []) => {
-        const prompt = "Você é AlivioGPT, um especialista em apoio a superação de crises de ansiedade.\n";
+    const getConversation = async (received: WhatsappMessageAdapter) => {
+        const msg = received.getMsg<Message>();
+        const chat = await msg.getChat();
+        received.setFromMe(false);
+        const agentName = await appData.getAgent?.(received);
+        const conversationId = chat.id._serialized;
+        if (!agentName) {
+            console.log({ agentName, conversationId, conversations: appData.conversations?.[conversationId] });
+            return;
+        }
+        const conversationContent = appData.conversations?.[conversationId]?.[agentName] ?? null;
+        if (!conversationContent) {
+            console.log({ conversationId, agentName, conversationContent });
+            return;
+        }
+        const mapped = conversationContent.map(c => c.toDict());
+        console.log({ conversationId, agentName, conversationContent, mapped });
+        return mapped;
+    };
+    const agent_direct_answer = async (agentName: keyof typeof appData.promptBase) => async (received: WhatsappMessageAdapter, params: string[] = []) => await answer_direct_text(agentName, received, params);
+    const create_direct_answer = async (agentName: keyof typeof appData.promptBase, received: WhatsappMessageAdapter, params: string[] = []) => {
         const msg = await getMsgOrQuoted(received);
         const chat = await received.getMsg<Message>().getChat();
         // if not exists conversations for this chat.id._serialized create one
 
         let text = await asText(msg);
-        let instructions = "";
-        if (received.getMsg<Message>().hasQuotedMsg) {
-            if (params?.length > 0) {
-                instructions = `Conforme as instruções informadas: '''${params.join(' ')}'''. \n`;
-            }
+        let textSpitted = text?.split(' ').map(t => t.trim()).filter(Boolean);
+        if (commandMarkers.includes(`${textSpitted[0]} `)) {
+            textSpitted.shift();
         }
-        if (!conversations[chat.id._serialized]) {
-            conversations[chat.id._serialized] = [];
-            if (text) {
+        if (appData.actions?.[textSpitted[0]?.toLowerCase()]) {
+            textSpitted.shift();
+        }
+        text = textSpitted.join(' ');
 
-                text = `Analise o texto a seguir, atue como AlivioGPT em um chat do whatsapp e responda suscintamente:'''${text}'''`
-            } else {
-                text = 'siga as instruções e responda suscintamente'
+
+        let instructions = "";
+
+        const conversationId = chat.id._serialized;
+        if (!appData.conversations[conversationId]?.[agentName]) {
+            appData.conversations[conversationId] = { [agentName]: [] };
+            if (received.getMsg<Message>().hasQuotedMsg) {
+                if (params?.length > 0) {
+                    instructions = `Respeitando as instruções:\n'''\n${params.join(' ')}\n'''.\n`;
+                }
             }
         }
-        return await chatResponse(prompt, instructions, text, conversations[chat.id._serialized]);
+        return await chatResponse(appData.promptBase[agentName], instructions, text, appData.conversations[conversationId][agentName]);
 
     };
     const create_answer_to_chat_text = async (text: string) => {
-        const prompt = "Fabrício Santos é CTO experiente na 4CODE Software House com mais de 12 anos de experiência em engenharia de software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net Core, Angular e Azure. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em desenvolvimento sênior e liderança técnica. Gentil, prestativo e atencioso.\n";
+        const prompt = "Fabrício Santos é CTO experiente na Lu Software House com mais de 12 anos de experiência em engenharia de software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net, Java, Node, Flutter e ChatGPT. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em Arquitetura, Engenharia e Design de Software, além de Liderança, Gestão e Execução de soluções de software de grande porte, alta disponibilidade e escalabilidade. Gentil, prestativo e atencioso.\n";
 
 
-        let task = `${prompt}Analise o chat a seguir, atue como Fabricio Santos e gentilmente escreva uma resposta que será narrada utilizando marcação SSML:\n'''${text}'''\n`;
+        let task = `${prompt}Analise o chat a seguir, atue como Fabricio Santos e gentilmente escreva uma resposta que será narrada utilizando marcação SSML`;
 
-        const resp = await simpleChat(task);
+        const resp = await simpleChat(task, text);
         console.log({ task, resp })
         return resp;
 
     };
     const create_answer_to_text = async (text) => {
         const prompt = "Fabrício Santos é CTO experiente na 4CODE Software House com mais de 12 anos de experiência em engenharia de software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net Core, Angular e Azure. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em desenvolvimento sênior e liderança técnica. Gentil, prestativo e atencioso.\n";
-        const task = `${prompt}Analise o texto a seguir , atue como Fabricio Santos em um chat do whatsapp e responda:\n'''${text}'''`
-        const resp = await simpleChat(task);
+        const task = `${prompt}Analise o texto a seguir , atue como Fabricio Santos em um chat do whatsapp e responda`
+        const resp = await simpleChat(task, text);
         console.log({ task, resp })
         return resp;
 
@@ -406,11 +435,21 @@ export const initWhatsappClient = async (appData: AppData) => {
             await msg.reply('Não consegui responder');
         }
     };
-
-    const answer_direct_text = async (msg: WhatsappMessageAdapter, params) => {
-
-        const resp = await create_direct_answer(msg, params)
+    const answer_direct_text = async (agentName: keyof typeof appData.promptBase, msg: WhatsappMessageAdapter, params) => {
+        const chat = await msg.getMsg<Message>().getChat();
+        const conversationId = chat.id._serialized;
+        //evite que o agente seja invocado repetidas vezes
+        if (appData.lockConversation[conversationId]) {
+            await msg.getMsg<Message>().reply('Só um instante');
+            return;
+        }
+        appData.lockConversation[conversationId] = true;
+        try{
+        const resp = await create_direct_answer(agentName, msg, params)
         await msg.getMsg<Message>().reply(resp);
+        }finally{
+            delete appData.lockConversation[conversationId];
+        }
     };
 
     const textToMsgMedia = async (textToAudio: string, filename: string) => {
@@ -437,9 +476,9 @@ export const initWhatsappClient = async (appData: AppData) => {
 
 
 
-    const answer_audio = async (msg: WhatsappMessageAdapter, params: string[] = []) => {
+    const answer_audio = async (agentName: keyof typeof appData.promptBase, msg: WhatsappMessageAdapter, params: string[] = []) => {
         const wmsg = msg.getMsg<Message>();
-        const text = await create_direct_answer(msg, params);
+        const text = await create_direct_answer(agentName, msg, params);
         if (text) {
             const msgMedia = await textToMsgMedia(text, `${wmsg.id._serialized}.ogg`);
             await wmsg.reply(msgMedia);
@@ -486,21 +525,21 @@ export const initWhatsappClient = async (appData: AppData) => {
     };
 
     const botIndirect = async (msg: Message, params: string[] = []) => {
-        // const [contactNumber] = params;
-        // const numberId = await appData.client.getNumberId(contactNumber);
-        // const contact = await appData.client.getContactById(numberId._serialized);
-        // const chat = await contact.getChat();
-        // const text = await asMultiText(new WhatsappMessageAdapter(chat.lastMessage), Infinity);
-        // let resp = "";
-        // if (text) {
-        //     resp = await create_answer_to_chat_text(text)
-        // }
-        // if (!resp) {
-        //     resp = await asText(new WhatsappMessageAdapter(chat.lastMessage));
-        // }
-        // if (!resp) {
-        //     resp = "Não consegui responder"
-        // }
+        const [contactNumber] = params;
+        const numberId = await appData.client.getNumberId(contactNumber);
+        const contact = await appData.client.getContactById(numberId._serialized);
+        const chat = await contact.getChat();
+        const text = await asMultiText(new WhatsappMessageAdapter(chat.lastMessage), Infinity);
+        let resp = "";
+        if (text) {
+            resp = await create_answer_to_chat_text(text)
+        }
+        if (!resp) {
+            resp = await asText(new WhatsappMessageAdapter(chat.lastMessage));
+        }
+        if (!resp) {
+            resp = "Não consegui responder"
+        }
         if (msg.hasQuotedMsg) {
             return await backupMsg('/home/fabricio/whatsbkp/', await msg.getQuotedMessage());
         }
@@ -587,11 +626,26 @@ export const initWhatsappClient = async (appData: AppData) => {
     appData.actions['.code'] = runCode;
     appData.actions['.func'] = runFunction;
     appData.actions['.html'] = dataToHtml;
+    appData.actions['.conversation'] = async (msg: WhatsappMessageAdapter) => {
+        const conversation = await getConversation(msg);
+        if (conversation) {
+            await msg.getMsg<Message>().reply(await getJsonDocument(msg, conversation));
+        } else {
+            await msg.getMsg<Message>().reply('Conversa não encontrada');
+
+        }
+    }
+    Object.keys(appData.agentCommands)?.forEach(async (agentName) => {
+        const command = appData.agentCommands?.[agentName];
+        if (!!command) {
+            appData.actions[command] = await agent_direct_answer(agentName);
+        }
+    });
+
     AppDataUtils.bindAction(appData, 'desenha', desenhaX, '🖌️');
     AppDataUtils.bindAction(appData, 'transcreve', transcreve, '🎤');
     AppDataUtils.bindAction(appData, '.fala', answer_multi_audio, '🗣️');
     AppDataUtils.bindAction(appData, '.', answer_text, '📝', '👍', '👌');
-    AppDataUtils.bindAction(appData, '.alivio', answer_direct_text, '🕊️');
     AppDataUtils.bindAction(appData, '.+', answer_multi_text, "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣", "🔟", "🔢");
     AppDataUtils.bindAction(appData, 'info', info, '🤔');
     AppDataUtils.bindAction(appData, '$', addManagerToGroup, '👨‍💼', '👩‍💼');
@@ -679,6 +733,7 @@ export const initWhatsappClient = async (appData: AppData) => {
                 //     await backupMsg(resolve(folderName), receivedMsg);
                 // }
                 try {
+                    // console.log("actions", { act: appData.actions });
                     await appData.processMessage(adaptedMessage);
                 } catch (e) {
                     console.error(e);
@@ -722,15 +777,10 @@ export const initWhatsappClient = async (appData: AppData) => {
     }
     console.log('AFTER INITIALIZING WHATSAPP CLIENT');
 }
-async function chatResponse(prompt: string, instructions: string, text: string, conversation = []) {
+async function chatResponse(prompt: string, instructions: string, text: string, conversation: any[]) {
 
-    let task = `${prompt} ${instructions}${text}`;
-    if (conversation?.length) {
-        console.log({ conversation });
-        task = text;
-    }
+    let task = `${prompt} ${instructions}`;
 
-    const resp = await simpleChat(task, conversation);
-    console.log({ task, resp });
+    const resp = await simpleChat(task, text, conversation);
     return resp;
 }

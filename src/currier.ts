@@ -7,7 +7,7 @@ export default class CurrierModel {
     constructor(private client: OpenAI) { }
 
     public async categories(text: string): Promise<string> {
-        const basePrompt = `Extraia as categorias do texto:\n\n"${text}"\n\nExemplo: "Tecnologia; Ciência; Saúde".`;
-        return await simpleChat(basePrompt);
+        const basePrompt = `Extraia as categorias do texto. Exemplo: "Tecnologia; Ciência; Saúde".`;
+        return await simpleChat(basePrompt, text);
     }
 }

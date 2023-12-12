@@ -18,7 +18,9 @@ import SessionsManager from './sessions-manager';
 import MediaManager from "./media-manager";
 
 export class AppData {
-    isAlivio?: (msg: Msg) => Promise<boolean>;
+
+    systemMessageDefault?: string;
+    getAgent?: (msg: Msg) => Promise<string>;
     is?: (command: string, msg: Msg) => Promise<boolean>;
     processMessage?: (receivedMsg: Msg) => Promise<void>;
     actions?: Record<string, any>;
@@ -28,6 +30,14 @@ export class AppData {
     commands?: Commands;
     contexts?: Contexts;
     client?: Client;
+    promptBase?: Record<string, string>;
+    agentCommands?: Record<string, string>;
+    agentExample?: Record<string, {
+        input: string,
+        output: string
+    }>;
+    conversations?: Record<string, Record<string, any[]>>;
+    lockConversation?: Record<string, boolean>;
 
 
 }

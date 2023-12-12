@@ -1,6 +1,8 @@
+import { ChatGoogleVertexAI } from "langchain/chat_models/googlevertexai";
+import { AIMessage, HumanMessage, SystemMessage } from "langchain/schema";
+import { Message } from 'whatsapp-web.js';
 import { OpenAI } from 'openai';
 import { ImageGenerateParams } from 'openai/resources';
-import { Message } from 'whatsapp-web.js';
 
 const configuration = {
     apiKey: process.env.OPENAI_API_KEY
@@ -148,7 +150,7 @@ const writeAText = async (config: Partial<CreateCompletionRequest>) => {
 // const editingText = async (config: Partial<CreateEditRequest>) => {
 //     return await editIt({ ...config, "model": "text-davinci-003" })
 // };
-const writeInstructions = async (prompt) => await simpleChat(prompt);
+const writeInstructions = async (prompt) => await simpleChat('Atue como um designer especialista em artes digitais', prompt);
 const giveMeImage = async (prompt: string, size: "256x256" | "512x512" | "1024x1024" = "256x256") => {
     const { data } = await clientAi.images.generate({
         prompt,
@@ -214,21 +216,24 @@ const createModelTrainingPhrases = async (instruct) => {
 
 
 
-const simpleChat = async (message: string, conversation = []) => {
-    if (conversation.length === 0) {
-        conversation.push({ role: 'system', content: message });
-    } else {
-        conversation.push({ role: 'user', content: message });
-    }
-
+const simpleChat = async (system: string, message: string, conversation = [], exemplos = []) => {
+    const tempConversations = [];
     try {
-        const { data: response } = await clientAi.chat.completions.create({
-            model: 'gpt-3.5-turbo',
-            messages: conversation
-        }).withResponse();
+        if (conversation.length === 0) {
+            tempConversations.push(new SystemMessage(system));
+        }
+        tempConversations.push(new HumanMessage(message));
 
-        conversation.push({ role: 'assistant', content: response.choices[0].message.content });
-        return response.choices[0].message.content;
+
+        const model = new ChatGoogleVertexAI({
+            temperature: 0.7
+        });
+
+        // You can also use the model as part of a chain
+        const res = await model.invoke([...conversation, ...tempConversations]);
+        conversation.push(...tempConversations);
+        conversation.push(res);
+        return res.content;
     } catch (error) {
         console.error('Failed to send message:', error);
         return 'Sorry, an error occurred.';
