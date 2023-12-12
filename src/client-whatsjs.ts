@@ -1,27 +1,20 @@
-import * as vm from 'vm';
 import { resolve } from 'path';
+import * as vm from 'vm';
 
 import * as QRCode from 'qrcode';
-import WAWebJS, { Client, LocalAuth, Message, MessageMedia, Buttons, GroupChat } from 'whatsapp-web.js';
+import WAWebJS, { Buttons, Client, GroupChat, LocalAuth, Message, MessageMedia } from 'whatsapp-web.js';
 
 
-import { Msg, MsgAdapter } from './msg/msg';
-import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
-import { readToMe } from './speech-to-text';
+import * as child_process from 'child_process';
 import fs from 'fs';
-import { AppData, AppDataUtils } from './app-data';
 import { giveMeImage, simpleChat } from './ai';
+import { AppData, AppDataUtils } from './app-data';
+import { Msg } from './msg/msg';
+import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
 import { commandMarkers, keyReplacer, normalizeFilepath, toDataUrl } from './util';
 import { readDocument, whatIsIt } from './vision';
-import * as child_process from 'child_process';
-import {
-    AudioTranscriptLoader,
-    // AudioTranscriptParagraphsLoader,
-    // AudioTranscriptSentencesLoader
-} from "langchain/document_loaders/web/assemblyai";
-import EmojiManager from './emoji';
-import { tellMe, tellMeString } from './textToSpeach';
-import cluster from 'cluster';
+
+import { tellMe } from './textToSpeach';
 const addManagerToGroup = async (msg: WhatsappMessageAdapter, params: string[] = []) => {
     const chat = await msg.getMsg<Message>().getChat();
     if (!chat.isGroup) return;
@@ -37,37 +30,37 @@ const addManagerToGroup = async (msg: WhatsappMessageAdapter, params: string[] =
 
 
 
-const load_audio = async (msg: WhatsappMessageAdapter) => {
-    const folderPath = '../read';
-    const folderExists = fs.existsSync(resolve(folderPath));
-    if (!folderExists) {
-        await fs.promises.mkdir(folderPath, { recursive: true });
-    }
-    const path = await backupMsg(folderPath, msg.getMsg() as unknown as Message);
-    if (!path) {
-        return;
-    }
-    console.log({
-        path,
-        apiKey: process.env.ASSEMBLYAI_API_KEY
-    })
-    const loader = new AudioTranscriptLoader(
-        {
-            audio_url: path,
-            format_text: true,
-            language_code: "pt"
-        },
-        {
-            apiKey: process.env.ASSEMBLYAI_API_KEY
-        }
-    );
-    const docs = await loader.load();
-    if (!docs?.length) {
-        console.log('no docs', docs.length);
-        return;
-    }
-    return docs.map(t => t.pageContent).join()
-}
+// const load_audio = async (msg: WhatsappMessageAdapter) => {
+//     const folderPath = '../read';
+//     const folderExists = fs.existsSync(resolve(folderPath));
+//     if (!folderExists) {
+//         await fs.promises.mkdir(folderPath, { recursive: true });
+//     }
+//     const path = await backupMsg(folderPath, msg.getMsg() as unknown as Message);
+//     if (!path) {
+//         return;
+//     }
+//     console.log({
+//         path,
+//         apiKey: process.env.ASSEMBLYAI_API_KEY
+//     })
+//     const loader = new AudioTranscriptLoader(
+//         {
+//             audio_url: path,
+//             format_text: true,
+//             language_code: "pt"
+//         },
+//         {
+//             apiKey: process.env.ASSEMBLYAI_API_KEY
+//         }
+//     );
+//     const docs = await loader.load();
+//     if (!docs?.length) {
+//         console.log('no docs', docs.length);
+//         return;
+//     }
+//     return docs.map(t => t.pageContent).join()
+// }
 
 
 const backupMsg = async (folderPath: string, bkpMsg: Message, skipIfExists = true, fileId = "") => {
@@ -249,26 +242,27 @@ export const initWhatsappClient = async (appData: AppData) => {
         const msgBody = whatsMsg.body;
 
         if (whatsMsg.hasMedia) {
-            if (msg.isAudio) {
+            return '';
+            // if (msg.isAudio) {
 
-                const text = await load_audio(msg);
-                if (!text) {
-                    return;
-                }
-                return text;
+            //     const text = await load_audio(msg);
+            //     if (!text) {
+            //         return;
+            //     }
+            //     return text;
 
-            } else if (msg.isDocument) {
-                const media = await whatsMsg.downloadMedia();
-                const [labelResponse] = await whatIsIt(Buffer.from(media.data, 'base64'));
-                const [contentResponse] = await readDocument(Buffer.from(media.data, 'base64'));
-                const labels = labelResponse.labelAnnotations?.map((label) => label.description).join(',');
-                const content = contentResponse.fullTextAnnotation?.text;
-                const data = [`Annotations:[${labels}]`, `OCR:"${content}`]
-                if (msgBody) {
-                    data.push(`Msg:"${msgBody}"`);
-                }
-                return data.join('\n');
-            }
+            // } else if (msg.isDocument) {
+            //     const media = await whatsMsg.downloadMedia();
+            //     const [labelResponse] = await whatIsIt(Buffer.from(media.data, 'base64'));
+            //     const [contentResponse] = await readDocument(Buffer.from(media.data, 'base64'));
+            //     const labels = labelResponse.labelAnnotations?.map((label) => label.description).join(',');
+            //     const content = contentResponse.fullTextAnnotation?.text;
+            //     const data = [`Annotations:[${labels}]`, `OCR:"${content}`]
+            //     if (msgBody) {
+            //         data.push(`Msg:"${msgBody}"`);
+            //     }
+            //     return data.join('\n');
+            // }
         } else {
             return msgBody;
         }
