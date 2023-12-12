@@ -29,6 +29,7 @@ import Wikipedia from './wiki';
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
 const appData: AppData = {
+    messageControl: {},
     lockConversation: {},
     systemMessageDefault: 'Atue como um assistente pessoal',
     conversations: {},
@@ -186,7 +187,7 @@ const createPost = async (msg: Msg, prompt?: string[]) => {
         //     status: 'publish',
         // });
         // if (!response) {
-            return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
+        return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
         // }
         // await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
     });
@@ -203,7 +204,7 @@ const listPosts = async (msg: Msg, prompt?: string[]) => {
         //     status: 'publish',
         // });
         // if (!response) {
-            return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
+        return await appData.ioChannel.sendAnswer({ msg, content: `Não consegui criar o post` });
         // }
         // await appData.ioChannel.sendAnswer({ msg, content: `Post criado com sucesso: ${response.link}` });
     });
@@ -552,6 +553,13 @@ const run = async () => {
 
 
     appData.processMessage = async (receivedMsg: Msg) => {
+        const messageId = receivedMsg?.id;
+        const now = new Date().getTime();
+        const idExists = !!appData.messageControl[messageId];
+        appData.messageControl[messageId] = now;
+        if (idExists) {
+            return;
+        }
 
         if (await canExecuteCommand(receivedMsg)) {
 
