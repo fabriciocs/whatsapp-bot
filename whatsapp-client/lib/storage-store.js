@@ -61,7 +61,13 @@ class StorageStore {
             const id = `${session}.zip`;
             yield this.storage.upload(id, {
                 destination: id,
-                preconditionOpts: { ifGenerationMatch: 0 }
+                gzip: true,
+                metadata: {
+                    // Enable long-lived HTTP caching headers
+                    // Use only if the contents of the file will never change
+                    // (If the contents will change, use cacheControl: 'no-cache')
+                    cacheControl: 'public, max-age=31536000',
+                },
             });
             return id;
         });

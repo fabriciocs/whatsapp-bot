@@ -28,7 +28,7 @@ export class EstacaoWhatsClientManager {
         if (!this.estacaoManager || !eventName || !clientEvent || !clientStatus) {
             console.error('emitEvent', {
                 message: 'emitEvent error: missing params',
-                json_payload: { eventName, clientEvent, clientStatus }
+                eventName, clientEvent, clientStatus
             })
             return;
         }
@@ -42,9 +42,8 @@ export class EstacaoWhatsClientManager {
         }
         console.debug(eventName, {
             message: 'event emit',
-            json_payload: {
-                estacaoWhatsClientEvent, clientStatus
-            }
+            estacaoWhatsClientEvent, clientStatus
+
         });
         await eventControlRef?.set({
             estacaoWhatsClient: {
@@ -57,25 +56,25 @@ export class EstacaoWhatsClientManager {
 
     observe(client: Client) {
         client
-            .on('chat_removed', (...k) => console.log('chat_removed', {params: k}))
-            .on('chat_archived', (...k) => console.log('chat_archived', {params: k}))
-            .on('message', (...k) => console.log('message', {params: k}))
-            .on('message_create', (...k) => console.log('message_create', {params: k}))
-            .on('message_revoke_everyone', (...k) => console.log('message_revoke_everyone', {params: k}))
-            .on('message_revoke_me', (...k) => console.log('message_revoke_me', {params: k}))
-            .on('message_ack', (...k) => console.log('message_ack', {params: k}))
-            .on('message_edit', (...k) => console.log('message_edit', {params: k}))
-            .on('unread_count', (...k) => console.log('unread_count', {params: k}))
-            .on('message_reaction', (...k) => console.log('message_reaction', {params: k}))
-            .on('media_uploaded', (...k) => console.log('media_uploaded', {params: k}))
-            .on('contact_changed', (...k) => console.log('contact_changed', {params: k}))
-            .on('group_join', (...k) => console.log('group_join', {params: k}))
-            .on('group_leave', (...k) => console.log('group_leave', {params: k}))
-            .on('group_admin_changed', (...k) => console.log('group_admin_changed', {params: k}))
-            .on('group_membership_request', (...k) => console.log('group_membership_request', {params: k}))
-            .on('group_update', (...k) => console.log('group_update', {params: k}))
-            .on('loading_screen', (...k) => console.log('loading_screen', {params: k}))
-            .on('call', (...k) => console.log('call', {params: k}))
+            .on('chat_removed', (...k) => console.log('chat_removed', { params: k }))
+            .on('chat_archived', (...k) => console.log('chat_archived', { params: k }))
+            .on('message', (...k) => console.log('message', { params: k }))
+            .on('message_create', (...k) => console.log('message_create', { params: k }))
+            .on('message_revoke_everyone', (...k) => console.log('message_revoke_everyone', { params: k }))
+            .on('message_revoke_me', (...k) => console.log('message_revoke_me', { params: k }))
+            .on('message_ack', (...k) => console.log('message_ack', { params: k }))
+            .on('message_edit', (...k) => console.log('message_edit', { params: k }))
+            .on('unread_count', (...k) => console.log('unread_count', { params: k }))
+            .on('message_reaction', (...k) => console.log('message_reaction', { params: k }))
+            .on('media_uploaded', (...k) => console.log('media_uploaded', { params: k }))
+            .on('contact_changed', (...k) => console.log('contact_changed', { params: k }))
+            .on('group_join', (...k) => console.log('group_join', { params: k }))
+            .on('group_leave', (...k) => console.log('group_leave', { params: k }))
+            .on('group_admin_changed', (...k) => console.log('group_admin_changed', { params: k }))
+            .on('group_membership_request', (...k) => console.log('group_membership_request', { params: k }))
+            .on('group_update', (...k) => console.log('group_update', { params: k }))
+            .on('loading_screen', (...k) => console.log('loading_screen', { params: k }))
+            .on('call', (...k) => console.log('call', { params: k }))
     };
 
     async tryEvent(eventName: string, message: string, func: () => void | PromiseLike<void>) {
@@ -88,14 +87,7 @@ export class EstacaoWhatsClientManager {
             }
             await this.emitEvent(eventName, clientEvent, status);
         } catch (e) {
-            console.error('tryCatch', {
-                message: 'Client EventError',
-                json_payload: {
-                    eventName,
-                    message,
-                    e
-                }
-            })
+            console.error('Client EventError', e);
         }
         return await func();
     }
@@ -111,7 +103,7 @@ export class EstacaoWhatsClientManager {
                     takeoverOnConflict: true,
                     takeoverTimeoutMs: 30000,
                     qrMaxRetries: 10,
-                        
+
                 });
                 client.on("authenticated", async (session) => {
                     await this.tryEvent("authenticated", 'Autenticação Iniciada com sucesso', async () => {
@@ -149,10 +141,7 @@ export class EstacaoWhatsClientManager {
 
             return this;
         } catch (e) {
-            console.error('initialize', {
-                message: 'initialize error',
-                json_payload: e
-            });
+            console.error('initialize', e)
             throw e;
         }
 

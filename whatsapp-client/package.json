@@ -3,9 +3,9 @@
   "scripts": {
     "gcp-build": "node node_modules/puppeteer/install.js",
     "compile": "tsc",
-    "start": "node ./index.js"
+    "start": "node ./lib/index.js"
   },
-  "main": "index.js",
+  "main": "lib/index.j",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
     "adm-zip": "^0.5.10",

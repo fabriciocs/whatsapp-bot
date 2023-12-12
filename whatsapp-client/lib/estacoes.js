@@ -18,7 +18,6 @@ class EstacaoManager {
     // private messageManager: MessageManager;
     constructor(ref) {
         this.ref = ref;
-        this.COLLECTION_NAME = 'estacoes';
         // this.messageManager = new MessageManager(db);
     }
     snapshot() {
@@ -82,9 +81,18 @@ class EstacaoManager {
             yield this.ref.update({ online: false, authenticated: false });
         });
     }
+    setGroups(db, groupsChatList) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield Promise.all(groupsChatList.map((groupChat) => __awaiter(this, void 0, void 0, function* () {
+                db.collection('grupos').doc(groupChat.id._serialized).set({
+                    groupName: groupChat.name, GroupDescription: groupChat.description, GroupOwner: this.ref
+                });
+            })));
+        });
+    }
     onInit(contrato, func) {
         try {
-            contrato.collection(this.COLLECTION_NAME).where(firestore_1.Filter.or(firestore_1.Filter.where('autoInit', '==', true), firestore_1.Filter.where('shouldInit', '==', true))).onSnapshot((snapshot) => __awaiter(this, void 0, void 0, function* () {
+            contrato.collection(EstacaoManager.COLLECTION_NAME).where(firestore_1.Filter.or(firestore_1.Filter.where('autoInit', '==', true), firestore_1.Filter.where('shouldInit', '==', true))).onSnapshot((snapshot) => __awaiter(this, void 0, void 0, function* () {
                 const changes = snapshot.docChanges();
                 const addeds = changes.filter(({ type }) => type === 'added').map(change => change.doc.ref);
                 const modified = changes.filter(({ type }) => type === 'modified').filter((doc) => {
@@ -103,4 +111,5 @@ class EstacaoManager {
         }
     }
 }
+EstacaoManager.COLLECTION_NAME = 'estacoes';
 exports.default = EstacaoManager;

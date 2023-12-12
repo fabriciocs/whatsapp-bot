@@ -39,30 +39,22 @@ const dotenv = __importStar(require("dotenv"));
 const admin = __importStar(require("firebase-admin"));
 const estacao_whats_client_1 = require("./estacao-whats-client");
 const estacoes_1 = __importDefault(require("./estacoes"));
+const firestore_1 = require("firebase-admin/firestore");
+const app_manager_1 = __importDefault(require("./app-manager"));
 dotenv.config();
 admin.initializeApp();
-function authenticate([estacaoPath]) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const db = admin.firestore();
-        db.settings({ ignoreUndefinedProperties: true });
-        const doc = yield admin.firestore().doc(estacaoPath.toString()).get();
-        try {
-            const estacaoManager = new estacao_whats_client_1.EstacaoWhatsClientManager(new estacoes_1.default(doc.ref));
-            yield estacaoManager.authenticate();
-            console.log('start', {
-                message: 'start'
-            });
-        }
-        catch (e) {
-            console.error('start error', {
-                message: 'start error',
-                json_payload: e
-            });
-        }
-    });
-}
-;
-authenticate(process.argv.slice(2)).catch((err) => {
-    console.error(JSON.stringify({ severity: "ERROR", message: err.message, err }));
-    process.exit(1);
+const authenticate = (estacaoDoc) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const estacaoManager = new estacao_whats_client_1.EstacaoWhatsClientManager(new estacoes_1.default(estacaoDoc.ref));
+        yield estacaoManager.authenticate();
+        console.log('start', {});
+    }
+    catch (e) {
+        console.error('start error', e);
+    }
 });
+(() => {
+    const db = admin.firestore();
+    db.settings({ ignoreUndefinedProperties: true });
+    new app_manager_1.default(db).listenEstacoes(firestore_1.Filter.or(firestore_1.Filter.where('autoInit', '==', true), firestore_1.Filter.where('shouldInit', '==', true)), estacao => authenticate(estacao).catch(e => console.log(e)));
+})();

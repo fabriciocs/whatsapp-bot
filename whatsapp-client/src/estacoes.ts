@@ -26,7 +26,7 @@ export class Estacao {
 
 
 export default class EstacaoManager {
-    private readonly COLLECTION_NAME = 'estacoes';
+    public static readonly COLLECTION_NAME = 'estacoes';
     // private messageManager: MessageManager;
 
     constructor(public ref: DocumentReference<Estacao>) {
@@ -93,7 +93,7 @@ export default class EstacaoManager {
 
     onInit(contrato: DocumentReference<Contrato>, func: (estacaoRef: DocumentReference<Estacao>) => Promise<void>) {
         try {
-            contrato.collection(this.COLLECTION_NAME).where(Filter.or(
+            contrato.collection(EstacaoManager.COLLECTION_NAME).where(Filter.or(
                 Filter.where('autoInit', '==', true),
                 Filter.where('shouldInit', '==', true)
             )).onSnapshot(async (snapshot) => {
