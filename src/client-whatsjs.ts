@@ -291,6 +291,25 @@ export const initWhatsappClient = async (appData: AppData) => {
         return await chatResponse(prompt, instructions, text, []);
 
     };
+    const byeBye = async (msg: WhatsappMessageAdapter) => {
+        await msg.getMsg<Message>().reply('Até mais!');
+        try {
+            const conversation = await getConversation(msg);
+            if (conversation) {
+                await msg.getMsg<Message>().reply(await getJsonDocument(msg, conversation));
+            }
+        } catch (e) {
+            console.log(e);
+        }
+        try {
+            const chat = await msg.getMsg<Message>().getChat();
+            const conversationId = chat.id._serialized;
+            delete appData.conversations?.[conversationId];
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
     const getConversation = async (received: WhatsappMessageAdapter) => {
         const msg = received.getMsg<Message>();
         const chat = await msg.getChat();
@@ -338,7 +357,7 @@ export const initWhatsappClient = async (appData: AppData) => {
                 }
             }
         }
-        if(!text){
+        if (!text) {
             text = `Olá, ${agentName}`;
         }
         return await chatResponse(appData.promptBase[agentName], instructions, text, appData.conversations[conversationId][agentName]);
@@ -629,6 +648,7 @@ export const initWhatsappClient = async (appData: AppData) => {
     appData.actions['.code'] = runCode;
     appData.actions['.func'] = runFunction;
     appData.actions['.html'] = dataToHtml;
+    appData.actions['.fui'] = byeBye;
     appData.actions['.conversation'] = async (msg: WhatsappMessageAdapter) => {
         const conversation = await getConversation(msg);
         if (conversation) {
@@ -670,7 +690,7 @@ export const initWhatsappClient = async (appData: AppData) => {
         .on('disconnected', (reason) => {
             console.log('Client was logged out', reason);
         })
-        .on('qr', async(qr) => {
+        .on('qr', async (qr) => {
             const qrCodeString = await QRCode.toString(qr, { type: 'terminal', small: true });
             console.log(qrCodeString);
         })
@@ -776,7 +796,7 @@ export const initWhatsappClient = async (appData: AppData) => {
         console.error(e);
     }
     console.log('AFTER INITIALIZING WHATSAPP CLIENT');
-    
+
 }
 async function chatResponse(prompt: string, instructions: string, text: string, conversation: any[]) {
 
