@@ -131,9 +131,7 @@ export abstract class Msg {
 
     abstract reply(content: string, options?: IoChannelOptions): Promise<Msg>;
     abstract sendMessage(content: string, options?: IoChannelOptions): Promise<Msg>;
-    getMsg(): any {
-        return this;
-    }
+    abstract getMsg();
 
 
 
@@ -155,8 +153,9 @@ export class MsgAdapter extends Msg {
     constructor(private msg: { body: string, from: string, to: string, fromMe: boolean, type: string, reply: (content: string) => Promise<void>, getChat: () => Promise<{ sendMessage: (content: string) => Promise<void> }> }) {
         super(msg.body, msg.from, msg.to, msg.fromMe, MsgTypes[Object.keys(MsgTypes).find(key => MsgTypes[key] === msg.type) as any]);
     }
-    getMsg<T>() {
-        return this.msg as unknown as T;
+    getMsg<T>()
+    getMsg() {
+        return this.msg
     }
     setFromMe(value: boolean) {
         this.fromMe = value;

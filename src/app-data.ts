@@ -6,7 +6,7 @@ import * as readline from 'readline';
 
 
 import * as admin from 'firebase-admin';
-import { Client } from 'whatsapp-web.js';
+import { Client, Message } from 'whatsapp-web.js';
 import ChatConfigsManager from './chat-configs-manager';
 import CommandConfigsManager from './command-configs-manager';
 import Commands from './commands';
@@ -16,9 +16,11 @@ import MessagesManager from './messages-manager';
 import { Msg } from './msg/msg';
 import SessionsManager from './sessions-manager';
 import MediaManager from "./media-manager";
+import WhatsappMessageAdapter from "./msg/whatsapp-message-adpater";
 
 export class AppData {
 
+    proccessReactions?: boolean;
     systemMessageDefault?: string;
     getAgent?: (msg: Msg) => Promise<string>;
     is?: (command: string, msg: Msg) => Promise<boolean>;
@@ -39,6 +41,7 @@ export class AppData {
     conversations?: Record<string, Record<string, any[]>>;
     lockConversation?: Record<string, boolean>;
     messageControl?: Record<string, number>;
+    groupControl?: Record<string, string>;
 
 
 }

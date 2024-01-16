@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "a3257f02-c717-46fe-ac10-677e97444625",
+		"name": "FIPE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "686986"
+	},
+	"item": [
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarTabelaDeReferencia",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarTabelaDeReferencia",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarTabelaDeReferencia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"codigoTabelaReferencia\": 231,\n\t\"codigoTipoVeiculo\": 1\n}"
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarMarcas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"codigoTabelaReferencia\": 231,\n\t\"codigoTipoVeiculo\": 1,\n\t\"codigoMarca\": 26\n}"
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarModelos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"codigoTabelaReferencia\": 231,\n\t\"codigoTipoVeiculo\": 1,\n\t\"codigoMarca\": 26,\n\t\"codigoModelo\": 4403\n}"
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarAnoModelo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarModelosAtravesDoAno",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"codigoTabelaReferencia\": 231,\n\t\"codigoTipoVeiculo\": 1,\n\t\"codigoMarca\": 26,\n\t\"ano\": \"2011-1\",\n\t\"codigoTipoCombustivel\": 1,\n\t\"anoModelo\": 2011\n}"
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarModelosAtravesDoAno",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarModelosAtravesDoAno"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "veiculos.fipe.org.br"
+					},
+					{
+						"key": "Referer",
+						"value": "http://veiculos.fipe.org.br"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"codigoTabelaReferencia\": 231,\n\t\"codigoTipoVeiculo\": 1,\n\t\"codigoMarca\": 26,\n\t\"ano\": \"2011-1\",\n\t\"codigoTipoCombustivel\": 1,\n\t\"anoModelo\": 2011,\n\t\"codigoModelo\": 4403,\n\t\"tipoConsulta\": \"tradicional\"\n}"
+				},
+				"url": {
+					"raw": "http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros",
+					"protocol": "http",
+					"host": [
+						"veiculos",
+						"fipe",
+						"org",
+						"br"
+					],
+					"path": [
+						"api",
+						"veiculos",
+						"ConsultarValorComTodosParametros"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,5 +1,5 @@
 import CreateCompletionRequest, { OpenAI } from "openai";
-import { simpleChat } from "./ai";
+import { noMemoryChat } from "./ai";
 
 export default class CurrierModel {
     private readonly maxTokens = 100;
@@ -8,6 +8,6 @@ export default class CurrierModel {
 
     public async categories(text: string): Promise<string> {
         const basePrompt = `Extraia as categorias do texto. Exemplo: "Tecnologia; Ciência; Saúde".`;
-        return await simpleChat(basePrompt, text);
+        return await noMemoryChat(basePrompt, text);
     }
 }

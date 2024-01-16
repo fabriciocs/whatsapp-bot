@@ -1,6 +1,6 @@
 import { MessageMedia } from 'whatsapp-web.js';
 import WPAPI from 'wpapi';
-import { giveMeImage, simpleChat, writeAText, writeInstructions } from './ai';
+import { giveMeImage, noMemoryChat, writeAText, writeInstructions } from './ai';
 import CurrierModel from './currier';
 import { prepareText } from './util';
 
@@ -140,7 +140,7 @@ export default class Wordpress {
 
     public async createAiPost({ prompt: ugly, title, status = 'publish' }: AiPost) {
         const prompt = prepareText(ugly)
-        const result = await simpleChat(baseBlogPrompt, prompt);
+        const result = await noMemoryChat(baseBlogPrompt, prompt);
         const fullAnswer = result;
         if (fullAnswer) {
             const fullCategories = await this.createCategoriesFromContent(prompt);

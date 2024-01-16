@@ -1,10 +1,17 @@
-import { ChatGoogleVertexAI } from "langchain/chat_models/googlevertexai";
+
+import { BufferMemory, BufferWindowMemory } from "langchain/memory";
+import { ConversationChain } from "langchain/chains";
+import { ChatMessageHistory } from "langchain/stores/message/in_memory"
 import { AIMessage, HumanMessage, SystemMessage } from "langchain/schema";
 import { Message } from 'whatsapp-web.js';
 import { OpenAI } from 'openai';
-import { ImageGenerateParams } from 'openai/resources';
+import { ChatOpenAI } from "langchain/chat_models/openai";
 
-const clientAi:OpenAI = null;
+const modelName = 'gpt-3.5-turbo'
+const configuration = {
+    apiKey: process.env.OPENAI_API_KEY
+};
+const clientAi = new OpenAI(configuration);
 export default class OpenAIManager {
     public getClient(): OpenAI {
         return clientAi;
@@ -147,7 +154,7 @@ const writeAText = async (config: Partial<CreateCompletionRequest>) => {
 // const editingText = async (config: Partial<CreateEditRequest>) => {
 //     return await editIt({ ...config, "model": "text-davinci-003" })
 // };
-const writeInstructions = async (prompt) => await simpleChat('Atue como um designer especialista em artes digitais', prompt);
+const writeInstructions = async (prompt) => await simpleChat('Atue como um designer especialista em artes digitais', prompt, '');
 const giveMeImage = async (prompt: string, size: "256x256" | "512x512" | "1024x1024" = "256x256") => {
     const { data } = await clientAi.images.generate({
         prompt,
@@ -212,25 +219,55 @@ const createModelTrainingPhrases = async (instruct) => {
 // Set up OpenAI API client
 
 
+const conversation: Record<string, ConversationChain> = {};
 
-const simpleChat = async (system: string, message: string, conversation = [], exemplos = []) => {
-    const tempConversations = [];
+const noMemoryChat = async (system: string, message: string) => {
+
     try {
-        if (conversation.length === 0) {
-            tempConversations.push(new SystemMessage(system));
-        }
-        tempConversations.push(new HumanMessage(message));
+        
+        // const llamaPath = "/home/fabri/gpt/LLama2/llama-2-7b.Q3_K_M.gguf";
 
-
-        const model = new ChatGoogleVertexAI({
-            temperature: 0.7
+        const model = new ChatOpenAI({
+            modelName
         });
+        const memory = new BufferWindowMemory({
 
+            chatHistory: new ChatMessageHistory([new SystemMessage(system)]),
+            k:1
+
+        })
+        const chain = new ConversationChain({ llm: model, memory });
         // You can also use the model as part of a chain
-        const res = await model.invoke([...conversation, ...tempConversations]);
-        conversation.push(...tempConversations);
-        conversation.push(res);
-        return res.content;
+        const res = await chain.call({input: message })
+        return res.response;
+    } catch (error) {
+        console.error('Failed to send message:', error);
+        return 'Sorry, an error occurred.';
+    }
+
+}
+const simpleChat = async (system: string, message: string, conversationId: string) => {
+
+    try {
+        
+        // const llamaPath = "/home/fabri/gpt/LLama2/llama-2-7b.Q3_K_M.gguf";
+
+        const model = new ChatOpenAI({
+            modelName,
+            temperature: 0.5
+        });
+        if(!conversation[conversationId]){
+            const memory = new BufferWindowMemory({
+                memoryKey: "history",
+                chatHistory: new ChatMessageHistory([new SystemMessage(system)]),
+                k:1
+            })
+            conversation[conversationId] = new ConversationChain({ llm: model, memory });
+        }
+        const res = await  conversation[conversationId].call({input: message })
+        const response =  res.response;
+        console.log({system, message, response, })
+        return response;
     } catch (error) {
         console.error('Failed to send message:', error);
         return 'Sorry, an error occurred.';
@@ -240,6 +277,6 @@ const simpleChat = async (system: string, message: string, conversation = [], ex
 export {
     createModelTrainingPhrases,
     createModelTrainingPhrasesToAgente, createTrainingPhrases,
-    giveMeImage, simpleChat, translateTrainingPhrases, withConfig, writeAText, writeInstructions
+    giveMeImage, simpleChat, noMemoryChat, translateTrainingPhrases, withConfig, writeAText, writeInstructions
 };
 

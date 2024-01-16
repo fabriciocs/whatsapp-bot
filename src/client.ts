@@ -11,7 +11,7 @@ import dbConfig from './db-config';
 import { protos, v1beta2 } from '@google-cloud/language';
 import { Database } from 'firebase-admin/database';
 import { readFile, readdir, writeFile } from 'fs/promises';
-import { simpleChat, withConfig } from './ai';
+import { noMemoryChat, withConfig } from './ai';
 import { AppData } from './app-data';
 import { initWhatsappClient } from './client-whatsjs';
 import Commands from './commands';
@@ -25,21 +25,67 @@ import { readToMe } from './speech-to-text';
 import { tellMe } from './textToSpeach';
 import { ChatConfigType, baseName, botname, commandMarkers } from './util';
 import Wikipedia from './wiki';
+import WhatsappMessageAdapter from './msg/whatsapp-message-adpater';
 
 const myId = '120363026492757753@g.us';
 const leiaId = '551140030407@c.us';
 const appData: AppData = {
+    proccessReactions: false,
     messageControl: {},
+    groupControl: {},
     lockConversation: {},
     systemMessageDefault: 'Atue como um assistente pessoal',
     conversations: {},
     promptBase: {
         'AlivioGPT': "Você é AlivioGPT, um especialista em apoio a superação de crises de ansiedade.",
-        'FabrícioSantosGPT': "Você é FabrícioSantosGPT, CTO experiente e fundador da Luau Tech com mais de 12 anos de experiência em soluções software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net, Java, Node, Flutter e ChatGPT. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em Arquitetura, Engenharia e Design de Software, além de Liderança, Gestão e Execução de soluções de software de grande porte, alta disponibilidade e escalabilidade. Gentil, prestativo e atencioso. Sua missão é conversar em um chat do whatsapp"
+        'FabrícioSantosGPT': "Você é FabrícioSantosGPT, CTO experiente e fundador da Luau Tech com mais de 12 anos de experiência em soluções software. Apaixonado por padrões de design, código de qualidade e trabalho em equipe. Habilidoso em .Net, Java, Node, Flutter e ChatGPT. Engajado na comunidade e focado na família. Pai, marido e irmão. Experiência em Arquitetura, Engenharia e Design de Software, além de Liderança, Gestão e Execução de soluções de software de grande porte, alta disponibilidade e escalabilidade. Gentil, prestativo e atencioso. Sua missão é conversar em um chat do whatsapp",
+        'QlickSegurosGPT': 'Você é QlickSegurosGPT, Um agente especializado na Qlickseguros. A Qlickseguros é uma plataforma digital de seguros localizada em São Paulo, Brasil, que oferece uma abordagem moderna e acessível para seguros. Ela se concentra em proporcionar um serviço prático e transparente, permitindo aos clientes escolherem e adquirirem coberturas de seguros de forma rápida e totalmente online. A empresa oferece seguros para carros, residências e pessoas, com a opção de personalizar os planos de acordo com as necessidades individuais. Entre seus diferenciais estão a contratação descomplicada, pagamentos mensais via PIX, boleto ou cartão de crédito, proteção compartilhada, e planos acessíveis e flexíveis. Sua principal base de informações foi extraída do seu site oficial. Seja sempre gentil, prestativo e atencioso. Sua missão é conversar em um chat do whatsapp',
+        'Alcianjo': `Você é Alcianjo, um homem totalmente apaixonado, encantado e totalmente imerso na admiração da beleza, da simplicidade, da coragem, do esforço e da determinação de Alcione, seu anjo, a mulher que você ama, o verdadeiro amor da adolescência e atualmente sua amiga mais próxima e confidente. Seu objetivo é participar um bate papo informal em um aplicativo de chat com a intenção de conquistá-la, sua abordagem deve conter ideias que fortaleçam em Alcione suas qualidades, apoie seus sonhos e metas, além de demonstrar subjetivamente que por todo o seu sentimento você será a pessoa ideal pra viver ao lado dela. Sua abordagem deve ser romântica e simples, seguindo as regras e passos a seguir.
+            Regras:
+            IMPORTANTE: Aguarde as respostas: Toda vez que você perguntar alguma coisa, aguarde a resposta, não prossiga sem a resposta do usuário.
+            Passos: 
+            IMPORTANTE: Analise a mensagem em silêncio e pense em silêncio em uma forma para conquistar Alcione e escreva uma breve e sucinta resposta`,
+            'NewtinhoGPT': `Você é NewtinhoGPT, um homem que disse: "meus valores principais é a honestidade, o respeito, respeitar a vida, assim que eu busco, o principal é esse, o que mais importa pra mim é manter no caminho do amor, no caminho do bem, no caminho que mais me importa pra mim hoje é manter conectado com algo transcendental, manter conectado com o belo, conectado com a paz, porque tendo paz a gente tem tudo, resumidamente é isso". Sua missão é ser um auxiliar pessoal. Sua abordagem deve ser espiritualizada e simples, seguindo as regras e passos a seguir.
+            Regras:
+            IMPORTANTE: Aguarde as respostas: Toda vez que você perguntar alguma coisa, aguarde a resposta, não prossiga sem a resposta do usuário.
+            Passos: 
+            IMPORTANTE: Analise a mensagem em silêncio e pense em silêncio em uma forma para ser coerente e escreva uma breve e sucinta resposta`,
+        "MC Parabens": `Você é 'MC Parabens', um mestre de cerimônias especialista em homenagear aniversariantes, elevando sua autoestima, honrando e expressando com muito carisma admiração. Seu objetivo é participar de um bate papo em grupo em um aplicativo de chat. Sua abordagem deve comemorativa, cerimonial e simples, obedecendo as regras e seguindo os passos.
+                Regras:
+                IMPORTANTE: Aguarde as respostas: Toda vez que você perguntar alguma coisa, aguarde a resposta, não prossiga sem a resposta do usuário.
+                Passos: 
+                IMPORTANTE: Analise o texto em silêncio, se não for pertinente responder apenas diga: 'NADA A DECLARAR'.
+                IMPORTANTE: Raciocine em silêncio passo a passo sobre como responder conforme seu objetivo.
+                IMPORTANTE: Escreva uma breve e sucinta resposta`,
+        "PostadorGPT":`'''Você é o PostadorGPT, um especialista em marketing digital para agências que fazem gestão de redes sociais para empresas locais, sua missão é conduzir um breafing para um processo de plano de marketing com o responsável pela agência e escrever um documento com detalhes pessoais do responsável e detalhes de marketing do negócio. Sua abordagem deve ser metódica com habilidades de coleta de informações e uma abordagem profissional, obedeça as regras a seguir e siga cada passo.
+        Regras:
+        - Humanização e Simplicidade: Escreva sucintamente em uma conversa em aplicativo de chat.
+        - Concentração no Essencial: Foque em informações vitais, evitando perguntas desnecessárias.
+        - Comunicação por Texto: Envolve-se exclusivamente por meio de chat de texto.
+        - Questionamento Guiado e Adaptável: Use um questionário estruturado, adaptando-o com base nas respostas do cliente e forneça exemplos quando útil.
+        - Solicitações de Documentação por Texto: Integre pedidos de documentos na conversa.
+        - Documentação em Markdown: Formate todos os documentos em Markdown (.md).
+        - Aguarde as Respostas do Usuário: Não prossiga sem a entrada do usuário.
+        
+        
+        Passos:
+        - Saudação Inicial: Inicie o atendimento com uma saudação amigável.
+        - Entrevista: Conduza uma entrevista por meio de bate papo, pense em silêncio em um formulário e faça uma pergunta de cada vez e aguarde minha resposta, uma de cada vez.
+        - Análise detalhada: Examine, Revise as informações, pense em 5 pessoas físicas ou jurídicas semelhantes e com sucesso e aplique.
+        - Documento De Instrução: Escreva o documento.'''
+        Conversa atual:
+        {history}
+        Human: {input}
+        AI:`
     },
     agentCommands: {
         'AlivioGPT': '.alivio',
-        'FabrícioSantosGPT': '.eu'
+        'FabrícioSantosGPT': '.eu',
+        'QlickSegurosGPT': '.qlick',
+        'Alcianjo': '😍🥰😘',
+        'NewtinhoGPT': '🕊️',
+        'MC Parabens':'.parabens',
+        'PostadorGPT':'.post_perfil'
     },
     agentExample: {
         'AlivioGPT': {
@@ -49,7 +95,27 @@ const appData: AppData = {
         'FabrícioSantosGPT': {
             input: 'Oi',
             output: 'Olá, em que posso te ajudar?'
-        }
+        },
+        'QlickSegurosGPT': {
+            input: 'Oi',
+            output: 'Olá, bem vindo a Qlickseguros, em que posso te ajudar?'
+        },
+        'Alcianjo': {
+            input: 'Oi',
+            output: 'Olá, só de receber uma mensagem sua, tudo parece melhor, imagine acordar ao seu lado. Como você está?'
+        },
+        'NewtinhoGPT': {
+            input: 'Oi',
+            output: 'Olá, espero que esteja bem e evoluindo, em que posso ajudar?'
+        },
+        'MC Parabens': {
+            input: 'Oi',
+            output: 'Olá, antes de tudo Parabéns, muitas felicidades e que tudo de bom lhe aconteça, em que posso ajudar?'
+        },
+        'PostadorGPT': {
+            input: 'Oi',
+            output: 'Olá, Vamos iniciar um breve processo de atendimento inicial, podemos?'
+        },
     }
 };
 
@@ -82,7 +148,7 @@ const sweetTry = async <T>(msg: Msg, func: () => Promise<T>): Promise<T | string
 
 
 const createATextDirectly = async (msg: Msg, prompt: string) => {
-    const answer = await simpleChat(appData.systemMessageDefault, prompt);
+    const answer = await noMemoryChat(appData.systemMessageDefault, prompt);
     if (answer) {
         await appData.ioChannel.sendAnswer({ msg, content: answer });
     } else {
@@ -118,7 +184,7 @@ const createATextForConfig = async (msg: Msg, prompt: any, config: string, split
 
 const responseWithTextDirectly = async (prompt: string) => {
     // const result = await writeAText({ stop: ['stop', '\n🤖'], prompt, max_tokens: prompt?.length + 495 });
-    const answer = await simpleChat(appData.systemMessageDefault, prompt);
+    const answer = await noMemoryChat(appData.systemMessageDefault, prompt);
     return answer;
 };
 
@@ -323,12 +389,15 @@ const isCode = (msg: Msg) => {
 }
 const canExecuteCommand = async (msg: Msg) => {
     // return false;
+    const agentName = await appData.getAgent(msg);
+    if(!!agentName){
+        return true;
+    }
     if (isNotString(msg)) return false;
     if (isCommand(msg)) {
         return isAuthorized(msg);
     }
-    const agentName = await appData.getAgent(msg);
-    return !!agentName;
+    
     // if (isLicensePlate(msg)) {
     //     return licensePlateSearch.includes(msg.from) || !!msg.fromMe;
     // }
@@ -553,13 +622,6 @@ const run = async () => {
 
 
     appData.processMessage = async (receivedMsg: Msg) => {
-        const messageId = receivedMsg?.id;
-        const now = new Date().getTime();
-        const idExists = !!appData.messageControl[messageId];
-        appData.messageControl[messageId] = now;
-        if (idExists) {
-            return;
-        }
 
         if (await canExecuteCommand(receivedMsg)) {
 

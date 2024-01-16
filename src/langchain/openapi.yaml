@@ -1,0 +1,268 @@
+openapi: 3.0.3
+info:
+  title: FIPE
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://veiculos.fipe.org.br
+paths:
+  /api/veiculos/ConsultarTabelaDeReferencia:
+    post:
+      summary: http://veiculos.fipe.org.br/api/veiculos/ConsultarTabelaDeReferencia
+      description: http://veiculos.fipe.org.br/api/veiculos/ConsultarTabelaDeReferencia
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultartabeladereferencia
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: ''
+  /api/veiculos/ConsultarMarcas:
+    post:
+      summary: http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas
+      description: http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultarmarcas
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codigoTabelaReferencia:
+                  type: number
+                  example: 231
+                codigoTipoVeiculo:
+                  type: number
+                  example: 1
+            examples:
+              http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas:
+                value:
+                  codigoTabelaReferencia: 231
+                  codigoTipoVeiculo: 1
+      responses:
+        '200':
+          description: ''
+  /api/veiculos/ConsultarModelos:
+    post:
+      summary: http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos
+      description: http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultarmodelos
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codigoMarca:
+                  type: number
+                  example: 26
+                codigoTabelaReferencia:
+                  type: number
+                  example: 231
+                codigoTipoVeiculo:
+                  type: number
+                  example: 1
+            examples:
+              http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos:
+                value:
+                  codigoMarca: 26
+                  codigoTabelaReferencia: 231
+                  codigoTipoVeiculo: 1
+      responses:
+        '200':
+          description: ''
+  /api/veiculos/ConsultarAnoModelo:
+    post:
+      summary: http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo
+      description: http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultaranomodelo
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                codigoMarca:
+                  type: number
+                  example: 26
+                codigoModelo:
+                  type: number
+                  example: 4403
+                codigoTabelaReferencia:
+                  type: number
+                  example: 231
+                codigoTipoVeiculo:
+                  type: number
+                  example: 1
+            examples:
+              http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo:
+                value:
+                  codigoMarca: 26
+                  codigoModelo: 4403
+                  codigoTabelaReferencia: 231
+                  codigoTipoVeiculo: 1
+      responses:
+        '200':
+          description: ''
+  /api/veiculos/ConsultarModelosAtravesDoAno:
+    post:
+      summary: http://veiculos.fipe.org.br/api/veiculos/ConsultarModelosAtravesDoAno
+      description: http://veiculos.fipe.org.br/api/veiculos/ConsultarModelosAtravesDoAno
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultarmodelosatravesdoano
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ano:
+                  type: string
+                  example: 2011-1
+                anoModelo:
+                  type: number
+                  example: 2011
+                codigoMarca:
+                  type: number
+                  example: 26
+                codigoTabelaReferencia:
+                  type: number
+                  example: 231
+                codigoTipoCombustivel:
+                  type: number
+                  example: 1
+                codigoTipoVeiculo:
+                  type: number
+                  example: 1
+            examples:
+              http://veiculos.fipe.org.br/api/veiculos/ConsultarModelosAtravesDoAno:
+                value:
+                  ano: 2011-1
+                  anoModelo: 2011
+                  codigoMarca: 26
+                  codigoTabelaReferencia: 231
+                  codigoTipoCombustivel: 1
+                  codigoTipoVeiculo: 1
+      responses:
+        '200':
+          description: ''
+  /api/veiculos/ConsultarValorComTodosParametros:
+    post:
+      summary: >-
+        http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros
+      description: >-
+        http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros
+      operationId: httpVeiculosFipeOrgBrApiVeiculosConsultarvalorcomtodosparametros
+      parameters:
+        - name: Host
+          in: header
+          schema:
+            type: string
+            example: veiculos.fipe.org.br
+        - name: Referer
+          in: header
+          schema:
+            type: string
+            example: http://veiculos.fipe.org.br
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ano:
+                  type: string
+                  example: 2011-1
+                anoModelo:
+                  type: number
+                  example: 2011
+                codigoMarca:
+                  type: number
+                  example: 26
+                codigoModelo:
+                  type: number
+                  example: 4403
+                codigoTabelaReferencia:
+                  type: number
+                  example: 231
+                codigoTipoCombustivel:
+                  type: number
+                  example: 1
+                codigoTipoVeiculo:
+                  type: number
+                  example: 1
+                tipoConsulta:
+                  type: string
+                  example: tradicional
+            examples:
+              http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros:
+                value:
+                  ano: 2011-1
+                  anoModelo: 2011
+                  codigoMarca: 26
+                  codigoModelo: 4403
+                  codigoTabelaReferencia: 231
+                  codigoTipoCombustivel: 1
+                  codigoTipoVeiculo: 1
+                  tipoConsulta: tradicional
+      responses:
+        '200':
+          description: ''
+tags: []

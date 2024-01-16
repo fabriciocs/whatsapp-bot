@@ -12,7 +12,7 @@ import dbConfig from './db-config';
 
 import { Database } from 'firebase-admin/database';
 import { writeFile, readFile, readdir } from 'fs/promises';
-import OpenAIManager, { giveMeImage, simpleChat, writeAText } from './ai';
+import OpenAIManager, { giveMeImage, noMemoryChat, writeAText } from './ai';
 import { AppData } from './app-data';
 import Commands from './commands';
 import Contexts from './context';
@@ -64,7 +64,7 @@ const sweetTry = async <T>(msg: Msg, func: () => Promise<T>): Promise<T | string
 
 
 const createATextDirectly = async (msg: Msg, prompt: string) => {
-    const answer = await simpleChat(appData.systemMessageDefault, prompt);
+    const answer = await noMemoryChat(appData.systemMessageDefault, prompt);
     if (answer) {
         await appData.ioChannel.sendAnswer({ msg, content: answer });
     } else {
@@ -100,7 +100,7 @@ const createATextDirectly = async (msg: Msg, prompt: string) => {
 
 const responseWithTextDirectly = async (prompt: string) => {
     // const result = await writeAText({ stop: ['stop', '\n🤖'], prompt, max_tokens: prompt?.length + 495 });
-    const answer = await simpleChat(appData.systemMessageDefault, prompt);
+    const answer = await noMemoryChat(appData.systemMessageDefault, prompt);
     return answer;
 };
 

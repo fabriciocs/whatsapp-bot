@@ -1,4 +1,4 @@
-import { Message, MessageMedia } from "whatsapp-web.js";
+import { Message, MessageMedia, MessageTypes } from "whatsapp-web.js";
 import { IoChannelOptions } from "../io-channel";
 import { Msg, MsgAdapter } from "./msg";
 import { readToMe } from "../speech-to-text";
@@ -71,3 +71,91 @@ export default class WhatsappMessageAdapter extends MsgAdapter {
         return this;
     }
 }
+
+// class MessageUtility {
+//   static async hasQuotedMessage(message: Message): Promise<boolean> {
+//     return message.hasQuotedMsg;
+//   }
+
+//   static async getQuotedMessage(message: Message): Promise<Message | null> {
+//     if (message.hasQuotedMsg) {
+//       // Assuming the quoted message is in the same chat
+//       return await message.getQuotedMessage();
+//     }
+//     return null;
+//   }
+
+//   static async hasMedia(message: Message): Promise<boolean> {
+//     return message.hasMedia;
+//   }
+
+//   static async getMediaType(message: Message): Promise<string | null> {
+//     if (message.hasMedia) {
+//       return message.type;
+//     }
+//     return null;
+//   }
+
+//   static async getTextFromAudio(message: Message): Promise<string | null> {
+//     if (message.hasMedia && message.type === 'audio') {
+//       // You may need to implement the integration with Google Speech-to-Text here
+//       // Replace the following line with the actual implementation
+//       return await this.googleSpeechToText(message.mediaKey || '');
+//     }
+//     return null;
+//   }
+
+//   static async getContactDetails(message: Message): Promise<string | null> {
+//     if (message.type === MessageTypes.con) {
+//       const contact = await message.getContact();
+//       // Assuming you want to display the pushname of the contact
+//       return `Contact: ${contact.pushname}`;
+//     }
+//     return null;
+//   }
+
+//   static async getLocationAddress(message: Message): Promise<string | null> {
+//     if (message.type === 'location') {
+//       const location = message.location;
+//       // You may need to implement the reverse geocoding logic here
+//       // Replace the following line with the actual implementation
+//       return await this.reverseGeocode(location.latitude, location.longitude);
+//     }
+//     return null;
+//   }
+
+//   static async getChatIdSerialized(message: Message): Promise<string> {
+//     return message.to;
+//   }
+
+//   static async getSenderData(message: Message): Promise<string | null> {
+//     const contact = await message.getContact();
+//     return `Sender: ${contact.pushname} (${contact.number})`;
+//   }
+
+//   // Placeholder method for Google Speech-to-Text integration
+//   private static async googleSpeechToText(mediaKey: string): Promise<string> {
+//     // Implement the actual integration logic with Google Speech-to-Text
+//     // This is just a placeholder
+//     return 'Text from audio';
+//   }
+
+//   // Placeholder method for reverse geocoding
+//   private static async reverseGeocode(latitude: string, longitude: string): Promise<string> {
+//     // Implement the actual reverse geocoding logic
+//     // This is just a placeholder
+//     return `Address for (${latitude}, ${longitude})`;
+//   }
+// }
+
+// // Example usage:
+// const sampleMessage: Message = /* ... */;
+// if (await MessageUtility.hasQuotedMessage(sampleMessage)) {
+//   const quotedMessage = await MessageUtility.getQuotedMessage(sampleMessage);
+//   console.log('Quoted Message:', quotedMessage);
+// }
+
+// if (await MessageUtility.hasMedia(sampleMessage)) {
+//   const mediaType = await MessageUtility.getMediaType(sampleMessage);
+//   console.log('Media Type:', mediaType);
+// }

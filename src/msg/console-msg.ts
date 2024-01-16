@@ -13,4 +13,7 @@ export default class ConsoleMsg extends Msg {
         console.log(`Sending to ${this.from}: ${content}`);
         return this;
     }
+    getMsg() {
+        return this;
+    }
 }

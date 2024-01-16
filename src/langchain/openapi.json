@@ -1,0 +1,325 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FIPE",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://veiculos.fipe.org.br"
+    }
+  ],
+  "paths": {
+    "/api/veiculos/ConsultarTabelaDeReferencia": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Tabela de Referência",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/veiculos/ConsultarMarcas": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Marcas",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "example": "{\"codigoTabelaReferencia\": 231, \"codigoTipoVeiculo\": 1}"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/veiculos/ConsultarModelos": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Modelos",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "example": "{\"codigoTabelaReferencia\": 231, \"codigoTipoVeiculo\": 1, \"codigoMarca\": 26}"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/veiculos/ConsultarAnoModelo": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Ano Modelo",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "example": "{\"codigoTabelaReferencia\": 231, \"codigoTipoVeiculo\": 1, \"codigoMarca\": 26, \"codigoModelo\": 4403}"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/veiculos/ConsultarModelosAtravesDoAno": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Modelos através do Ano",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "example": "{\"codigoTabelaReferencia\": 231, \"codigoTipoVeiculo\": 1, \"codigoMarca\": 26, \"ano\": \"2011-1\", \"codigoTipoCombustivel\": 1, \"anoModelo\": \"2011\"}"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/veiculos/ConsultarValorComTodosParametros": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "Consultar Valor com Todos os Parâmetros",
+        "requestBody": {
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string",
+                "example": "{\"codigoTabelaReferencia\": 231, \"codigoTipoVeiculo\": 1, \"codigoMarca\": 26, \"ano\": \"2011-1\", \"codigoTipoCombustivel\": 1, \"anoModelo\": \"2011\", \"codigoModelo\": 4403, \"tipoConsulta\": \"tradicional\"}"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Host",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "veiculos.fipe.org.br"
+          },
+          {
+            "name": "Referer",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "http://veiculos.fipe.org.br"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta bem-sucedida",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
