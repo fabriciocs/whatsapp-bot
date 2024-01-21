@@ -1,5 +1,5 @@
-import * as admin from 'firebase-admin';
 import { Firestore } from '@google-cloud/firestore';
+import * as admin from 'firebase-admin';
 
 export class HeatingStage {
     stage?: number;

@@ -4,7 +4,7 @@ import * as admin from 'firebase-admin';
 // A class to manage contrato at firestore
 export default class ContratoManager {
 
-    private readonly COLLECTION_NAME = 'contrato';
+    public static readonly COLLECTION_NAME = 'contrato';
     contratos: Contrato[];
 
     constructor(private db: Firestore = admin.firestore()) {
@@ -17,7 +17,7 @@ export default class ContratoManager {
         return this.contratos;
     }
     getContratosSnapshot = async () => await this.getContratosQuery().get();
-    getContratosQuery = () => this.db.collection(this.COLLECTION_NAME).where('contract_status', '==', 'Ativo');
+    getContratosQuery = () => this.db.collection(ContratoManager.COLLECTION_NAME).where('contract_status', '==', 'Ativo');
 
     async getContratosRef() {
         const contratos = await this.getContratosSnapshot();
@@ -25,12 +25,12 @@ export default class ContratoManager {
     }
     // get contrato by id
     async getContrato(id: string) {
-        const contrato = await this.db.collection(this.COLLECTION_NAME).doc(id).get();
+        const contrato = await this.db.collection(ContratoManager.COLLECTION_NAME).doc(id).get();
         return contrato.data();
     }
     // get contrato by name
     async getContratoByName(name: string) {
-        const contrato = await this.db.collection(this.COLLECTION_NAME).where('contract_name', '==', name).get();
+        const contrato = await this.db.collection(ContratoManager.COLLECTION_NAME).where('contract_name', '==', name).get();
         return contrato.docs.map((doc) => doc.data());
     }
 

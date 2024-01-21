@@ -17,4 +17,6 @@ const dbConfig = async () => {
     return { admin, app };
 }
 
+
+
 export default dbConfig;

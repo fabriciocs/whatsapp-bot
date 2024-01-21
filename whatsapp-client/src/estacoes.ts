@@ -1,8 +1,9 @@
 
-import { DocumentReference, FieldValue, Filter, Timestamp, Firestore } from '@google-cloud/firestore';
+import { DocumentReference, FieldValue, Filter, Timestamp } from '@google-cloud/firestore';
+import { GroupChat } from 'whatsapp-web.js';
 import { Contrato } from './contratos';
 import { HeatingStage } from './heating-stage';
-import { Chat, GroupChat } from 'whatsapp-web.js';
+import { Firestore } from 'firebase-admin/firestore';
 export class Estacao {
     descricao?: string;
     numero?: string;
@@ -117,17 +118,26 @@ export default class EstacaoManager {
         }
     }
 
-    // async addMsg(contrato: DocumentReference<Contrato>, estacao: DocumentReference<Estacao>, msgsData: any) {
-    //     if (!msgsData) return;
-    //     const msgsDataString = JSON.stringify(msgsData, null, 4);
-    //     if (!msgsDataString) return;
-    //     try {
-    //         const msgsDataParsed = JSON.parse(msgsDataString);
-    //     } catch (e) {
-    //         console.error('Error parsing message data', e);
-    //         return;
-    //     }
-    //     await this.messageManager.addMessage(contrato, estacao, msgsDataString);
-    // }
+    async addMsg(event: string, ...params: any[]) {
+        console.log({event, params});
+        try{
+            const messageDoc = {
+                event
+            } as any;
+            if(!!params){
+                const msgsData = JSON.parse(JSON.stringify(params));
+                if(Array.isArray(msgsData) && msgsData?.length > 0){
+                    messageDoc.content = FieldValue.arrayUnion(...msgsData)
+                }else{
+                    messageDoc.content = msgsData;
+                }
+                await this.ref.collection('messages').add(messageDoc);
+            }
+        }catch(e){
+            console.error('Error parsing message data', e);
+            return;
+        }
+        
+    }
 
 }

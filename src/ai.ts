@@ -1,13 +1,28 @@
-
-import { BufferMemory, BufferWindowMemory } from "langchain/memory";
+import { BufferMemory, BufferWindowMemory, ConversationSummaryBufferMemory } from "langchain/memory";
+import { FirestoreChatMessageHistory } from "@langchain/community/stores/message/firestore";
 import { ConversationChain } from "langchain/chains";
 import { ChatMessageHistory } from "langchain/stores/message/in_memory"
-import { AIMessage, HumanMessage, SystemMessage } from "langchain/schema";
-import { Message } from 'whatsapp-web.js';
+import { SystemMessage, HumanMessage } from "langchain/schema";
 import { OpenAI } from 'openai';
-import { ChatOpenAI } from "langchain/chat_models/openai";
 
-const modelName = 'gpt-3.5-turbo'
+
+import { ChatOpenAI } from "@langchain/openai";
+import { AgentExecutor } from "langchain/agents";
+import { Calculator } from "langchain/tools/calculator";
+import { pull } from "langchain/hub";
+import { formatLogToString } from "langchain/agents/format_scratchpad/log";
+import { renderTextDescription } from "langchain/tools/render";
+import { ReActSingleInputOutputParser } from "langchain/agents/react/output_parser";
+import { PromptTemplate } from "@langchain/core/prompts";
+import { RunnableSequence } from "@langchain/core/runnables";
+import { AgentStep } from "@langchain/core/agents";
+import { BaseMessage } from "@langchain/core/messages";
+import { SerpAPI } from "@langchain/community/tools/serpapi";
+// import { HandlebarsPromptTemplate } from "@langchain/community/prompts/handlebars";
+// import { StringOutputParser } from "@langchain/core/output_parsers";
+// const embeddings = new TensorFlowEmbeddings();
+
+const modelName = 'gpt-3.5-turbo';
 const configuration = {
     apiKey: process.env.OPENAI_API_KEY
 };
@@ -27,6 +42,7 @@ const params: Partial<OpenAI.Chat.ChatCompletionCreateParams> = {
     stop: ["\nVocê:"]
 }
 type CreateCompletionRequest = OpenAI.Chat.ChatCompletionCreateParamsNonStreaming & { prompt: string };
+
 
 const defaultConfig = {
     'sextou': {
@@ -154,7 +170,7 @@ const writeAText = async (config: Partial<CreateCompletionRequest>) => {
 // const editingText = async (config: Partial<CreateEditRequest>) => {
 //     return await editIt({ ...config, "model": "text-davinci-003" })
 // };
-const writeInstructions = async (prompt) => await simpleChat('Atue como um designer especialista em artes digitais', prompt, '');
+const writeInstructions = async (prompt) => await noMemoryChat('Atue como um designer especialista em artes digitais', prompt);
 const giveMeImage = async (prompt: string, size: "256x256" | "512x512" | "1024x1024" = "256x256") => {
     const { data } = await clientAi.images.generate({
         prompt,
@@ -219,12 +235,12 @@ const createModelTrainingPhrases = async (instruct) => {
 // Set up OpenAI API client
 
 
-const conversation: Record<string, ConversationChain> = {};
+const conversation: Record<string, AgentExecutor> = {};
 
 const noMemoryChat = async (system: string, message: string) => {
 
     try {
-        
+
         // const llamaPath = "/home/fabri/gpt/LLama2/llama-2-7b.Q3_K_M.gguf";
 
         const model = new ChatOpenAI({
@@ -233,12 +249,12 @@ const noMemoryChat = async (system: string, message: string) => {
         const memory = new BufferWindowMemory({
 
             chatHistory: new ChatMessageHistory([new SystemMessage(system)]),
-            k:1
+            k: 1
 
         })
         const chain = new ConversationChain({ llm: model, memory });
         // You can also use the model as part of a chain
-        const res = await chain.call({input: message })
+        const res = await chain.call({ input: message })
         return res.response;
     } catch (error) {
         console.error('Failed to send message:', error);
@@ -246,27 +262,118 @@ const noMemoryChat = async (system: string, message: string) => {
     }
 
 }
-const simpleChat = async (system: string, message: string, conversationId: string) => {
 
+
+type SimpleChatParams = {
+    clientWid: string, chatId: string, from: string, system: string, message: string, conversationId: string, prompt: PromptTemplate<any,any>
+}
+const memorized_chat = async ({ clientWid, chatId, from, prompt }: SimpleChatParams) => {
+    const chatHistory = new FirestoreChatMessageHistory({
+        collectionName: clientWid,
+        sessionId: chatId,
+        userId: from,
+        config: { projectId: process.env.AGENT_PROJECT }
+    });
+    const model = new ChatOpenAI();
+    const summary = new ConversationSummaryBufferMemory({
+        chatHistory, llm: model
+    });
+    const history = await summary.loadMemoryVariables();
+    console.log(history);
+    await chatHistory.clear();
+    const memory = new BufferMemory({
+        chatHistory
+    });
+    const modelWithStop = model.bind({
+        stop: ["\nObservation"],
+    });
+
+    // const vectorStore = await Chroma.fromExistingCollection(
+    //     embeddings,
+    //     { collectionName: chatId }
+    // );
+    // const store = new GoogleCloudStorageDocstore({
+    //     bucket: `${process.env.GOOGLE_CLOUD_STORAGE_BUCKET!}/${chatId}`,
+    //     prefix: from
+    // });
+
+    // const config = {
+    //     index: process.env.GOOGLE_VERTEXAI_MATCHINGENGINE_INDEX!,
+    //     indexEndpoint: process.env.GOOGLE_VERTEXAI_MATCHINGENGINE_INDEXENDPOINT!,
+    //     apiVersion: "v1beta1",
+    //     docstore: store,
+    // };
+
+    // const engine = new MatchingEngine(embeddings, config);
+
+    /* Create the agent */
+    // const vectorStoreInfo: VectorStoreInfo = {
+    //     name: "chat_shared_files",
+    //     description: "the files shared in the conversation",
+    //     vectorStore
+    // };
+
+    // const toolkit = new VectorStoreToolkit(vectorStoreInfo, model);
+    // const agent = createVectorStoreAgent(model, toolkit);
+    const tools = [
+        new SerpAPI('9393b290377acf6b03a22e95c2a67188bc90dd8c', {
+            location: "Brazil",
+            hl: "pt",
+            gl: "br",
+        }),
+        new Calculator(),
+        // new GooglePlacesAPI(),
+        // ...agent.tools
+    ];
+    
+    /** Add input variables to prompt */
+    const toolNames = tools.map((tool) => tool.name);
+    const promptWithInputs = await prompt.partial({
+        tools: renderTextDescription(tools),
+        tool_names: toolNames.join(","),
+    });
+
+    const runnableAgent = RunnableSequence.from([
+        {
+            input: (i: {
+                input: string;
+                steps: AgentStep[];
+                chat_history: BaseMessage[];
+            }) => i.input,
+            agent_scratchpad: (i: {
+                input: string;
+                steps: AgentStep[];
+                chat_history: BaseMessage[];
+            }) => formatLogToString(i.steps),
+            chat_history: (i: {
+                input: string;
+                steps: AgentStep[];
+                chat_history: BaseMessage[];
+            }) => i.chat_history,
+        },
+        promptWithInputs,
+        modelWithStop,
+        new ReActSingleInputOutputParser({ toolNames }),
+    ]);
+    const executor = AgentExecutor.fromAgentAndTools({
+        agent: runnableAgent,
+        tools,
+        memory,
+        verbose: true,
+         maxIterations: 5
+    });
+    return executor;
+}
+
+const simpleChat = async (params: SimpleChatParams) => {
+    const { system, message, conversationId } = params;
     try {
-        
-        // const llamaPath = "/home/fabri/gpt/LLama2/llama-2-7b.Q3_K_M.gguf";
-
-        const model = new ChatOpenAI({
-            modelName,
-            temperature: 0.5
-        });
-        if(!conversation[conversationId]){
-            const memory = new BufferWindowMemory({
-                memoryKey: "history",
-                chatHistory: new ChatMessageHistory([new SystemMessage(system)]),
-                k:1
-            })
-            conversation[conversationId] = new ConversationChain({ llm: model, memory });
+        if (!conversation[conversationId]) {
+            conversation[conversationId] = await memorized_chat(params);
         }
-        const res = await  conversation[conversationId].call({input: message })
-        const response =  res.response;
-        console.log({system, message, response, })
+        const res = await conversation[conversationId].invoke({ input: message })
+        const response = res.output;
+        console.log({ system, message, response, })
         return response;
     } catch (error) {
         console.error('Failed to send message:', error);

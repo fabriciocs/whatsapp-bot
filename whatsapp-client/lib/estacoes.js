@@ -110,6 +110,30 @@ class EstacaoManager {
             });
         }
     }
+    addMsg(event, ...params) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log({ event, params });
+            try {
+                const messageDoc = {
+                    event
+                };
+                if (!!params) {
+                    const msgsData = JSON.parse(JSON.stringify(params));
+                    if (Array.isArray(msgsData) && (msgsData === null || msgsData === void 0 ? void 0 : msgsData.length) > 0) {
+                        messageDoc.content = firestore_1.FieldValue.arrayUnion(...msgsData);
+                    }
+                    else {
+                        messageDoc.content = msgsData;
+                    }
+                    yield this.ref.collection('messages').add(messageDoc);
+                }
+            }
+            catch (e) {
+                console.error('Error parsing message data', e);
+                return;
+            }
+        });
+    }
 }
 EstacaoManager.COLLECTION_NAME = 'estacoes';
 exports.default = EstacaoManager;

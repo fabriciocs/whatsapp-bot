@@ -38,9 +38,8 @@ const admin = __importStar(require("firebase-admin"));
 class ContratoManager {
     constructor(db = admin.firestore()) {
         this.db = db;
-        this.COLLECTION_NAME = 'contrato';
         this.getContratosSnapshot = () => __awaiter(this, void 0, void 0, function* () { return yield this.getContratosQuery().get(); });
-        this.getContratosQuery = () => this.db.collection(this.COLLECTION_NAME).where('contract_status', '==', 'Ativo');
+        this.getContratosQuery = () => this.db.collection(ContratoManager.COLLECTION_NAME).where('contract_status', '==', 'Ativo');
         this.contratos = [];
     }
     // get all contratos from firestore
@@ -61,14 +60,14 @@ class ContratoManager {
     // get contrato by id
     getContrato(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const contrato = yield this.db.collection(this.COLLECTION_NAME).doc(id).get();
+            const contrato = yield this.db.collection(ContratoManager.COLLECTION_NAME).doc(id).get();
             return contrato.data();
         });
     }
     // get contrato by name
     getContratoByName(name) {
         return __awaiter(this, void 0, void 0, function* () {
-            const contrato = yield this.db.collection(this.COLLECTION_NAME).where('contract_name', '==', name).get();
+            const contrato = yield this.db.collection(ContratoManager.COLLECTION_NAME).where('contract_name', '==', name).get();
             return contrato.docs.map((doc) => doc.data());
         });
     }
@@ -82,6 +81,7 @@ class ContratoManager {
         });
     }
 }
+ContratoManager.COLLECTION_NAME = 'contrato';
 exports.default = ContratoManager;
 class Contrato {
 }

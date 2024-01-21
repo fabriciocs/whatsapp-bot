@@ -1,11 +1,18 @@
 {
   "name": "whatsapp-client",
   "scripts": {
-    "gcp-build": "node node_modules/puppeteer/install.js",
-    "compile": "tsc",
-    "start": "node ./lib/index.js"
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
   },
-  "main": "lib/index.j",
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.3.0",
     "adm-zip": "^0.5.10",
@@ -13,6 +20,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.6.0",
     "fs-extra": "^11.1.1",
     "qrcode": "^1.5.3",
     "whatsapp-web.js": "^1.23.1-alpha.0"

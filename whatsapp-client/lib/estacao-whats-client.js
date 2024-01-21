@@ -39,8 +39,8 @@ exports.EstacaoWhatsClientManager = exports.EstacaoWhatsClient = void 0;
 const firestore_1 = require("@google-cloud/firestore");
 const QRCode = __importStar(require("qrcode"));
 const whatsapp_web_js_1 = require("whatsapp-web.js");
-const storage_store_1 = __importDefault(require("./storage-store"));
 const remote_auth_1 = require("./remote-auth");
+const storage_store_1 = __importDefault(require("./storage-store"));
 class EstacaoWhatsClient {
     addEvent(event) {
         var _a;
@@ -84,25 +84,25 @@ class EstacaoWhatsClientManager {
     }
     observe(client) {
         client
-            .on('chat_removed', (...k) => console.log('chat_removed', { params: k }))
-            .on('chat_archived', (...k) => console.log('chat_archived', { params: k }))
-            .on('message', (...k) => console.log('message', { params: k }))
-            .on('message_create', (...k) => console.log('message_create', { params: k }))
-            .on('message_revoke_everyone', (...k) => console.log('message_revoke_everyone', { params: k }))
-            .on('message_revoke_me', (...k) => console.log('message_revoke_me', { params: k }))
-            .on('message_ack', (...k) => console.log('message_ack', { params: k }))
-            .on('message_edit', (...k) => console.log('message_edit', { params: k }))
-            .on('unread_count', (...k) => console.log('unread_count', { params: k }))
-            .on('message_reaction', (...k) => console.log('message_reaction', { params: k }))
-            .on('media_uploaded', (...k) => console.log('media_uploaded', { params: k }))
-            .on('contact_changed', (...k) => console.log('contact_changed', { params: k }))
-            .on('group_join', (...k) => console.log('group_join', { params: k }))
-            .on('group_leave', (...k) => console.log('group_leave', { params: k }))
-            .on('group_admin_changed', (...k) => console.log('group_admin_changed', { params: k }))
-            .on('group_membership_request', (...k) => console.log('group_membership_request', { params: k }))
-            .on('group_update', (...k) => console.log('group_update', { params: k }))
-            .on('loading_screen', (...k) => console.log('loading_screen', { params: k }))
-            .on('call', (...k) => console.log('call', { params: k }));
+            .on('chat_removed', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('chat_removed', k); }))
+            .on('chat_archived', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('chat_archived', k); }))
+            .on('message', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message', k); }))
+            .on('message_create', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_create', k); }))
+            .on('message_revoke_everyone', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_revoke_everyone', k); }))
+            .on('message_revoke_me', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_revoke_me', k); }))
+            .on('message_ack', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_ack', k); }))
+            .on('message_edit', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_edit', k); }))
+            .on('unread_count', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('unread_count', k); }))
+            .on('message_reaction', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('message_reaction', k); }))
+            .on('media_uploaded', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('media_uploaded', k); }))
+            .on('contact_changed', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('contact_changed', k); }))
+            .on('group_join', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('group_join', k); }))
+            .on('group_leave', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('group_leave', k); }))
+            .on('group_admin_changed', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('group_admin_changed', k); }))
+            .on('group_membership_request', (...k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('group_membership_request', k); }))
+            // .on('group_update', async (...k) => await this.estacaoManager.addMsg('group_update',k))
+            .on('loading_screen', (...k) => console.log({ k }))
+            .on('call', (k) => __awaiter(this, void 0, void 0, function* () { return yield this.estacaoManager.addMsg('call', k); }));
     }
     ;
     tryEvent(eventName, message, func) {
@@ -124,50 +124,31 @@ class EstacaoWhatsClientManager {
     authenticate() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                    const client = new whatsapp_web_js_1.Client({
-                        authStrategy: new remote_auth_1.RemoteAuth({
-                            store: new storage_store_1.default(),
-                            clientId: this.estacaoManager.ref.id,
-                            backupSyncIntervalMs: 60000,
-                        }),
-                        takeoverOnConflict: true,
-                        takeoverTimeoutMs: 30000,
-                        qrMaxRetries: 10,
+                const client = this.createWhatsAppClient();
+                const promise = new Promise((resolve, reject) => {
+                    client
+                        .on("authenticated", (session) => {
+                        this.handleAuthenticated(session);
+                    })
+                        .on('qr', (qr) => {
+                        this.handleQrcode(qr);
+                    })
+                        .on('auth_failure', (session) => {
+                        this.handleAuthFailure(session);
+                        reject(session);
+                    })
+                        .on('ready', () => {
+                        this.handleReady(client);
+                        resolve(this);
+                    })
+                        .on('disconnected', (reason) => {
+                        this.handleDisconnected(reason);
+                        reject(reason);
                     });
-                    client.on("authenticated", (session) => __awaiter(this, void 0, void 0, function* () {
-                        yield this.tryEvent("authenticated", 'Autenticação Iniciada com sucesso', () => __awaiter(this, void 0, void 0, function* () {
-                            yield this.onAuthenticated(session);
-                        }));
-                    }))
-                        .on('qr', (qr) => __awaiter(this, void 0, void 0, function* () {
-                        yield this.tryEvent('qr', 'Conect usando o QR Code', () => __awaiter(this, void 0, void 0, function* () {
-                            yield this.onQrcode(qr);
-                        }));
-                    }))
-                        .on('auth_failure', (session) => __awaiter(this, void 0, void 0, function* () {
-                        yield this.tryEvent('auth_failure', 'Falha de autenticação', () => __awaiter(this, void 0, void 0, function* () {
-                            yield this.onAuthFailure(session);
-                            reject();
-                        }));
-                    }))
-                        .on('ready', () => __awaiter(this, void 0, void 0, function* () {
-                        yield this.tryEvent('ready', '', () => __awaiter(this, void 0, void 0, function* () {
-                            yield this.onReady();
-                            yield client.destroy();
-                            resolve(this);
-                        }));
-                    }))
-                        .on('disconnected', (reason) => __awaiter(this, void 0, void 0, function* () {
-                        yield this.tryEvent('disconnected', '', () => __awaiter(this, void 0, void 0, function* () {
-                            yield this.onDisconnected(reason);
-                            reject();
-                        }));
-                    }));
                     this.observe(client);
-                    yield client.initialize();
-                }));
-                return this;
+                    client.initialize();
+                });
+                return yield promise;
             }
             catch (e) {
                 console.error('initialize', e);
@@ -175,37 +156,46 @@ class EstacaoWhatsClientManager {
             }
         });
     }
-    onAuthenticated(session) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.estacaoManager.authenticate();
-            return this;
+    createWhatsAppClient() {
+        return new whatsapp_web_js_1.Client({
+            authStrategy: new remote_auth_1.RemoteAuth({
+                store: new storage_store_1.default(),
+                clientId: this.estacaoManager.ref.id,
+                backupSyncIntervalMs: 60000,
+            }),
+            takeoverOnConflict: true,
+            takeoverTimeoutMs: 30000,
+            qrMaxRetries: 10,
         });
     }
-    onQrcode(qrcode) {
+    handleAuthenticated(session) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.estacaoManager.authenticate();
+        });
+    }
+    handleQrcode(qrcode) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!qrcode)
-                return undefined;
+                return;
             yield this.estacaoManager.setQrcode(yield this.getBase64Qrcode(qrcode));
             const qrCodeString = yield QRCode.toString(qrcode, { type: 'terminal', small: true });
             console.log(qrCodeString);
         });
     }
-    onReady() {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield this.estacaoManager.ready();
-            return this;
-        });
-    }
-    onAuthFailure(session) {
+    handleAuthFailure(session) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.estacaoManager.authFailure(session);
-            return this;
         });
     }
-    onDisconnected(reason) {
+    handleReady(client) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.estacaoManager.ready();
+            yield client.destroy();
+        });
+    }
+    handleDisconnected(reason) {
         return __awaiter(this, void 0, void 0, function* () {
             yield this.estacaoManager.disconnect();
-            return this;
         });
     }
     getBase64Qrcode(qrcode) {

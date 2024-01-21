@@ -1,10 +1,8 @@
 
-import { DocumentReference, FieldValue, Filter, Timestamp, Firestore, QueryDocumentSnapshot } from '@google-cloud/firestore';
-import { Contrato } from './contratos';
-import { HeatingStage } from './heating-stage';
-import { Chat, GroupChat } from 'whatsapp-web.js';
+import { Filter, Firestore, QueryDocumentSnapshot } from '@google-cloud/firestore';
 import * as admin from 'firebase-admin';
 import EstacaoManager, { Estacao } from './estacoes';
+import { DocumentSnapshot } from 'firebase-admin/firestore';
 export default class AppManager {
     constructor(private db: Firestore = admin.firestore()) {
     }

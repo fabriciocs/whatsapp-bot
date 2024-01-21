@@ -3,6 +3,7 @@
     {
       "source": "facebook",
       "codebase": "default",
+      "runtime": "nodejs18",
       "ignore": [
         "node_modules",
         ".git",
@@ -12,6 +13,34 @@
       ],
       "predeploy": [
         "yarn --cwd \"$RESOURCE_DIR\" build"
+      ]
+    },
+    {
+      "source": "luaubot",
+      "codebase": "luaubot",
+      "runtime": "nodejs18",
+      "ignore": [
+        "venv",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    },
+    {
+      "source": "whatsapp-client",
+      "codebase": "whatsapp-client",
+      "runtime": "nodejs18",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run build"
       ]
     }
   ],
@@ -25,7 +54,13 @@
     "ui": {
       "enabled": true
     },
-    "singleProjectMode": true
+    "singleProjectMode": true,
+    "firestore": {
+      "port": 8080
+    },
+    "storage": {
+      "port": 9199
+    }
   },
   "database": {
     "rules": "database.rules.json"
