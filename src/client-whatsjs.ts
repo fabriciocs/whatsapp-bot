@@ -21,6 +21,7 @@ import { runTest } from './langchain/json-ai';
 import EmojiManager from './emoji';
 import { PromptTemplate } from 'langchain/dist/prompts/prompt';
 import { pull } from 'langchain/hub';
+import { load_site } from './ai-loader';
 const addManagerToGroup = async (msg: WhatsappMessageAdapter, params: string[] = []) => {
     const chat = await msg.getMsg<Message>().getChat();
     if (!chat.isGroup) return;
@@ -377,7 +378,8 @@ export const initWhatsappClient = async (appData: AppData) => {
                 }
             }
         }
-        return await chatResponse(appData, whatsMessage, appData.promptBase[agentName], instructions, text, conversationId);
+        const hub = appData.hubs[agentName];
+        return await chatResponse(appData, whatsMessage, appData.promptBase[agentName], instructions, text, conversationId, hub);
 
     };
     const create_answer_to_chat_text = async (text: string) => {
@@ -844,9 +846,13 @@ export const initWhatsappClient = async (appData: AppData) => {
 
     console.log('BEFORE INITIALIZING WHATSAPP CLIENT');
     try {
+        await load_site({
+            url: 'https://bio.brunogimenes.com.br/',
+            id: 'https://bio.brunogimenes.com.br/'
+        })
         await appData.client.initialize();
         console.log('AFTER INITIALIZING WHATSAPP CLIENT');
-        // await appData.client.sendMessage('556492461135@c.us',  '@ .eu');
+       
     } catch (e) {
         console.error(e);
     }
@@ -859,9 +865,9 @@ async function chatResponse(appData: AppData, message: Message, promptMessage: s
     const clientWid = client.info.wid._serialized;
     let task = `${promptMessage} ${instructions}`;
     if (!text) {
-        text = `Apresente-se sucintamente`;
+        text = `Como pode me ajudar, sucintamente?`;
     }
-    const prompt = await pull<PromptTemplate>(hub);
+    const prompt = await pull<PromptTemplate>("fshego/phd_gpt");
     const resp = !!conversationId ? await simpleChat({
         chatId: chat.id._serialized,
         clientWid,

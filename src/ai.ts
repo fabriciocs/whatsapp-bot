@@ -257,7 +257,7 @@ const noMemoryChat = async (system: string, message: string) => {
         const res = await chain.call({ input: message })
         return res.response;
     } catch (error) {
-        console.error('Failed to send message:', error);
+        console.error('No memmory Failed to send message:', error);
         return 'Sorry, an error occurred.';
     }
 
@@ -275,15 +275,11 @@ const memorized_chat = async ({ clientWid, chatId, from, prompt }: SimpleChatPar
         config: { projectId: process.env.AGENT_PROJECT }
     });
     const model = new ChatOpenAI();
-    const summary = new ConversationSummaryBufferMemory({
-        chatHistory, llm: model
-    });
-    const history = await summary.loadMemoryVariables();
-    console.log(history);
     await chatHistory.clear();
     const memory = new BufferMemory({
+        memoryKey: "chat_history",
         chatHistory
-    });
+    })
     const modelWithStop = model.bind({
         stop: ["\nObservation"],
     });

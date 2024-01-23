@@ -34,6 +34,7 @@ export class AppData {
     client?: Client;
     promptBase?: Record<string, string>;
     agentCommands?: Record<string, string>;
+    hubs?: Record<string, string>;
     agentExample?: Record<string, {
         input: string,
         output: string
