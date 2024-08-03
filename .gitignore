@@ -36,3 +36,5 @@ br-utf8.txt
 ebook.json
 .cache/
 .venv/
+chroma_db_*/
+*__embedding/
