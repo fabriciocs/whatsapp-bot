@@ -1,1 +1,0 @@
-Eu posso deixar assim, ou seja, ele vai pegar os dados do ultimo cadastro feito, ou eu faço diferente e pego no momento que a pessoa digitou

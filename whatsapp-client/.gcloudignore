@@ -1,4 +1,0 @@
-.gcloudignore
-.git
-.gitignore
-!./lib/*.js

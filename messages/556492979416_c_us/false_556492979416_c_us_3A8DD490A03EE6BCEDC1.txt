@@ -1,6 +1,0 @@
-Meu querido, bom dia. Como é que tá rapaz? Eu virei aquele trem do Avesso.
- Eu não consegui avançar mais que eu não tenho acesso ao Fábio Store, manda o acesso para história aí que eu vou dar uma.
- Engraçado, né? A gente faz passando o tempo você vai percebendo o quanto é importante você evoluir junto com com a linguagem que você tá utilizando, né?
- Mas eu dei uma de uma geral lá Fabrício reorganizei aquele esquema dos dados do jeito adequado jeito certo creio de dados para para.
- Já tinha um tipo de dado para o endereço e o creme o restante dos tipos de dados.
- De enxugado na Nos esquemas esquema tava muito sobrecarregado e E aí agora precisa precisa prosseguir lá, mas aí é importante fazer uns testes com para ver como é que vai ficar a hora que você salva os dados firestore, né? Eu ver como que não tava não faz torta. Eu não sei qual é a conta que você tá usando para acessar.
