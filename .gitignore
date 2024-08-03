@@ -35,3 +35,4 @@ path
 br-utf8.txt
 ebook.json
 .cache/
+.venv/
